@@ -1,0 +1,25 @@
+{
+  "name": "flow-wp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mix watch"
+  },
+  "keywords": [],
+  "author": "VicoErv <vico@fleava.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.72.0",
+    "sass-loader": "^12.6.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "imagesloaded": "^5.0.0",
+    "splitting": "^1.0.6"
+  }
+}

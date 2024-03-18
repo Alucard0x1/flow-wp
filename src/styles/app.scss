@@ -1,0 +1,343 @@
+@use 'fonts';
+@use 'functions' as fn;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-link: rgba(255,255,255,0.5);
+  --color-link-hover: #f8c5dc;
+  --color-bg-slide: #171719;
+
+  --vw: 1512;
+  --scaler: 100vw;
+  --multiplier: 1;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: obviously, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+  content: '';
+  position: fixed;
+  z-index: 1000;
+}
+
+.js .loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  outline: none;
+}
+
+.unbutton {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  color: var(--color-link);
+}
+
+.unbutton:focus {
+  outline: none;
+}
+
+.frame {
+  padding: 2.5rem;
+  display: grid;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto 1fr;
+  grid-gap: 1rem;
+  grid-template-areas: 'back sponsor' 'title title' 'info info' 'nav nav';
+
+}
+
+.frame a {
+  pointer-events: auto;
+}
+
+.frame__title {
+  grid-area: title;
+  align-self: end;
+  justify-self: end;
+  display: flex;
+  align-items: start;
+}
+
+.frame__title-main {
+  font-size: 1rem;
+  margin: 0 0 0 1rem;
+  font-weight: normal;
+}
+
+.frame__title-back {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 0.15rem;
+}
+
+.frame__title-back span {
+  transform: rotate(-45deg);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.frame__title-back svg {
+  fill: currentColor;
+}
+
+.frame__info {
+  grid-area: info;
+  align-self: end;
+}
+
+.frame__nav {
+  grid-area: nav;
+  display: grid;
+  grid-auto-flow: row;
+  place-items: start;
+  align-content: end;
+  grid-gap: 0.5rem;
+}
+
+.frame__nav-button {
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+  pointer-events: auto;
+}
+
+.frame__nav-button:not(.frame__nav-button--current):hover {
+  color: var(--color-link-hover);
+}
+
+.frame__nav-button--current {
+  color: var(--color-text);
+}
+
+.frame__nav-button::before {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  top: 50%;
+  background-color: currentColor;
+  position: absolute;
+  right: calc(100% + 4px);
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-in-out;
+}
+
+.frame__nav-button--current::before {
+  transform: scaleX(1);
+}
+
+.frame__back {
+  grid-area: back;
+  justify-self: start;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.frame__back--show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slides {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+  place-items: center;
+}
+
+.slide {
+  width: 100%;
+  height: 104%;
+  grid-area: 1 / 1 / -1 / -1;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  will-change: transform;
+}
+
+.slide--current {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.slide__inner {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 100%;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.slide__img {
+  grid-area: 1 / 1 / -1 / -1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.slide__img-inner {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.slide__content {
+  grid-area: 1 / 1 / -1 / -1;
+  display: grid;
+  background: var(--color-bg-slide);
+  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+  grid-template-areas: 'img title' 'img text' 'img ...' ;
+}
+
+.slide__content h2 {
+  grid-area: title;
+  font-weight: 200;
+  font-size: clamp(3rem,2vw,3rem);
+  text-transform: none;
+  margin: 0 0 3rem 0;
+  line-height: 1;
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 53em) {
+  .frame {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'back ... sponsor' 'nav info title';
+    align-content: space-between;
+  }
+  .frame__info {
+    justify-self: center;
+  }
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.content {
+  position: absolute;
+  z-index: 1;
+
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+
+  h1 {
+    margin-bottom: fn.toVw(10);
+
+    text-align: center;
+    font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+    font-size: fn.toVw(96);
+    line-height: 1;
+    user-select: none;
+  }
+
+  p {
+    margin-top: 0;
+
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: fn.toVw(26);
+    line-height: fn.toVw(32);
+    font-weight: 500;
+    user-select: none;
+  }
+}
+
+.description {
+  border-radius: 12px;
+  background: linear-gradient(154deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.50) 97.1%);
+  backdrop-filter: blur(75px);
+
+  width: fn.toVw(414);
+  padding: fn.toVw(44) fn.toVw(40) fn.toVw(33);
+
+  position: absolute;
+  right: fn.toVw(24);
+  bottom: fn.toVw(24);
+  z-index: 1;
+
+  p {
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: fn.toVw(26);
+    margin-top: fn.toVw(24);
+    margin-bottom: 0;
+    user-select: none;
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background: #FAF5EA;
+  }
+}

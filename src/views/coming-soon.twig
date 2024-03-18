@@ -1,0 +1,43 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+	<div id="app">
+		<section class="coming-soon">
+			<div class="header">
+				<img src="{{ site.theme.link }}/assets/images/logo.png" alt="">
+			</div>
+
+			<div class="content">
+				<h1>Coming Soon</h1>
+				<p>24 April 2024</p>
+			</div>
+
+			<div class="description">
+				<div class="line"></div>
+				<p>
+					Flexible,<br/>
+					Luxury Workspaces<br/>
+					Inspired by AYANA
+				</p>
+			</div>
+
+			<div class="slides">
+				{% for i in 1..11 %}
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__img">
+							<div class="slide__img-inner"
+								 style="background-image: url('{{ site.theme.link }}/assets/images/slides/{{ i }}.jpg')"
+							></div>
+						</div>
+
+						<div class="slide__content">
+
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</section>
+	</div>
+{% endblock %}

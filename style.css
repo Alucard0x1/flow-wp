@@ -1,0 +1,109 @@
+/*
+Theme Name:      Flow
+Theme URI:       https://github.com/Fleava/flow-wp
+Author:          VicoErv
+Author URI:      https://github.com/Fleava
+Description:     A theme with a minimalist design.
+Version:         1.0.0
+Text Domain:     flow-wp
+*/
+
+/*
+ * ================================================
+ *  RESET
+ * ================================================
+ */
+
+/* Clearing floats */
+.clearfix {
+  clear: both;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove margins and padding from <p> tags */
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Remove margins from images */
+img {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ================================================
+ *  LAYOUT
+ * ================================================
+ */
+
+ /* Content container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ================================================
+ *  MENU
+ * ================================================
+ */
+
+/* Responsive menu */
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: right;
+  }
+}
+
+/* ================================================
+ *  TYPOGRAPHY
+ * ================================================
+ */
+
+/* Links */
+a {
+  color: #007acc;
+}
+
+a:hover,
+a:focus {
+  color: #005494;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* ================================================
+ *  CONTENT
+ * ================================================
+ */
+
+/* Content */
+.entry-content {
+  margin-bottom: 2em;
+}
+
+/* ================================================
+ *  FOOTER
+ * ================================================
+ */
+
+/* Footer */
+.site-info {
+  color: #666;
+  margin: 2em 0;
+  text-align: center;
+}
+
