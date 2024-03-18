@@ -65,11 +65,6 @@ const navigate = newPosition => {
         },
         onComplete: () => {
             currentSlide.DOM.el.classList.remove('slide--current');
-            // Close the current slide if it was open
-            if ( currentSlide.isOpen ) {
-                hideContent(currentSlide);
-            }
-
             isAnimating = false;
         }
     })
@@ -110,84 +105,6 @@ const navigate = newPosition => {
         }, 'start')
 };
 
-const showContent = position => {
-    if ( isAnimating ) return;
-    isAnimating = true;
-
-    const slide = slidesArr[position];
-
-    slide.isOpen = true;
-
-    gsap.timeline({
-        defaults: {
-            duration: 1.6,
-            ease: 'power3.inOut'
-        },
-        onStart: () => {
-
-        },
-        onComplete: () => {
-            isAnimating = false;
-        }
-    })
-        .addLabel('start', 0)
-        .to(slide.DOM.img, {
-            yPercent: -100
-        }, 'start')
-        .set(slide.DOM.imgInner, {
-            transformOrigin: '50% 100%'
-        }, 'start')
-        .to(slide.DOM.imgInner, {
-            yPercent: 100,
-            scale: 1.2
-        }, 'start')
-        .to(slide.DOM.contentImg, {
-            startAt: {
-                transformOrigin: '50% 0%',
-                scale: 1.5
-            },
-            scale: 1
-        }, 'start')
-};
-
-const hideContent = (slide, animate = false) => {
-    // reset values
-    isAnimating = true;
-
-    const complete = () => {
-        slide.isOpen = false;
-        isAnimating = false;
-    };
-
-    if ( animate ) {
-        gsap.timeline({
-            defaults: {
-                duration: 1.6,
-                ease: 'power3.inOut'
-            },
-            onComplete: complete
-        })
-            .addLabel('start', 0)
-            .to(slide.DOM.img, {
-                yPercent: 0
-            }, 'start')
-            .to(slide.DOM.imgInner, {
-                yPercent: 0,
-                scale: 1
-            }, 'start');
-    }
-    else {
-        gsap.set(slide.DOM.img, {
-            yPercent: 0
-        });
-        gsap.set(slide.DOM.imgInner, {
-            yPercent: 0,
-            scale: 1
-        });
-        complete();
-    }
-};
-
 const initEvents = () => {
     // Initialize the GSAP Observer plugin
     Observer.create({
@@ -198,6 +115,10 @@ const initEvents = () => {
         wheelSpeed: -1,
         tolerance: 10
     });
+
+    setInterval(() => {
+        next()
+    }, 5000)
 };
 
 // Set current slide
@@ -207,6 +128,4 @@ setCurrentSlide(0);
 initEvents();
 
 // Preload images and initialize scrolling animations
-preloadImages('.slide__img-inner').then( _ => {
-    document.body.classList.remove('loading');
-});
+preloadImages('.slide__img-inner')
