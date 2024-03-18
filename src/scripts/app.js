@@ -117,7 +117,9 @@ const initEvents = () => {
     });
 
     setInterval(() => {
-        next()
+        if (document.hasFocus()) {
+            next()
+        }
     }, 5000)
 };
 
