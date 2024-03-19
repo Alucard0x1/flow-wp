@@ -30,7 +30,7 @@ let isAnimating = false;
 
 
 const setCurrentSlide = position => {
-    if ( current !== -1 ) {
+    if (current !== -1) {
         slidesArr[current].DOM.el.classList.remove('slide--current');
     }
 
@@ -100,27 +100,17 @@ const navigate = newPosition => {
         }, 'start')
         .to(upcomingSlide.DOM.imgInner, {
             ease: 'power2.inOut',
-            startAt: {scale: 1.2},
+            startAt: { scale: 1.2 },
             scale: 1
         }, 'start')
 };
 
 const initEvents = () => {
-    // Initialize the GSAP Observer plugin
-    Observer.create({
-        type: 'wheel,touch,pointer',
-        onDown: () => !isAnimating && prev(),
-        onUp: () => !isAnimating && next(),
-        // invert the mouse wheel delta
-        wheelSpeed: -1,
-        tolerance: 10
-    });
-
     setInterval(() => {
         if (document.hasFocus()) {
             next()
         }
-    }, 5000)
+    }, 3000)
 };
 
 // Set current slide
