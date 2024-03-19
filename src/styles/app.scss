@@ -10,7 +10,7 @@
 :root {
   --color-text: #fff;
   --color-bg: #000;
-  --color-link: rgba(255,255,255,0.5);
+  --color-link: rgba(255, 255, 255, 0.5);
   --color-link-hover: #f8c5dc;
   --color-bg-slide: #171719;
 
@@ -245,13 +245,13 @@ a:hover {
   grid-template-rows: auto auto auto;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 2rem;
-  grid-template-areas: 'img title' 'img text' 'img ...' ;
+  grid-template-areas: 'img title' 'img text' 'img ...';
 }
 
 .slide__content h2 {
   grid-area: title;
   font-weight: 200;
-  font-size: clamp(3rem,2vw,3rem);
+  font-size: clamp(3rem, 2vw, 3rem);
   text-transform: none;
   margin: 0 0 3rem 0;
   line-height: 1;
@@ -271,6 +271,7 @@ a:hover {
     grid-template-areas: 'back ... sponsor' 'nav info title';
     align-content: space-between;
   }
+
   .frame__info {
     justify-self: center;
   }
@@ -292,6 +293,7 @@ a:hover {
   transform: translateY(-50%);
 
   h1 {
+    margin-top: 0;
     margin-bottom: fn.toVw(10);
 
     text-align: center;
@@ -302,7 +304,7 @@ a:hover {
   }
 
   p {
-    margin-top: 0;
+    margin: 0;
 
     text-align: center;
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
