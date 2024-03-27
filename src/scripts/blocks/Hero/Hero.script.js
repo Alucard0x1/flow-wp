@@ -8,6 +8,10 @@ const blockData = {
         image: {
             type: 'object',
             default: null
+        },
+        title: {
+            type: 'string',
+            default: 'Title'
         }
     }
 }

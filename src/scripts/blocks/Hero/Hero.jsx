@@ -1,9 +1,12 @@
+import useRichText from '../../hooks/useRichText'
 import './Hero.scss'
 
 const { MediaUpload, MediaUploadCheck } = wp.blockEditor
 const { Button, Icon } = wp.components
 
 const Hero = ({ setAttributes, attributes, isSelected }) => {
+    const Text = useRichText(isSelected)
+
     return (
         <section className="hero">
             <div className="image-wrapper">
@@ -32,11 +35,9 @@ const Hero = ({ setAttributes, attributes, isSelected }) => {
 
             <div className="hero-content">
                 <div className="container">
-                    <h1>
-                        Flexible,<br />
-                        Luxury Workspaces<br />
-                        Inspired by AYANA
-                    </h1>
+                    <Text tagName="h1" value={attributes.title}
+                        onChange={(title) => setAttributes({ title })}
+                    />
                 </div>
             </div>
         </section>
