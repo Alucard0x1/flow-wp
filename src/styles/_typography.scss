@@ -1,0 +1,36 @@
+@use 'functions' as fn;
+
+h1,
+h2 {
+    font-weight: 400;
+    font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: fn.toVw(68);
+    line-height: fn.toVw(60);
+}
+
+h2 {
+    font-size: fn.toVw(88);
+    line-height: fn.toVw(80);
+}
+
+body {
+    font-size: fn.toVw(16);
+    line-height: fn.toVw(23);
+    font-weight: 300;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.subtitle {
+    font-size: fn.toVw(20);
+    line-height: fn.toVw(28);
+    letter-spacing: 0.02em;
+}
+
+.category {
+    font-size: fn.toVw(18);
+    line-height: fn.toVw(21.64);
+    font-weight: 400;
+}

@@ -1,0 +1,23 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.btn {
+    display: inline-block;
+    padding: fn.toVw(12) fn.toVw(20);
+    background-color: clr.$brown-10;
+    border-radius: fn.toVw(40);
+    color: clr.$white;
+    text-decoration: none;
+
+
+    // ==== FONT === //
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: fn.toVw(18);
+    line-height: fn.toVw(21.47);
+    font-weight: 400;
+
+    &:before {
+        content: '●';
+        margin-right: fn.toVw(8);
+    }
+}

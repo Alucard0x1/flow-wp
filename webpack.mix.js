@@ -19,7 +19,11 @@ if (mix.inProduction()) {
   );
 }
 
-mix.js('src/scripts/app.js', '').sass('src/styles/app.scss', '', {}, postcssConfig.plugins);
+mix.js('src/scripts/app.js', '')
+  .js('src/scripts/blocks.js', '')
+  .react()
+  .sass('src/styles/app.scss', '', {}, postcssConfig.plugins)
+  .sass('src/styles/main.scss', '', {}, postcssConfig.plugins);
 
 if (mix.inProduction()) {
   mix.version();
@@ -44,8 +48,8 @@ mix.extend('addWebpackLoaders', (webpackConfig, loaderRules) => {
 
 mix.addWebpackLoaders([
   {
-    test: /\.(glsl|vs|fs|vert|frag)$/,
+    test: /\.jsx?$/,
     exclude: /node_modules/,
-    use: ['raw-loader', 'glslify-loader']
+    use: 'webpack-import-glob-loader'
   }
 ]);
