@@ -1,0 +1,52 @@
+@use '../../../styles/functions' as fn;
+
+.scaled-image {
+    .container {
+        margin: 0 fn.toVw(156) fn.toVw(165) fn.toVw(156);
+
+        .image-wrapper {
+            width: fn.toVw(572);
+            height: fn.toVw(356);
+            background-color: red;
+            border-radius: fn.toVw(20);
+            margin: 0 auto;
+        }
+    }
+
+    &-content {
+        width: fn.toVw(572);
+        margin: fn.toVw(91) auto 0;
+
+        display: flex;
+
+        .category-wrapper {
+            flex: 0 0 50%;
+            width: 50%;
+
+            .text-category {
+                &:before {
+                    content: '[';
+                    margin-right: fn.toVw(8);
+                }
+
+                &:after {
+                    content: ']';
+                    margin-left: fn.toVw(8);
+                }
+            }
+        }
+
+        .description-wrapper {
+            flex: 0 0 fn.toVw(390);
+            width: fn.toVw(390);
+
+            .text-description {
+                margin-bottom: fn.toVw(20);
+            }
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}

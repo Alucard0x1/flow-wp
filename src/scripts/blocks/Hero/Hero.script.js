@@ -1,5 +1,3 @@
-
-
 const blockData = {
     title: "Hero",
     icon: "format-image",
