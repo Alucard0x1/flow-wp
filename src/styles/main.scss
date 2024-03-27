@@ -26,3 +26,22 @@ body {
         left: 0;
     }
 }
+
+.text-category {
+    font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+
+    &:before,
+    &:after {
+        font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+    }
+
+    &:before {
+        content: '[';
+        margin-right: fn.toVw(8);
+    }
+
+    &:after {
+        content: ']';
+        margin-left: fn.toVw(8);
+    }
+}
