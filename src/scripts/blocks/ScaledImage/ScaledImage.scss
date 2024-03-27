@@ -24,6 +24,13 @@
             width: 50%;
 
             .text-category {
+                font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+
+                &:before,
+                &:after {
+                    font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+                }
+
                 &:before {
                     content: '[';
                     margin-right: fn.toVw(8);
