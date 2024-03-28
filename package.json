@@ -18,7 +18,8 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.72.0",
     "sass-loader": "^12.6.0",
-    "webpack-import-glob-loader": "^1.6.3"
+    "webpack-import-glob-loader": "^1.6.3",
+    "yeoman-generator": "^7.1.1"
   },
   "dependencies": {
     "gsap": "^3.12.5",

@@ -1,0 +1,66 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.image-background {
+    margin: 0 fn.toVw(10) fn.toVw(227);
+
+    .image-wrapper {
+        height: 100vh;
+        width: 100%;
+
+        .background-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: fn.toVw(20);
+        }
+    }
+
+    .content-wrapper {
+        position: absolute;
+        bottom: fn.toVw(20);
+        right: fn.toVw(20);
+
+        padding: fn.toVw(57) fn.toVw(37) fn.toVw(33);
+        width: fn.toVw(358);
+
+        &__content {
+            position: relative;
+            z-index: 1;
+            color: clr.$white;
+        }
+
+        // === BACKGROUND === //
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(#000, .2), rgba(#000, .5));
+            backdrop-filter: blur(10px);
+            border-radius: fn.toVw(20);
+        }
+
+        h2 {
+            margin: 0 0 fn.toVw(43) 0;
+            font-size: fn.toVw(64);
+            line-height: fn.toVw(50);
+            border-bottom: 1px solid clr.$brown-30;
+
+            padding-bottom: fn.toVw(56);
+        }
+
+        p {
+            margin: 0;
+        }
+        
+        .num {
+            float: right;
+            font-size: fn.toVw(20);
+            letter-spacing: 0.01em;
+        }
+    }
+}

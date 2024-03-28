@@ -6,6 +6,7 @@ const postcssConfig = {
 };
 
 mix.setPublicPath('dist'); // Production
+mix.setResourceRoot('/wp-content/themes/flow-wp/dist/');
 
 if (mix.inProduction()) {
   postcssConfig.plugins.push(
