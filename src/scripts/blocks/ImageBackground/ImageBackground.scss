@@ -22,6 +22,11 @@
         bottom: fn.toVw(20);
         right: fn.toVw(20);
 
+        &.left {
+            left: fn.toVw(20);
+            right: unset;
+        }
+
         padding: fn.toVw(57) fn.toVw(37) fn.toVw(33);
         width: fn.toVw(358);
 
@@ -56,7 +61,7 @@
         p {
             margin: 0;
         }
-        
+
         .num {
             float: right;
             font-size: fn.toVw(20);

@@ -12,7 +12,7 @@ const LinkHover = ({ attributes, setAttributes, isSelected }) => {
 
                 <div className="link-container">
                     {attributes.links.map((link, index) => (
-                        <div className="link-item" data-index={(index + 1).toString().padStart(2, '0')}>
+                        <div key={index} className="link-item" data-index={(index + 1).toString().padStart(2, '0')}>
                             <a href={link.url}>
                                 {link.text}
                             </a>
