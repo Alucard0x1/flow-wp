@@ -1,0 +1,52 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.link-hover {
+    .container {
+        text-align: center;
+
+        .link-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: fn.toVw(96);
+
+            .link-item {
+                position: relative;
+
+                &:not(:first-child):before {
+                    content: '/';
+                    margin: 0 fn.toVw(38);
+                }
+
+                a,
+                &:before {
+                    font-size: fn.toVw(28);
+                    line-height: fn.toVw(33);
+                    font-weight: 400;
+                    color: clr.$brown-10;
+                }
+
+                &:after {
+                    content: attr(data-index);
+                    display: inline-block;
+
+                    font-size: fn.toVw(14);
+                    line-height: fn.toVw(16);
+                    font-weight: 400;
+                    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+                    opacity: .3;
+
+                    vertical-align: top;
+
+                    margin-left: fn.toVw(8);
+                }
+
+                .image-wrapper {
+                    position: absolute;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
