@@ -1,0 +1,23 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.text-color {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: clr.$purple;
+    color: clr.$white;
+
+    h2 {
+        text-align: left;
+
+        font-size: fn.toVw(80);
+        line-height: fn.toVw(90);
+        letter-spacing: 0.01em;
+        font-weight: 400;
+    }
+}
