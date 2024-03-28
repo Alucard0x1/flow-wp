@@ -7,6 +7,14 @@ const blockData = {
       type: "string",
       default: "Title",
     },
+    backgroundColor: {
+      type: "string",
+      default: "#ffffff",
+    },
+    textColor: {
+      type: "string",
+      default: "#000000",
+    },
   },
 };
 
