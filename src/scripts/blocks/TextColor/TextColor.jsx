@@ -34,7 +34,7 @@ const TextColor = ({ attributes, setAttributes, isSelected }) => {
                             renderToggle={({ isOpen, onToggle }) => (
                                 <PanelRow>
                                     <ColorIndicator colorValue={attributes.textColor} />
-                                    <Button isPrimary text="Background color"
+                                    <Button isPrimary text="Text color"
                                         onClick={onToggle}
                                     />
                                 </PanelRow>

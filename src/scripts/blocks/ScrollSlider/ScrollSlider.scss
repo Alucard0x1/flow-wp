@@ -1,0 +1,106 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.scroll-slider {
+
+    .container {
+        height: 100vh;
+        margin: 0 fn.toVw(10);
+
+        display: flex;
+        gap: fn.toVw(10);
+
+        .media-wrapper {
+            height: 100%;
+            flex: 0 0 fn.toVw(984);
+            width: fn.toVw(984);
+
+            .background-image {
+                height: 100%;
+                width: 100%;
+                background-size: cover;
+                background-position: center;
+                border-radius: fn.toVw(20);
+            }
+        }
+
+        .content-wrapper {
+            position: relative;
+
+            height: 100%;
+            flex: 1;
+            background-color: clr.$brown-40;
+            border-radius: fn.toVw(20);
+
+            padding: fn.toVw(24);
+
+            .slider-menu {
+                overflow: auto;
+
+                a {
+                    float: right;
+
+                    display: block;
+                    width: fn.toVw(48);
+                    height: fn.toVw(48);
+                    background-color: clr.$brown-20;
+                    border-radius: fn.toVw(10);
+
+                    padding: fn.toVw(16);
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-around;
+
+                    .line {
+                        display: block;
+                        width: fn.toVw(20);
+                        height: 1px;
+                        background-color: clr.$white;
+                    }
+                }
+            }
+
+            .text-content {
+                margin: 0 fn.toVw(16);
+            }
+
+            h2 {
+                margin-top: fn.toVw(74);
+                padding-bottom: fn.toVw(26);
+                border-bottom: 1px solid rgba(clr.$brown-15, .5);
+                margin-bottom: fn.toVw(40);
+
+                color: clr.$brown-15;
+                font-size: fn.toVw(52);
+                line-height: fn.toVw(55);
+                letter-spacing: 0.01em;
+            }
+
+            p {
+                color: clr.$black-5;
+                margin-right: fn.toVw(16);
+            }
+
+            .slider-action {
+                position: absolute;
+                bottom: fn.toVw(40);
+                left: fn.toVw(40);
+                right: fn.toVw(40);
+
+                a {
+                    width: 100%;
+                    display: block;
+                    border-radius: fn.toVw(10);
+                    font-size: fn.toVw(14);
+                    padding: fn.toVw(27) fn.toVw(40);
+
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+}
