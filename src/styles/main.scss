@@ -1,5 +1,6 @@
 @use 'fonts';
 @use 'functions' as fn;
+@use 'colors' as clr;
 @use 'root';
 @use 'typography';
 @use 'footer';
@@ -13,6 +14,8 @@
 body {
     margin: 0;
     width: 100%;
+
+    background-color: clr.$brown-35;
 }
 
 .image-wrapper {
