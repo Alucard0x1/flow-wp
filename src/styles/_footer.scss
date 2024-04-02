@@ -1,0 +1,95 @@
+@use 'functions' as fn;
+@use 'colors' as clr;
+
+.footer {
+    padding: fn.toVw(186) fn.toVw(200) fn.toVw(85);
+    background-color: clr.$blue;
+
+    a {
+        color: clr.$white;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-left {
+        flex: 0 0 50%;
+        width: 50%;
+
+        .menu-nav {
+            margin-bottom: fn.toVw(43);
+
+            div {
+                margin-bottom: fn.toVw(10);
+
+                a {
+                    font-size: fn.toVw(64);
+                    line-height: 1;
+                }
+            }
+        }
+
+        .menu-social {
+            a {
+                margin-right: fn.toVw(40);
+
+                font-size: fn.toVw(18);
+                line-height: 1;
+                opacity: .7;
+            }
+        }
+    }
+
+    &-right {
+        flex-shrink: 1;
+        color: clr.$white;
+
+        p.footer-description {
+            font-size: fn.toVw(32);
+            line-height: normal;
+            margin-top: 0;
+            margin-bottom: fn.toVw(102);
+        }
+
+        .newsletter {
+            p {
+                font-size: fn.toVw(20);
+                line-height: fn.toVw(27);
+            }
+
+            .form-group {
+                width: 100%;
+                padding-bottom: fn.toVw(14);
+
+                border-bottom: 1px solid rgba(clr.$white, 0.6);
+
+                &-inline {
+                    display: flex;
+                    align-items: center;
+
+                    input {
+                        flex-grow: 1;
+                        background-color: transparent;
+                        border: none;
+                        margin-right: fn.toVw(-6);
+                        height: 100%;
+                        color: clr.$white;
+
+                        font-size: fn.toVw(20);
+                        line-height: fn.toVw(16);
+
+                        &::placeholder {
+                            color: rgba(clr.$white, 0.6);
+                        }
+
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
