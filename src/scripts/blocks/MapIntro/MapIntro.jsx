@@ -1,6 +1,9 @@
 import './MapIntro.scss'
+import useRichText from '../../hooks/useRichText'
 
-const MapIntro = () => {
+const MapIntro = ({ attributes, setAttributes, isSelected }) => {
+    const Text = useRichText(isSelected)
+
     return (
         <section className="map-intro">
             <div className="container">
@@ -9,14 +12,11 @@ const MapIntro = () => {
                 </div>
 
                 <div className="content-wrapper">
-                    <p className="text-category">
-                        Lorem Ipsum
-                    </p>
+                    <Text tagName="p" value={attributes.category} className="text-category"
+                        onChange={(category) => setAttributes({ category })}
+                    />
 
-                    <h2>
-                        Designed For<br />
-                        The Five Senses
-                    </h2>
+                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
                 </div>
             </div>
         </section>
