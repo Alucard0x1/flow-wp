@@ -4,6 +4,10 @@
 .image-background {
     margin: 0 fn.toVw(10) fn.toVw(227);
 
+    &.mb-0 {
+        margin-bottom: 0;
+    }
+
     .image-wrapper {
         height: 100vh;
         width: 100%;

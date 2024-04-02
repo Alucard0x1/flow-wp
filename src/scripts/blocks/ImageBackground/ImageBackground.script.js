@@ -23,6 +23,10 @@ const blockData = {
       type: "string",
       default: "right",
     },
+    bottomSpacing: {
+      type: "boolean",
+      default: true
+    }
   },
 };
 
