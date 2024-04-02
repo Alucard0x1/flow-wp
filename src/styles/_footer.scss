@@ -11,6 +11,7 @@
 
     .container {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
     }
 
@@ -90,6 +91,30 @@
                     }
                 }
             }
+        }
+    }
+
+    &-end {
+        margin-top: fn.toVw(120);
+        padding-top: fn.toVw(74);
+        border-top: 1px solid clr.$white;
+
+        flex: 0 0 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        color: clr.$white;
+
+        p,
+        a {
+            margin-bottom: 0;
+            opacity: 0.7;
+        }
+
+        a:first-child {
+            margin-right: fn.toVw(45);
         }
     }
 }
