@@ -33,7 +33,7 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                     <MediaUpload
                         onSelect={(background) => setAttributes({ background })}
                         render={({ open }) => (
-                            <Button isPrimary onClick={open}>
+                            <Button isPrimary onClick={open} className="image-picker">
                                 <Icon icon="format-image" />
                             </Button>
                         )}
@@ -41,7 +41,7 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                 }
                 <div className="background-image"
                     style={{
-                        backgroundImage: `url(${attributes.background ?? 'https://picsum.photos/1920/1080'})`
+                        backgroundImage: `url(${attributes.background ? attributes.background.url : 'https://picsum.photos/1920/1080'})`
                     }}
                 ></div>
 

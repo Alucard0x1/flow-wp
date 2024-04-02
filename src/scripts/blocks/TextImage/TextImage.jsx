@@ -1,6 +1,9 @@
 import './TextImage.scss'
 import useRichText from '../../hooks/useRichText'
 
+const { MediaUpload } = wp.blockEditor
+const { Button, Icon } = wp.components
+
 const TextImage = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
@@ -23,9 +26,19 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                 </div>
 
                 <div className="image-wrapper">
+                    {isSelected &&
+                        <MediaUpload
+                            onSelect={(image) => setAttributes({ image })}
+                            render={({ open }) => (
+                                <Button isPrimary onClick={open} className="image-picker">
+                                    <Icon icon="format-image" />
+                                </Button>
+                            )}
+                        />
+                    }
                     <div className="background-image"
                         style={{
-                            backgroundImage: `url(${attributes.image ?? 'https://picsum.photos/1920/1080'})`
+                            backgroundImage: `url(${attributes.image ? attributes.image.url : 'https://picsum.photos/1920/1080'})`
                         }}
                     />
                 </div>

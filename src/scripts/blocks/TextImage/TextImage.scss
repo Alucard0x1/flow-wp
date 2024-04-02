@@ -10,6 +10,13 @@
         .image-wrapper {
             width: 100%;
             height: fn.toVw(592);
+            position: relative;
+
+            .image-picker {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
 
             .background-image {
                 width: 100%;

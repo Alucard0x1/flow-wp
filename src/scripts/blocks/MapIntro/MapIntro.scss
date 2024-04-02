@@ -7,11 +7,21 @@
 
             width: fn.toVw(974);
             height: fn.toVw(530);
+            position: relative;
+
+            .image-picker {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
 
             img {
                 width: 100%;
                 height: 100%;
                 border-radius: fn.toVw(20);
+
+                object-fit: cover;
+                object-position: center;
             }
         }
 
