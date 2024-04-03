@@ -1,9 +1,14 @@
 @use 'functions' as fn;
+@use 'mixins' as mx;
 @use 'colors' as clr;
 
 .footer {
     padding: fn.toVw(186) fn.toVw(200) fn.toVw(85);
     background-color: clr.$blue;
+
+    @include mx.phone {
+        padding: fn.toVw(108) fn.toVw(20) 0;
+    }
 
     a {
         color: clr.$white;
@@ -13,11 +18,22 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+
+        @include mx.phone {
+            display: block;
+        }
     }
 
     &-left {
         flex: 0 0 50%;
         width: 50%;
+
+        @include mx.phone {
+            width: 100%;
+            padding-bottom: fn.toVw(45);
+            margin-bottom: fn.toVw(31);
+            border-bottom: 1px solid rgba(clr.$white, .2);
+        }
 
         .menu-nav {
             margin-bottom: fn.toVw(43);
@@ -25,9 +41,17 @@
             div {
                 margin-bottom: fn.toVw(10);
 
+                @include mx.phone {
+                    margin-bottom: fn.toVw(8);
+                }
+
                 a {
                     font-size: fn.toVw(64);
                     line-height: 1;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(44);
+                    }
                 }
             }
         }
@@ -35,6 +59,10 @@
         .menu-social {
             a {
                 margin-right: fn.toVw(40);
+
+                @include mx.phone {
+                    margin-right: fn.toVw(19);
+                }
 
                 font-size: fn.toVw(18);
                 line-height: 1;
