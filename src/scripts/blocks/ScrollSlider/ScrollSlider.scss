@@ -1,4 +1,6 @@
+@use 'sass:math';
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
 .scroll-slider {
@@ -10,10 +12,23 @@
         display: flex;
         gap: fn.toVw(10);
 
+        @include mx.phone {
+            height: auto;
+            margin: 0 fn.toVw(5);
+            display: block;
+        }
+
         .media-wrapper {
             height: 100%;
             flex: 0 0 fn.toVw(984);
             width: fn.toVw(984);
+
+            @include mx.phone {
+                width: 100%;
+                height: fn.toVw(434);
+                padding: fn.toVw(6);
+                background-color: clr.$brown-40;
+            }
 
             .background-image {
                 height: 100%;
@@ -21,6 +36,10 @@
                 background-size: cover;
                 background-position: center;
                 border-radius: fn.toVw(20);
+
+                @include mx.phone {
+                    border-radius: fn.toVw(12);
+                }
             }
         }
 
@@ -32,10 +51,20 @@
             background-color: clr.$brown-40;
             border-radius: fn.toVw(20);
 
+            @include mx.phone {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                padding: fn.toVw(34) fn.toVw(14) fn.toVw(14);
+            }
+
             padding: fn.toVw(24);
 
             .slider-menu {
                 overflow: auto;
+
+                @include mx.phone {
+                    display: none;
+                }
 
                 a {
                     float: right;
@@ -64,11 +93,19 @@
 
             .text-content {
                 margin: 0 fn.toVw(16);
+
+                @include mx.phone {
+                    margin: 0;
+                }
             }
 
             .num {
                 margin-top: fn.toVw(19);
                 font-weight: 500;
+
+                @include mx.phone {
+                    display: none;
+                }
             }
 
             h2 {
@@ -81,11 +118,25 @@
                 font-size: fn.toVw(52);
                 line-height: fn.toVw(55);
                 letter-spacing: 0.01em;
+
+                @include mx.phone {
+                    font-size: fn.toVw(38);
+                    line-height: math.div(40, 38);
+                    letter-spacing: fn.toVw(-0.38);
+                    margin-top: 0;
+                    padding-bottom: fn.toVw(16);
+                    margin-bottom: fn.toVw(16);
+                }
             }
 
             p {
                 color: clr.$black-5;
                 margin-right: fn.toVw(16);
+
+                @include mx.phone {
+                    margin: 0;
+                    font-weight: 400;
+                }
             }
 
             .slider-action {
@@ -93,6 +144,16 @@
                 bottom: fn.toVw(40);
                 left: fn.toVw(40);
                 right: fn.toVw(40);
+
+                @include mx.phone {
+                    position: relative;
+
+                    bottom: unset;
+                    left: unset;
+                    right: unset;
+
+                    margin-top: fn.toVw(35);
+                }
 
                 a {
                     width: 100%;
@@ -103,6 +164,14 @@
 
                     &::before {
                         content: none;
+                    }
+
+                    @include mx.phone {
+                        padding: fn.toVw(22);
+                        text-align: center;
+                        font-size: fn.toVw(11);
+                        text-transform: uppercase;
+                        letter-spacing: fn.toVw(1.32);
                     }
                 }
             }
