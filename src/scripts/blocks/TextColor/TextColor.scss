@@ -1,4 +1,6 @@
+@use 'sass:math';
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
 .text-color {
@@ -18,5 +20,10 @@
         font-size: fn.toVw(80);
         line-height: fn.toVw(90);
         letter-spacing: 0.01em;
+
+        @include mx.phone {
+            font-size: fn.toVw(42);
+            line-height: math.div(44, 42);
+        }
     }
 }

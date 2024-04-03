@@ -1,4 +1,6 @@
+@use 'sass:math';
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
 .text-image {
@@ -6,6 +8,10 @@
 
     .container {
         margin: 0 fn.toVw(144);
+
+        @include mx.phone {
+            margin: 0 fn.toVw(20);
+        }
 
         .image-wrapper {
             width: 100%;
@@ -30,9 +36,17 @@
         .content-wrapper {
             margin-left: fn.toVw(239);
 
+            @include mx.phone {
+                margin: 0 fn.toVw(64) 0 fn.toVw(57);
+            }
+
             h2 {
                 margin-top: 0;
                 margin-bottom: fn.toVw(66);
+
+                @include mx.phone {
+                    margin-bottom: fn.toVw(40);
+                }
             }
 
             h3 {
@@ -41,6 +55,11 @@
                 font-weight: 300;
 
                 max-width: fn.toVw(746);
+
+                @include mx.phone {
+                    font-size: fn.toVw(22);
+                    line-height: math.div(28, 22);
+                }
             }
 
             .description-wrapper {
@@ -48,6 +67,11 @@
                 margin-bottom: fn.toVw(126);
 
                 display: flex;
+
+                @include mx.phone {
+                    margin-top: fn.toVw(28);
+                    margin-bottom: fn.toVw(41);
+                }
 
                 p {
                     margin: 0;
