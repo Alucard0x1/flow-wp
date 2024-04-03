@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 
 .map-intro {
     .container {
@@ -8,6 +9,12 @@
             width: fn.toVw(974);
             height: fn.toVw(530);
             position: relative;
+
+            @include mx.phone {
+                width: auto;
+                height: fn.toVw(221);
+                margin: 0 fn.toVw(20);
+            }
 
             .image-picker {
                 position: absolute;
@@ -29,6 +36,10 @@
             margin-top: fn.toVw(177);
 
             text-align: center;
+
+            @include mx.phone {
+                margin-top: fn.toVw(147);
+            }
 
             h2 {
                 margin-top: fn.toVw(48);

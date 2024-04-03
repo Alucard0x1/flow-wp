@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
 .link-hover {
@@ -8,14 +9,29 @@
         .link-container {
             display: flex;
             justify-content: center;
-            margin-bottom: fn.toVw(96);
+            margin: 0 fn.toVw(45) fn.toVw(96);
+
+            @include mx.phone {
+                flex-direction: column;
+            }
 
             .link-item {
                 position: relative;
 
+                @include mx.phone {
+                    border-bottom: 1px solid clr.$gray-50;
+                    text-align: left;
+                    padding-bottom: fn.toVw(22);
+                    margin-bottom: fn.toVw(22);
+                }
+
                 &:not(:first-child):before {
                     content: '/';
                     margin: 0 fn.toVw(38);
+
+                    @include mx.phone {
+                        content: none;
+                    }
                 }
 
                 a,
@@ -24,6 +40,10 @@
                     line-height: fn.toVw(33);
                     font-weight: 400;
                     color: clr.$brown-10;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(16);
+                    }
                 }
 
                 &:after {
@@ -40,6 +60,10 @@
                     vertical-align: top;
 
                     margin-left: fn.toVw(8);
+
+                    @include mx.phone {
+                        display: none;
+                    }
                 }
 
                 .image-wrapper {

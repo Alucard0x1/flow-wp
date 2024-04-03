@@ -1,4 +1,6 @@
+@use 'sass:math';
 @use 'functions' as fn;
+@use 'mixins' as mx;
 
 h1,
 h2 {
@@ -9,11 +11,21 @@ h2 {
 h1 {
     font-size: fn.toVw(68);
     line-height: fn.toVw(60);
+
+    @include mx.phone {
+        font-size: fn.toVw(42);
+        line-height: math.div(44, 42);
+    }
 }
 
 h2 {
     font-size: fn.toVw(88);
     line-height: fn.toVw(80);
+
+    @include mx.phone {
+        font-size: fn.toVw(42);
+        line-height: math.div(44, 42);
+    }
 }
 
 body {
@@ -21,6 +33,11 @@ body {
     line-height: fn.toVw(23);
     font-weight: 300;
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    @include mx.phone {
+        font-size: fn.toVw(13);
+        line-height: math.div(20, 13);
+    }
 }
 
 .subtitle {

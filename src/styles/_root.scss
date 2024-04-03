@@ -1,3 +1,5 @@
+@use 'mixins' as mx;
+
 :root {
     --color-text: #fff;
     --color-bg: #000;
@@ -8,4 +10,8 @@
     --vw: 1512;
     --scaler: 100vw;
     --multiplier: 1;
+
+    @include mx.phone {
+        --vw: 375;
+    }
 }

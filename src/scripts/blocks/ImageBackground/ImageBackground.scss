@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
 .image-background {
@@ -25,6 +26,10 @@
             background-size: cover;
             background-position: center;
             border-radius: fn.toVw(20);
+
+            @include mx.phone {
+                border-radius: fn.toVw(12);
+            }
         }
     }
 
@@ -36,10 +41,22 @@
         &.left {
             left: fn.toVw(20);
             right: unset;
+
+            @include mx.phone {
+                left: fn.toVw(6);
+            }
         }
 
         padding: fn.toVw(57) fn.toVw(37) fn.toVw(33);
         width: fn.toVw(358);
+
+        @include mx.phone {
+            width: fn.toVw(235);
+            padding: fn.toVw(24);
+
+            bottom: fn.toVw(6);
+            right: fn.toVw(6);
+        }
 
         &__content {
             position: relative;
@@ -58,6 +75,10 @@
             background: linear-gradient(to bottom, rgba(#000, .2), rgba(#000, .5));
             backdrop-filter: blur(10px);
             border-radius: fn.toVw(20);
+
+            @include mx.phone {
+                border-radius: fn.toVw(6);
+            }
         }
 
         h2 {
@@ -67,16 +88,29 @@
             border-bottom: 1px solid clr.$brown-30;
 
             padding-bottom: fn.toVw(56);
+
+            @include mx.phone {
+                font-size: fn.toVw(36);
+                line-height: fn.toVw(38);
+                font-weight: 400;
+            }
         }
 
         p {
             margin: 0;
+            font-weight: 400;
         }
 
         .num {
             float: right;
             font-size: fn.toVw(20);
             letter-spacing: 0.01em;
+
+            @include mx.phone {
+                font-size: fn.toVw(14);
+                font-weight: 400;
+                letter-spacing: fn.toVw(-0.14);
+            }
         }
     }
 }

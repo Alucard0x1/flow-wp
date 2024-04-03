@@ -1,8 +1,13 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 
 .scaled-image {
     .container {
         margin: 0 fn.toVw(156) fn.toVw(165) fn.toVw(156);
+
+        @include mx.phone {
+            margin: 0 fn.toVw(47);
+        }
 
         .image-wrapper {
             width: fn.toVw(572);
@@ -10,6 +15,11 @@
             background-color: red;
             border-radius: fn.toVw(20);
             margin: 0 auto;
+
+            @include mx.phone {
+                width: fn.toVw(282);
+                height: fn.toVw(175);
+            }
         }
     }
 
@@ -19,14 +29,31 @@
 
         display: flex;
 
+        @include mx.phone {
+            flex-direction: column;
+            width: auto;
+            margin: fn.toVw(40) fn.toVw(14) fn.toVw(106);
+        }
+
         .category-wrapper {
             flex: 0 0 50%;
             width: 50%;
+
+            @include mx.phone {
+                flex: 1;
+                width: 100%;
+                margin-bottom: fn.toVw(20);
+            }
         }
 
         .description-wrapper {
             flex: 0 0 fn.toVw(390);
             width: fn.toVw(390);
+
+            @include mx.phone {
+                flex: 1;
+                width: 100%;
+            }
 
             .text-description {
                 margin-bottom: fn.toVw(20);
