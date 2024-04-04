@@ -2,13 +2,17 @@ import './ImageBackground.scss'
 import useRichText from '../../hooks/useRichText'
 
 const { MediaUpload, InspectorControls } = wp.blockEditor
-const { Button, Icon, PanelBody, SelectControl, ToggleControl } = wp.components
+const { Button, Icon, PanelBody, PanelRow, SelectControl, ToggleControl, Dropdown, ColorPicker, ColorIndicator } = wp.components
 
 const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '')}>
+        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '')}
+            style={{
+                backgroundColor: attributes.bgColor
+            }}
+        >
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
@@ -28,6 +32,21 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                     </PanelBody>
                     <PanelBody>
                         <ToggleControl label="Bottom spacing" checked={attributes.bottomSpacing} onChange={(bottomSpacing) => setAttributes({ bottomSpacing })} />
+                    </PanelBody>
+                    <PanelBody>
+                        <Dropdown
+                            renderContent={() => (
+                                <ColorPicker onChange={(bgColor) => setAttributes({ bgColor })} />
+                            )}
+                            renderToggle={({ isOpen, onToggle }) => (
+                                <PanelRow>
+                                    <ColorIndicator colorValue={attributes.bgColor} />
+                                    <Button isPrimary text="Background color"
+                                        onClick={onToggle}
+                                    />
+                                </PanelRow>
+                            )}
+                        />
                     </PanelBody>
                 </InspectorControls>
             }

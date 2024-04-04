@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use 'functions' as fn;
 @use 'mixins' as mx;
 @use 'colors' as clr;
@@ -80,12 +81,22 @@
             line-height: normal;
             margin-top: 0;
             margin-bottom: fn.toVw(102);
+
+            @include mx.phone {
+                font-size: fn.toVw(28);
+                line-height: math.div(32, 28);
+                margin-bottom: fn.toVw(75);
+            }
         }
 
         .newsletter {
             p {
                 font-size: fn.toVw(20);
                 line-height: fn.toVw(27);
+
+                @include mx.phone {
+                    font-size: fn.toVw(18);
+                }
             }
 
             .form-group {
@@ -134,6 +145,12 @@
         justify-content: space-between;
         align-items: flex-end;
         color: clr.$white;
+
+        @include mx.phone {
+            border-top: none;
+            padding-top: 0;
+            margin-top: fn.toVw(61);
+        }
 
         p,
         a {

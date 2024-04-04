@@ -3,7 +3,8 @@
 @use '../../../styles/colors' as clr;
 
 .image-background {
-    margin: 0 fn.toVw(10) fn.toVw(227);
+    margin-bottom: fn.toVw(227);
+    padding: fn.toVw(12) fn.toVw(10);
 
     &.mb-0 {
         margin-bottom: 0;
@@ -86,6 +87,7 @@
             font-size: fn.toVw(64);
             line-height: fn.toVw(50);
             border-bottom: 1px solid clr.$brown-30;
+            color: clr.$brown-30;
 
             padding-bottom: fn.toVw(56);
 

@@ -4,7 +4,7 @@
 @use '../../../styles/colors' as clr;
 
 .text-image {
-    margin-bottom: fn.toVw(115);
+    margin: fn.toVw(170) 0 fn.toVw(115);
 
     .container {
         margin: 0 fn.toVw(144);

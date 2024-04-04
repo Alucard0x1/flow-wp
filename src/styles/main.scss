@@ -30,6 +30,8 @@ body {
 
 .text-category {
     font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+    opacity: 0.8;
+
 
     &:before,
     &:after {
@@ -37,13 +39,14 @@ body {
     }
 
     &:before {
-        content: '[';
-        margin-right: fn.toVw(8);
-    }
-
-    &:after {
-        content: ']';
-        margin-left: fn.toVw(8);
+        content: '';
+        height: 1px;
+        background-color: clr.$brown-10;
+        width: fn.toVw(18);
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: fn.toVw(11);
+        margin-top: -2px;
     }
 }
 

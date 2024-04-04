@@ -5,6 +5,9 @@
 .link-hover {
     .container {
         text-align: center;
+        padding: fn.toVw(238) fn.toVw(193) fn.toVw(198);
+        background: clr.$gray-60;
+
 
         .link-container {
             display: flex;

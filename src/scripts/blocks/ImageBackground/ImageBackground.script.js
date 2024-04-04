@@ -26,6 +26,10 @@ const blockData = {
     bottomSpacing: {
       type: "boolean",
       default: true
+    },
+    bgColor: {
+      type: 'string',
+      default: null
     }
   },
 };
