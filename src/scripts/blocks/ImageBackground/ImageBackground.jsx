@@ -73,11 +73,47 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                             <Text tagName="span" value={attributes.num} onChange={(num) => setAttributes({ num })} />
                         </div>
                         <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
-                        <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+                        <div className="content-description">
+                            <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+
+                            {isSelected &&
+                                <div>
+                                    <Button isPrimary isSmall
+                                        onClick={() => {
+                                            setAttributes({ list: [...attributes.list, 'Text'] })
+                                        }}
+                                    >Add</Button>
+                                </div>
+                            }
+                            <ul className={"content-list" + (attributes.list.length > 0 ? '' : ' d-none')}>
+                                {attributes.list.map((item, index) => (
+                                    <li class="content-list__item" key={index}>
+                                        <Text tagName="span" value={item} onChange={(item) => {
+                                            const listCopy = [...attributes.list]
+                                            listCopy[index] = item
+
+                                            setAttributes({ list: listCopy })
+                                        }} />
+                                        {isSelected &&
+                                            <Button isPrimary isSmall isDestructive className="btn-delete"
+                                                onClick={() => {
+                                                    const listCopy = [...attributes.list]
+                                                    listCopy.splice(index, 1)
+
+                                                    setAttributes({ list: listCopy })
+                                                }}
+                                            >
+                                                <Icon icon="trash" />
+                                            </Button>
+                                        }
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 

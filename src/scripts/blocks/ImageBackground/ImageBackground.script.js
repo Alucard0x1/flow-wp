@@ -30,6 +30,10 @@ const blockData = {
     bgColor: {
       type: 'string',
       default: null
+    },
+    list: {
+      type: 'array',
+      default: []
     }
   },
 };

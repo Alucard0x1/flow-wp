@@ -98,9 +98,53 @@
             }
         }
 
-        p {
-            margin: 0;
-            font-weight: 400;
+        .content-description {
+            display: flex;
+            flex-direction: column;
+
+            >p {
+                flex-grow: 1;
+                flex-shrink: 0;
+
+                margin: 0;
+                font-weight: 400;
+            }
+
+            .content-list {
+                flex-shrink: 1;
+                margin-top: fn.toVw(112 - 43 - 8);
+                padding-left: 0;
+                list-style: none;
+                margin-bottom: fn.toVw(-8);
+
+                &__item {
+                    position: relative;
+                    padding: fn.toVw(8) 0 fn.toVw(8) fn.toVw(16);
+
+                    &:before {
+                        content: '';
+                        width: fn.toVw(5);
+                        height: fn.toVw(5);
+                        background-color: clr.$white;
+                        border-radius: 50%;
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 0;
+                    }
+
+                    &:not(:last-child) {
+                        border-bottom: 1px solid rgba(clr.$brown-30, .2);
+                    }
+
+                    .btn-delete {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+                }
+            }
         }
 
         .num {
