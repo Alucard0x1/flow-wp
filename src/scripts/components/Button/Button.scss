@@ -3,11 +3,11 @@
 
 .btn {
     display: inline-block;
-    padding: fn.toVw(12) fn.toVw(20);
-    background-color: clr.$brown-10;
-    border-radius: fn.toVw(40);
-    color: clr.$white;
+    padding: fn.toVw(5) 0;
+    color: clr.$brown-10;
     text-decoration: none;
+
+    border-bottom: 1px solid clr.$brown-10;
 
 
     // ==== FONT === //
@@ -16,8 +16,19 @@
     line-height: fn.toVw(21.47);
     font-weight: 400;
 
+    position: relative;
+    margin-left: fn.toVw(21);
+
     &:before {
-        content: '●';
-        margin-right: fn.toVw(8);
+        content: '';
+        position: absolute;
+        left: fn.toVw(-21);
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxMSAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNS43MzQzOCIgY3k9IjUuMTAxNTYiIHI9IjQuNSIgc3Ryb2tlPSIjNTc1MzQ5Ii8+Cjwvc3ZnPgo=);
+        margin-right: fn.toVw(11);
+        width: fn.toVw(10);
+        height: fn.toVw(10);
     }
 }
