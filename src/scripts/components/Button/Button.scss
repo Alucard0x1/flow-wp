@@ -31,4 +31,13 @@
         width: fn.toVw(10);
         height: fn.toVw(10);
     }
+
+    &-block {
+        padding: fn.toVw(35) fn.toVw(40);
+        background: clr.$brown-15;
+        margin-left: 0;
+        color: clr.$brown-50;
+        text-transform: uppercase;
+        letter-spacing: fn.toVw(1.68);
+    }
 }

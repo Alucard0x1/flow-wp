@@ -35,7 +35,7 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                     </div>
 
                     <div className="slider-action">
-                        <a href="#" class="btn btn-icon">
+                        <a href="#" class="btn btn-block">
                             Explore
                         </a>
                     </div>
