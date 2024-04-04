@@ -26,7 +26,11 @@
         bottom: fn.toVw(128.69);
         left: fn.toVw(114);
 
-        color: clr.$white;
+        color: clr.$brown-50;
+
+        h1 {
+            margin: 0;
+        }
 
         @include mx.phone {
             left: fn.toVw(23);
