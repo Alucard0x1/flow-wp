@@ -57,6 +57,7 @@
             h2 {
                 margin-top: 0;
                 margin-bottom: fn.toVw(66);
+                max-width: fn.toVw(732);
 
                 @include mx.phone {
                     margin-bottom: fn.toVw(40);
