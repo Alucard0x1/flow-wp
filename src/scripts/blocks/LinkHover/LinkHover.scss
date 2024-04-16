@@ -8,6 +8,10 @@
         padding: fn.toVw(238) fn.toVw(193) fn.toVw(198);
         background: clr.$gray-60;
 
+        @include mx.phone {
+            padding: fn.toVw(80) fn.toVw(45) fn.toVw(65);
+        }
+
 
         .link-container {
             display: flex;
@@ -16,6 +20,7 @@
 
             @include mx.phone {
                 flex-direction: column;
+                margin: 0 0 fn.toVw(45) 0;
             }
 
             .link-item {
