@@ -1,12 +1,34 @@
 <?php
 
 // Load Composer dependencies.
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Initialize Timber.
 Timber\Timber::init();
 
 Timber\Timber::$dirname = ['src/views'];
+
+add_filter('timber/context', 'add_to_context');
+add_action('after_setup_theme', 'after_setup_theme');
+
+function add_to_context($context)
+{
+    $context['footerMenu'] = Timber\Timber::get_menu('footer-menu');
+    $context['footerSocial'] = Timber\Timber::get_menu('footer-social');
+    $context['footerEnd'] = Timber\Timber::get_menu('footer-end');
+
+    return $context;
+}
+
+function after_setup_theme()
+{
+    register_nav_menus([
+        'footer-menu' => 'Footer Menu',
+        'footer-social' => 'Footer Social',
+        'footer-end' => 'Footer End'
+    ]);
+}
 
 
 function enqueue_blocks()

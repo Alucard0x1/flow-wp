@@ -2,35 +2,19 @@
 	<div class="container">
 		<div class="footer-left">
 			<div class="menu-nav">
-				<div>
-					<a href="#">
-						Spaces
-					</a>
-				</div>
-
-				<div>
-					<a href="#">
-						Amenities
-					</a>
-				</div>
-
-				<div>
-					<a href="#">
-						Be a member
-					</a>
-				</div>
-
-				<div>
-					<a href="#">
-						Contact Us
-					</a>
-				</div>
+				{% for menu in footerMenu.items %}
+					<div>
+						<a href="{{menu.link}}">
+							{{menu.title}}
+						</a>
+					</div>
+				{% endfor %}
 			</div>
 
 			<div class="menu-social">
-				<a href="#">Instagram.</a>
-				<a href="#">Facebook.</a>
-				<a href="#">LinkedIn.</a>
+				{% for menu in footerSocial.items %}
+					<a href="{{ menu.link }}">{{ menu.title }}</a>
+				{% endfor %}
 			</div>
 		</div>
 		<div class="footer-right">
@@ -67,12 +51,14 @@
 			</p>
 
 			<p>
-				&copy;2024 Flow
+				&copy;{{function('date', 'Y')}}
+				Flow
 			</p>
 
 			<div>
-				<a href="#">Privacy Policy.</a>
-				<a href="#">Terms &amp; Conditions.</a>
+				{% for menu in footerEnd.items %}
+					<a href="{{menu.link}}">{{menu.title}}</a>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
