@@ -34,7 +34,10 @@
         @include mx.phone {
             height: auto;
             margin: 0 fn.toVw(5);
-            display: block;
+
+            &.active {
+                display: block;
+            }
         }
 
         .media-wrapper {
