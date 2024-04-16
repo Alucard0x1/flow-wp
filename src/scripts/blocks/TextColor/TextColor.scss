@@ -24,6 +24,7 @@
         @include mx.phone {
             font-size: fn.toVw(42);
             line-height: math.div(44, 42);
+            margin: 0 fn.toVw(57);
         }
     }
 }
