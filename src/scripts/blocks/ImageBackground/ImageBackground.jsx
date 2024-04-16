@@ -50,68 +50,124 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                     </PanelBody>
                 </InspectorControls>
             }
-            <div className="image-wrapper">
-                {isSelected &&
-                    <MediaUpload
-                        onSelect={(background) => setAttributes({ background })}
-                        render={({ open }) => (
-                            <Button isPrimary onClick={open} className="image-picker">
-                                <Icon icon="format-image" />
-                            </Button>
-                        )}
-                    />
-                }
-                <div className="background-image"
-                    style={{
-                        backgroundImage: `url(${attributes.background ? attributes.background.url : 'https://picsum.photos/1920/1080'})`
-                    }}
-                ></div>
 
-                <div className={`content-wrapper ${attributes.direction}`}>
-                    <div className="content-wrapper__content">
-                        <div className="num">
-                            <Text tagName="span" value={attributes.num} onChange={(num) => setAttributes({ num })} />
-                        </div>
-                        <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
-                        <div className="content-description">
-                            <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+            {isSelected &&
+                <Button isPrimary onClick={() => {
+                    const itemsCopy = [...attributes.items]
 
-                            {isSelected &&
-                                <div>
-                                    <Button isPrimary isSmall
-                                        onClick={() => {
-                                            setAttributes({ list: [...attributes.list, 'Text'] })
-                                        }}
-                                    >Add</Button>
+                    itemsCopy.push({
+                        background: null,
+                        num: (itemsCopy.length + 1).toString().padStart(2, '0'),
+                        title: 'Title',
+                        description: 'Description',
+                        list: []
+                    })
+
+                    setAttributes({ items: itemsCopy })
+                }}>
+                    <Icon icon="plus" />
+                </Button>
+            }
+
+            <div className="slide-wrapper">
+                {attributes.items.map((item, index) => (
+                    <div className={"image-wrapper" + (index == 0 ? ' is-active' : '')} key={index}>
+                        {isSelected &&
+                            <MediaUpload
+                                onSelect={(background) => {
+                                    const itemsCopy = [...attributes.items]
+                                    itemsCopy[index].background = background
+
+                                    setAttributes({ items: itemsCopy })
+                                }}
+                                render={({ open }) => (
+                                    <div className="image-picker">
+                                        <Button isPrimary onClick={open}>
+                                            <Icon icon="format-image" />
+                                        </Button>
+                                        <Button isPrimary isDestructive
+                                            onClick={() => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy.splice(index, 1)
+                                                setAttributes({ items: itemsCopy })
+                                            }}
+                                        >
+                                            <Icon icon="trash" />
+                                        </Button>
+                                    </div>
+                                )}
+                            />
+                        }
+                        <div className="background-image"
+                            style={{
+                                backgroundImage: `url(${item.background ? item.background.url : 'https://picsum.photos/1920/1080'})`
+                            }}
+                        ></div>
+
+                        <div className={`content-wrapper ${attributes.direction}`}>
+                            <div className="content-wrapper__content">
+                                <div className="num">
+                                    <Text tagName="span" value={item.num} onChange={(num) => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy[index] = { ...itemsCopy[index], num: num }
+
+                                        setAttributes({ items: itemsCopy })
+                                    }} />
                                 </div>
-                            }
-                            <ul className={"content-list" + (attributes.list.length > 0 ? '' : ' d-none')}>
-                                {attributes.list.map((item, index) => (
-                                    <li class="content-list__item" key={index}>
-                                        <Text tagName="span" value={item} onChange={(item) => {
-                                            const listCopy = [...attributes.list]
-                                            listCopy[index] = item
+                                <Text tagName="h2" value={item.title} onChange={(title) => {
+                                    const itemsCopy = [...attributes.items]
+                                    itemsCopy[index] = { ...itemsCopy[index], title: title }
+                                    setAttributes({ items: itemsCopy })
+                                }} />
+                                <div className="content-description">
+                                    <Text tagName="p" value={item.description} onChange={(description) => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy[index] = { ...itemsCopy[index], description: description }
+                                        setAttributes({ items: itemsCopy })
+                                    }} />
 
-                                            setAttributes({ list: listCopy })
-                                        }} />
-                                        {isSelected &&
-                                            <Button isPrimary isSmall isDestructive className="btn-delete"
+                                    {isSelected &&
+                                        <div>
+                                            <Button isPrimary isSmall
                                                 onClick={() => {
-                                                    const listCopy = [...attributes.list]
-                                                    listCopy.splice(index, 1)
-
-                                                    setAttributes({ list: listCopy })
+                                                    const itemsCopy = [...attributes.items]
+                                                    itemsCopy[index].list.push('Text')
+                                                    setAttributes({
+                                                        items: itemsCopy
+                                                    })
                                                 }}
-                                            >
-                                                <Icon icon="trash" />
-                                            </Button>
-                                        }
-                                    </li>
-                                ))}
-                            </ul>
+                                            >Add</Button>
+                                        </div>
+                                    }
+                                    <ul className={"content-list" + (item.list.length > 0 ? '' : ' d-none')}>
+                                        {item.list.map((item, _index) => (
+                                            <li class="content-list__item" key={_index}>
+                                                <Text tagName="span" value={item} onChange={(item) => {
+                                                    const itemsCopy = [...attributes.items]
+                                                    itemsCopy[index].list[_index] = item
+
+                                                    setAttributes({ items: itemsCopy })
+                                                }} />
+                                                {isSelected &&
+                                                    <Button isPrimary isSmall isDestructive className="btn-delete"
+                                                        onClick={() => {
+                                                            const itemsCopy = [...attributes.items]
+                                                            itemsCopy[index].list.splice(index, 1)
+
+                                                            setAttributes({ items: itemsCopy })
+                                                        }}
+                                                    >
+                                                        <Icon icon="trash" />
+                                                    </Button>
+                                                }
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
         </section >
     )
