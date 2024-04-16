@@ -3,6 +3,20 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+#editor {
+    .scroll-slider {
+        .media-wrapper {
+            flex: 0 0 50%;
+        }
+
+        &.is-selected {
+            .container {
+                display: flex;
+            }
+        }
+    }
+}
+
 .scroll-slider {
 
     .container {
@@ -11,6 +25,11 @@
 
         display: flex;
         gap: fn.toVw(10);
+        display: none;
+
+        &.active {
+            display: flex;
+        }
 
         @include mx.phone {
             height: auto;
@@ -22,6 +41,13 @@
             height: 100%;
             flex: 0 0 fn.toVw(984);
             width: fn.toVw(984);
+            position: relative;
+
+            .image-picker {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
 
             @include mx.phone {
                 width: 100%;
