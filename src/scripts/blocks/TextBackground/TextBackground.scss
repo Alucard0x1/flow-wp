@@ -4,6 +4,7 @@
 .text-background {
     height: 100vh;
     padding: fn.toVw(10);
+    position: relative;
 
     .image-wrapper {
         position: relative;
@@ -28,8 +29,9 @@
     .content-wrapper {
         h2 {
             position: absolute;
-            top: fn.toVw(100);
-            left: fn.toVw(100);
+
+            top: fn.toVw(110);
+            left: fn.toVw(110);
             color: clr.$brown-50;
             margin: 0;
         }
@@ -40,8 +42,8 @@
             color: clr.$brown-50;
 
             position: absolute;
-            bottom: fn.toVw(50);
-            right: fn.toVw(50);
+            bottom: fn.toVw(60);
+            right: fn.toVw(60);
 
             border-radius: fn.toVw(12);
             background: rgba(34, 29, 25, 0.64);
