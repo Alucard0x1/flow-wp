@@ -76,7 +76,7 @@
 
         @include mx.phone {
             width: fn.toVw(235);
-            padding: fn.toVw(24);
+            padding: fn.toVw(24) fn.toVw(24) fn.toVw(24) fn.toVw(23);
 
             bottom: fn.toVw(6);
             right: fn.toVw(6);
@@ -118,7 +118,7 @@
                 font-size: fn.toVw(36);
                 line-height: fn.toVw(38);
                 font-weight: 400;
-                margin: 0 0 fn.toVw(56) 0;
+                margin: 0 0 fn.toVw(16) 0;
             }
         }
 
