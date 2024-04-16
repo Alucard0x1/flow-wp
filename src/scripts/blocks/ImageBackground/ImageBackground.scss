@@ -118,6 +118,7 @@
                 font-size: fn.toVw(36);
                 line-height: fn.toVw(38);
                 font-weight: 400;
+                margin: 0 0 fn.toVw(56) 0;
             }
         }
 
@@ -139,6 +140,10 @@
                 padding-left: 0;
                 list-style: none;
                 margin-bottom: fn.toVw(-8);
+
+                @include mx.phone {
+                    margin-top: 0;
+                }
 
                 &__item {
                     position: relative;

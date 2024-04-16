@@ -3,11 +3,23 @@
 @use '../../../styles/mixins' as mx;
 
 .scaled-image {
+    padding: fn.toVw(150) 0 fn.toVw(173) 0;
+
+    @include mx.phone {
+        padding: fn.toVw(92) 0 fn.toVw(103);
+    }
+
     .container {
-        margin: 0 fn.toVw(156) fn.toVw(165) fn.toVw(156);
+        margin: 0 fn.toVw(156) 0 fn.toVw(156);
 
         @include mx.phone {
             margin: 0 fn.toVw(47);
+        }
+
+        h2 {
+            @include mx.phone {
+                margin: 0 0 fn.toVw(48) 0;
+            }
         }
 
         .image-wrapper {
@@ -33,7 +45,7 @@
         @include mx.phone {
             flex-direction: column;
             width: auto;
-            margin: fn.toVw(40) fn.toVw(14) fn.toVw(106);
+            margin: fn.toVw(40) fn.toVw(14) 0;
         }
 
         .category-wrapper {

@@ -6,17 +6,27 @@
 .text-image {
     margin: fn.toVw(170) 0 fn.toVw(115);
 
+    @include mx.phone {
+        margin: fn.toVw(88) 0 fn.toVw(25) 0;
+    }
+
     .container {
         margin: 0 fn.toVw(144);
 
         @include mx.phone {
-            margin: 0 fn.toVw(20);
+            margin: 0;
         }
 
         .image-wrapper {
             width: 100%;
             height: fn.toVw(592);
             position: relative;
+
+            @include mx.phone {
+                margin: 0 fn.toVw(20);
+                width: auto;
+                height: fn.toVw(414);
+            }
 
             .image-picker {
                 position: absolute;
@@ -30,6 +40,10 @@
                 background-size: cover;
                 background-position: center;
                 border-radius: fn.toVw(20);
+
+                @include mx.phone {
+                    border-radius: fn.toVw(12);
+                }
             }
         }
 
@@ -46,6 +60,7 @@
 
                 @include mx.phone {
                     margin-bottom: fn.toVw(40);
+                    margin-right: fn.toVw(-7);
                 }
             }
 
@@ -71,6 +86,8 @@
                 @include mx.phone {
                     margin-top: fn.toVw(28);
                     margin-bottom: fn.toVw(41);
+
+                    flex-direction: column;
                 }
 
                 p {
@@ -80,6 +97,11 @@
                 .quote {
                     flex: 0 0 50%;
                     width: 50%;
+
+                    @include mx.phone {
+                        flex: 1;
+                        width: 100%;
+                    }
 
                     p {
                         font-weight: 400;
@@ -98,6 +120,11 @@
                 }
 
                 .description {
+                    @include mx.phone {
+                        margin-top: fn.toVw(13);
+                        margin-left: fn.toVw(28);
+                    }
+
                     p {
                         max-width: fn.toVw(390);
                         font-weight: 400;

@@ -3,6 +3,10 @@ const blockData = {
     icon: "format-image",
     category: "common",
     attributes: {
+        bgColor: {
+            type: 'string',
+            default: null
+        },
         title: {
             type: 'string',
             default: 'Title'
