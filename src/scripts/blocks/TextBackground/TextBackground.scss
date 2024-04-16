@@ -1,0 +1,56 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.text-background {
+    height: 100vh;
+    padding: fn.toVw(10);
+
+    .image-wrapper {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        .image-picker {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .background-image {
+            width: 100%;
+            height: 100%;
+            border-radius: fn.toVw(20);
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    .content-wrapper {
+        h2 {
+            position: absolute;
+            top: fn.toVw(100);
+            left: fn.toVw(100);
+            color: clr.$brown-50;
+            margin: 0;
+        }
+
+        .description-wrapper {
+            width: fn.toVw(516);
+            padding: fn.toVw(60) fn.toVw(50);
+            color: clr.$brown-50;
+
+            position: absolute;
+            bottom: fn.toVw(50);
+            right: fn.toVw(50);
+
+            border-radius: fn.toVw(12);
+            background: rgba(34, 29, 25, 0.64);
+
+            backdrop-filter: blur(27.149999618530273px);
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
