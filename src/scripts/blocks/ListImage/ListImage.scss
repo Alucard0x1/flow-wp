@@ -1,0 +1,118 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
+@use '../../../styles/colors' as clr;
+
+.list-image {
+    height: 100vh;
+
+    @include mx.phone {
+        height: auto;
+    }
+
+    .container {
+        display: flex;
+        height: 100%;
+        padding: fn.toVw(10);
+
+        @include mx.phone {
+            flex-direction: column-reverse;
+        }
+
+        .content-wrapper {
+            padding-right: fn.toVw(10);
+
+            @include mx.phone {
+                padding-right: 0;
+            }
+
+            .content-inner {
+                height: 100%;
+                background-color: clr.$purple;
+                padding: fn.toVw(124) fn.toVw(40);
+                border-radius: fn.toVw(20);
+
+                @include mx.phone {
+                    border-radius: fn.toVw(12);
+                    border-top-right-radius: 0;
+                    border-top-left-radius: 0;
+                    padding: fn.toVw(43) fn.toVw(19);
+                }
+
+                h2 {
+                    font-size: fn.toVw(52);
+                    line-height: fn.toVw(55);
+                    letter-spacing: fn.toVw(-0.52);
+                    color: clr.$brown-37;
+                    margin: 0;
+                }
+
+                .list-wrapper {
+                    padding: fn.toVw(50) fn.toVw(48);
+                    background-color: clr.$purple-10;
+                    border-radius: fn.toVw(4);
+                    margin-top: fn.toVw(36);
+
+                    @include mx.phone {
+                        margin-top: fn.toVw(21);
+                        padding: fn.toVw(36) fn.toVw(28);
+                    }
+
+                    ul {
+                        color: clr.$brown-37;
+                        padding-left: 0;
+                        list-style: none;
+                        margin: fn.toVw(-16) 0;
+
+                        li {
+                            position: relative;
+                            padding: fn.toVw(16);
+                            border-bottom: 1px solid rgba(clr.$brown-30, .2);
+
+                            &:before {
+                                content: '';
+                                display: inline-block;
+                                border-radius: 50%;
+                                width: fn.toVw(6);
+                                height: fn.toVw(6);
+                                background-color: clr.$white;
+
+                                top: 50%;
+                                left: 0;
+                                position: absolute;
+                                transform: translateY(-50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .image-wrapper {
+            height: 100%;
+            flex: 0 0 fn.toVw(984);
+            width: fn.toVw(984);
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                height: fn.toVw(434);
+                padding: fn.toVw(6);
+                background-color: clr.$purple;
+                border-top-right-radius: fn.toVw(10);
+                border-top-left-radius: fn.toVw(10);
+            }
+
+            .background-image {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                border-radius: fn.toVw(20);
+
+                @include mx.phone {
+                    border-radius: fn.toVw(12);
+                }
+            }
+        }
+    }
+}
