@@ -22,7 +22,8 @@
     "yeoman-generator": "^7.1.1"
   },
   "dependencies": {
-    "gsap": "^3.12.5",
+    "@studio-freight/lenis": "^1.0.42",
+    "gsap": "npm:@gsap/shockingly@^3.12.5",
     "imagesloaded": "^5.0.0",
     "lodash.kebabcase": "^4.1.1",
     "react": "^18.2.0",
