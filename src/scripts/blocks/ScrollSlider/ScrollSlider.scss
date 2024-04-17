@@ -59,6 +59,9 @@
                 height: fn.toVw(434);
                 padding: fn.toVw(6);
                 background-color: clr.$brown-40;
+
+                border-top-left-radius: fn.toVw(10);
+                border-top-right-radius: fn.toVw(10);
             }
 
             .background-image {

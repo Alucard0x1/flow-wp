@@ -1,0 +1,33 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
+@use '../../../styles/colors' as clr;
+
+.text-intro {
+    .container {
+        padding: fn.toVw(200) 0;
+        text-align: center;
+
+        h2 {
+            margin: 0 auto fn.toVw(36);
+            color: clr.$brown-10;
+
+            max-width: fn.toVw(630);
+
+            @include mx.phone {
+                max-width: unset;
+                margin: 0 fn.toVw(38) fn.toVw(32);
+            }
+        }
+
+        p {
+            margin: 0 auto;
+            color: clr.$brown-10;
+            max-width: fn.toVw(450);
+
+            @include mx.phone {
+                max-width: unset;
+                margin: 0 fn.toVw(67);
+            }
+        }
+    }
+}
