@@ -19,6 +19,7 @@
         }
 
         .content-wrapper {
+            flex-grow: 1;
             padding-right: fn.toVw(10);
 
             @include mx.phone {
@@ -30,6 +31,8 @@
                 background-color: clr.$purple;
                 padding: fn.toVw(124) fn.toVw(40);
                 border-radius: fn.toVw(20);
+
+                overflow-y: auto;
 
                 @include mx.phone {
                     border-radius: fn.toVw(12);
