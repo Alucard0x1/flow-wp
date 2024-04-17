@@ -34,7 +34,19 @@ function after_setup_theme()
 function enqueue_blocks()
 {
     wp_enqueue_script('flow-sc-blocks', get_theme_file_uri('/dist/blocks.js'), ['wp-block-editor'], filemtime(get_theme_file_path('/dist/blocks.js')),);
+
+    wp_enqueue_style(
+        'flow-st-blocks',
+        get_theme_file_uri('/dist/main.css'),
+        ['wp-block-editor'],
+        filemtime(get_theme_file_path('/dist/main.css'))
+    );
+}
+
+function enqueue_assets()
+{
     wp_enqueue_script('assetjs-frontend', get_theme_file_uri('dist/app.js'), [], filemtime(get_theme_file_path('dist/app.js')), true);
+    wp_enqueue_script('flow-sc-blocks', get_theme_file_uri('/dist/blocks.js'), ['wp-block-editor'], filemtime(get_theme_file_path('/dist/blocks.js')),);
 
     wp_enqueue_style(
         'flow-st-blocks',
@@ -45,4 +57,4 @@ function enqueue_blocks()
 }
 
 add_action('enqueue_block_editor_assets', 'enqueue_blocks');
-add_action('wp_enqueue_scripts', 'enqueue_blocks', 100);
+add_action('wp_enqueue_scripts', 'enqueue_assets', 100);
