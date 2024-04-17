@@ -18,6 +18,9 @@
 }
 
 .scroll-slider {
+    padding: fn.toVw(10) 0;
+    background-color: clr.$white-5;
+
     .container {
         height: 100vh;
         margin: 0 fn.toVw(10);
@@ -76,7 +79,7 @@
 
             height: 100%;
             flex: 1;
-            background-color: clr.$brown-40;
+            background-color: clr.$brown-37;
             border-radius: fn.toVw(20);
 
             @include mx.phone {
@@ -89,6 +92,7 @@
 
             .slider-menu {
                 overflow: auto;
+                opacity: 0;
 
                 @include mx.phone {
                     display: none;
