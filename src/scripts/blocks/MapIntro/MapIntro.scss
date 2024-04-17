@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
 @use '../../../styles/mixins' as mx;
 
 .map-intro {
@@ -18,8 +19,53 @@
 
             @include mx.phone {
                 width: auto;
-                height: fn.toVw(221);
+                height: fn.toVw(393);
                 margin: 0 fn.toVw(20);
+            }
+
+            .description-wrapper {
+                position: absolute;
+                bottom: fn.toVw(40);
+                left: fn.toVw(40);
+                padding: fn.toVw(15) fn.toVw(20);
+
+                border-radius: fn.toVw(6);
+                background: rgba(88, 84, 74, 0.71);
+
+                backdrop-filter: blur(49.43245315551758px);
+                color: clr.$brown-30;
+
+                width: fn.toVw(277);
+
+                @include mx.phone {
+                    bottom: fn.toVw(20);
+                    left: fn.toVw(28);
+                    right: fn.toVw(28);
+                    width: auto;
+                }
+
+                h2 {
+                    margin-bottom: fn.toVw(11);
+                    padding-bottom: fn.toVw(25);
+                    margin-top: 0;
+                    line-height: normal;
+
+                    font-size: fn.toVw(36);
+                    color: clr.$brown-30;
+
+                    border-bottom: 1px solid clr.$brown-30;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(32);
+                        padding-right: fn.toVw(50);
+                    }
+                }
+
+                p {
+                    margin: 0;
+                    font-size: fn.toVw(13);
+                    line-height: fn.toVw(20);
+                }
             }
 
             .image-picker {
