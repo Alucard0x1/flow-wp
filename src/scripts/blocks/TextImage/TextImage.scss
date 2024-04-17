@@ -4,7 +4,9 @@
 @use '../../../styles/colors' as clr;
 
 .text-image {
-    margin: fn.toVw(170) 0 fn.toVw(115);
+    padding: fn.toVw(170) 0 fn.toVw(115);
+    background-color: clr.$brown-15;
+    color: clr.$white-5;
 
     @include mx.phone {
         margin: fn.toVw(88) 0 fn.toVw(25) 0;
@@ -58,6 +60,7 @@
                 margin-top: 0;
                 margin-bottom: fn.toVw(66);
                 max-width: fn.toVw(732);
+                color: clr.$white-5;
 
                 @include mx.phone {
                     margin-bottom: fn.toVw(40);
@@ -113,7 +116,7 @@
                         display: inline-block;
                         width: fn.toVw(18);
                         height: 1px;
-                        background-color: clr.$brown-5;
+                        background-color: clr.$white-5;
                         vertical-align: middle;
 
                         margin-right: fn.toVw(11);
