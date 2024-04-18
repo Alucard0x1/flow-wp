@@ -15,6 +15,7 @@
 body {
     margin: 0;
     width: 100%;
+    overflow-x: hidden;
 
     background-color: clr.$brown-35;
 }
@@ -57,4 +58,14 @@ a {
 
 .d-none {
     display: none;
+}
+
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    background-color: clr.$brown-35;
 }
