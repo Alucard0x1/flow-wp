@@ -18,10 +18,6 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                         <div class="quote">
                             <Text tagName="p" value={attributes.quote} onChange={(quote) => setAttributes({ quote })} />
                         </div>
-
-                        <div class="description">
-                            <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
-                        </div>
                     </div>
                 </div>
 
@@ -41,6 +37,10 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                             backgroundImage: `url(${attributes.image ? attributes.image.url : 'https://picsum.photos/1920/1080'})`
                         }}
                     />
+
+                    <div className="description-inner">
+                        <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+                    </div>
                 </div>
             </div>
         </section>

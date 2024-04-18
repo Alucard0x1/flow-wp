@@ -82,6 +82,7 @@
             }
 
             .description-wrapper {
+                position: relative;
                 margin-top: fn.toVw(59);
                 margin-bottom: fn.toVw(126);
 
@@ -122,18 +123,30 @@
                         margin-right: fn.toVw(11);
                     }
                 }
+            }
+        }
 
-                .description {
-                    @include mx.phone {
-                        margin-top: fn.toVw(13);
-                        margin-left: fn.toVw(28);
-                    }
+        .description-inner {
+            position: absolute;
+            width: fn.toVw(546);
+            bottom: fn.toVw(50);
+            right: fn.toVw(50);
 
-                    p {
-                        max-width: fn.toVw(390);
-                        font-weight: 400;
-                    }
-                }
+            border-radius: fn.toVw(12);
+            background: rgba(34, 29, 25, 0.64);
+
+            backdrop-filter: blur(27.149999618530273px);
+
+            padding: fn.toVw(80) fn.toVw(78);
+
+            @include mx.phone {
+                margin-top: fn.toVw(13);
+                margin-left: fn.toVw(28);
+            }
+
+            p {
+                max-width: fn.toVw(390);
+                font-weight: 400;
             }
         }
     }
