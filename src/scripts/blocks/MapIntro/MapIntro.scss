@@ -17,6 +17,8 @@
             height: fn.toVw(530);
             position: relative;
 
+            overflow: hidden;
+
             @include mx.phone {
                 width: auto;
                 height: fn.toVw(393);

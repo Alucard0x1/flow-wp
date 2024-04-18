@@ -1,7 +1,9 @@
 import Smoothscroll from "./smoothscroll";
-import Splittext from "./splittext";
 import MotionText from "./text";
+import Page from "./page";
+import Loading from "./preloader";
 
+export const Preloader = new Loading();
 export default class MotionInit {
   constructor() {
     this.init();
@@ -9,7 +11,10 @@ export default class MotionInit {
 
   init() {
     new Smoothscroll();
-    new Splittext();
-    new MotionText();
+    new Page();
+
+    Preloader.First(() => {
+      new MotionText();
+    });
   }
 }

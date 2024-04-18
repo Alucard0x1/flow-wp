@@ -20,19 +20,21 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div className="image-wrapper">
-                    {isSelected &&
-                        <MediaUpload
-                            onSelect={(image) => setAttributes({ image })}
-                            render={({ open }) => (
-                                <Button isPrimary onClick={open} className="image-picker">
-                                    <Icon icon="format-image" />
-                                </Button>
-                            )}
-                        />
-                    }
+            <div className="image-wrapper">
+                {isSelected &&
+                    <MediaUpload
+                        onSelect={(image) => setAttributes({ image })}
+                        render={({ open }) => (
+                            <Button isPrimary onClick={open} className="image-picker">
+                                <Icon icon="format-image" />
+                            </Button>
+                        )}
+                    />
+                }
 
+                <div className="frame-wrapper">
                     {attributes.image != null && attributes.image.type == 'video' ?
                         <video src={attributes.image.url} autoPlay loop playsInline muted />
                         :
