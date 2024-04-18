@@ -64,7 +64,8 @@
                 border-top-right-radius: fn.toVw(10);
             }
 
-            .background-image {
+            .background-image,
+            video {
                 height: 100%;
                 width: 100%;
                 background-size: cover;
@@ -74,6 +75,11 @@
                 @include mx.phone {
                     border-radius: fn.toVw(12);
                 }
+            }
+
+            video {
+                object-fit: cover;
+                object-position: center;
             }
         }
 

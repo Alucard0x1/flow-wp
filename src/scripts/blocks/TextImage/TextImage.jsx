@@ -32,11 +32,16 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
-                    <div className="background-image"
-                        style={{
-                            backgroundImage: `url(${attributes.image ? attributes.image.url : 'https://picsum.photos/1920/1080'})`
-                        }}
-                    />
+
+                    {attributes.image != null && attributes.image.type == 'video' ?
+                        <video src={attributes.image.url} autoPlay loop playsInline muted />
+                        :
+                        <div className="background-image"
+                            style={{
+                                backgroundImage: `url(${attributes.image ? attributes.image.url : 'https://picsum.photos/1920/1080'})`
+                            }}
+                        />
+                    }
 
                     <div className="description-inner">
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />

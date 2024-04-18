@@ -21,7 +21,12 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
-                    <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" />
+
+                    {attributes.image != null && attributes.image.type == 'video' ?
+                        <video src={attributes.image.url} autoPlay loop playsInline muted />
+                        :
+                        <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" />
+                    }
 
                     <div className="description-wrapper">
                         <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })} />

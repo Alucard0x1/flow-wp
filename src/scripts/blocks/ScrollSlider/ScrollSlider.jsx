@@ -42,11 +42,16 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                                     )}
                                 />
                             }
-                            <div className="background-image"
-                                style={{
-                                    backgroundImage: `url(${item.image == null ? 'https://picsum.photos/1920/1080' : item.image.url})`
-                                }}
-                            ></div>
+
+                            {item.image != null && item.image.type == 'video' ?
+                                <video src={item.image.url} autoPlay loop playsInline muted />
+                                :
+                                <div className="background-image"
+                                    style={{
+                                        backgroundImage: `url(${item.image == null ? 'https://picsum.photos/1920/1080' : item.image.url})`
+                                    }}
+                                ></div>
+                            }
                         </div>
 
                         <div className="content-wrapper">

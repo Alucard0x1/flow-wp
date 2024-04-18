@@ -61,11 +61,17 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
-                    <div className="background-image"
-                        style={{
-                            backgroundImage: `url(${attributes.image == null ? 'https://picsum.photos/1920/1080' : attributes.image.url})`
-                        }}
-                    ></div>
+
+
+                    {attributes.image != null && attributes.image.type == 'video' ?
+                        <video src={attributes.image.url} autoPlay loop playsInline muted />
+                        :
+                        <div className="background-image"
+                            style={{
+                                backgroundImage: `url(${attributes.image == null ? 'https://picsum.photos/1920/1080' : attributes.image.url})`
+                            }}
+                        ></div>
+                    }
                 </div>
             </div>
         </section>
