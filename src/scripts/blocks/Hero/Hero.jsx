@@ -41,6 +41,7 @@ const Hero = ({ setAttributes, attributes, isSelected }) => {
                 <div className="container">
                     <Text tagName="h1" value={attributes.title}
                         onChange={(title) => setAttributes({ title })}
+                        data-split-text
                     />
                 </div>
             </div>

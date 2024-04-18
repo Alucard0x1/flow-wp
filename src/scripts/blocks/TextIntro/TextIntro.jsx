@@ -33,7 +33,7 @@ const TextIntro = ({ attributes, setAttributes, isSelected }) => {
                 </InspectorControls>
             }
             <div className="container">
-                <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
+                <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
                 <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
             </div>
         </section>

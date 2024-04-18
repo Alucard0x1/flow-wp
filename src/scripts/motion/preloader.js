@@ -31,7 +31,7 @@ export default class Loading {
     };
 
     this.loadingFirst = (_callback) => {
-      smoothScroll.stop();
+      // smoothScroll.stop();
 
       let tlFirst = gsap.timeline({
         defaults: {
@@ -39,7 +39,7 @@ export default class Loading {
           ease: "customDefault",
           onComplete: () => {
             _callback();
-            smoothScroll.start();
+            // smoothScroll.start();
           },
         },
       });
@@ -66,8 +66,6 @@ export default class Loading {
     };
 
     this.loadingStart = () => {
-      // this.DOM.navbar.classList.remove('active');
-      document.documentElement.style.removeProperty("overflow");
       let tlStart = gsap.timeline();
 
       tlStart.fromTo(

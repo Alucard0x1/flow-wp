@@ -11,7 +11,7 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
         <section className="text-image">
             <div className="container">
                 <div className="content-wrapper">
-                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
+                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
                     <Text tagName="h3" value={attributes.subtitle} onChange={(subtitle) => setAttributes({ subtitle })} />
 
                     <div className="description-wrapper">

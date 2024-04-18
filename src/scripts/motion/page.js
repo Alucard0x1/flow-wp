@@ -1,13 +1,20 @@
 import gsap from "gsap";
 
 export default class Page {
-  constructor() {
-    this.init();
-  }
+  hero() {
+    gsap.set('.hero-content h1', {
+      opacity: 1,
+    });
 
-  init() {
-    this.map();
-    this.philosophy();
+    gsap.from('.hero-content h1 .char', {
+      opacity: 0,
+      duration: 1,
+      ease: "sine.inOut",
+      stagger: {
+        each: 0.015,
+        from: "center"
+      },
+    });
   }
 
   map() {

@@ -29,7 +29,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                     }
 
                     <div className="description-wrapper">
-                        <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })} />
+                        <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })}/>
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
                     </div>
                 </div>
@@ -39,7 +39,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                         onChange={(category) => setAttributes({ category })}
                     />
 
-                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
+                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
                 </div>
             </div>
         </section>

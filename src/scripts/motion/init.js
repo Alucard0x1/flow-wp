@@ -4,6 +4,7 @@ import Page from "./page";
 import Loading from "./preloader";
 
 export const Preloader = new Loading();
+export const MotionPage = new Page();
 export default class MotionInit {
   constructor() {
     this.init();
@@ -11,10 +12,13 @@ export default class MotionInit {
 
   init() {
     new Smoothscroll();
-    new Page();
 
     Preloader.First(() => {
+      MotionPage.hero();
       new MotionText();
     });
+
+    MotionPage.map();
+    MotionPage.philosophy();
   }
 }
