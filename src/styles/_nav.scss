@@ -52,6 +52,10 @@
                     @include mx.phone {
                         display: none;
                     }
+
+                    a {
+                        color: clr.$brown-10;
+                    }
                 }
             }
 
