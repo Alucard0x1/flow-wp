@@ -1,7 +1,7 @@
 import './ScrollSlider.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload } = wp.blockEditor
+const { MediaUpload, URLInputButton } = wp.blockEditor
 const { Button, Icon } = wp.components
 
 const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
@@ -83,9 +83,38 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             </div>
 
                             <div className="slider-action">
-                                <a href="#" class="btn btn-block">
-                                    Explore
-                                </a>
+                                <Text tagName="a" href={item.link.url} className="btn btn-block"
+                                    value={item.link.text}
+                                    onChange={(text) => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy[index] = {
+                                            ...itemsCopy[index],
+                                            link: {
+                                                ...itemsCopy[index].link,
+                                                text
+                                            }
+                                        }
+
+                                        setAttributes({ items: itemsCopy })
+                                    }}
+                                />
+
+                                {isSelected &&
+                                    <URLInputButton url={item.link.url}
+                                        onChange={(url, post) => {
+                                            const itemsCopy = [...attributes.items]
+                                            itemsCopy[index] = {
+                                                ...itemsCopy[index],
+                                                link: {
+                                                    url,
+                                                    text: (post && post.title) || itemsCopy[index].link.text
+                                                }
+                                            }
+
+                                            setAttributes({ items: itemsCopy })
+                                        }}
+                                    />
+                                }
                             </div>
                         </div>
                     </div>
