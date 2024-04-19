@@ -11,7 +11,7 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
         <section className="list-image">
             <div className="container">
                 <div className="content-wrapper">
-                    <div className="content-inner">
+                    <div className="content-inner" data-lenis-prevent>
                         <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
 
                         <div className="list-wrapper">
