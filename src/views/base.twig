@@ -9,7 +9,9 @@
 	<body>
 
 		<div class="preloader"></div>
-		
+
+		{% include 'navbar.twig' %}
+
 		{% block content %}{% endblock %}
 		{{ function('wp_footer') }}
 

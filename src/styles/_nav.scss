@@ -1,0 +1,75 @@
+@use '../styles/functions' as fn;
+@use '../styles/mixins' as mx;
+@use '../styles/colors' as clr;
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 11;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: fn.toVw(16) fn.toVw(40) 0 fn.toVw(23);
+
+    @include mx.phone {
+        padding: fn.toVw(16) fn.toVw(12) 0 fn.toVw(22);
+    }
+
+    &-right {
+        .contact-wrapper {
+            display: flex;
+            align-items: center;
+            padding: fn.toVw(5) fn.toVw(5) fn.toVw(5) fn.toVw(30);
+            border-radius: fn.toVw(10);
+            background-color: clr.$brown-50;
+
+            .phone {
+                font-size: fn.toVw(14);
+                padding-right: fn.toVw(24);
+                font-weight: 400;
+
+                @include mx.phone {
+
+                    &:before,
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: fn.toVw(14);
+                        height: 1px;
+                        background-color: clr.$brown-10;
+                    }
+
+                    &:before {
+                        margin-bottom: fn.toVw(6);
+                    }
+                }
+
+                span {
+                    @include mx.phone {
+                        display: none;
+                    }
+                }
+            }
+
+            .book-btn {
+                font-weight: 400;
+                display: block;
+                padding: fn.toVw(28) fn.toVw(22);
+                background: clr.$brown-39;
+                border-radius: fn.toVw(10);
+                color: clr.$brown-10;
+
+                font-size: fn.toVw(14);
+
+                @include mx.phone {
+                    border-radius: fn.toVw(8);
+                    padding: fn.toVw(18) fn.toVw(10);
+                }
+            }
+        }
+    }
+}
