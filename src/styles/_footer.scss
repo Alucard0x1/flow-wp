@@ -90,6 +90,8 @@
         }
 
         .newsletter {
+            display: none;
+
             p {
                 font-size: fn.toVw(20);
                 line-height: fn.toVw(27);
@@ -134,7 +136,7 @@
     }
 
     &-end {
-        margin-top: fn.toVw(120);
+        margin-top: fn.toVw(114);
         padding-top: fn.toVw(74);
         border-top: 1px solid clr.$white;
 

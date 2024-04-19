@@ -45,11 +45,11 @@
             }
 
             h3 {
-                font-size: fn.toVw(40);
-                line-height: fn.toVw(52);
+                font-size: fn.toVw(35);
+                line-height: fn.toVw(43);
                 font-weight: 300;
 
-                max-width: fn.toVw(816);
+                max-width: fn.toVw(796);
 
                 @include mx.phone {
                     font-size: fn.toVw(22);
