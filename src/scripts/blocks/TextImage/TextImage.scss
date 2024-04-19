@@ -21,6 +21,7 @@
 
         .content-wrapper {
             margin-left: fn.toVw(239);
+            margin-bottom: fn.toVw(373);
 
             @include mx.phone {
                 margin: 0 fn.toVw(64) 0 fn.toVw(57);
@@ -52,11 +53,11 @@
             }
 
             .description-wrapper {
+                display: none;
+
                 position: relative;
                 margin-top: fn.toVw(59);
                 margin-bottom: fn.toVw(126);
-
-                display: flex;
 
                 @include mx.phone {
                     margin-top: fn.toVw(28);
@@ -136,9 +137,9 @@
 
             border-radius: fn.toVw(20);
 
-        @include mx.phone {
-            border-radius: fn.toVw(12);
-        }
+            @include mx.phone {
+                border-radius: fn.toVw(12);
+            }
         }
 
         video {
