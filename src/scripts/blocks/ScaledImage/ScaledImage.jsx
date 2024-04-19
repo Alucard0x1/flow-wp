@@ -45,7 +45,6 @@ const ScaledImage = ({ attributes, setAttributes, isSelected }) => {
 
                     <div class="description-wrapper">
                         <Text tagName="p" className="text-description" value={attributes.description} onChange={(description) => setAttributes({ description })} />
-                        <Btn text="Explore More" isSelected={isSelected} />
                     </div>
                 </div>
             </div>
