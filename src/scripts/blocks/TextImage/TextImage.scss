@@ -172,6 +172,8 @@
         transform: translateY(130%);
         will-change: transform;
 
+        display: none;
+
         @include mx.phone {
             margin-top: fn.toVw(13);
             margin-left: fn.toVw(28);
