@@ -101,6 +101,8 @@ export default class Page {
   }
 
   amnities() {
+    if (ScrollTrigger.isTouch) return;
+    
     const tl = gsap.timeline({
       defaults: {
         ease: "none",
