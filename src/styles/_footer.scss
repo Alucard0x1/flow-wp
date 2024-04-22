@@ -160,6 +160,10 @@
             opacity: 0.7;
         }
 
+        p:first-child {
+            flex-grow: 1;
+        }
+
         a:first-child {
             margin-right: fn.toVw(45);
         }
