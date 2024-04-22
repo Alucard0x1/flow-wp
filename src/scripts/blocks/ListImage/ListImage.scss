@@ -62,7 +62,7 @@
 
                     @include mx.phone {
                         margin-top: fn.toVw(21);
-                        padding: fn.toVw(36) fn.toVw(28);
+                        padding: fn.toVw(36) fn.toVw(0);
                     }
 
                     .list-wrapper-content {

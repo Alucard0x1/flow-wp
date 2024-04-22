@@ -114,7 +114,7 @@
             @include mx.phone {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
-                padding: fn.toVw(34) fn.toVw(14) fn.toVw(14);
+                padding: fn.toVw(34) fn.toVw(23) fn.toVw(14) fn.toVw(19);
             }
 
             &:before {
@@ -175,7 +175,7 @@
                 position: relative;
 
                 @include mx.phone {
-                    margin: 0;
+                    margin: 0 0 fn.toVw(63) 0;
                 }
             }
 
@@ -214,7 +214,7 @@
                 color: clr.$black-5;
 
                 @include mx.phone {
-                    margin: 0;
+                    margin: 0 fn.toVw(15) 0 0;
                     font-weight: 400;
                 }
             }
@@ -270,7 +270,7 @@
 
                     @include mx.phone {
                         padding: fn.toVw(22);
-                        text-align: center;
+                        text-align: left;
                         font-size: fn.toVw(11);
                         text-transform: uppercase;
                         letter-spacing: fn.toVw(1.32);

@@ -25,6 +25,11 @@
                 width: fn.toVw(64);
                 height: fn.toVw(64);
 
+                @include mx.phone {
+                    width: fn.toVw(56);
+                    height: fn.toVw(56);
+                }
+
                 .nav-link {
                     img {
                         opacity: 0;
@@ -43,8 +48,11 @@
         position: relative;
         height: fn.toVw(64);
 
-        .nav-link {
+        @include mx.phone {
+            padding: fn.toVw(18) fn.toVw(19) fn.toVw(19);
+        }
 
+        .nav-link {
             &:before {
                 content: '';
                 display: block;

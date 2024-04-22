@@ -109,12 +109,13 @@
             }
 
             h2 {
-                margin-top: fn.toVw(48);
-                margin-bottom: 0;
+                max-width: fn.toVw(810);
+                margin: fn.toVw(48) auto 0;
 
                 @include mx.phone {
                     margin-top: fn.toVw(22);
-                    margin-bottom: fn.toVw(187);
+                    margin-bottom: fn.toVw(93);
+                    max-width: unset;
                 }
             }
         }

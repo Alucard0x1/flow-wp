@@ -7,6 +7,10 @@
         padding: fn.toVw(200) 0;
         text-align: center;
 
+        @include mx.phone {
+            padding: fn.toVw(86) 0;
+        }
+
         h2 {
             margin: 0 auto fn.toVw(36);
             color: clr.$brown-10;
