@@ -2,17 +2,17 @@ import gsap from "gsap";
 
 export default class Page {
   hero() {
-    gsap.set('.hero-content h1', {
+    gsap.set(".hero-content h1", {
       opacity: 1,
     });
 
-    gsap.from('.hero-content h1 .char', {
+    gsap.from(".hero-content h1 .char", {
       opacity: 0,
       duration: 1,
       ease: "sine.inOut",
       stagger: {
         each: 0.015,
-        from: "center"
+        from: "center",
       },
     });
   }
@@ -36,17 +36,34 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
-        start: "center center",
+        start: "top center",
         end: "+=120%",
         scrub: true,
-        pin: true,
-        invalidateOnRefresh: true,
+        // pin: true,
+        // invalidateOnRefresh: true,
       },
     });
 
     tl.from(".text-image .image-wrapper", {
       scale: 0.845,
     });
+
+    tl.to(".text-image .image-wrapper video", {
+      borderRadius: "0",
+    }, 0);
+
+    gsap.to(".text-image", {
+      opacity: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".text-image .image-wrapper",
+        start: "center center",
+        end: "+=50%",
+        scrub: true,
+        pin: true,
+        invalidateOnRefresh: true,
+      },
+    })
 
     const tlDescriptionAnim = gsap.timeline({
       paused: true,
@@ -81,5 +98,29 @@ export default class Page {
       opacity: 1,
       duration: 0.6,
     });
+  }
+
+  amnities() {
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+      scrollTrigger: {
+        trigger: ".list-image",
+        start: "center center",
+        end: "+=100%",
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // tl.to(".list-image h2", {
+    //   yPercent: -50,
+    // });
+
+    tl.to(".list-image .list-wrapper-content", {
+      y: () => -document.querySelector(".list-image .list-wrapper-content").offsetHeight / 1.8,
+    }, 0);
   }
 }

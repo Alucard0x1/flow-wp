@@ -32,7 +32,7 @@
                 padding: fn.toVw(124) fn.toVw(40);
                 border-radius: fn.toVw(20);
 
-                overflow-y: auto;
+                overflow: hidden;
 
                 @include mx.phone {
                     border-radius: fn.toVw(12);
@@ -56,14 +56,19 @@
                 }
 
                 .list-wrapper {
-                    padding: fn.toVw(50) fn.toVw(48);
-                    background-color: clr.$purple-10;
-                    border-radius: fn.toVw(4);
                     margin-top: fn.toVw(36);
+                    height: 100%;
+                    overflow: hidden;
 
                     @include mx.phone {
                         margin-top: fn.toVw(21);
                         padding: fn.toVw(36) fn.toVw(28);
+                    }
+
+                    .list-wrapper-content {
+                        padding: fn.toVw(50) fn.toVw(48);
+                        background-color: clr.$purple-10;
+                        border-radius: fn.toVw(4);
                     }
 
                     ul {

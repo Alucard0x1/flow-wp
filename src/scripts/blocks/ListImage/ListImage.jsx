@@ -11,7 +11,7 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
         <section className="list-image">
             <div className="container">
                 <div className="content-wrapper">
-                    <div className="content-inner" data-lenis-prevent>
+                    <div className="content-inner">
                         <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
 
                         <div className="list-wrapper">
@@ -24,28 +24,30 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
                                     <Icon icon="plus" />
                                 </Button>
                             }
-                            <ul>
-                                {attributes.items.map((item, index) => (
-                                    <li>
-                                        <Text tagName="span" value={item} onChange={(item) => {
-                                            const itemsCopy = [...attributes.items]
-                                            itemsCopy[index] = item
-                                            setAttributes({ items: itemsCopy })
-                                        }} />
-                                        {isSelected &&
-                                            <Button isPrimary isDestructive isSmall
-                                                onClick={() => {
-                                                    const itemsCopy = [...attributes.items]
-                                                    itemsCopy.splice(index, 1)
-                                                    setAttributes({ items: itemsCopy })
-                                                }}
-                                            >
-                                                <Icon icon="trash" />
-                                            </Button>
-                                        }
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="list-wrapper-content">
+                                <ul>
+                                    {attributes.items.map((item, index) => (
+                                        <li>
+                                            <Text tagName="span" value={item} onChange={(item) => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy[index] = item
+                                                setAttributes({ items: itemsCopy })
+                                            }} />
+                                            {isSelected &&
+                                                <Button isPrimary isDestructive isSmall
+                                                    onClick={() => {
+                                                        const itemsCopy = [...attributes.items]
+                                                        itemsCopy.splice(index, 1)
+                                                        setAttributes({ items: itemsCopy })
+                                                    }}
+                                                >
+                                                    <Icon icon="trash" />
+                                                </Button>
+                                            }
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
