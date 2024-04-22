@@ -60,8 +60,8 @@
         }
 
         .description-wrapper {
-            flex: 0 0 fn.toVw(390);
-            width: fn.toVw(390);
+            flex: 0 0 fn.toVw(373);
+            width: fn.toVw(373);
 
             @include mx.phone {
                 flex: 1;
@@ -71,6 +71,10 @@
             .text-description {
                 margin-bottom: fn.toVw(20);
                 opacity: 0.9;
+
+                font-size: fn.toVw(16);
+                line-height: fn.toVw(24);
+                font-weight: 400;
             }
         }
 
