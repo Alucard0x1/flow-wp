@@ -133,6 +133,7 @@
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
         }
 
         .background-image,
@@ -144,14 +145,30 @@
 
             border-radius: fn.toVw(20);
 
+            &.portrait {
+                display: none;
+            }
+
             @include mx.phone {
                 border-radius: fn.toVw(12);
+
+                &.desktop {
+                    display: none;
+                }
+
+                &.portrait {
+                    display: block;
+                }
             }
         }
 
         video {
             object-fit: cover;
             object-position: center;
+
+            @include mx.phone {
+                object-position: bottom;
+            }
         }
     }
 

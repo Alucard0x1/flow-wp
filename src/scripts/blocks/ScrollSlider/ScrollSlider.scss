@@ -52,6 +52,8 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+
+                z-index: 1;
             }
 
             @include mx.phone {
@@ -80,6 +82,22 @@
             video {
                 object-fit: cover;
                 object-position: center;
+
+                &.desktop {
+                    display: block;
+
+                    @include mx.phone {
+                        display: none;
+                    }
+                }
+
+                &.portrait {
+                    display: none;
+
+                    @include mx.phone {
+                        display: block;
+                    }
+                }
             }
         }
 

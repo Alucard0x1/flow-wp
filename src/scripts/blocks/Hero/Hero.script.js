@@ -7,6 +7,10 @@ const blockData = {
             type: 'object',
             default: null
         },
+        imagePortrait: {
+            type: 'object',
+            default: null
+        },
         title: {
             type: 'string',
             default: 'Title'

@@ -8,6 +8,7 @@ const blockData = {
             default: [
                 {
                     image: null,
+                    imagePortrait: null,
                     title: 'Title',
                     description: 'Description',
                     label: 'From',

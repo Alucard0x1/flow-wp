@@ -12,22 +12,36 @@ const Hero = ({ setAttributes, attributes, isSelected }) => {
             <div className="image-wrapper">
                 {isSelected &&
                     <MediaUploadCheck>
-                        <MediaUpload
-                            onSelect={(image) => {
-                                setAttributes({ image })
-                                console.log(attributes)
-                            }}
-                            allowedMediaTypes={['image']}
-                            render={({ open }) => (
-                                <Button onClick={open} isPrimary className="image-picker">
-                                    <Icon icon="format-image" />
-                                </Button>
-                            )}
-                        />
+                        <div className="image-picker">
+                            <MediaUpload
+                                onSelect={(image) => {
+                                    setAttributes({ image })
+                                }}
+                                render={({ open }) => (
+                                    <Button onClick={open} isPrimary>
+                                        <Icon icon="format-image" />
+                                    </Button>
+                                )}
+                            />
+
+                            <MediaUpload
+                                onSelect={(imagePortrait) => {
+                                    setAttributes({ imagePortrait })
+                                }}
+                                render={({ open }) => (
+                                    <Button onClick={open} isPrimary>
+                                        <Icon icon="smartphone" />
+                                    </Button>
+                                )}
+                            />
+                        </div>
                     </MediaUploadCheck>
                 }
                 {attributes.image != null && attributes.image.type == 'video' ?
-                    <video src={attributes.image.url} autoPlay loop playsInline muted />
+                    <>
+                        <video src={attributes.image.url} autoPlay loop playsInline muted className="desktop" />
+                        <video src={attributes.image.url} autoPlay loop playsInline muted className="portrait" />
+                    </>
                     :
                     <div className="background-image"
                         style={{

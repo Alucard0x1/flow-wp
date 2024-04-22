@@ -24,19 +24,33 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
 
             <div className="image-wrapper">
                 {isSelected &&
-                    <MediaUpload
-                        onSelect={(image) => setAttributes({ image })}
-                        render={({ open }) => (
-                            <Button isPrimary onClick={open} className="image-picker">
-                                <Icon icon="format-image" />
-                            </Button>
-                        )}
-                    />
+                    <div class="image-picker">
+                        <MediaUpload
+                            onSelect={(image) => setAttributes({ image })}
+                            render={({ open }) => (
+                                <Button isPrimary onClick={open}>
+                                    <Icon icon="format-image" />
+                                </Button>
+                            )}
+                        />
+
+                        <MediaUpload
+                            onSelect={(imagePortrait) => setAttributes({ imagePortrait })}
+                            render={({ open }) => (
+                                <Button isPrimary onClick={open}>
+                                    <Icon icon="smartphone" />
+                                </Button>
+                            )}
+                        />
+                    </div>
                 }
 
                 <div className="frame-wrapper">
                     {attributes.image != null && attributes.image.type == 'video' ?
-                        <video src={attributes.image.url} autoPlay loop playsInline muted />
+                        <>
+                            <video src={attributes.image.url} autoPlay loop playsInline muted class="desktop" />
+                            <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted class="portrait" />
+                        </>
                         :
                         <div className="background-image"
                             style={{

@@ -37,32 +37,50 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                     <div className={"container" + (index == 0 ? ' active' : '')} key={index} data-index={(index + 1).toString().padStart(2, '0')}>
                         <div className="media-wrapper">
                             {isSelected &&
-                                <MediaUpload
-                                    onSelect={(image) => {
-                                        const itemsCopy = [...attributes.items]
-                                        itemsCopy[index] = { ...itemsCopy[index], image }
+                                <div className="image-picker">
+                                    <MediaUpload
+                                        onSelect={(image) => {
+                                            const itemsCopy = [...attributes.items]
+                                            itemsCopy[index] = { ...itemsCopy[index], image }
 
-                                        setAttributes({ items: itemsCopy })
-                                    }}
-                                    render={({ open }) => (
-                                        <div className="image-picker">
+                                            setAttributes({ items: itemsCopy })
+                                        }}
+                                        render={({ open }) => (
                                             <Button isPrimary onClick={open}>
                                                 <Icon icon="format-image" />
                                             </Button>
-                                            <Button isPrimary isDestructive onClick={() => {
-                                                const itemsCopy = [...attributes.items]
-                                                itemsCopy.splice(index, 1)
-                                                setAttributes({ items: itemsCopy })
-                                            }}>
-                                                <Icon icon="trash" />
+                                        )}
+                                    />
+
+                                    <MediaUpload
+                                        onSelect={(imagePortrait) => {
+                                            const itemsCopy = [...attributes.items]
+                                            itemsCopy[index] = { ...itemsCopy[index], imagePortrait }
+
+                                            setAttributes({ items: itemsCopy })
+                                        }}
+                                        render={({ open }) => (
+                                            <Button isPrimary onClick={open}>
+                                                <Icon icon="smartphone" />
                                             </Button>
-                                        </div>
-                                    )}
-                                />
+                                        )}
+                                    />
+
+                                    <Button isPrimary isDestructive onClick={() => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy.splice(index, 1)
+                                        setAttributes({ items: itemsCopy })
+                                    }}>
+                                        <Icon icon="trash" />
+                                    </Button>
+                                </div>
                             }
 
                             {item.image != null && item.image.type == 'video' ?
-                                <video src={item.image.url} autoPlay loop playsInline muted />
+                                <>
+                                    <video src={item.image.url} autoPlay loop playsInline muted className="desktop" />
+                                    <video src={item.image.url} autoPlay loop playsInline muted className="portrait" />
+                                </>
                                 :
                                 <div className="background-image"
                                     style={{
