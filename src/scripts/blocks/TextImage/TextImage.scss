@@ -9,7 +9,7 @@
     color: clr.$white-5;
 
     @include mx.phone {
-        padding: fn.toVw(88) 0 fn.toVw(25) 0;
+        padding: fn.toVw(88) 0 0 0;
     }
 
     .container {
@@ -21,7 +21,7 @@
 
         .content-wrapper {
             margin-left: fn.toVw(239);
-            margin-bottom: fn.toVw(373);
+            margin-bottom: fn.toVw(220);
 
             @include mx.phone {
                 margin: 0 fn.toVw(45);
