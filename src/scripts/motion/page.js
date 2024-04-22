@@ -1,4 +1,7 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default class Page {
   hero() {
@@ -102,7 +105,7 @@ export default class Page {
 
   amnities() {
     if (ScrollTrigger.isTouch) return;
-    
+
     const tl = gsap.timeline({
       defaults: {
         ease: "none",
