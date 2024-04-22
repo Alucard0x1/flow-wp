@@ -19,13 +19,47 @@
         padding: fn.toVw(16) fn.toVw(22) 0 fn.toVw(22);
     }
 
+    &.scroll {
+        .nav {
+            &-logo {
+                width: fn.toVw(64);
+                height: fn.toVw(64);
+
+                .nav-link {
+                    img {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
     &-logo {
         border-radius: fn.toVw(12);
         background: clr.$brown-50;
-        padding: fn.toVw(20);
+        padding: fn.toVw(20) 0 fn.toVw(20) fn.toVw(18);
+        width: fn.toVw(129);
+        transition: all .25s ease-out;
+        position: relative;
+        height: fn.toVw(64);
 
         .nav-link {
-            display: block;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                top: fn.toVw(20);
+                left: fn.toVw(18);
+                background: url('../../assets/images/logo-scroll.png');
+
+                width: fn.toVw(20);
+                height: fn.toVw(21);
+            }
+
+            img {
+                transition: opacity .25s ease-out;
+            }
         }
     }
 

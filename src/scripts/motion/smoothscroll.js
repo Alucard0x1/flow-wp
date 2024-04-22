@@ -38,5 +38,15 @@ export default class Smoothscroll {
     });
 
     gsap.ticker.lagSmoothing(0);
+
+    const nav = document.querySelector('.nav')
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 512 && !nav.classList.contains('scroll')) {
+        nav.classList.add('scroll')
+      } else if (window.scrollY < 512 && nav.classList.contains('scroll')) {
+        nav.classList.remove('scroll')
+      }
+    })
   }
 }
