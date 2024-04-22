@@ -13,23 +13,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: fn.toVw(16) fn.toVw(40) 0 fn.toVw(40);
+    padding: fn.toVw(20) fn.toVw(20) 0;
 
     @include mx.phone {
         padding: fn.toVw(16) fn.toVw(22) 0 fn.toVw(22);
+    }
+
+    &-logo {
+        border-radius: fn.toVw(12);
+        background: clr.$brown-50;
+        padding: fn.toVw(20);
+
+        .nav-link {
+            display: block;
+        }
     }
 
     &-right {
         .contact-wrapper {
             display: flex;
             align-items: center;
-            padding: fn.toVw(5) fn.toVw(5) fn.toVw(5) fn.toVw(30);
+            padding: fn.toVw(1) fn.toVw(1) fn.toVw(1) fn.toVw(21);
             border-radius: fn.toVw(10);
             background-color: clr.$brown-50;
 
             .phone {
                 font-size: fn.toVw(14);
-                padding-right: fn.toVw(24);
+                padding-right: fn.toVw(18);
                 font-weight: 400;
 
                 @include mx.phone {
@@ -62,7 +72,7 @@
             .book-btn {
                 font-weight: 400;
                 display: block;
-                padding: fn.toVw(28) fn.toVw(22);
+                padding: fn.toVw(26) fn.toVw(20);
                 background: clr.$brown-39;
                 border-radius: fn.toVw(10);
                 color: clr.$brown-10;
