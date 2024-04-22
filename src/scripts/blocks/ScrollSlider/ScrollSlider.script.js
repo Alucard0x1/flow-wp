@@ -10,6 +10,8 @@ const blockData = {
                     image: null,
                     title: 'Title',
                     description: 'Description',
+                    label: 'From',
+                    price: 'IDR 4,000,000 /Month',
                     link: {
                         text: 'Link',
                         url: '#'

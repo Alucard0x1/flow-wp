@@ -83,6 +83,30 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             </div>
 
                             <div className="slider-action">
+                                <div className="slider-label">
+                                    <div className="label">
+                                        <Text tagName="span" value={item.label}
+                                            onChange={(label) => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy[index] = { ...itemsCopy[index], label }
+
+                                                setAttributes({ items: itemsCopy })
+                                            }}
+                                        />
+                                    </div>
+
+                                    <div className="price">
+                                        <Text tagName="span" value={item.price}
+                                            onChange={(price) => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy[index] = { ...itemsCopy[index], price }
+
+                                                setAttributes({ items: itemsCopy })
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+
                                 <Text tagName="a" href={item.link.url} className="btn btn-block"
                                     value={item.link.text}
                                     onChange={(text) => {

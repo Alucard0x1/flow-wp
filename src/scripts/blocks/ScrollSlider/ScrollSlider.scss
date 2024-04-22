@@ -91,13 +91,27 @@
             background-color: clr.$brown-37;
             border-radius: fn.toVw(20);
 
+            padding: fn.toVw(24);
+
             @include mx.phone {
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
                 padding: fn.toVw(34) fn.toVw(14) fn.toVw(14);
             }
 
-            padding: fn.toVw(24);
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                background: url('../../../../assets/images/dots.svg');
+                background-size: contain;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+
+                z-index: 1;
+            }
 
             .slider-menu {
                 overflow: auto;
@@ -132,8 +146,15 @@
                 }
             }
 
+            .text-content,
+            .num,
+            .slider-action {
+                z-index: 1;
+            }
+
             .text-content {
                 margin: 0 fn.toVw(16);
+                position: relative;
 
                 @include mx.phone {
                     margin: 0;
@@ -141,8 +162,9 @@
             }
 
             .num {
-                margin-top: fn.toVw(19);
+                margin: fn.toVw(19) fn.toVw(16) 0;
                 font-weight: 500;
+                position: relative;
 
                 @include mx.phone {
                     display: none;
@@ -172,7 +194,6 @@
 
             p {
                 color: clr.$black-5;
-                margin-right: fn.toVw(16);
 
                 @include mx.phone {
                     margin: 0;
@@ -194,6 +215,28 @@
                     right: unset;
 
                     margin-top: fn.toVw(35);
+                }
+
+                .slider-label {
+                    margin-bottom: fn.toVw(40);
+                    padding: fn.toVw(25) 0;
+                    border-top: 1px solid rgba(clr.$brown-15, .4);
+                    border-bottom: 1px solid rgba(clr.$brown-15, .4);
+
+                    opacity: 0.6;
+
+                    .label {
+                        font-size: fn.toVw(20);
+                        line-height: fn.toVw(24);
+                        font-weight: 400;
+                        margin-bottom: fn.toVw(2);
+                    }
+
+                    .price {
+                        font-size: fn.toVw(22);
+                        line-height: fn.toVw(24);
+                        font-weight: 500;
+                    }
                 }
 
                 a {
