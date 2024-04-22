@@ -49,7 +49,9 @@ const TextImage = ({ attributes, setAttributes, isSelected }) => {
                     {attributes.image != null && attributes.image.type == 'video' ?
                         <>
                             <video src={attributes.image.url} autoPlay loop playsInline muted class="desktop" />
-                            <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted class="portrait" />
+                            {attributes.imagePortrait != null &&
+                                <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted class="portrait" />
+                            }
                         </>
                         :
                         <div className="background-image"

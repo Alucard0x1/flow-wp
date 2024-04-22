@@ -79,7 +79,9 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             {item.image != null && item.image.type == 'video' ?
                                 <>
                                     <video src={item.image.url} autoPlay loop playsInline muted className="desktop" />
-                                    <video src={item.image.url} autoPlay loop playsInline muted className="portrait" />
+                                    {item.imagePortrait != null &&
+                                        <video src={item.imagePortrait.url} autoPlay loop playsInline muted className="portrait" />
+                                    }
                                 </>
                                 :
                                 <div className="background-image"
