@@ -72,8 +72,9 @@
             background-color: clr.$brown-50;
 
             .phone {
-                font-size: fn.toVw(14);
                 padding-right: fn.toVw(18);
+
+                font-size: fn.toVw(12);
                 font-weight: 400;
 
                 @include mx.phone {
@@ -104,14 +105,14 @@
             }
 
             .book-btn {
-                font-weight: 400;
                 display: block;
                 padding: fn.toVw(26) fn.toVw(20);
                 background: clr.$brown-39;
                 border-radius: fn.toVw(10);
                 color: clr.$brown-10;
 
-                font-size: fn.toVw(14);
+                font-size: fn.toVw(12);
+                font-weight: 400;
 
                 @include mx.phone {
                     border-radius: fn.toVw(8);
