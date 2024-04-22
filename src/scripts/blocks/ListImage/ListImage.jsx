@@ -54,19 +54,35 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
 
                 <div className="image-wrapper">
                     {isSelected &&
-                        <MediaUpload
-                            onSelect={(image) => setAttributes({ image })}
-                            render={({ open }) => (
-                                <Button isPrimary onClick={open} className="image-picker">
-                                    <Icon icon="format-image" />
-                                </Button>
-                            )}
-                        />
+                        <div className="image-picker">
+                            <MediaUpload
+                                onSelect={(image) => setAttributes({ image })}
+                                render={({ open }) => (
+                                    <Button isPrimary onClick={open}>
+                                        <Icon icon="format-image" />
+                                    </Button>
+                                )}
+                            />
+
+                            <MediaUpload
+                                onSelect={(imagePortrait) => setAttributes({ imagePortrait })}
+                                render={({ open }) => (
+                                    <Button isPrimary onClick={open}>
+                                        <Icon icon="smartphone" />
+                                    </Button>
+                                )}
+                            />
+                        </div>
                     }
 
 
                     {attributes.image != null && attributes.image.type == 'video' ?
-                        <video src={attributes.image.url} autoPlay loop playsInline muted />
+                        <>
+                            <video src={attributes.image.url} autoPlay loop playsInline muted className="desktop" />
+                            {attributes.imagePortrait != null &&
+                                <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait" />
+                            }
+                        </>
                         :
                         <div className="background-image"
                             style={{

@@ -14,6 +14,10 @@ const blockData = {
         image: {
             type: 'object',
             default: null
+        },
+        imagePortrait: {
+            type: 'object',
+            default: null
         }
     }
 }

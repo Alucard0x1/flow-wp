@@ -116,6 +116,10 @@
                 border-top-left-radius: fn.toVw(10);
             }
 
+            .image-picker {
+                z-index: 1;
+            }
+
             .background-image,
             video {
                 width: 100%;
@@ -132,6 +136,22 @@
             video {
                 object-fit: cover;
                 object-position: center;
+
+                &.desktop {
+                    display: block;
+
+                    @include mx.phone {
+                        display: none
+                    }
+                }
+
+                &.phone {
+                    display: none;
+
+                    @include mx.phone {
+                        display: block;
+                    }
+                }
             }
         }
     }
