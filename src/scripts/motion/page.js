@@ -36,17 +36,34 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
-        start: "center center",
+        start: "top center",
         end: "+=120%",
         scrub: true,
-        pin: true,
-        invalidateOnRefresh: true,
+        // pin: true,
+        // invalidateOnRefresh: true,
       },
     });
 
     tl.from(".text-image .image-wrapper", {
       scale: 0.845,
     });
+
+    tl.to(".text-image .image-wrapper video", {
+      borderRadius: "0",
+    }, 0);
+
+    gsap.to(".text-image", {
+      opacity: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".text-image .image-wrapper",
+        start: "center center",
+        end: "+=50%",
+        scrub: true,
+        pin: true,
+        invalidateOnRefresh: true,
+      },
+    })
 
     const tlDescriptionAnim = gsap.timeline({
       paused: true,
