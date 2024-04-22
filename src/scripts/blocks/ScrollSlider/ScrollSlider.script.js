@@ -12,6 +12,7 @@ const blockData = {
                     description: 'Description',
                     label: 'From',
                     price: 'IDR 4,000,000 /Month',
+                    showLabel: true,
                     link: {
                         text: 'Link',
                         url: '#'

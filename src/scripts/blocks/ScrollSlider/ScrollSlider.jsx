@@ -1,8 +1,8 @@
 import './ScrollSlider.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload, URLInputButton } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, URLInputButton, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, PanelRow, ToggleControl } = wp.components
 
 const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
@@ -13,6 +13,24 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                 <Button isPrimary onClick={() => setAttributes({ items: [...attributes.items, { image: null, title: 'Title', description: 'Description', link: { text: '', url: '' } }] })}>
                     <Icon icon="plus" />
                 </Button>
+            }
+
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        {attributes.items.map((item, index) => (
+                            <ToggleControl
+                                label={item.title}
+                                checked={item.showLabel}
+                                onChange={(showLabel) => {
+                                    const itemsCopy = [...attributes.items]
+                                    itemsCopy[index] = { ...itemsCopy[index], showLabel }
+                                    setAttributes({ items: itemsCopy })
+                                }}
+                            />
+                        ))}
+                    </PanelBody>
+                </InspectorControls>
             }
             <div className="slide-wrapper">
                 {attributes.items.map((item, index) => (
@@ -83,29 +101,31 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             </div>
 
                             <div className="slider-action">
-                                <div className="slider-label">
-                                    <div className="label">
-                                        <Text tagName="span" value={item.label}
-                                            onChange={(label) => {
-                                                const itemsCopy = [...attributes.items]
-                                                itemsCopy[index] = { ...itemsCopy[index], label }
+                                {item.showLabel &&
+                                    <div className="slider-label">
+                                        <div className="label">
+                                            <Text tagName="span" value={item.label}
+                                                onChange={(label) => {
+                                                    const itemsCopy = [...attributes.items]
+                                                    itemsCopy[index] = { ...itemsCopy[index], label }
 
-                                                setAttributes({ items: itemsCopy })
-                                            }}
-                                        />
+                                                    setAttributes({ items: itemsCopy })
+                                                }}
+                                            />
+                                        </div>
+
+                                        <div className="price">
+                                            <Text tagName="span" value={item.price}
+                                                onChange={(price) => {
+                                                    const itemsCopy = [...attributes.items]
+                                                    itemsCopy[index] = { ...itemsCopy[index], price }
+
+                                                    setAttributes({ items: itemsCopy })
+                                                }}
+                                            />
+                                        </div>
                                     </div>
-
-                                    <div className="price">
-                                        <Text tagName="span" value={item.price}
-                                            onChange={(price) => {
-                                                const itemsCopy = [...attributes.items]
-                                                itemsCopy[index] = { ...itemsCopy[index], price }
-
-                                                setAttributes({ items: itemsCopy })
-                                            }}
-                                        />
-                                    </div>
-                                </div>
+                                }
 
                                 <Text tagName="a" href={item.link.url} className="btn btn-block"
                                     value={item.link.text}
