@@ -11,6 +11,7 @@
 
     @include mx.phone {
         padding: fn.toVw(92) 0 fn.toVw(103);
+        min-height: 100vh;
     }
 
     .container {
@@ -73,11 +74,13 @@
             @include mx.phone {
                 width: fn.toVw(282);
                 height: fn.toVw(175);
+                
+                top: 40%;
 
-                position: relative;
-                left: initial;
-                top: initial;
-                transform: translate(0, 0);
+                // position: relative;
+                // left: initial;
+                // top: initial;
+                // transform: translate(0, 0);
             }
         }
     }
@@ -91,7 +94,7 @@
         @include mx.phone {
             flex-direction: column;
             width: auto;
-            margin: fn.toVw(40) fn.toVw(14) 0;
+            margin: calc(fn.toVw(40) + fn.toVw(190)) fn.toVw(14) 0;
         }
 
         .category-wrapper {
