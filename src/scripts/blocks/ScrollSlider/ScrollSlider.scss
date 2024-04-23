@@ -213,7 +213,7 @@
                 position: relative;
 
                 @include mx.phone {
-                    height: 28vh;
+                    height: 30vh;
                     overflow-y: auto;
                     text-overflow: clip;
                 }
