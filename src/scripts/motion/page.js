@@ -19,7 +19,7 @@ export default class Page {
       force: true,
       immediate: true,
     });
-    
+
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
     this.state = Flip.getState(
@@ -108,7 +108,7 @@ export default class Page {
           each: 0.01,
         },
       },
-      1
+      0.5
     );
   }
 
@@ -137,6 +137,17 @@ export default class Page {
         ease: "none",
       }),
       0
+    );
+
+    this.tlHero.fromTo(
+      ".scaled-image .category-wrapper, .scaled-image .description-wrapper",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        stagger: 0.15
+      }, 0.7
     );
   }
 
@@ -171,9 +182,13 @@ export default class Page {
       scale: 0.845,
     });
 
-    tl.to(".text-image .image-wrapper", {
-      borderRadius: "0",
-    }, 0);
+    tl.to(
+      ".text-image .image-wrapper",
+      {
+        borderRadius: "0",
+      },
+      0
+    );
 
     tl.to(
       ".text-image .frame-wrapper",
@@ -260,6 +275,8 @@ export default class Page {
   }
 
   sliderscroll() {
+    if (ScrollTrigger.isTouch) return;
+
     const section = document.querySelector(".scroll-slider");
     const slides = section.querySelectorAll(
       ".slide-wrapper .media-item-wrapper"
@@ -359,27 +376,27 @@ export default class Page {
 
   footer() {
     if (ScrollTrigger.isTouch) return;
-    
+
     const tl = gsap.timeline({
       defaults: {
-        ease: 'none'
+        ease: "none",
       },
       scrollTrigger: {
-        trigger: '.footer',
-        start: 'top bottom',
-        end: 'bottom bottom',
+        trigger: ".footer",
+        start: "top bottom",
+        end: "bottom bottom",
         invalidateOnRefresh: true,
         scrub: true,
         refreshPriority: -1,
       },
-    })
+    });
 
-    tl.set('.footer', {
-      yPercent: -80
-    })
+    tl.set(".footer", {
+      yPercent: -80,
+    });
 
-    tl.to('.footer', {
-      yPercent: 0
-    })
+    tl.to(".footer", {
+      yPercent: 0,
+    });
   }
 }
