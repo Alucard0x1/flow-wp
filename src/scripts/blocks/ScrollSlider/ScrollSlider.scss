@@ -16,9 +16,13 @@
         }
     }
 
-    .container, .media-item-wrapper, .text-content, .slider-action {
+    .container,
+    .media-item-wrapper,
+    .text-content,
+    .slider-action {
         position: relative;
     }
+
     .slider-action {
         background-color: inherit;
         overflow: initial;
@@ -157,7 +161,6 @@
                 content: '';
                 position: absolute;
                 display: block;
-                background: url('../../../../assets/images/dots.svg');
                 background-size: contain;
                 width: 100%;
                 height: 100%;
