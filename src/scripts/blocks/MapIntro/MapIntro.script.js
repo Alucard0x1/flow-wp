@@ -22,6 +22,10 @@ const blockData = {
         description: {
             type: 'string',
             default: 'Description'
+        },
+        url: {
+            type: 'string',
+            default: null
         }
     }
 }

@@ -2,6 +2,15 @@
 @use '../../../styles/colors' as clr;
 @use '../../../styles/mixins' as mx;
 
+#editor {
+    .map-intro {
+        .block-editor-url-input__button {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
+
 .map-intro {
     padding: fn.toVw(156) 0 fn.toVw(212) 0;
 

@@ -1,7 +1,7 @@
 import './MapIntro.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload } = wp.blockEditor
+const { MediaUpload, URLInputButton } = wp.blockEditor
 const { Button, Icon } = wp.components
 
 const MapIntro = ({ attributes, setAttributes, isSelected }) => {
@@ -22,14 +22,21 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                         />
                     }
 
-                    {attributes.image != null && attributes.image.type == 'video' ?
-                        <video src={attributes.image.url} autoPlay loop playsInline muted />
-                        :
-                        <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" />
+                    <a href={!isSelected ? attributes.url : '#'} target="_blank" rel="nofollow noopener">
+                        {attributes.image != null && attributes.image.type == 'video' ?
+                            <video src={attributes.image.url} autoPlay loop playsInline muted />
+                            :
+                            <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" />
+                        }
+                    </a>
+                    {isSelected &&
+                        <URLInputButton url={attributes.url}
+                            onChange={(url) => setAttributes({ url })}
+                        />
                     }
 
                     <div className="description-wrapper">
-                        <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })}/>
+                        <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })} />
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
                     </div>
                 </div>
