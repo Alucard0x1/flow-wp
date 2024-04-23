@@ -361,7 +361,6 @@ export default class Page {
         start: 'top bottom',
         end: 'bottom bottom',
         invalidateOnRefresh: true,
-        markers: true,
         scrub: true,
         refreshPriority: -1,
       },
