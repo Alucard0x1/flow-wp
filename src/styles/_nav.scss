@@ -43,7 +43,7 @@
         border-radius: fn.toVw(12);
         background: clr.$brown-50;
         padding: fn.toVw(20) 0 fn.toVw(20) fn.toVw(18);
-        width: fn.toVw(129);
+        width: fn.toVw(116);
         transition: all .25s ease-out;
         position: relative;
         height: fn.toVw(64);
@@ -60,6 +60,8 @@
                 top: fn.toVw(20);
                 left: fn.toVw(18);
                 background: url('../../assets/images/logo-scroll.png');
+                background-repeat: no-repeat;
+                background-size: contain;
 
                 width: fn.toVw(20);
                 height: fn.toVw(21);
@@ -67,6 +69,7 @@
 
             img {
                 transition: opacity .25s ease-out;
+                height: fn.toVw(21);
             }
         }
     }
