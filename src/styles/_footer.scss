@@ -10,7 +10,7 @@
     z-index: -1;
 
     @include mx.phone {
-        padding: fn.toVw(108) fn.toVw(20) 0;
+        padding: fn.toVw(108) fn.toVw(20) fn.toVw(42);
     }
 
     a {

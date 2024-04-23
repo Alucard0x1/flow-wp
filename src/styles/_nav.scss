@@ -93,7 +93,7 @@
                     &:before,
                     &:after {
                         content: '';
-                        display: block;
+                        display: none;
                         width: fn.toVw(14);
                         height: 1px;
                         background-color: clr.$brown-10;
@@ -106,7 +106,7 @@
 
                 span {
                     @include mx.phone {
-                        display: none;
+                        // display: none;
                     }
 
                     a {
