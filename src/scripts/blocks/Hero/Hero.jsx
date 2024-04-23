@@ -9,7 +9,7 @@ const Hero = ({ setAttributes, attributes, isSelected }) => {
 
     return (
         <section className="hero">
-            <div className="image-wrapper">
+            <div className="image-wrapper" data-flip-id="hero">
                 {isSelected &&
                     <MediaUploadCheck>
                         <div className="image-picker">

@@ -16,8 +16,11 @@ export default class MotionInit {
     Preloader.First(() => {
       MotionPage.hero();
       new MotionText();
+      MotionPage.sliderscroll();
     });
 
+    MotionPage.heroprepare();
+    MotionPage.heroscroll();
     MotionPage.map();
     MotionPage.amnities();
     MotionPage.philosophy();

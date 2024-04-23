@@ -33,7 +33,67 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                 </InspectorControls>
             }
             <div className="slide-wrapper">
-                {attributes.items.map((item, index) => (
+            {!isSelected &&
+                <div className="container">
+                    <div className="media-wrapper">
+                        {attributes.items.map((item, index) => (
+                            <div className="media-item-wrapper" style={{ zIndex: attributes.items.length - 1 - index }}>
+                                {item.image != null && item.image.type == 'video' ?
+                                    <video className='media-item' src={item.image.url} autoPlay loop playsInline muted />
+                                    :
+                                    <div className="media-item background-image"
+                                        style={{
+                                            backgroundImage: `url(${item.image == null ? `https://picsum.photos/1920/1080?${index}` : item.image.url})`,
+                                        }}
+                                    ></div>
+                                }
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="content-wrapper">
+                        <div className="slider-menu">
+                            <a href="#">
+                                <span className="line"></span>
+                                <span className="line"></span>
+                            </a>
+                        </div>
+
+                        <div className="num">
+                            <span className='num-active'>1</span> <span className="separator">-</span> {attributes.items.length}
+                        </div>
+
+                        <div className="text-content-wrapper">
+                            {attributes.items.map((item, index) => (
+                                <div className="text-content">
+                                    <Text tagName="h2" value={item.title} onChange={(title) => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy[index] = { ...itemsCopy[index], title }
+
+                                        setAttributes({ items: itemsCopy })
+                                    }} data-split-text />
+
+                                    <Text tagName="p" value={item.description} onChange={(description) => {
+                                        const itemsCopy = [...attributes.items]
+                                        itemsCopy[index] = { ...itemsCopy[index], description }
+
+                                        setAttributes({ items: itemsCopy })
+                                    }} data-split-text />
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="slider-action">
+                            {attributes.items.map((item, index) => (
+                                <Text tagName="a" href={item.link.url} className={"btn btn-block" + (index == 0 ? ' active' : '')} value={item.link.text} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            }
+
+            {isSelected &&
+                attributes.items.map((item, index) => (
                     <div className={"container" + (index == 0 ? ' active' : '')} key={index} data-index={(index + 1).toString().padStart(2, '0')}>
                         <div className="media-wrapper">
                             {isSelected &&
@@ -182,7 +242,8 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             </div>
                         </div>
                     </div>
-                ))}
+                ))
+            }
             </div>
         </section>
     )

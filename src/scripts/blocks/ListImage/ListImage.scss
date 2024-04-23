@@ -2,6 +2,17 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+#editor {
+    .content-inner {
+        overflow-y: auto;
+    }
+
+    .list-wrapper {
+        overflow: auto;
+    }
+
+}
+
 .list-image {
     height: 100vh;
 
