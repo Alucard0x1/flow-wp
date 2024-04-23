@@ -30,7 +30,7 @@ export default class Smoothscroll {
         force: true,
         immediate: true,
       });
-    }, 1);
+    }, 50);
 
 
     gsap.ticker.add((time) => {

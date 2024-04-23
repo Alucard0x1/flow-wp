@@ -21,7 +21,7 @@
 
         .content-wrapper {
             margin-left: fn.toVw(239);
-            margin-bottom: fn.toVw(220);
+            margin-bottom: fn.toVw(200);
 
             @include mx.phone {
                 margin: 0 fn.toVw(45);
@@ -112,6 +112,7 @@
         position: relative;
         overflow: hidden;
         will-change: transform;
+        transform: scale(1.4);
     }
 
     .image-wrapper {
@@ -121,8 +122,9 @@
         display: block;
         margin: 0 auto;
         overflow: hidden;
+        border-radius: fn.toVw(20);
         will-change: transform;
-
+        
         @include mx.phone {
             width: auto;
             height: fn.toVw(414);
@@ -143,15 +145,11 @@
             background-size: cover;
             background-position: center;
 
-            border-radius: fn.toVw(20);
-
             &.portrait {
                 display: none;
             }
 
             @include mx.phone {
-                border-radius: fn.toVw(12);
-
                 &.desktop {
                     display: none;
                 }

@@ -38,6 +38,13 @@ export default class Loading {
           duration: 0.7,
           ease: "customDefault",
           onComplete: () => {
+            setTimeout(() => {
+              smoothScroll.scrollTo(0, {
+                force: true,
+                immediate: true,
+              });
+            }, 50);
+            
             _callback();
             // smoothScroll.start();
           },

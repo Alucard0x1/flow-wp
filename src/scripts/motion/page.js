@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Flip from "gsap/Flip";
+import { smoothScroll } from "./smoothscroll";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -14,6 +15,11 @@ export default class Page {
     this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
   }
   heroprepare() {
+    smoothScroll.scrollTo(0, {
+      force: true,
+      immediate: true,
+    });
+    
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
     this.state = Flip.getState(
@@ -27,7 +33,7 @@ export default class Page {
       opacity: 1,
       scrollTrigger: {
         trigger: ".scaled-image",
-        start: "top top",
+        start: "clamp(top top)",
         end: "+=100%",
         endTrigger: ".map-intro",
         pin: true,
@@ -43,7 +49,7 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".hero",
-        start: "top top",
+        start: "clamp(top top)",
         end: "+=100%",
         endTrigger: ".scaled-image",
         pin: true,
@@ -59,16 +65,20 @@ export default class Page {
       opacity: 1,
     });
 
-    gsap.fromTo(".hero-content h1 .char", {
-      opacity: 0,
-    }, {
-      opacity: 1,
-      duration: 1,
-      ease: "sine.inOut",
-      stagger: {
-        each: 0.015,
+    gsap.fromTo(
+      ".hero-content h1 .line",
+      {
+        opacity: 0,
       },
-    });
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "sine.inOut",
+        stagger: {
+          each: 0.15,
+        },
+      }
+    );
 
     this.tlHero.fromTo(
       ".hero .hero-content .char",
@@ -82,7 +92,8 @@ export default class Page {
         stagger: {
           each: 0.01,
         },
-      }, 0
+      },
+      0
     );
 
     this.tlHero.fromTo(
@@ -92,11 +103,12 @@ export default class Page {
       },
       {
         opacity: 1,
-        duration: 1,
+        duration: 0.3,
         stagger: {
           each: 0.01,
         },
-      }, 1
+      },
+      1
     );
   }
 
@@ -123,7 +135,6 @@ export default class Page {
       Flip.from(this.state, {
         duration: 1,
         ease: "none",
-        prune: true,
       }),
       0
     );
@@ -149,7 +160,7 @@ export default class Page {
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
         start: "top center",
-        end: "+=120%",
+        end: "+=100%",
         scrub: true,
         // pin: true,
         // invalidateOnRefresh: true,
@@ -160,10 +171,14 @@ export default class Page {
       scale: 0.845,
     });
 
+    tl.to(".text-image .image-wrapper", {
+      borderRadius: "0",
+    }, 0);
+
     tl.to(
-      ".text-image .image-wrapper video",
+      ".text-image .frame-wrapper",
       {
-        borderRadius: "0",
+        scale: 1,
       },
       0
     );
@@ -174,34 +189,34 @@ export default class Page {
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
         start: "center center",
-        end: "+=50%",
+        end: "+=35%",
         scrub: true,
         pin: true,
         invalidateOnRefresh: true,
       },
     });
 
-    const tlDescriptionAnim = gsap.timeline({
-      paused: true,
-    });
+    // const tlDescriptionAnim = gsap.timeline({
+    //   paused: true,
+    // });
 
-    tlDescriptionAnim.to(".text-image .description-inner", {
-      y: 0,
-      duration: 1.2,
-      ease: "power2.inOut",
-    });
+    // tlDescriptionAnim.to(".text-image .description-inner", {
+    //   y: 0,
+    //   duration: 1.2,
+    //   ease: "power2.inOut",
+    // });
 
-    tlDescriptionAnim.from(
-      ".text-image .description-inner p",
-      {
-        opacity: 0,
-        ease: "power2.out",
-      },
-      0.5
-    );
+    // tlDescriptionAnim.from(
+    //   ".text-image .description-inner p",
+    //   {
+    //     opacity: 0,
+    //     ease: "power2.out",
+    //   },
+    //   0.5
+    // );
 
-    tl.call(() => tlDescriptionAnim.reverse(), null, "+=5%");
-    tl.call(() => tlDescriptionAnim.play(), null, "+=10%");
+    // tl.call(() => tlDescriptionAnim.reverse(), null, "+=5%");
+    // tl.call(() => tlDescriptionAnim.play(), null, "+=10%");
 
     // tl.fromTo(".text-image .description-inner", {
     //   yPercent: 130,
@@ -340,5 +355,29 @@ export default class Page {
       opacity: 1,
       duration: 0.2,
     });
+  }
+
+  footer() {
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'none'
+      },
+      scrollTrigger: {
+        trigger: '.footer',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        invalidateOnRefresh: true,
+        scrub: true,
+        refreshPriority: -1,
+      },
+    })
+
+    tl.set('.footer', {
+      yPercent: -80
+    })
+
+    tl.to('.footer', {
+      yPercent: 0
+    })
   }
 }

@@ -6,6 +6,8 @@
 .footer {
     padding: fn.toVw(186) fn.toVw(200) fn.toVw(85);
     background-color: clr.$blue;
+    position: relative;
+    z-index: -1;
 
     @include mx.phone {
         padding: fn.toVw(108) fn.toVw(20) 0;

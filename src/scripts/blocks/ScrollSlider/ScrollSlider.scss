@@ -275,8 +275,8 @@
             .slider-action {
                 position: absolute;
                 bottom: fn.toVw(40);
-                left: fn.toVw(40);
-                right: fn.toVw(40);
+                left: fn.toVw(24);
+                right: fn.toVw(24);
 
                 border-radius: fn.toVw(10);
                 background-color: clr.$brown-15;
@@ -339,8 +339,11 @@
                     left: 0;
                     opacity: 0;
                     pointer-events: none;
-                    transition: opacity 0.4s cubic-bezier(0, 0, 0.2, 1);
-                    transition-delay: 0.1s;
+                    transition: opacity 0.4s cubic-bezier(0, 0, 0.2, 1) 0.1s, background-color 0.4s ease;
+
+                    &:hover {
+                        background-color: #4b433c;
+                    }
 
                     &:first-child {
                         position: relative;
