@@ -22,3 +22,10 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+.line {
+
+  .char {
+    will-change: opacity;
+  }
+}

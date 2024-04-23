@@ -87,7 +87,8 @@
             }
 
             .media-item {
-                transform: scaleY(1.1);
+                // transform: scaleY(1.1);
+                will-change: clip-path;
             }
 
             .image-picker {
@@ -107,7 +108,8 @@
                 border-top-left-radius: fn.toVw(10);
                 border-top-right-radius: fn.toVw(10);
 
-                height: 46vh;
+                height: 27vh;
+                height: 27dvh;
             }
 
             .background-image,
@@ -154,7 +156,8 @@
                 border-top-left-radius: 0;
                 border-top-right-radius: 0;
                 padding: fn.toVw(34) fn.toVw(23) fn.toVw(14) fn.toVw(19);
-                height: auto;
+                height: 60vh;
+                height: 60dvh;
             }
 
             &:before {
@@ -213,7 +216,7 @@
                 position: relative;
 
                 @include mx.phone {
-                    height: 28vh;
+                    height: 100%;
                     overflow-y: auto;
                     text-overflow: clip;
                 }
@@ -226,8 +229,18 @@
                 width: 100%;
 
                 &:not(:first-of-type) {
+
+                    @include mx.phone {
+                        opacity: 0;
+                        will-change: opacity;
+                    }
+
                     .char {
                         opacity: 0;
+
+                        @include mx.phone {
+                            opacity: 1;
+                        }
                     }
                 }
             }
@@ -283,12 +296,9 @@
                 overflow: hidden;
 
                 @include mx.phone {
-                    position: relative;
-
-                    bottom: unset;
-                    left: unset;
-                    right: unset;
-
+                    bottom: fn.toVw(10);
+                    left: fn.toVw(6);
+                    right: fn.toVw(6);
                     margin-top: fn.toVw(35);
                 }
 

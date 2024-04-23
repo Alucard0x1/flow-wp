@@ -275,8 +275,6 @@ export default class Page {
   }
 
   sliderscroll() {
-    if (ScrollTrigger.isTouch) return;
-
     const section = document.querySelector(".scroll-slider");
     const slides = section.querySelectorAll(
       ".slide-wrapper .media-item-wrapper"
@@ -287,6 +285,8 @@ export default class Page {
     );
     const numberActive = section.querySelector(".content-wrapper .num-active");
 
+    const header = document.querySelector('.nav');
+
     const tl = gsap.timeline({
       defaults: {
         ease: "none",
@@ -294,11 +294,11 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".scroll-slider",
-        start: "top top",
-        end: `+=${slides.length}00%`,
+        start: () => ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
+        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length}00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
-        invalidateOnRefresh: true,
+        invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
       },
     });
 
@@ -306,11 +306,11 @@ export default class Page {
       .toArray(".slide-wrapper .media-item-wrapper")
       .forEach((slide, index) => {
         const media = slide.querySelector(".media-item");
-        const charCurrent = slidesText[index].querySelectorAll(".char");
+        const charCurrent = ScrollTrigger.isTouch ? slidesText[index] : slidesText[index].querySelectorAll(".char");
 
         if (index === slides.length - 1) return;
         const mediaNext = slides[index + 1].querySelector(".media-item");
-        const charNext = slidesText[index + 1].querySelectorAll(".char");
+        const charNext = ScrollTrigger.isTouch ? slidesText[index + 1] : slidesText[index + 1].querySelectorAll(".char");
 
         tl.to(charCurrent, {
           opacity: 0,
@@ -344,7 +344,7 @@ export default class Page {
               from: "end",
             },
           },
-          "-=100%"
+          ScrollTrigger.isTouch ? "-=120%" : "-=100%"
         );
 
         tl.to(
@@ -353,7 +353,7 @@ export default class Page {
             clipPath: "inset(0% 0% 100% 0%)",
             // yPercent: -20,
           },
-          "-=100%"
+          ScrollTrigger.isTouch ? "-=80%" : "-=100%"
         );
 
         // tl.fromTo(
