@@ -41,13 +41,13 @@ export default class Smoothscroll {
 
     const nav = document.querySelector('.nav')
 
-    if (window.innerWidth <= 375) {
+    if (window.innerWidth <= 500) {
       nav.classList.add('scroll')
       return
     }
 
     window.addEventListener('scroll', () => {
-      if (window.innerWidth <= 375) return
+      if (window.innerWidth <= 500) return
 
       if (window.scrollY >= 512 && !nav.classList.contains('scroll')) {
         nav.classList.add('scroll')
