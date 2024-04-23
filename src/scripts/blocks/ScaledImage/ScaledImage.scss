@@ -39,7 +39,8 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%) scale(1.05);
+            will-change: transform;
 
             @include mx.phone {
                 border-radius: fn.toVw(10);
@@ -77,7 +78,7 @@
 
             @include mx.phone {
                 width: fn.toVw(282);
-                height: fn.toVw(175);
+                height: fn.toVw(282);
                 
                 top: 40%;
 
@@ -98,7 +99,7 @@
         @include mx.phone {
             flex-direction: column;
             width: auto;
-            margin: calc(fn.toVw(40) + fn.toVw(190)) fn.toVw(14) 0;
+            margin: calc(fn.toVw(40) + fn.toVw(300)) fn.toVw(14) 0;
         }
 
         .category-wrapper {

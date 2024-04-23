@@ -140,6 +140,16 @@ export default class Page {
     );
 
     this.tlHero.fromTo(
+      ".scaled-image .image-wrapper video",
+      {
+        scale: 1,
+      },
+      {
+        scale: 1.2
+      }, 0
+    );
+
+    this.tlHero.fromTo(
       ".scaled-image .category-wrapper, .scaled-image .description-wrapper",
       {
         opacity: 0,
