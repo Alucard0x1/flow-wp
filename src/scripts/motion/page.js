@@ -19,7 +19,7 @@ export default class Page {
       force: true,
       immediate: true,
     });
-    
+
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
     this.state = Flip.getState(
@@ -108,7 +108,7 @@ export default class Page {
           each: 0.01,
         },
       },
-      1
+      0.5
     );
   }
 
@@ -120,13 +120,13 @@ export default class Page {
       },
       {
         borderTopLeftRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderTopRightRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomLeftRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomRightRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -137,6 +137,17 @@ export default class Page {
         ease: "none",
       }),
       0
+    );
+
+    this.tlHero.fromTo(
+      ".scaled-image .category-wrapper, .scaled-image .description-wrapper",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        stagger: 0.15
+      }, 0.7
     );
   }
 
@@ -171,9 +182,13 @@ export default class Page {
       scale: 0.845,
     });
 
-    tl.to(".text-image .image-wrapper", {
-      borderRadius: "0",
-    }, 0);
+    tl.to(
+      ".text-image .image-wrapper",
+      {
+        borderRadius: "0",
+      },
+      0
+    );
 
     tl.to(
       ".text-image .frame-wrapper",
@@ -270,6 +285,8 @@ export default class Page {
     );
     const numberActive = section.querySelector(".content-wrapper .num-active");
 
+    const header = document.querySelector('.nav');
+
     const tl = gsap.timeline({
       defaults: {
         ease: "none",
@@ -277,11 +294,11 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".scroll-slider",
-        start: "top top",
-        end: `+=${slides.length}00%`,
+        start: () => ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
+        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length}00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
-        invalidateOnRefresh: true,
+        invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
       },
     });
 
@@ -289,11 +306,11 @@ export default class Page {
       .toArray(".slide-wrapper .media-item-wrapper")
       .forEach((slide, index) => {
         const media = slide.querySelector(".media-item");
-        const charCurrent = slidesText[index].querySelectorAll(".char");
+        const charCurrent = ScrollTrigger.isTouch ? slidesText[index] : slidesText[index].querySelectorAll(".char");
 
         if (index === slides.length - 1) return;
         const mediaNext = slides[index + 1].querySelector(".media-item");
-        const charNext = slidesText[index + 1].querySelectorAll(".char");
+        const charNext = ScrollTrigger.isTouch ? slidesText[index + 1] : slidesText[index + 1].querySelectorAll(".char");
 
         tl.to(charCurrent, {
           opacity: 0,
@@ -327,28 +344,28 @@ export default class Page {
               from: "end",
             },
           },
-          "-=100%"
+          ScrollTrigger.isTouch ? "-=120%" : "-=100%"
         );
 
         tl.to(
           media,
           {
             clipPath: "inset(0% 0% 100% 0%)",
-            yPercent: -20,
+            // yPercent: -20,
           },
-          "-=100%"
+          ScrollTrigger.isTouch ? "-=80%" : "-=100%"
         );
 
-        tl.fromTo(
-          mediaNext,
-          {
-            yPercent: 15,
-          },
-          {
-            yPercent: 0,
-          },
-          "-=100%"
-        );
+        // tl.fromTo(
+        //   mediaNext,
+        //   {
+        //     yPercent: 15,
+        //   },
+        //   {
+        //     yPercent: 0,
+        //   },
+        //   "-=100%"
+        // );
       });
 
     tl.to(section, {
@@ -359,27 +376,27 @@ export default class Page {
 
   footer() {
     if (ScrollTrigger.isTouch) return;
-    
+
     const tl = gsap.timeline({
       defaults: {
-        ease: 'none'
+        ease: "none",
       },
       scrollTrigger: {
-        trigger: '.footer',
-        start: 'top bottom',
-        end: 'bottom bottom',
+        trigger: ".footer",
+        start: "top bottom",
+        end: "bottom bottom",
         invalidateOnRefresh: true,
         scrub: true,
         refreshPriority: -1,
       },
-    })
+    });
 
-    tl.set('.footer', {
-      yPercent: -80
-    })
+    tl.set(".footer", {
+      yPercent: -80,
+    });
 
-    tl.to('.footer', {
-      yPercent: 0
-    })
+    tl.to(".footer", {
+      yPercent: 0,
+    });
   }
 }
