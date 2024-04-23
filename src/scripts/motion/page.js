@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,12 +120,92 @@ export default class Page {
       },
     });
 
-    // tl.to(".list-image h2", {
-    //   yPercent: -50,
-    // });
-
     tl.to(".list-image .list-wrapper-content", {
       y: () => -document.querySelector(".list-image .list-wrapper-content").offsetHeight / 1.8,
     }, 0);
+  }
+
+  sliderscroll() {
+    const section = document.querySelector(".scroll-slider");
+    const slides = section.querySelectorAll(".slide-wrapper .media-item-wrapper");
+    const slidesText = section.querySelectorAll(".slide-wrapper .text-content");
+    const buttons = section.querySelectorAll(".slide-wrapper .slider-action .btn");
+    const numberActive = section.querySelector(".content-wrapper .num-active");
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "none",
+        duration: 1,
+      },
+      scrollTrigger: {
+        trigger: ".scroll-slider",
+        start: "top top",
+        end: `+=${slides.length}00%`,
+        scrub: true,
+        pin: ".scroll-slider .slide-wrapper",
+        invalidateOnRefresh: true,
+      },
+    });
+
+    gsap.utils.toArray(".slide-wrapper .media-item-wrapper").forEach((slide, index) => {
+        const media = slide.querySelector(".media-item");
+        const charCurrent = slidesText[index].querySelectorAll(".char");
+
+        if (index === slides.length - 1) return;
+        const mediaNext = slides[index + 1].querySelector(".media-item");
+        const charNext = slidesText[index + 1].querySelectorAll(".char");
+
+        tl.to(charCurrent, {
+          opacity: 0,
+          duration: 0.3,
+          stagger: {
+            each: 0.001,
+            from: "end",
+          },
+          onStart: () => {
+            buttons[index].classList.remove("active");
+            buttons[index + 1].classList.add("active");
+          },
+          onComplete: () => {
+            numberActive.textContent = index + 2;
+          },
+          onReverseComplete: () => {
+            numberActive.textContent = index + 1;
+            buttons[index].classList.add("active");
+            buttons[index + 1].classList.remove("active");
+          },
+        });
+
+        tl.to(charNext, {
+          opacity: 1,
+          duration: 0.3,
+          delay: 0.5,
+          stagger: {
+            each: 0.001,
+            from: "end",
+          },
+        }, "-=100%");
+
+        tl.to(media, {
+          clipPath: "inset(0% 0% 100% 0%)",
+          yPercent: -20,
+        }, "-=100%");
+
+        tl.fromTo(
+          mediaNext,
+          {
+            yPercent: 15,
+          },
+          {
+            yPercent: 0,
+          },
+          "-=100%"
+        );
+      });
+
+    tl.to(section, {
+      opacity: 1,
+      duration: 0.2,
+    });
   }
 }

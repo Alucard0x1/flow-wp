@@ -16,6 +16,7 @@ export default class MotionInit {
     Preloader.First(() => {
       MotionPage.hero();
       new MotionText();
+      MotionPage.sliderscroll();
     });
 
     MotionPage.map();
