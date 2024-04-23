@@ -69,6 +69,11 @@
                 font-size: fn.toVw(18);
                 line-height: 1;
                 opacity: .7;
+                transition: opacity 0.3s ease;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
