@@ -112,7 +112,7 @@
         position: relative;
         overflow: hidden;
         will-change: transform;
-        transform: scale(1.4);
+        transform: scale(1.2) translateY(-20%);
     }
 
     .image-wrapper {
@@ -127,7 +127,6 @@
         
         @include mx.phone {
             width: auto;
-            height: fn.toVw(414);
             border-radius: fn.toVw(12);
         }
 
@@ -163,10 +162,6 @@
         video {
             object-fit: cover;
             object-position: center;
-
-            @include mx.phone {
-                object-position: bottom;
-            }
         }
     }
 

@@ -170,7 +170,7 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
-        start: "top center",
+        start: "top center+=30%",
         end: "+=100%",
         scrub: true,
         // pin: true,
@@ -194,6 +194,7 @@ export default class Page {
       ".text-image .frame-wrapper",
       {
         scale: 1,
+        y: 0
       },
       0
     );
