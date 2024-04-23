@@ -15,7 +15,6 @@ export default class Page {
       ease: "sine.inOut",
       stagger: {
         each: 0.015,
-        from: "center",
       },
     });
   }
