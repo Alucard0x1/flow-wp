@@ -59,16 +59,20 @@ export default class Page {
       opacity: 1,
     });
 
-    gsap.fromTo(".hero-content h1 .line", {
-      opacity: 0,
-    }, {
-      opacity: 1,
-      duration: 1,
-      ease: "sine.inOut",
-      stagger: {
-        each: 0.15,
+    gsap.fromTo(
+      ".hero-content h1 .line",
+      {
+        opacity: 0,
       },
-    });
+      {
+        opacity: 1,
+        duration: 1,
+        ease: "sine.inOut",
+        stagger: {
+          each: 0.15,
+        },
+      }
+    );
 
     this.tlHero.fromTo(
       ".hero .hero-content .char",
@@ -82,7 +86,8 @@ export default class Page {
         stagger: {
           each: 0.01,
         },
-      }, 0
+      },
+      0
     );
 
     this.tlHero.fromTo(
@@ -96,7 +101,8 @@ export default class Page {
         stagger: {
           each: 0.01,
         },
-      }, 1
+      },
+      1
     );
   }
 
@@ -148,7 +154,7 @@ export default class Page {
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
         start: "top center",
-        end: "+=120%",
+        end: "+=100%",
         scrub: true,
         // pin: true,
         // invalidateOnRefresh: true,
@@ -159,10 +165,14 @@ export default class Page {
       scale: 0.845,
     });
 
+    tl.to(".text-image .image-wrapper", {
+      borderRadius: "0",
+    }, 0);
+
     tl.to(
-      ".text-image .image-wrapper video",
+      ".text-image .frame-wrapper",
       {
-        borderRadius: "0",
+        scale: 1,
       },
       0
     );
@@ -173,34 +183,34 @@ export default class Page {
       scrollTrigger: {
         trigger: ".text-image .image-wrapper",
         start: "center center",
-        end: "+=50%",
+        end: "+=35%",
         scrub: true,
         pin: true,
         invalidateOnRefresh: true,
       },
     });
 
-    const tlDescriptionAnim = gsap.timeline({
-      paused: true,
-    });
+    // const tlDescriptionAnim = gsap.timeline({
+    //   paused: true,
+    // });
 
-    tlDescriptionAnim.to(".text-image .description-inner", {
-      y: 0,
-      duration: 1.2,
-      ease: "power2.inOut",
-    });
+    // tlDescriptionAnim.to(".text-image .description-inner", {
+    //   y: 0,
+    //   duration: 1.2,
+    //   ease: "power2.inOut",
+    // });
 
-    tlDescriptionAnim.from(
-      ".text-image .description-inner p",
-      {
-        opacity: 0,
-        ease: "power2.out",
-      },
-      0.5
-    );
+    // tlDescriptionAnim.from(
+    //   ".text-image .description-inner p",
+    //   {
+    //     opacity: 0,
+    //     ease: "power2.out",
+    //   },
+    //   0.5
+    // );
 
-    tl.call(() => tlDescriptionAnim.reverse(), null, "+=5%");
-    tl.call(() => tlDescriptionAnim.play(), null, "+=10%");
+    // tl.call(() => tlDescriptionAnim.reverse(), null, "+=5%");
+    // tl.call(() => tlDescriptionAnim.play(), null, "+=10%");
 
     // tl.fromTo(".text-image .description-inner", {
     //   yPercent: 130,
