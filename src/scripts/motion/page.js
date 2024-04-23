@@ -351,21 +351,21 @@ export default class Page {
           media,
           {
             clipPath: "inset(0% 0% 100% 0%)",
-            yPercent: -20,
+            // yPercent: -20,
           },
           "-=100%"
         );
 
-        tl.fromTo(
-          mediaNext,
-          {
-            yPercent: 15,
-          },
-          {
-            yPercent: 0,
-          },
-          "-=100%"
-        );
+        // tl.fromTo(
+        //   mediaNext,
+        //   {
+        //     yPercent: 15,
+        //   },
+        //   {
+        //     yPercent: 0,
+        //   },
+        //   "-=100%"
+        // );
       });
 
     tl.to(section, {
