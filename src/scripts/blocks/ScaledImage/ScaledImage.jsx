@@ -32,10 +32,10 @@ const ScaledImage = ({ attributes, setAttributes, isSelected }) => {
                 </InspectorControls>
             }
             <div className="container">
-                <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
+                <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text />
 
-                <div className="image-wrapper">
-                    <div className="background-image image-pos-placeholder"></div>
+                <div className="image-wrapper" data-flip-id="hero">
+                    {/* <div className="background-image image-pos-placeholder"></div> */}
                 </div>
 
                 <div className="scaled-image-content">

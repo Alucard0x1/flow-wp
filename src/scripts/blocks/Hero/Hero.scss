@@ -6,12 +6,24 @@
     height: 100vh;
     width: 100%;
 
-    position: relative;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
 
     .image-wrapper {
         width: 100%;
         height: 100%;
         position: relative;
+        overflow: hidden;
+        visibility: visible;
+
+        &.active {
+            visibility: hidden;
+        }
+
+        &.flipping {
+            visibility: visible;
+        }
 
         .image-picker {
             z-index: 1;

@@ -19,6 +19,8 @@ export default class MotionInit {
       MotionPage.sliderscroll();
     });
 
+    MotionPage.heroprepare();
+    MotionPage.heroscroll();
     MotionPage.map();
     MotionPage.amnities();
     MotionPage.philosophy();
