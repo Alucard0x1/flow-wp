@@ -11,8 +11,9 @@
 		<div class="preloader"></div>
 
 		{% include 'navbar.twig' %}
-
-		{% block content %}{% endblock %}
+		<main class="main">
+			{% block content %}{% endblock %}
+		</main>
 		{{ function('wp_footer') }}
 
 		{% include 'footer.twig' %}

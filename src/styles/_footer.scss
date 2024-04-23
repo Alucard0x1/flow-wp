@@ -7,7 +7,6 @@
     padding: fn.toVw(186) fn.toVw(200) fn.toVw(85);
     background-color: clr.$blue;
     position: relative;
-    z-index: -1;
 
     @include mx.phone {
         padding: fn.toVw(108) fn.toVw(20) fn.toVw(42);
@@ -70,6 +69,11 @@
                 font-size: fn.toVw(18);
                 line-height: 1;
                 opacity: .7;
+                transition: opacity 0.3s ease;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }

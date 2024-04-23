@@ -111,6 +111,10 @@
 
                     a {
                         color: clr.$brown-10;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
@@ -125,9 +129,15 @@
                 font-size: fn.toVw(12);
                 font-weight: 400;
 
+                transition: background-color 0.3s ease;
+
                 @include mx.phone {
                     border-radius: fn.toVw(8);
                     padding: fn.toVw(18) fn.toVw(10);
+                }
+
+                &:hover {
+                    background-color: #e1d6c2;
                 }
             }
         }
