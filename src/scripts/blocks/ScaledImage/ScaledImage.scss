@@ -3,6 +3,7 @@
 @use '../../../styles/mixins' as mx;
 
 .scaled-image {
+    width: 100%;
     height: auto;
     padding: fn.toVw(50) 0 fn.toVw(173) 0;
     position: relative;
@@ -25,15 +26,20 @@
             }
         }
 
+
         .image-wrapper {
             width: fn.toVw(572);
             height: fn.toVw(356);
             background-color: clr.$brown-30;
             border-radius: fn.toVw(20);
-            margin: 0 auto;
             overflow: hidden;
             z-index: 1;
             visibility: hidden;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
 
             &.active {
                 visibility: visible;
@@ -67,13 +73,18 @@
             @include mx.phone {
                 width: fn.toVw(282);
                 height: fn.toVw(175);
+
+                position: relative;
+                left: initial;
+                top: initial;
+                transform: translate(0, 0);
             }
         }
     }
 
     &-content {
         width: fn.toVw(572);
-        margin: fn.toVw(91) auto 0;
+        margin: calc(fn.toVw(91) + fn.toVw(356)) auto 0;
 
         display: flex;
 

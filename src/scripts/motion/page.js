@@ -27,7 +27,7 @@ export default class Page {
       opacity: 1,
       scrollTrigger: {
         trigger: ".scaled-image",
-        start: "top top",
+        start: "clamp(top top)",
         end: "+=100%",
         endTrigger: ".map-intro",
         pin: true,
@@ -43,7 +43,7 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".hero",
-        start: "top top",
+        start: "clamp(top top)",
         end: "+=100%",
         endTrigger: ".scaled-image",
         pin: true,
@@ -59,14 +59,14 @@ export default class Page {
       opacity: 1,
     });
 
-    gsap.fromTo(".hero-content h1 .char", {
+    gsap.fromTo(".hero-content h1 .line", {
       opacity: 0,
     }, {
       opacity: 1,
       duration: 1,
       ease: "sine.inOut",
       stagger: {
-        each: 0.015,
+        each: 0.15,
       },
     });
 
@@ -92,7 +92,7 @@ export default class Page {
       },
       {
         opacity: 1,
-        duration: 1,
+        duration: 0.3,
         stagger: {
           each: 0.01,
         },
@@ -123,7 +123,6 @@ export default class Page {
       Flip.from(this.state, {
         duration: 1,
         ease: "none",
-        prune: true,
       }),
       0
     );
