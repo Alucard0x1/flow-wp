@@ -275,8 +275,8 @@
             .slider-action {
                 position: absolute;
                 bottom: fn.toVw(40);
-                left: fn.toVw(40);
-                right: fn.toVw(40);
+                left: fn.toVw(24);
+                right: fn.toVw(24);
 
                 border-radius: fn.toVw(10);
                 background-color: clr.$brown-15;
