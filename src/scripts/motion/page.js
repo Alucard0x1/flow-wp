@@ -358,6 +358,8 @@ export default class Page {
   }
 
   footer() {
+    if (ScrollTrigger.isTouch) return;
+    
     const tl = gsap.timeline({
       defaults: {
         ease: 'none'
