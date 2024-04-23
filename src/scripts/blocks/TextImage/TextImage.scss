@@ -37,7 +37,7 @@
                 letter-spacing: fn.toVw(-0.8);
 
                 @include mx.phone {
-                    margin: 0 fn.toVw(12) fn.toVw(40);
+                    margin: 0 fn.toVw(12) 0;
                     font-size: fn.toVw(42);
                     line-height: fn.toVw(46);
                     font-weight: 400;
@@ -124,7 +124,7 @@
         overflow: hidden;
         border-radius: fn.toVw(20);
         will-change: transform;
-        
+
         @include mx.phone {
             width: auto;
             height: fn.toVw(414);

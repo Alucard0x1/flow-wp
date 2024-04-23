@@ -94,8 +94,24 @@
                 object-fit: cover;
                 object-position: center;
 
+                &.desktop {
+                    display: block;
+                }
+
+                &.portrait {
+                    display: none;
+                }
+
                 @include mx.phone {
                     border-radius: fn.toVw(12);
+
+                    &.desktop {
+                        display: none;
+                    }
+
+                    &.portrait {
+                        display: block;
+                    }
                 }
             }
         }

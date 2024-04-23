@@ -12,21 +12,35 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
             <div className="container">
                 <div className="image-wrapper">
                     {isSelected &&
-                        <MediaUpload
-                            onSelect={(image) => setAttributes({ image })}
-                            render={({ open }) => (
-                                <Button isPrimary onClick={open} className="image-picker">
-                                    <Icon icon="format-image" />
-                                </Button>
-                            )}
-                        />
+                        <div className="image-picker">
+                            <MediaUpload
+                                onSelect={(image) => setAttributes({ image })}
+                                render={({ open }) => (
+                                    <Button isPrimary onClick={open}>
+                                        <Icon icon="format-image" />
+                                    </Button>
+                                )}
+                            />
+
+                            <MediaUpload
+                                onSelect={(imagePortrait) => setAttributes({ imagePortrait })}
+                                render={({ open }) => (
+                                    <Button isPrimary onClick={open}>
+                                        <Icon icon="smartphone" />
+                                    </Button>
+                                )}
+                            />
+                        </div>
                     }
 
                     <a href={!isSelected ? attributes.url : '#'} target="_blank" rel="nofollow noopener">
                         {attributes.image != null && attributes.image.type == 'video' ?
                             <video src={attributes.image.url} autoPlay loop playsInline muted />
                             :
-                            <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" />
+                            <>
+                                <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" className="desktop" />
+                                <img src={attributes.imagePortrait ? attributes.imagePortrait.url : "https://picsum.photos/976/530"} alt="" className="portrait" />
+                            </>
                         }
                     </a>
                     {isSelected &&
