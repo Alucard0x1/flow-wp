@@ -350,4 +350,29 @@ export default class Page {
       duration: 0.2,
     });
   }
+
+  footer() {
+    const tl = gsap.timeline({
+      defaults: {
+        ease: 'none'
+      },
+      scrollTrigger: {
+        trigger: '.footer',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        invalidateOnRefresh: true,
+        markers: true,
+        scrub: true,
+        refreshPriority: -1,
+      },
+    })
+
+    tl.set('.footer', {
+      yPercent: -80
+    })
+
+    tl.to('.footer', {
+      yPercent: 0
+    })
+  }
 }
