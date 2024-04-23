@@ -257,6 +257,7 @@ export default class Page {
         trigger: ".list-image",
         start: "center center",
         end: "+=100%",
+        endTrigger: '.list-image .list-wrapper-content',
         pin: true,
         scrub: true,
         invalidateOnRefresh: true,
@@ -266,9 +267,14 @@ export default class Page {
     tl.to(
       ".list-image .list-wrapper-content",
       {
-        y: () =>
-          -document.querySelector(".list-image .list-wrapper-content")
-            .offsetHeight / 1.8,
+        y: () => {
+          const textTitle = document.querySelector(".list-image .content-inner h2").offsetHeight;
+          const textDescription = document.querySelector(".list-image .content-inner p").offsetHeight;
+          const listContentHeight = document.querySelector(".list-image .list-wrapper-content").offsetHeight;
+          const triggerHeight = document.querySelector(".list-image").offsetHeight;
+          const maxScroll = (listContentHeight + textTitle * 2 + textDescription * 2) - triggerHeight;
+          return -maxScroll;
+        }
       },
       0
     );
