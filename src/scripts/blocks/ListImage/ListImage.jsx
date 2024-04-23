@@ -14,6 +14,8 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
                     <div className="content-inner">
                         <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} />
 
+                        <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+
                         <div className="list-wrapper">
                             {isSelected &&
                                 <Button isPrimary isSmall

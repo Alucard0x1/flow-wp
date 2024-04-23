@@ -40,7 +40,7 @@
             .content-inner {
                 height: 100%;
                 background-color: clr.$purple;
-                padding: fn.toVw(124) fn.toVw(40);
+                padding: fn.toVw(82) fn.toVw(40);
                 border-radius: fn.toVw(20);
 
                 overflow: hidden;
@@ -63,6 +63,16 @@
                         font-size: fn.toVw(38);
                         line-height: fn.toVw(40);
                         letter-spacing: fn.toVw(-0.38);
+                    }
+                }
+
+                p {
+                    color: clr.$brown-37;
+                    max-width: fn.toVw(327);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        max-width: unset;
                     }
                 }
 

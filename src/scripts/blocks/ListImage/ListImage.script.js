@@ -7,6 +7,10 @@ const blockData = {
             type: 'string',
             default: 'Title'
         },
+        description: {
+            type: 'string',
+            default: 'Description'
+        },
         items: {
             type: 'array',
             default: []
