@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Flip from "gsap/Flip";
+import { smoothScroll } from "./smoothscroll";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -14,6 +15,11 @@ export default class Page {
     this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
   }
   heroprepare() {
+    smoothScroll.scrollTo(0, {
+      force: true,
+      immediate: true,
+    });
+    
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
     this.state = Flip.getState(

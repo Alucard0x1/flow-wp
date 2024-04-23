@@ -25,6 +25,14 @@ export default class Smoothscroll {
 
     smoothScroll.on("scroll", ScrollTrigger.update);
 
+    setTimeout(() => {
+      smoothScroll.scrollTo(0, {
+        force: true,
+        immediate: true,
+      });
+    }, 50);
+
+
     gsap.ticker.add((time) => {
       smoothScroll.raf(time * 1000);
     });
