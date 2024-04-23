@@ -120,13 +120,13 @@ export default class Page {
       },
       {
         borderTopLeftRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderTopRightRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomLeftRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomRightRadius:
-          "calc(20 / var(--vw) * var(--scaler) * var(--multiplier))",
+          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
