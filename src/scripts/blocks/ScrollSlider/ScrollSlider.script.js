@@ -16,7 +16,8 @@ const blockData = {
                     showLabel: true,
                     link: {
                         text: 'Link',
-                        url: '#'
+                        url: '#',
+                        newTab: false
                     }
                 }
             ]
