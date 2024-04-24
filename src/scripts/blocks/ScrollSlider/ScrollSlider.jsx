@@ -53,7 +53,9 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                             {attributes.items.map((item, index) => (
                                 <div className="media-item-wrapper" style={{ zIndex: attributes.items.length - 1 - index }}>
                                     {item.image != null && item.image.type == 'video' ?
-                                        <video className='media-item' src={item.image.url} autoPlay loop playsInline muted />
+                                        <video className='media-item lazy' data-src={item.image.url} autoPlay loop playsInline muted
+                                            src={isSelected ? item.image.url : null}
+                                        />
                                         :
                                         <div className="media-item background-image"
                                             style={{
@@ -152,9 +154,13 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
 
                                 {item.image != null && item.image.type == 'video' ?
                                     <>
-                                        <video src={item.image.url} autoPlay loop playsInline muted className="desktop" />
+                                        <video data-src={item.image.url} autoPlay loop playsInline muted className="desktop lazy"
+                                            src={isSelected ? item.image.url : null}
+                                        />
                                         {item.imagePortrait != null &&
-                                            <video src={item.imagePortrait.url} autoPlay loop playsInline muted className="portrait" />
+                                            <video data-src={item.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy"
+                                                src={isSelected ? item.imagePortrait.url : null}
+                                            />
                                         }
                                     </>
                                     :
