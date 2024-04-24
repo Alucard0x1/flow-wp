@@ -24,7 +24,8 @@ mix.js('src/scripts/app.js', '')
   .js('src/scripts/blocks.js', '')
   .react()
   .sass('src/styles/app.scss', '', {}, postcssConfig.plugins)
-  .sass('src/styles/main.scss', '', {}, postcssConfig.plugins);
+  .sass('src/styles/main.scss', '', {}, postcssConfig.plugins)
+  .sass('src/styles/blocks.scss', '', {}, postcssConfig.plugins);
 
 if (mix.inProduction()) {
   mix.version();
@@ -50,6 +51,11 @@ mix.extend('addWebpackLoaders', (webpackConfig, loaderRules) => {
 mix.addWebpackLoaders([
   {
     test: /\.jsx?$/,
+    exclude: /node_modules/,
+    use: 'webpack-import-glob-loader'
+  },
+  {
+    test: /\.scss?$/,
     exclude: /node_modules/,
     use: 'webpack-import-glob-loader'
   }
