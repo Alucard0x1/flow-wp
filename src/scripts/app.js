@@ -1,3 +1,5 @@
 import MotionInit from "./motion/init";
 
-new MotionInit();
+window.addEventListener('DOMContentLoaded', function () {
+  new MotionInit();
+});
