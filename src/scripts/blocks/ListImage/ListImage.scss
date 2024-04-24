@@ -129,6 +129,13 @@
             height: 100%;
             flex: 0 0 fn.toVw(984);
             width: fn.toVw(984);
+            border-radius: fn.toVw(20);
+            background-color: clr.$brown-10;
+            overflow: hidden;
+
+            @include mx.phone {
+                border-radius: fn.toVw(12);
+            }
 
             @include mx.phone {
                 flex: unset;
@@ -150,11 +157,6 @@
                 height: 100%;
                 background-size: cover;
                 background-position: center;
-                border-radius: fn.toVw(20);
-
-                @include mx.phone {
-                    border-radius: fn.toVw(12);
-                }
             }
 
             video {
