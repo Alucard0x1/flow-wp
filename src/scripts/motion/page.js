@@ -209,19 +209,6 @@ export default class Page {
       0
     );
 
-    gsap.to(".text-image", {
-      opacity: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".text-image .image-wrapper",
-        start: "center center",
-        end: "+=35%",
-        scrub: true,
-        pin: true,
-        invalidateOnRefresh: true,
-      },
-    });
-
     // const tlDescriptionAnim = gsap.timeline({
     //   paused: true,
     // });
