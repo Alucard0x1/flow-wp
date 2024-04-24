@@ -2,6 +2,7 @@ import Smoothscroll from "./smoothscroll";
 import MotionText from "./text";
 import Page from "./page";
 import Loading from "./preloader";
+import Resize from "./resize";
 
 export const Preloader = new Loading();
 export const MotionPage = new Page();
@@ -25,5 +26,7 @@ export default class MotionInit {
     MotionPage.amnities();
     MotionPage.philosophy();
     MotionPage.footer();
+
+    new Resize();
   }
 }
