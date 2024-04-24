@@ -5,6 +5,6 @@ var aLazyLoad = new LazyLoad({
   /* options here */
 });
 
-window.addEventListener("load", () => {
+window.addEventListener('DOMContentLoaded', function () {
   new MotionInit();
 });
