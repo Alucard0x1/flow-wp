@@ -80,6 +80,7 @@
                 height: 100%;
                 overflow: hidden;
                 border-radius: fn.toVw(20);
+                background-color: clr.$brown-10;
 
                 @include mx.phone {
                     border-radius: fn.toVw(12);

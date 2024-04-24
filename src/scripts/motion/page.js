@@ -38,7 +38,7 @@ export default class Page {
         endTrigger: ".map-intro",
         pin: true,
         scrub: true,
-        invaludateOnRefresh: true,
+        // invaludateOnRefresh: true,
         refreshPriority: 1,
       },
     });
