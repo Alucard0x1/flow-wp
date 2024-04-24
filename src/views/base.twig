@@ -3,7 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Flow</title>
+		<title>{{post.title}}
+			–
+			{{site.name}}</title>
 		{{ function('wp_head') }}
 	</head>
 	<body>
@@ -11,11 +13,10 @@
 		<div class="preloader"></div>
 
 		{% include 'navbar.twig' %}
-		<main class="main">
-			{% block content %}{% endblock %}
-		</main>
-		{{ function('wp_footer') }}
+		<main class="main"> {% block content %}{% endblock %}
+			</main>
+			{{ function('wp_footer') }}
 
-		{% include 'footer.twig' %}
-	</body>
-</html>
+			{% include 'footer.twig' %}
+		</body>
+	</html>
