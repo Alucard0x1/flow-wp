@@ -270,7 +270,7 @@ export default class Page {
           const textDescription = document.querySelector(".list-image .content-inner p").offsetHeight;
           const listContentHeight = document.querySelector(".list-image .list-wrapper-content").offsetHeight;
           const triggerHeight = document.querySelector(".list-image").offsetHeight;
-          const maxScroll = (listContentHeight + textTitle * 2 + textDescription * 2) - triggerHeight;
+          const maxScroll = (listContentHeight + (textDescription ? textTitle * 2 + textDescription * 2 : textTitle * 2.8)) - triggerHeight;
           return -maxScroll;
         }
       },
