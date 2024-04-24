@@ -35,7 +35,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
 
                     <a href={!isSelected ? attributes.url : '#'} target="_blank" rel="nofollow noopener">
                         {attributes.image != null && attributes.image.type == 'video' ?
-                            <video src={attributes.image.url} autoPlay loop playsInline muted />
+                            <video data-src={attributes.image.url} autoPlay loop playsInline muted className="lazy" />
                             :
                             <>
                                 <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" className="desktop" />

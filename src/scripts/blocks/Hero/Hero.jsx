@@ -39,9 +39,9 @@ const Hero = ({ setAttributes, attributes, isSelected }) => {
                 }
                 {attributes.image != null && attributes.image.type == 'video' ?
                     <>
-                        <video src={attributes.image.url} autoPlay loop playsInline muted className="desktop" />
+                        <video data-src={attributes.image.url} autoPlay loop playsInline muted className="desktop lazy" />
                         {attributes.imagePortrait != null &&
-                            <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait" />
+                            <video data-src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy" />
                         }
                     </>
                     :
