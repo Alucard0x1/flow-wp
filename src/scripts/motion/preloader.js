@@ -106,13 +106,15 @@ export default class Loading {
       ScrollTrigger.refresh();
     };
 
-    return Promise.all([
-      font1Load,
-      font2Load,
-      // preloadImages(document.querySelector("body")),
-    ]).finally(() => {
-      this.loaded();
-    });
+
+    this.loaded();
+    // return Promise.all([
+    //   font1Load,
+    //   font2Load,
+    //   // preloadImages(document.querySelector("body")),
+    // ]).finally(() => {
+    //   this.loaded();
+    // });
   }
 
   async Enter(_callback) {
