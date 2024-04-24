@@ -79,6 +79,11 @@
         h1 {
             margin: 0;
             opacity: 0;
+            line-height: fn.toVw(72);
+
+            @include mx.phone {
+                line-height: fn.toVw(44);
+            }
         }
 
         @include mx.phone {

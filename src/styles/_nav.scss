@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: fn.toVw(20) fn.toVw(20) 0;
+    padding: fn.toVw(20) fn.toVw(22) 0;
 
     @include mx.phone {
         padding: fn.toVw(16) fn.toVw(22) 0 fn.toVw(22);
@@ -42,7 +42,7 @@
     &-logo {
         border-radius: fn.toVw(12);
         background: clr.$brown-50;
-        padding: fn.toVw(20) 0 fn.toVw(20) fn.toVw(18);
+        padding: fn.toVw(20) fn.toVw(20) fn.toVw(18);
         width: fn.toVw(116);
         transition: all .25s ease-out;
         position: relative;
@@ -58,18 +58,19 @@
                 display: block;
                 position: absolute;
                 top: fn.toVw(20);
-                left: fn.toVw(18);
+                left: fn.toVw(20);
                 background: url('../../assets/images/logo-scroll.png');
                 background-repeat: no-repeat;
                 background-size: contain;
 
                 width: fn.toVw(20);
-                height: fn.toVw(21);
+                height: fn.toVw(20);
             }
 
             img {
                 transition: opacity .25s ease-out;
                 height: fn.toVw(21);
+                width: 100%;
             }
         }
     }
@@ -121,7 +122,7 @@
 
             .book-btn {
                 display: block;
-                padding: fn.toVw(26) fn.toVw(20);
+                padding: fn.toVw(20) fn.toVw(20);
                 background: clr.$brown-39;
                 border-radius: fn.toVw(10);
                 color: clr.$brown-10;
