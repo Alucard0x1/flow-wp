@@ -4,7 +4,7 @@ import useRichText from '../../hooks/useRichText'
 const { MediaUpload } = wp.blockEditor
 const { Button, Icon } = wp.components
 
-const ListImage = ({ attributes, setAttributes, isSelected }) => {
+const ListImage = ({ attributes, setAttributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
@@ -81,11 +81,11 @@ const ListImage = ({ attributes, setAttributes, isSelected }) => {
                     {attributes.image != null && attributes.image.type == 'video' ?
                         <>
                             <video data-src={attributes.image.url} autoPlay loop playsInline muted className="desktop lazy"
-                                src={isSelected ? attributes.image.url : null}
+                                src={edit ? attributes.image.url : null}
                             />
                             {attributes.imagePortrait != null &&
                                 <video data-src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy"
-                                    src={isSelected ? attributes.imagePortrait.url : null}
+                                    src={edit ? attributes.imagePortrait.url : null}
                                 />
                             }
                         </>

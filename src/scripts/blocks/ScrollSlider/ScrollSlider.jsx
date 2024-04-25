@@ -4,11 +4,11 @@ import useRichText from '../../hooks/useRichText'
 const { MediaUpload, URLInputButton, InspectorControls } = wp.blockEditor
 const { Button, Icon, PanelBody, PanelRow, ToggleControl } = wp.components
 
-const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
+const ScrollSlider = ({ attributes, setAttributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className={"scroll-slider" + (isSelected ? ' is-selected' : '')}>
+        <section className={"scroll-slider" + (edit ? ' is-selected' : '')}>
             {isSelected &&
                 <Button isPrimary onClick={() => setAttributes({ items: [...attributes.items, { image: null, title: 'Title', description: 'Description', link: { text: '', url: '', newTab: false } }] })}>
                     <Icon icon="plus" />
@@ -47,14 +47,14 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                 </InspectorControls>
             }
             <div className="slide-wrapper">
-                {!isSelected &&
+                {!edit &&
                     <div className="container">
                         <div className="media-wrapper">
                             {attributes.items.map((item, index) => (
                                 <div className="media-item-wrapper" style={{ zIndex: attributes.items.length - 1 - index }}>
                                     {item.image != null && item.image.type == 'video' ?
                                         <video className='media-item lazy' data-src={item.image.url} autoPlay loop playsInline muted
-                                            src={isSelected ? item.image.url : null}
+                                            src={edit ? item.image.url : null}
                                         />
                                         :
                                         <div className="media-item background-image"
@@ -108,7 +108,7 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                     </div>
                 }
 
-                {isSelected &&
+                {edit &&
                     attributes.items.map((item, index) => (
                         <div className={"container" + (index == 0 ? ' active' : '')} key={index} data-index={(index + 1).toString().padStart(2, '0')}>
                             <div className="media-wrapper">
@@ -155,11 +155,11 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected }) => {
                                 {item.image != null && item.image.type == 'video' ?
                                     <>
                                         <video data-src={item.image.url} autoPlay loop playsInline muted className="desktop lazy"
-                                            src={isSelected ? item.image.url : null}
+                                            src={edit ? item.image.url : null}
                                         />
                                         {item.imagePortrait != null &&
                                             <video data-src={item.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy"
-                                                src={isSelected ? item.imagePortrait.url : null}
+                                                src={edit ? item.imagePortrait.url : null}
                                             />
                                         }
                                     </>

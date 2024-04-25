@@ -5,6 +5,29 @@
 
 #editor {
     .scroll-slider {
+        .slide-wrapper {
+            height: unset;
+
+            .container {
+                height: 100vh;
+
+                .media-wrapper {
+                    .media-item-wrapper {
+                        display: block;
+                        height: fn.toVw(500);
+                    }
+                }
+
+                .content-wrapper {
+                    .slider-action {
+                        .btn {
+                            position: relative;
+                        }
+                    }
+                }
+            }
+        }
+
         .media-wrapper {
             flex: 0 0 50%;
         }

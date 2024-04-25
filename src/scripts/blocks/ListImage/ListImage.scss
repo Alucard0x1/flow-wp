@@ -134,15 +134,13 @@
             overflow: hidden;
 
             @include mx.phone {
-                border-radius: fn.toVw(12);
-            }
-
-            @include mx.phone {
                 flex: unset;
                 width: 100%;
                 height: fn.toVw(434);
                 padding: fn.toVw(6);
                 background-color: clr.$purple;
+
+                border-radius: 0;
                 border-top-right-radius: fn.toVw(10);
                 border-top-left-radius: fn.toVw(10);
             }
@@ -176,6 +174,7 @@
 
                     @include mx.phone {
                         display: block;
+                        border-radius: fn.toVw(10);
                     }
                 }
             }

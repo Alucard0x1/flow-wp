@@ -1,5 +1,9 @@
 @use 'mixins' as mx;
 
+#editor {
+    --vw: 1920;
+}
+
 :root {
     --color-text: #fff;
     --color-bg: #000;
