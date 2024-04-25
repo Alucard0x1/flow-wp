@@ -5,6 +5,12 @@
 #editor {
     .hero {
         position: relative;
+
+        &-content {
+            h1 {
+                opacity: 1;
+            }
+        }
     }
 }
 

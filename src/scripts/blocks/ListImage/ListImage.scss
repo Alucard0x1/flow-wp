@@ -3,6 +3,17 @@
 @use '../../../styles/colors' as clr;
 
 #editor {
+    .list-image {
+        height: unset;
+
+        .container {
+            .image-wrapper {
+                flex: 0 0 50%;
+                width: 50%;
+            }
+        }
+    }
+
     .content-inner {
         overflow-y: auto;
     }
