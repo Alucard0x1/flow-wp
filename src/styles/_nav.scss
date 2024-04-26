@@ -79,7 +79,6 @@
         .contact-wrapper {
             display: flex;
             align-items: center;
-            padding: fn.toVw(1) fn.toVw(1) fn.toVw(1) fn.toVw(21);
             border-radius: fn.toVw(10);
             background-color: clr.$brown-50;
 
@@ -122,8 +121,7 @@
 
             .book-btn {
                 display: block;
-                padding: fn.toVw(20) fn.toVw(20);
-                background: clr.$brown-39;
+                padding: fn.toVw(20) fn.toVw(26);
                 border-radius: fn.toVw(10);
                 color: clr.$brown-10;
 
