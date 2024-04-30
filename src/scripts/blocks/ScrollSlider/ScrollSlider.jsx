@@ -53,9 +53,15 @@ const ScrollSlider = ({ attributes, setAttributes, isSelected, edit }) => {
                             {attributes.items.map((item, index) => (
                                 <div className="media-item-wrapper" style={{ zIndex: attributes.items.length - 1 - index }}>
                                     {item.image != null && item.image.type == 'video' ?
-                                        <video className='media-item lazy' data-src={item.image.url} autoPlay loop playsInline muted
-                                            src={edit ? item.image.url : null}
-                                        />
+                                        <div className="media-item">
+                                            <video data-src={item.image.url} autoPlay loop playsInline muted className="desktop lazy"
+                                                src={edit ? item.image.url : null}
+                                            />
+                                            {item.imagePortrait != null &&
+                                                <video data-src={item.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy"
+                                                    src={edit ? item.imagePortrait.url : null}
+                                                />}
+                                        </div>
                                         :
                                         <div className="media-item background-image"
                                             style={{
