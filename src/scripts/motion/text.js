@@ -13,11 +13,13 @@ export default class MotionText {
   init() {
     this.el.forEach((el) => {
       const char = el.querySelectorAll(".char");
+      const motionShort = el.hasAttribute('data-motion-text-short');
+
       gsap.from(char, {
         opacity: 0,
         ease: "none",
         stagger: {
-          each: 0.03,
+          each: motionShort ? 0.002 : 0.03,
         },
         scrollTrigger: {
           trigger: el,
