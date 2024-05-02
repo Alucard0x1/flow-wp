@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
   new MotionInit();
 
   const loader = new Loader({
-    apiKey: atob("QUl6YVN5QmIyeUtUZ0N5NVBuVHdiWml1TTVqOU1IaDdNYVo2dUxRCg=="),
+    apiKey: atob("QUl6YVN5QndVVkNxOC1BQklZd2dCTnRkNXROclJzUUlLNjRGSEdRCg=="),
     version: "weekly",
   });
 
