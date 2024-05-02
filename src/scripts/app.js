@@ -18,19 +18,7 @@ window.addEventListener('load', function () {
       "marker",
     );
 
-    const map = new Map(document.querySelector('.map-intro .image-wrapper #map'), {
-      mapId: 'f621342c3a910fdc',
-      mapTypeId: 'roadmap',
-      streetViewControl: false,
-      tiltInteractionEnabled: false,
-      mapTypeControl: false,
-      headingInteractionEnabled: false,
-      isFractionalZoomEnabled: false,
-      center: { lat: -6.2092653, lng: 106.8211186 },
-      zoom: 17
-    });
-
-    map.styles = [
+    const styles = [
       {
         "elementType": "geometry",
         "stylers": [
@@ -191,11 +179,30 @@ window.addEventListener('load', function () {
       }
     ];
 
+    const mmp = new Map(document.querySelector('.map-intro .image-wrapper #map'), {
+      mapId: 'f621342c3a910fdc',
+      mapTypeId: 'roadmap',
+      streetViewControl: false,
+      tiltInteractionEnabled: false,
+      mapTypeControl: false,
+      headingInteractionEnabled: false,
+      isFractionalZoomEnabled: false,
+      center: { lat: -6.2092653, lng: 106.8211186 },
+      zoom: 17,
+      styles
+    });
+
+    var styledMap = new google.maps.StyledMapType(
+      styles, {});
+
+    mmp.mapTypes.set('flow', styledMap);
+    mmp.setMapTypeId('flow')
+
     const iconImage = document.createElement("img");
     iconImage.src = '/wp-content/themes/flow-wp/assets/images/marker.svg';
 
     const marker = new google.maps.marker.AdvancedMarkerElement({
-      map,
+      map: mmp,
       position: new google.maps.LatLng(-6.2092653, 106.8211186),
       content: iconImage,
     });
