@@ -206,5 +206,9 @@ window.addEventListener('load', function () {
       position: new google.maps.LatLng(-6.2092653, 106.8211186),
       content: iconImage,
     });
+
+    google.maps.event.addListener(marker, 'click', function () {
+      window.location.href = 'https://maps.app.goo.gl/eW524AugLRnepRt87';
+    });
   });
 });
