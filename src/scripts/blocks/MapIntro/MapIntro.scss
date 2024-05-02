@@ -21,6 +21,7 @@
     .container {
         .image-wrapper {
             margin: 0 auto;
+            border-radius: fn.toVw(20);
 
             width: fn.toVw(974);
             height: fn.toVw(530);
@@ -32,6 +33,7 @@
                 width: auto;
                 height: fn.toVw(393);
                 margin: 0 fn.toVw(20);
+                border-radius: fn.toVw(12);
             }
 
             .description-wrapper {
