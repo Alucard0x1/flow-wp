@@ -12,7 +12,7 @@ const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
             <div className="container">
                 <div className="content-wrapper">
                     <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
-                    <Text tagName="h3" value={attributes.subtitle} onChange={(subtitle) => setAttributes({ subtitle })} data-split-text data-motion-text />
+                    <Text tagName="h3" value={attributes.subtitle} onChange={(subtitle) => setAttributes({ subtitle })} data-split-text data-motion-text data-motion-text-short />
 
                     <div className="description-wrapper">
                         <div class="quote">
