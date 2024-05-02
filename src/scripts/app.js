@@ -208,7 +208,7 @@ window.addEventListener('load', function () {
     });
 
     google.maps.event.addListener(marker, 'click', function () {
-      window.location.href = 'https://maps.app.goo.gl/eW524AugLRnepRt87';
+      window.open('https://maps.app.goo.gl/eW524AugLRnepRt87', true);
     });
   });
 });
