@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
       "marker",
     );
 
-    const map = new Map(document.querySelector('.map-intro .image-wrapper'), {
+    const map = new Map(document.querySelector('.map-intro .image-wrapper #map'), {
       mapId: 'f621342c3a910fdc',
       center: { lat: -6.2092653, lng: 106.8211186 },
       zoom: 17,

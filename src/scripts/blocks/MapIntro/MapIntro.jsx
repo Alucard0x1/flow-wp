@@ -11,6 +11,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
         <section className="map-intro">
             <div className="container">
                 <div className="image-wrapper">
+                    <div id="map"></div>
                     {isSelected &&
                         <div className="image-picker">
                             <MediaUpload
