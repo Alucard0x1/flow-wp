@@ -62,5 +62,24 @@ function enqueue_assets()
     );
 }
 
+function register_custom_post_type()
+{
+    register_post_type('solutions', [
+        'labels' => [
+            'name' => 'Solutions',
+            'singular_name' => 'Solution'
+        ],
+        'rewrite' => [
+            'slug' => 'solutions'
+        ],
+        'menu_icon' => 'dashicons-groups',
+        'public' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'has_archive' => false
+    ]);
+}
+
 add_action('enqueue_block_editor_assets', 'enqueue_blocks');
 add_action('wp_enqueue_scripts', 'enqueue_assets', 100);
+add_action('init', 'register_custom_post_type');
