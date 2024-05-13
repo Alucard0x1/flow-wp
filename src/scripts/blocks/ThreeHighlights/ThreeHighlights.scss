@@ -1,0 +1,47 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.three-highlights {
+    .container {
+        display: flex;
+        padding: fn.toVw(228) fn.toVw(118) fn.toVw(47) fn.toVw(42);
+
+        .image-wrapper {
+            flex: 0 0 50%;
+            width: 50%;
+
+            img {
+                width: 100%;
+                border-radius: fn.toVw(18);
+            }
+        }
+
+        .content-wrapper {
+            flex: 0 0 50%;
+            width: 50%;
+            padding: 0 0 0 fn.toVw(118);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .content-item {
+                width: 100%;
+
+                &:not(:last-child) {
+                    margin-bottom: fn.toVw(68);
+                }
+
+                .content-title {
+                    font-size: fn.toVw(38);
+                    letter-spacing: -0.76px;
+                    opacity: 0.9;
+
+                    margin: 0;
+                    padding: fn.toVw(8) 0 fn.toVw(18);
+                    border-bottom: 1px solid clr.$brown-20;
+                }
+            }
+        }
+    }
+}
