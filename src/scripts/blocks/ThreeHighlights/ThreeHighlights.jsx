@@ -28,7 +28,7 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                     <div className="content-item">
                         <p className="num">01.</p>
                         <p className="content-title">Take a Tour</p>
-                        <p>
+                        <p className="content-desc">
                             Lorem ipsum dolor sit amet
                         </p>
                     </div>

@@ -65,4 +65,21 @@
             height: fn.toVw(28);
         }
     }
+
+    &-rounded {
+        padding: fn.toVw(16);
+        border: none;
+        margin: 0;
+
+        background: clr.$brown-15;
+        border-radius: fn.toVw(6);
+        color: clr.$white;
+        font-weight: 400;
+        font-size: fn.toVw(14);
+
+
+        &::before {
+            content: unset;
+        }
+    }
 }
