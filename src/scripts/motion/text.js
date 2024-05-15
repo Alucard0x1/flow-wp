@@ -11,9 +11,12 @@ export default class MotionText {
   }
 
   init() {
+    if (!this.el.length) return;
     this.el.forEach((el) => {
       const char = el.querySelectorAll(".char");
       const motionShort = el.hasAttribute('data-motion-text-short');
+
+      if (!char.length) return;
 
       gsap.from(char, {
         opacity: 0,

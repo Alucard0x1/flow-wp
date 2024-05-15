@@ -2,6 +2,12 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 export default class Googlemap {
   constructor() {
+    const targetMap = document.querySelector(
+      ".map-intro .image-wrapper #map"
+    );
+
+    if (!targetMap) return;
+
     const loader = new Loader({
       apiKey: atob("QUl6YVN5QndVVkNxOC1BQklZd2dCTnRkNXROclJzUUlLNjRGSEdRCg=="),
       version: "weekly",
@@ -172,10 +178,6 @@ export default class Googlemap {
           ],
         },
       ];
-
-      const targetMap = document.querySelector(
-        ".map-intro .image-wrapper #map"
-      );
 
       if (targetMap != null) {
         const mmp = new Map(targetMap, {
