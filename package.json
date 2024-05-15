@@ -24,6 +24,7 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
     "@studio-freight/lenis": "^1.0.42",
+    "@unseenco/taxi": "^1.5.3",
     "fontfaceobserver": "^2.3.0",
     "gsap": "npm:@gsap/shockingly@^3.12.5",
     "imagesloaded": "^5.0.0",

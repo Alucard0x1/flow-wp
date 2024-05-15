@@ -1,32 +1,39 @@
+import Default from "./default";
 import Smoothscroll from "./smoothscroll";
-import MotionText from "./text";
 import Page from "./page";
-import Loading from "./preloader";
 import Resize from "./resize";
+import MotionText from "./text";
+import Googlemap from "./googlemap";
 
-export const Preloader = new Loading();
 export const MotionPage = new Page();
 export default class MotionInit {
-  constructor() {
-    this.init();
-  }
+  first() {
+    Default();
 
-  init() {
     new Smoothscroll();
 
-    Preloader.First(() => {
-      MotionPage.hero();
-      new MotionText();
-      MotionPage.sliderscroll();
-    });
+    new Resize();
+  }
 
+  afterPreloader() {
+    MotionPage.hero();
+    new MotionText();
+    MotionPage.sliderscroll();
+    MotionPage.footer();
+  }
+
+  enter() {
     MotionPage.heroprepare();
     MotionPage.heroscroll();
     MotionPage.map();
     MotionPage.amnities();
     MotionPage.philosophy();
-    MotionPage.footer();
 
-    new Resize();
+    new Googlemap();
+  }
+
+  reinit() {
+    this.enter();
+    this.afterPreloader();
   }
 }

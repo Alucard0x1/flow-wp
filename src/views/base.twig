@@ -10,11 +10,14 @@
 	</head>
 	<body>
 
-		<div class="preloader"></div>
+		{% include 'preloader.twig' %}
 
 		{% include 'navbar.twig' %}
-		<main class="main"> {% block content %}{% endblock %}
-			</main>
+		<main class="main" data-taxi>
+			<div data-taxi-view>
+				{% block content %}{% endblock %}
+			</div>
+		</main>
 			{{ function('wp_footer') }}
 
 			{% include 'footer.twig' %}
