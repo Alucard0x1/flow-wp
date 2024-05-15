@@ -12,16 +12,11 @@ const delay = (n) => {
 };
 
 const transitionLeave = () => {
-  const menu = document.querySelector(".menu");
-  const hamburger = document.querySelector(".header-hamburger");
-  const scenegradient = [...document.querySelectorAll(".scene-gradient")];
+  // const menu = document.querySelector(".menu");
+  // const hamburger = document.querySelector(".header-hamburger");
 
-  menu.classList.remove("active");
-  hamburger.classList.remove("active");
-
-  scenegradient.forEach((el) => {
-    el.classList.remove("active");
-  });
+  // menu.classList.remove("active");
+  // hamburger.classList.remove("active");
 };
 
 const globalLeave = (animation = true) => {
@@ -33,18 +28,36 @@ const globalLeave = (animation = true) => {
       },
     });
 
-    tlEnd.to("#loading", {
-      opacity: 1,
-      display: "block",
+    tlEnd.to(".preloader", {
+      autoAlpha: 1,
       overwrite: true,
     });
   }
 
-  transitionLeave();
+  // transitionLeave();
+};
+
+const globalEnter = (animation = true) => {
+  if (animation) {
+    const tlEnter = gsap.timeline({
+      defaults: {
+        duration: "0.8",
+        ease: "power2.out",
+      },
+    });
+
+    tlEnter.to(".preloader", {
+      autoAlpha: 0,
+      overwrite: true,
+    });
+  }
+
+  // transitionLeave();
 };
 
 export class TransitionDefault extends Transition {
   async onLeave({ done }) {
+    console.log('transition: onLeave');
     globalLeave();
 
     const delayDuration = configAnimation.transitionDuration * 1000;
@@ -54,6 +67,9 @@ export class TransitionDefault extends Transition {
   }
 
   async onEnter({ done }) {
+    console.log('transition: onenter');
+    globalEnter();
+
     done();
   }
 }
