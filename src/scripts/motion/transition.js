@@ -57,7 +57,6 @@ const globalEnter = (animation = true) => {
 
 export class TransitionDefault extends Transition {
   async onLeave({ done }) {
-    console.log('transition: onLeave');
     globalLeave();
 
     const delayDuration = configAnimation.transitionDuration * 1000;
@@ -67,7 +66,6 @@ export class TransitionDefault extends Transition {
   }
 
   async onEnter({ done }) {
-    console.log('transition: onenter');
     globalEnter();
 
     done();

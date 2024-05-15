@@ -11,14 +11,17 @@ export default class Page {
 
     this.tlHero = null;
 
-    this.heroImage = document.querySelector(".hero .image-wrapper");
-    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+    this.heroImage = null;
+    this.scaledImage = null;
   }
   heroprepare() {
     smoothScroll.scrollTo(0, {
       force: true,
       immediate: true,
     });
+
+    this.heroImage = document.querySelector(".hero .image-wrapper");
+    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
 
     if (!this.scaledImage && !this.heroImage) return;
 
@@ -107,6 +110,10 @@ export default class Page {
     }
 
     if (!this.tlHero) return;
+
+    const tlHeroChar = [...document.querySelectorAll('.hero .hero-content .char')];
+
+    if (!tlHeroChar.length) return;
     this.tlHero.fromTo(
       ".hero .hero-content .char",
       {
@@ -140,7 +147,10 @@ export default class Page {
   }
 
   heroscroll() {
-    if (!this.tlHero) return;
+    this.heroImage = document.querySelector(".hero .image-wrapper");
+    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+
+    if (!this.scaledImage && !this.heroImage) return;
 
     this.tlHero.fromTo(
       ".hero .image-wrapper, .scaled-image .image-wrapper",
