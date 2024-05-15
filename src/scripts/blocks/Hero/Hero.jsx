@@ -8,7 +8,7 @@ const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className={"hero" + (attributes.still ? ' still' : '')}>
+        <section className={"hero" + (attributes.still ? ' still' : '') + (attributes.shrink ? ' shrink' : '')}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
@@ -16,6 +16,16 @@ const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
                             label="Still"
                             checked={attributes.still}
                             onChange={(still) => setAttributes({ still })}
+                        />
+                        <ToggleControl
+                            label="Shrink height"
+                            checked={attributes.shrink}
+                            onChange={(shrink) => setAttributes({ shrink })}
+                        />
+                        <ToggleControl
+                            label="Show description"
+                            checked={attributes.showDesc}
+                            onChange={(showDesc) => setAttributes({ showDesc })}
                         />
                     </PanelBody>
                 </InspectorControls>
@@ -74,6 +84,12 @@ const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
                         onChange={(title) => setAttributes({ title })}
                         data-split-text
                     />
+
+                    {attributes.showDesc &&
+                        <Text tagName="p" value={attributes.description}
+                            onChange={(description) => setAttributes({ description })}
+                        />
+                    }
                 </div>
             </div>
         </section>

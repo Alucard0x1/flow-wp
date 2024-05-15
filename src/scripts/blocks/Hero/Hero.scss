@@ -26,6 +26,15 @@
         position: relative;
     }
 
+    &.shrink {
+        height: 60vh;
+
+        .hero-content {
+            left: fn.toVw(143);
+            bottom: fn.toVw(85);
+        }
+    }
+
     .image-wrapper {
         width: 100%;
         height: 100%;
@@ -94,6 +103,10 @@
             @include mx.phone {
                 line-height: fn.toVw(44);
             }
+        }
+
+        p {
+            font-size: fn.toVw(15);
         }
 
         @include mx.phone {
