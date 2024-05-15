@@ -18,7 +18,7 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                                 value={item.title}
                                 onChange={(title) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, title } : item) })}
                             />
-                            <Text tagName="p"
+                            <Text tagName="p" class="content-desc"
                                 value={item.description}
                                 onChange={(description) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, description } : item) })}
                             />

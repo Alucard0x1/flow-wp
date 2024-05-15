@@ -7,8 +7,8 @@
         padding: fn.toVw(228) fn.toVw(118) fn.toVw(47) fn.toVw(42);
 
         .image-wrapper {
-            flex: 0 0 50%;
-            width: 50%;
+            flex: 0 0 61%;
+            width: 61%;
 
             img {
                 width: 100%;
@@ -17,8 +17,8 @@
         }
 
         .content-wrapper {
-            flex: 0 0 50%;
-            width: 50%;
+            flex: 0 0 39%;
+            width: 39%;
             padding: 0 0 0 fn.toVw(118);
 
             display: flex;
@@ -40,6 +40,10 @@
                     margin: 0;
                     padding: fn.toVw(8) 0 fn.toVw(18);
                     border-bottom: 1px solid clr.$brown-20;
+                }
+
+                .content-desc {
+                    margin-right: fn.toVw(32)
                 }
             }
         }
