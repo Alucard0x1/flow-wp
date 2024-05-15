@@ -12,6 +12,7 @@ const SideImage = ({ attributes, setAttributes, isSelected }) => {
                 <div className="content-wrapper">
                     <Text tagName="p" className="heading"
                         value={attributes.heading} onChange={(heading) => setAttributes({ heading })}
+                        data-split-text data-motion-text
                     />
 
                     <Text tagName="p" className="description"
