@@ -82,14 +82,13 @@ a {
 
     .container {
         display: flex;
-        padding: 0 fn.toVw(40) fn.toVw(136);
-        margin: 0 fn.toVw(-14);
+        padding: 0 fn.toVw(40 - 14) fn.toVw(136);
 
         .content-item {
             flex: 0 0 (math.div(1, 3) * 100%);
             width: math.div(1, 3) * 100%;
 
-            margin: 0 fn.toVw(14);
+            padding: 0 fn.toVw(14);
 
             .image-wrapper {
                 img {
