@@ -86,6 +86,26 @@ export default class Page {
       );
     }
 
+    const desc = document.querySelector(".hero-content p");
+
+    if (desc) {
+      gsap.fromTo(
+        desc,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          delay: 0.3,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.15,
+          },
+        }
+      );
+    }
+
     if (!this.tlHero) return;
     this.tlHero.fromTo(
       ".hero .hero-content .char",
