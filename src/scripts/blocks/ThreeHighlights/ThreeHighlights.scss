@@ -5,6 +5,7 @@
     .container {
         display: flex;
         padding: fn.toVw(228) fn.toVw(118) fn.toVw(47) fn.toVw(42);
+        background-color: clr.$brown-65;
 
         .image-wrapper {
             flex: 0 0 61%;
