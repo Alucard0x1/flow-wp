@@ -3,7 +3,6 @@
 @use '../../../styles/colors' as clr;
 
 .image-background {
-    margin-bottom: fn.toVw(227);
     padding: fn.toVw(12) fn.toVw(10);
 
     &.mb-0 {
@@ -71,8 +70,8 @@
             }
         }
 
-        padding: fn.toVw(57) fn.toVw(37) fn.toVw(33);
-        width: fn.toVw(358);
+        padding: fn.toVw(67) fn.toVw(62);
+        width: fn.toVw(565);
 
         @include mx.phone {
             width: fn.toVw(235);
@@ -106,13 +105,14 @@
         }
 
         h2 {
-            margin: 0 0 fn.toVw(43) 0;
-            font-size: fn.toVw(64);
-            line-height: fn.toVw(50);
+            margin: 0 0 fn.toVw(19) 0;
+            font-size: fn.toVw(52);
+            line-height: fn.toVw(55);
+            letter-spacing: -0.52px;
             border-bottom: 1px solid clr.$brown-30;
             color: clr.$brown-30;
 
-            padding-bottom: fn.toVw(56);
+            padding-bottom: fn.toVw(38);
 
             @include mx.phone {
                 font-size: fn.toVw(36);
@@ -130,8 +130,9 @@
                 flex-grow: 1;
                 flex-shrink: 0;
 
-                margin: 0;
+                margin: 0 fn.toVw(28) 0 0;
                 font-weight: 400;
+                color: clr.$brown-65;
             }
 
             .content-list {
@@ -176,6 +177,7 @@
         }
 
         .num {
+            display: none;
             float: right;
             font-size: fn.toVw(20);
             letter-spacing: 0.01em;
