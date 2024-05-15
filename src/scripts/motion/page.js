@@ -20,9 +20,7 @@ export default class Page {
       immediate: true,
     });
 
-    if (this.scaledImage == null || this.tlHero == null) {
-      return
-    }
+    if (!this.scaledImage) return;
 
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
@@ -391,6 +389,7 @@ export default class Page {
 
   footer() {
     if (ScrollTrigger.isTouch) return;
+    if (ScrollTrigger.getById("footer")) return;
 
     const tl = gsap.timeline({
       defaults: {
@@ -403,6 +402,7 @@ export default class Page {
         invalidateOnRefresh: true,
         scrub: true,
         refreshPriority: -1,
+        id: "footer",
       },
     });
 

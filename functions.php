@@ -45,7 +45,7 @@ function enqueue_blocks()
 
 function enqueue_assets()
 {
-    wp_enqueue_script('assetjs-frontend', get_theme_file_uri('dist/app.js'), [], filemtime(get_theme_file_path('dist/app.js')), true);
+    wp_enqueue_script('assetjs', get_theme_file_uri('dist/app.js'), [], filemtime(get_theme_file_path('dist/app.js')), true);
 
     wp_enqueue_style(
         'flow-st-main',

@@ -30,6 +30,8 @@ export default class Loading {
       font2: "Helvetica Neue",
     };
 
+    if (!this.DOM.preloader) return;
+
     this.loadingFirst = (_callback) => {
       // smoothScroll.stop();
 
@@ -53,7 +55,6 @@ export default class Loading {
 
       tlFirst.to(this.DOM.preloader, {
         autoAlpha: 0,
-        display: "none",
       });
     };
 
@@ -68,7 +69,6 @@ export default class Loading {
 
       tlEnd.to(this.DOM.preloader, {
         autoAlpha: 0,
-        display: "none",
       });
     };
 
@@ -82,7 +82,6 @@ export default class Loading {
         },
         {
           autoAlpha: 1,
-          display: "flex",
           overwrite: true,
         }
       );

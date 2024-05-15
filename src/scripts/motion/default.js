@@ -18,7 +18,7 @@ export default function Default() {
   });
 
   ScrollTrigger.defaults({
-    start: configMotion.scrollStart,
+    start: ScrollTrigger.isTouch ? "top bottom" : configMotion.scrollStart,
   });
 
   ScrollTrigger.config({ ignoreMobileResize: true });
