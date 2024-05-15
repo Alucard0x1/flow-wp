@@ -4,15 +4,45 @@
     .container {
         display: flex;
         padding: fn.toVw(130) fn.toVw(145);
+        margin: 0 fn.toVw(-38);
 
         .content-wrapper {
-            flex: 0 0 50%;
-            width: 50%;
+            flex: 0 0 51%;
+            width: 51%;
+            padding: fn.toVw(53) fn.toVw(38);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .heading {
+                font-size: fn.toVw(40);
+                line-height: fn.toVw(48);
+                font-weight: 300;
+            }
+
+            .description {
+                font-size: fn.toVw(16);
+                line-height: fn.toVw(24);
+                font-weight: 400;
+                max-width: fn.toVw(353);
+
+                margin-left: fn.toVw(124)
+            }
         }
 
         .image-wrapper {
-            flex: 0 0 50%;
-            width: 50%;
+            flex: 0 0 49%;
+            width: 49%;
+            padding: 0 fn.toVw(38);
+
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: fn.toVw(18);
+            }
         }
     }
 }

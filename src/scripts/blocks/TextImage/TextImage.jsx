@@ -1,14 +1,25 @@
 import './TextImage.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, ToggleControl } = wp.components
 
 const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className="text-image">
+        <section className={"text-image" + (attributes.wide ? ' wide' : '')}>
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="Wider title"
+                            checked={attributes.wide}
+                            onChange={(wide) => setAttributes({ wide })}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="container">
                 <div className="content-wrapper">
                     <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />

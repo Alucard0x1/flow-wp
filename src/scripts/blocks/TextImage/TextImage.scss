@@ -8,6 +8,17 @@
     background-color: clr.$brown-15;
     color: clr.$white-5;
 
+    &.wide {
+        .container .content-wrapper {
+            margin-left: 0;
+
+            h2 {
+                max-width: fn.toVw(773);
+                margin: 0 auto;
+            }
+        }
+    }
+
     @include mx.phone {
         padding: fn.toVw(88) 0 0 0;
     }

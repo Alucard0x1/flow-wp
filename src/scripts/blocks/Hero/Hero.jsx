@@ -1,14 +1,25 @@
 import useRichText from '../../hooks/useRichText'
 import './Hero.scss'
 
-const { MediaUpload, MediaUploadCheck } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, MediaUploadCheck, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, ToggleControl } = wp.components
 
 const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className="hero">
+        <section className={"hero" + (attributes.still ? ' still' : '')}>
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="Still"
+                            checked={attributes.still}
+                            onChange={(still) => setAttributes({ still })}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="image-wrapper" data-flip-id="hero">
                 {isSelected &&
                     <MediaUploadCheck>

@@ -20,6 +20,10 @@ export default class Page {
       immediate: true,
     });
 
+    if (this.scaledImage == null || this.tlHero == null) {
+      return
+    }
+
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
     this.state = Flip.getState(
@@ -80,39 +84,43 @@ export default class Page {
       }
     );
 
-    this.tlHero.fromTo(
-      ".hero .hero-content .char",
-      {
-        opacity: 1,
-      },
-      {
-        opacity: 0,
-        duration: 0.3,
-        immediateRender: false,
-        stagger: {
-          each: 0.01,
+    if (this.tlHero != null) {
+      this.tlHero.fromTo(
+        ".hero .hero-content .char",
+        {
+          opacity: 1,
         },
-      },
-      0
-    );
+        {
+          opacity: 0,
+          duration: 0.3,
+          immediateRender: false,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0
+      );
 
-    this.tlHero.fromTo(
-      ".scaled-image h2 .char",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 0.3,
-        stagger: {
-          each: 0.01,
+      this.tlHero.fromTo(
+        ".scaled-image h2 .char",
+        {
+          opacity: 0,
         },
-      },
-      0.5
-    );
+        {
+          opacity: 1,
+          duration: 0.3,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0.5
+      );
+    }
   }
 
   heroscroll() {
+    if (this.tlHero == null) return
+
     this.tlHero.fromTo(
       ".hero .image-wrapper, .scaled-image .image-wrapper",
       {
@@ -280,6 +288,9 @@ export default class Page {
 
   sliderscroll() {
     const section = document.querySelector(".scroll-slider");
+
+    if (section == null) return
+
     const slides = section.querySelectorAll(
       ".slide-wrapper .media-item-wrapper"
     );

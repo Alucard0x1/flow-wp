@@ -14,6 +14,10 @@ const blockData = {
         title: {
             type: 'string',
             default: 'Title'
+        },
+        still: {
+            type: 'boolean',
+            default: false
         }
     }
 }

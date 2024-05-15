@@ -179,36 +179,40 @@ window.addEventListener('load', function () {
       }
     ];
 
-    const mmp = new Map(document.querySelector('.map-intro .image-wrapper #map'), {
-      mapId: 'f621342c3a910fdc',
-      mapTypeId: 'roadmap',
-      streetViewControl: false,
-      tiltInteractionEnabled: false,
-      mapTypeControl: false,
-      headingInteractionEnabled: false,
-      isFractionalZoomEnabled: false,
-      center: { lat: -6.2092653, lng: 106.8211186 },
-      zoom: 17,
-      styles
-    });
+    const targetMap = document.querySelector('.map-intro .image-wrapper #map')
 
-    var styledMap = new google.maps.StyledMapType(
-      styles, {});
+    if (targetMap != null) {
+      const mmp = new Map(targetMap, {
+        mapId: 'f621342c3a910fdc',
+        mapTypeId: 'roadmap',
+        streetViewControl: false,
+        tiltInteractionEnabled: false,
+        mapTypeControl: false,
+        headingInteractionEnabled: false,
+        isFractionalZoomEnabled: false,
+        center: { lat: -6.2092653, lng: 106.8211186 },
+        zoom: 17,
+        styles
+      });
 
-    mmp.mapTypes.set('flow', styledMap);
-    mmp.setMapTypeId('flow')
+      var styledMap = new google.maps.StyledMapType(
+        styles, {});
 
-    const iconImage = document.createElement("img");
-    iconImage.src = '/wp-content/themes/flow-wp/assets/images/marker.svg';
+      mmp.mapTypes.set('flow', styledMap);
+      mmp.setMapTypeId('flow')
 
-    const marker = new google.maps.marker.AdvancedMarkerElement({
-      map: mmp,
-      position: new google.maps.LatLng(-6.2092653, 106.8211186),
-      content: iconImage,
-    });
+      const iconImage = document.createElement("img");
+      iconImage.src = '/wp-content/themes/flow-wp/assets/images/marker.svg';
 
-    google.maps.event.addListener(marker, 'click', function () {
-      window.open('https://maps.app.goo.gl/eW524AugLRnepRt87', true);
-    });
+      const marker = new google.maps.marker.AdvancedMarkerElement({
+        map: mmp,
+        position: new google.maps.LatLng(-6.2092653, 106.8211186),
+        content: iconImage,
+      });
+
+      google.maps.event.addListener(marker, 'click', function () {
+        window.open('https://maps.app.goo.gl/eW524AugLRnepRt87', true);
+      });
+    }
   });
 });

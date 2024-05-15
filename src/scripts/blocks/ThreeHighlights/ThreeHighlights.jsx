@@ -1,6 +1,8 @@
 import './ThreeHighlights.scss'
+import useRichText from '../../hooks/useRichText'
 
 const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
+    const Text = useRichText(isSelected)
     return (
         <section className="three-highlights">
             <div className="container">
@@ -9,29 +11,19 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                 </div>
 
                 <div className="content-wrapper">
-                    <div className="content-item">
-                        <p className="num">01.</p>
-                        <p className="content-title">Take a Tour</p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                    </div>
-
-                    <div className="content-item">
-                        <p className="num">01.</p>
-                        <p className="content-title">Take a Tour</p>
-                        <p>
-                            Lorem ipsum dolor sit amet
-                        </p>
-                    </div>
-
-                    <div className="content-item">
-                        <p className="num">01.</p>
-                        <p className="content-title">Take a Tour</p>
-                        <p className="content-desc">
-                            Lorem ipsum dolor sit amet
-                        </p>
-                    </div>
+                    {attributes.items.map((item, key) => (
+                        <div className="content-item">
+                            <p className="num">{(key + 1).toString().padStart(2, '0')}.</p>
+                            <Text tagName="p" className="content-title"
+                                value={item.title}
+                                onChange={(title) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, title } : item) })}
+                            />
+                            <Text tagName="p"
+                                value={item.description}
+                                onChange={(description) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, description } : item) })}
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

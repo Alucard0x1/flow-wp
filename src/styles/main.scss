@@ -78,6 +78,8 @@ a {
 }
 
 .solution-related {
+    background-color: clr.$brown-37;
+
     .container {
         display: flex;
         padding: 0 fn.toVw(40) fn.toVw(136);
