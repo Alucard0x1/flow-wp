@@ -108,8 +108,13 @@ a {
                 font-size: fn.toVw(15);
                 line-height: fn.toVw(23);
                 color: clr.$brown-10;
+                font-weight: 400;
 
                 margin-bottom: fn.toVw(30);
+            }
+
+            a {
+                color: clr.$brown-37;
             }
         }
     }

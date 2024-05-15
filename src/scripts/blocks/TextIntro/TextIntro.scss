@@ -27,6 +27,7 @@
             margin: 0 auto;
             color: clr.$brown-10;
             max-width: fn.toVw(450);
+            font-weight: 400;
 
             @include mx.phone {
                 max-width: unset;
