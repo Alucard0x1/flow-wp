@@ -11,8 +11,8 @@ export default class Page {
 
     this.tlHero = null;
 
-    this.heroImage = document.querySelector(".hero .image-wrapper");
-    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+    this.heroImage = null;
+    this.scaledImage = null;
   }
   heroprepare() {
     smoothScroll.scrollTo(0, {
@@ -20,7 +20,10 @@ export default class Page {
       immediate: true,
     });
 
-    if (!this.scaledImage) return;
+    this.heroImage = document.querySelector(".hero .image-wrapper");
+    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+
+    if (!this.scaledImage && !this.heroImage) return;
 
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
@@ -63,61 +66,91 @@ export default class Page {
   }
 
   hero() {
-    gsap.to(".hero-content h1", {
-      opacity: 1,
-    });
+    const title = document.querySelector(".hero-content h1");
 
-    gsap.fromTo(
-      ".hero-content h1 .line",
+    if (title) {
+      gsap.to(title, {
+        opacity: 1,
+      });
+
+      gsap.fromTo(
+        ".hero-content h1 .line",
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.15,
+          },
+        }
+      );
+    }
+
+    const desc = document.querySelector(".hero-content p");
+
+    if (desc) {
+      gsap.fromTo(
+        desc,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 1,
+          delay: 0.3,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.15,
+          },
+        }
+      );
+    }
+
+    if (!this.tlHero) return;
+
+    const tlHeroChar = [...document.querySelectorAll('.hero .hero-content .char')];
+
+    if (!tlHeroChar.length) return;
+    this.tlHero.fromTo(
+      ".hero .hero-content .char",
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+        duration: 0.3,
+        immediateRender: false,
+        stagger: {
+          each: 0.01,
+        },
+      },
+      0
+    );
+
+    this.tlHero.fromTo(
+      ".scaled-image h2 .char",
       {
         opacity: 0,
       },
       {
         opacity: 1,
-        duration: 1,
-        ease: "sine.inOut",
+        duration: 0.3,
         stagger: {
-          each: 0.15,
+          each: 0.01,
         },
-      }
+      },
+      0.5
     );
-
-    if (this.tlHero != null) {
-      this.tlHero.fromTo(
-        ".hero .hero-content .char",
-        {
-          opacity: 1,
-        },
-        {
-          opacity: 0,
-          duration: 0.3,
-          immediateRender: false,
-          stagger: {
-            each: 0.01,
-          },
-        },
-        0
-      );
-
-      this.tlHero.fromTo(
-        ".scaled-image h2 .char",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.3,
-          stagger: {
-            each: 0.01,
-          },
-        },
-        0.5
-      );
-    }
   }
 
   heroscroll() {
-    if (this.tlHero == null) return
+    this.heroImage = document.querySelector(".hero .image-wrapper");
+    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+
+    if (!this.scaledImage && !this.heroImage) return;
 
     this.tlHero.fromTo(
       ".hero .image-wrapper, .scaled-image .image-wrapper",
@@ -125,14 +158,18 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius:
-          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius:
-          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius:
-          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius:
-          `calc(${ScrollTrigger.isTouch ? 10 : 20} / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -151,8 +188,9 @@ export default class Page {
         scale: 1,
       },
       {
-        scale: 1.2
-      }, 0
+        scale: 1.2,
+      },
+      0
     );
 
     this.tlHero.fromTo(
@@ -162,12 +200,16 @@ export default class Page {
       },
       {
         opacity: 1,
-        stagger: 0.15
-      }, 0.7
+        stagger: 0.15,
+      },
+      0.7
     );
   }
 
   map() {
+    const section = document.querySelector(".map-intro");
+
+    if (!section) return;
     gsap.from(".map-intro .description-wrapper", {
       yPercent: 130,
       duration: 1.2,
@@ -180,6 +222,10 @@ export default class Page {
   }
 
   philosophy() {
+    const section = document.querySelector(".text-image .image-wrapper");
+
+    if (!section) return;
+
     const tl = gsap.timeline({
       defaults: {
         ease: "none",
@@ -210,7 +256,7 @@ export default class Page {
       ".text-image .frame-wrapper",
       {
         scale: 1,
-        y: 0
+        y: 0,
       },
       0
     );
@@ -251,6 +297,9 @@ export default class Page {
   }
 
   amnities() {
+    const section = document.querySelector(".list-image");
+
+    if (!section) return;
     if (ScrollTrigger.isTouch) return;
 
     const tl = gsap.timeline({
@@ -261,7 +310,7 @@ export default class Page {
         trigger: ".list-image",
         start: "center center",
         end: "+=100%",
-        endTrigger: '.list-image .list-wrapper-content',
+        endTrigger: ".list-image .list-wrapper-content",
         pin: true,
         scrub: true,
         invalidateOnRefresh: true,
@@ -272,13 +321,25 @@ export default class Page {
       ".list-image .list-wrapper-content",
       {
         y: () => {
-          const textTitle = document.querySelector(".list-image .content-inner h2").offsetHeight;
-          const textDescription = document.querySelector(".list-image .content-inner p").offsetHeight;
-          const listContentHeight = document.querySelector(".list-image .list-wrapper-content").offsetHeight;
-          const triggerHeight = document.querySelector(".list-image").offsetHeight;
-          const maxScroll = (listContentHeight + (textDescription ? textTitle * 2 + textDescription * 2 : textTitle * 2.8)) - triggerHeight;
+          const textTitle = document.querySelector(
+            ".list-image .content-inner h2"
+          ).offsetHeight;
+          const textDescription = document.querySelector(
+            ".list-image .content-inner p"
+          ).offsetHeight;
+          const listContentHeight = document.querySelector(
+            ".list-image .list-wrapper-content"
+          ).offsetHeight;
+          const triggerHeight =
+            document.querySelector(".list-image").offsetHeight;
+          const maxScroll =
+            listContentHeight +
+            (textDescription
+              ? textTitle * 2 + textDescription * 2
+              : textTitle * 2.8) -
+            triggerHeight;
           return -maxScroll;
-        }
+        },
       },
       0
     );
@@ -287,7 +348,7 @@ export default class Page {
   sliderscroll() {
     const section = document.querySelector(".scroll-slider");
 
-    if (section == null) return
+    if (!section) return;
 
     const slides = section.querySelectorAll(
       ".slide-wrapper .media-item-wrapper"
@@ -298,7 +359,7 @@ export default class Page {
     );
     const numberActive = section.querySelector(".content-wrapper .num-active");
 
-    const header = document.querySelector('.nav');
+    const header = document.querySelector(".nav");
 
     const tl = gsap.timeline({
       defaults: {
@@ -307,8 +368,11 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: ".scroll-slider",
-        start: () => ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
-        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length}00%`,
+        start: () =>
+          ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
+        end: `+=${
+          ScrollTrigger.isTouch ? slides.length / 2 : slides.length
+        }00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
@@ -319,11 +383,15 @@ export default class Page {
       .toArray(".slide-wrapper .media-item-wrapper")
       .forEach((slide, index) => {
         const media = slide.querySelector(".media-item");
-        const charCurrent = ScrollTrigger.isTouch ? slidesText[index] : slidesText[index].querySelectorAll(".char");
+        const charCurrent = ScrollTrigger.isTouch
+          ? slidesText[index]
+          : slidesText[index].querySelectorAll(".char");
 
         if (index === slides.length - 1) return;
         const mediaNext = slides[index + 1].querySelector(".media-item");
-        const charNext = ScrollTrigger.isTouch ? slidesText[index + 1] : slidesText[index + 1].querySelectorAll(".char");
+        const charNext = ScrollTrigger.isTouch
+          ? slidesText[index + 1]
+          : slidesText[index + 1].querySelectorAll(".char");
 
         tl.to(charCurrent, {
           opacity: 0,
@@ -388,6 +456,10 @@ export default class Page {
   }
 
   footer() {
+    const section = document.querySelector(".footer");
+
+    if (!section) return;
+
     if (ScrollTrigger.isTouch) return;
     if (ScrollTrigger.getById("footer")) return;
 
@@ -396,7 +468,7 @@ export default class Page {
         ease: "none",
       },
       scrollTrigger: {
-        trigger: ".footer",
+        trigger: section,
         start: "top bottom",
         end: "bottom bottom",
         invalidateOnRefresh: true,
@@ -406,11 +478,11 @@ export default class Page {
       },
     });
 
-    tl.set(".footer", {
+    tl.set(section, {
       yPercent: -80,
     });
 
-    tl.to(".footer", {
+    tl.to(section, {
       yPercent: 0,
     });
   }

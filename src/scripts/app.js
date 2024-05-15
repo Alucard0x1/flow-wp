@@ -8,6 +8,8 @@ import MotionInit from "./motion/init";
 
 import Smoothscroll, { smoothScroll } from './motion/smoothscroll';
 
+import CleanScrolltrigger from './utils/cleanscrolltrigger';
+
 var aLazyLoad = new LazyLoad({});
 
 export let taxi = null;

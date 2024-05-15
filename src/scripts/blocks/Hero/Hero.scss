@@ -107,6 +107,7 @@
 
         p {
             font-size: fn.toVw(15);
+            opacity: 0;
         }
 
         @include mx.phone {

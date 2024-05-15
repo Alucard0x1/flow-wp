@@ -51,6 +51,7 @@ const TextColor = ({ attributes, setAttributes, isSelected }) => {
             <div className="content-wrapper">
                 <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })}
                     style={{ color: attributes.textColor }}
+                    data-split-text data-motion-text
                 />
             </div>
         </section>

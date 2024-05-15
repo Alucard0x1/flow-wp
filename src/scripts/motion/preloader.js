@@ -57,35 +57,6 @@ export default class Loading {
         autoAlpha: 0,
       });
     };
-
-    this.loadingEnd = (_callback) => {
-      let tlEnd = gsap.timeline();
-
-      tlEnd = gsap.timeline({
-        onComplete: () => {
-          _callback();
-        },
-      });
-
-      tlEnd.to(this.DOM.preloader, {
-        autoAlpha: 0,
-      });
-    };
-
-    this.loadingStart = () => {
-      let tlStart = gsap.timeline();
-
-      tlStart.fromTo(
-        this.DOM.preloader,
-        {
-          autoAlpha: 0,
-        },
-        {
-          autoAlpha: 1,
-          overwrite: true,
-        }
-      );
-    };
   }
 
   async First(_callback) {
