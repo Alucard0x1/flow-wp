@@ -20,7 +20,7 @@ export default class Page {
       immediate: true,
     });
 
-    if (!this.scaledImage && this.heroImage) return;
+    if (!this.scaledImage && !this.heroImage) return;
 
     this.scaledImage.innerHTML = this.heroImage.innerHTML;
 
