@@ -36,12 +36,6 @@ class RendererDefault extends Renderer {
     if (process.env.NODE_ENV === "development") {
       console.log("onEnter");
     }
-  }
-
-  onEnterCompleted() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("onEnterCompleted");
-    }
 
     new Smoothscroll();
 
@@ -51,6 +45,12 @@ class RendererDefault extends Renderer {
     Preloader.Enter(() => {
       motion.reinit();
     });
+  }
+
+  onEnterCompleted() {
+    if (process.env.NODE_ENV === "development") {
+      console.log("onEnterCompleted");
+    }
   }
 
   onLeave() {
