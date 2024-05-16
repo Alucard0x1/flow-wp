@@ -136,8 +136,17 @@ a {
 
             .image-wrapper {
                 img {
+                    height: fn.toVw(430);
                     width: 100%;
+                    object-fit: cover;
+                    object-position: center;
                     border-radius: fn.toVw(12);
+                }
+            }
+
+            .content-wrapper {
+                .title {
+                    color: clr.$brown-10;
                 }
             }
         }

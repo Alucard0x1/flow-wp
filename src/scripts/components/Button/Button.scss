@@ -77,6 +77,11 @@
         font-weight: 400;
         font-size: fn.toVw(14);
 
+        &.light {
+            background: clr.$brown-39;
+            color: clr.$brown-25;
+        }
+
 
         &::before {
             content: unset;

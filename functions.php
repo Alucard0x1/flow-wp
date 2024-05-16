@@ -66,6 +66,8 @@ function enqueue_assets()
 
 function register_custom_post_type()
 {
+    add_theme_support('post-thumbnails');
+
     register_post_type('solutions', [
         'labels' => [
             'name' => 'Solutions',
