@@ -11,13 +11,16 @@
             flex: 0 0 61%;
             width: 61%;
 
+            .media-wrapper {
+                overflow: hidden;
+                border-radius: fn.toVw(18);
+            }
+
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 object-position: center;
-
-                border-radius: fn.toVw(18);
             }
         }
 

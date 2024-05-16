@@ -28,6 +28,7 @@ export default class MotionInit {
     MotionPage.map();
     MotionPage.amnities();
     MotionPage.philosophy();
+    MotionPage.sideimage();
     MotionPage.highlight();
     MotionPage.solutionrelated();
 

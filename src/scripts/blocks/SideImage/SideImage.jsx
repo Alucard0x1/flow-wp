@@ -37,7 +37,9 @@ const SideImage = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
-                    <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
+                    <div className="media-wrapper">
+                        <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
+                    </div>
                 </div>
             </div>
         </section>
