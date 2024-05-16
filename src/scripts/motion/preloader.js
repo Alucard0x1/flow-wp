@@ -38,7 +38,6 @@ export default class Loading {
       let tlFirst = gsap.timeline({
         defaults: {
           duration: 0.7,
-          ease: "customDefault",
           onComplete: () => {
             setTimeout(() => {
               smoothScroll.scrollTo(0, {
@@ -60,17 +59,21 @@ export default class Loading {
   }
 
   async First(_callback) {
-    const font1 = new FontFaceObserver(this.fonts.font1);
-    const font2 = new FontFaceObserver(this.fonts.font2);
+    // TODO: temp use for preloader (real: use fontfaceobserver)
+    
+    // const font1 = new FontFaceObserver(this.fonts.font1);
+    // const font2 = new FontFaceObserver(this.fonts.font2);
 
-    const font1Load = font1.load(null, 10000);
-    const font2Load = font2.load(null, 10000);
+    // const font1Load = font1.load(null, 10000);
+    // const font2Load = font2.load(null, 10000);
 
     this.loaded = () => {
       new Splittext();
 
+      _callback();
+
       this.loadingFirst(() => {
-        _callback();
+        // _callback();
       });
 
       ScrollTrigger.refresh();
