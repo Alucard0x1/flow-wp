@@ -28,6 +28,8 @@ export default class MotionInit {
     MotionPage.map();
     MotionPage.amnities();
     MotionPage.philosophy();
+    MotionPage.highlight();
+    MotionPage.solutionrelated();
 
     new Googlemap();
   }
