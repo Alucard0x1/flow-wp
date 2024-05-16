@@ -450,6 +450,24 @@ export default class Page {
     });
   }
 
+  solutionrelated() {
+      const section = document.querySelector(".solution-related");
+
+      if (!section) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section
+        }
+      })
+
+      tl.from('.solution-related .content-item', {
+        y: 100,
+        opacity: 0,
+        stagger: 0.15
+      })
+  }
+
   footer() {
     const section = document.querySelector(".footer");
 
