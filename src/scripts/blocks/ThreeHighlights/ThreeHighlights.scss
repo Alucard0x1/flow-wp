@@ -13,6 +13,10 @@
 
             img {
                 width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+
                 border-radius: fn.toVw(18);
             }
         }
@@ -20,7 +24,7 @@
         .content-wrapper {
             flex: 0 0 39%;
             width: 39%;
-            padding: 0 0 0 fn.toVw(118);
+            padding: fn.toVw(96) 0 fn.toVw(96) fn.toVw(118);
 
             display: flex;
             flex-direction: column;

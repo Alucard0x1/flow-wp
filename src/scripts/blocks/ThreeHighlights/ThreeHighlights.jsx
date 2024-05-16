@@ -1,13 +1,28 @@
 import './ThreeHighlights.scss'
 import useRichText from '../../hooks/useRichText'
 
+const { MediaUpload } = wp.blockEditor
+const { Button, Icon } = wp.components
+
 const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
     return (
         <section className="three-highlights">
             <div className="container">
                 <div className="image-wrapper">
-                    <img src="https://picsum.photos/300/300" alt="" />
+                    {isSelected &&
+                        <MediaUpload
+                            onSelect={(image) => setAttributes({ image })}
+                            render={({ open }) => (
+                                <div className="image-picker">
+                                    <Button isPrimary onClick={open}>
+                                        <Icon icon="format-image" />
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    }
+                    <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
                 </div>
 
                 <div className="content-wrapper">

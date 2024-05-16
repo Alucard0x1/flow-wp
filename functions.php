@@ -4,6 +4,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+new Fleava\Classes\ListPost;
+
 // Initialize Timber.
 Timber\Timber::init();
 

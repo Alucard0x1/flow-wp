@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator'
-import kebabCase from 'lodash.kebabcase'
+import { kebabCase } from 'lodash'
 
 export default class extends Generator {
     prompting() {
