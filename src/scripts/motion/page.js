@@ -150,7 +150,7 @@ export default class Page {
     this.heroImage = document.querySelector(".hero .image-wrapper");
     this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
 
-    if (!this.scaledImage && !this.heroImage) return;
+    if (!this.scaledImage || !this.heroImage) return;
 
     this.tlHero.fromTo(
       ".hero .image-wrapper, .scaled-image .image-wrapper",
