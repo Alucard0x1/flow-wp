@@ -111,7 +111,9 @@ export default class Page {
 
     if (!this.tlHero) return;
 
-    const tlHeroChar = [...document.querySelectorAll('.hero .hero-content .char')];
+    const tlHeroChar = [
+      ...document.querySelectorAll(".hero .hero-content .char"),
+    ];
 
     if (!tlHeroChar.length) return;
     this.tlHero.fromTo(
@@ -158,14 +160,18 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -366,8 +372,9 @@ export default class Page {
         trigger: ".scroll-slider",
         start: () =>
           ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
-        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length
-          }00%`,
+        end: `+=${
+          ScrollTrigger.isTouch ? slides.length / 2 : slides.length
+        }00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
@@ -447,6 +454,42 @@ export default class Page {
     tl.to(section, {
       opacity: 1,
       duration: 0.2,
+    });
+  }
+
+  highlight() {
+    const section = document.querySelector(".three-highlights");
+
+    if (!section) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+      },
+    });
+
+    tl.from(".three-highlights .content-item", {
+      y: 100,
+      opacity: 0,
+      stagger: 0.15,
+    });
+  }
+
+  solutionrelated() {
+    const section = document.querySelector(".solution-related");
+
+    if (!section) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+      },
+    });
+
+    tl.from(".solution-related .content-item", {
+      y: 100,
+      opacity: 0,
+      stagger: 0.15,
     });
   }
 
