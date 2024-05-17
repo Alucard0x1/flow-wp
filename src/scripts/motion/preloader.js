@@ -58,7 +58,7 @@ export default class Loading {
     };
   }
 
-  async First(_callback) {
+  async First(_callback, callback2_) {
     // TODO: temp use for preloader (real: use fontfaceobserver)
     
     // const font1 = new FontFaceObserver(this.fonts.font1);
@@ -73,7 +73,7 @@ export default class Loading {
       _callback();
 
       this.loadingFirst(() => {
-        // _callback();
+        callback2_();
       });
 
       ScrollTrigger.refresh();

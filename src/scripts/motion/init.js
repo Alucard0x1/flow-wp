@@ -7,6 +7,8 @@ import Googlemap from "./googlemap";
 
 export const MotionPage = new Page();
 export default class MotionInit {
+  // TODO: temp solution for afterPreloader2 footer
+  
   first() {
     Default();
 
@@ -19,6 +21,9 @@ export default class MotionInit {
     MotionPage.hero();
     new MotionText();
     MotionPage.sliderscroll();
+  }
+
+  afterPreloader2() {
     MotionPage.footer();
   }
 

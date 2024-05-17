@@ -543,7 +543,7 @@ export default class Page {
     if (!section) return;
 
     if (ScrollTrigger.isTouch) return;
-    if (ScrollTrigger.getById("footer")) return;
+    if (ScrollTrigger.getById("once")) return;
 
     const tl = gsap.timeline({
       defaults: {
@@ -556,7 +556,7 @@ export default class Page {
         invalidateOnRefresh: true,
         scrub: true,
         refreshPriority: -1,
-        id: "footer",
+        id: "once",
       },
     });
 
