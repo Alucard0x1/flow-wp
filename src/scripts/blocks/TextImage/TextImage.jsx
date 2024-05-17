@@ -2,7 +2,7 @@ import './TextImage.scss'
 import useRichText from '../../hooks/useRichText'
 
 const { MediaUpload, InspectorControls } = wp.blockEditor
-const { Button, Icon, PanelBody, ToggleControl } = wp.components
+const { Button, Icon, PanelBody, ToggleControl, SelectControl } = wp.components
 
 const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
@@ -17,6 +17,26 @@ const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
                             checked={attributes.wide}
                             onChange={(wide) => setAttributes({ wide })}
                         />
+                        <ToggleControl
+                            label="Show floating description"
+                            checked={attributes.showFloatingDesc}
+                            onChange={(showFloatingDesc) => setAttributes({ showFloatingDesc })}
+                        />
+                        {attributes.showFloatingDesc &&
+                            <SelectControl
+                                label="Floating description direction"
+                                value={attributes.floatingDescDir}
+                                onChange={(direction) => setAttributes({ floatingDescDir: direction })}
+                                options={[
+                                    {
+                                        label: 'Left', value: 'left'
+                                    },
+                                    {
+                                        label: 'Right', value: 'right'
+                                    }
+                                ]}
+                            />
+                        }
                     </PanelBody>
                 </InspectorControls>
             }
@@ -76,7 +96,7 @@ const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
                         />
                     }
 
-                    <div className="description-inner">
+                    <div className={"description-inner" + (attributes.showFloatingDesc ? ' show ' : ' ') + (attributes.floatingDescDir)}>
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
                     </div>
                 </div>

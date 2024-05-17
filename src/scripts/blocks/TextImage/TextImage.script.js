@@ -3,6 +3,14 @@ const blockData = {
   icon: "format-image",
   category: "common",
   attributes: {
+    showFloatingDesc: {
+      type: 'boolean',
+      default: false
+    },
+    floatingDescDir: {
+      type: 'string',
+      default: 'right'
+    },
     wide: {
       type: 'boolean',
       default: false
