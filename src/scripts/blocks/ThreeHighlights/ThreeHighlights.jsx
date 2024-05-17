@@ -22,7 +22,9 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
+                    <div className="media-wrapper">
                     <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
+                    </div>
                 </div>
 
                 <div className="content-wrapper">

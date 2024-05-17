@@ -29,6 +29,8 @@ class RendererDefault extends Renderer {
 
     Preloader.First(() => {
       motion.afterPreloader();
+    }, () => {
+      motion.afterPreloader2();
     });
   }
 

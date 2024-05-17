@@ -347,6 +347,31 @@ export default class Page {
     );
   }
 
+  sideimage() {
+    const section = document.querySelector(".side-image");
+
+    if (!section) return;
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      },
+    });
+
+    tl.from(
+      ".side-image .image-wrapper img, .side-image .image-wrapper video",
+      {
+        scale: 1.2,
+      }
+    );
+  }
+
   sliderscroll() {
     const section = document.querySelector(".scroll-slider");
 
@@ -473,6 +498,25 @@ export default class Page {
       opacity: 0,
       stagger: 0.15,
     });
+
+    const tlImage = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      },
+    });
+
+    tlImage.from(
+      ".three-highlights .image-wrapper img, .three-highlights .image-wrapper video",
+      {
+        scale: 1.2,
+      }
+    );
   }
 
   solutionrelated() {
@@ -499,7 +543,7 @@ export default class Page {
     if (!section) return;
 
     if (ScrollTrigger.isTouch) return;
-    if (ScrollTrigger.getById("footer")) return;
+    if (ScrollTrigger.getById("once")) return;
 
     const tl = gsap.timeline({
       defaults: {
@@ -512,7 +556,7 @@ export default class Page {
         invalidateOnRefresh: true,
         scrub: true,
         refreshPriority: -1,
-        id: "footer",
+        id: "once",
       },
     });
 
