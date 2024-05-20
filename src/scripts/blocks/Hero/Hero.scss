@@ -32,6 +32,11 @@
         .hero-content {
             left: fn.toVw(143);
             bottom: fn.toVw(85);
+
+            @include mx.phone {
+                left: fn.toVw(28);
+                bottom: fn.toVw(40);
+            }
         }
     }
 

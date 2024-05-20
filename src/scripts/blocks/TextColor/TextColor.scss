@@ -17,6 +17,10 @@
     &.vp {
         height: unset;
         padding: fn.toVw(228) 0;
+
+        h2 {
+            text-align: center;
+        }
     }
 
     h2 {

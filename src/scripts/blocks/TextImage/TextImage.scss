@@ -12,6 +12,13 @@
         .container .content-wrapper {
             margin-left: 0;
 
+            @include mx.phone {
+                margin-left: unset;
+                margin-right: unset;
+                width: fn.toVw(307);
+                margin: 0 auto;
+            }
+
             h2 {
                 max-width: fn.toVw(773);
                 margin: 0 auto;
@@ -189,6 +196,11 @@
         &.left {
             left: fn.toVw(50);
             right: unset;
+
+            @include mx.phone {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
 
         border-radius: fn.toVw(12);
@@ -205,11 +217,11 @@
             margin-top: fn.toVw(13);
             margin-left: fn.toVw(28);
 
-            bottom: fn.toVw(10);
+            bottom: fn.toVw(17);
             left: fn.toVw(10);
             right: fn.toVw(10);
             margin: 0;
-            width: auto;
+            width: fn.toVw(321);
 
             padding: fn.toVw(20);
         }
