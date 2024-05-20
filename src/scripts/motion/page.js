@@ -520,9 +520,10 @@ export default class Page {
   }
 
   solutionrelated() {
-    const section = [...document.querySelectorAll(".solution-related"), ...document.querySelectorAll(".solutions-list")];
+    const section = document.querySelector(".solution-related");
+    const section2 = document.querySelector(".solutions-list");
 
-    if (!section.length) return;
+    if (!section || !section2) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
