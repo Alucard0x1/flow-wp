@@ -520,9 +520,9 @@ export default class Page {
   }
 
   solutionrelated() {
-    const section = document.querySelector(".solution-related");
+    const section = [...document.querySelectorAll(".solution-related"), ...document.querySelectorAll(".solutions-list")];
 
-    if (!section) return;
+    if (!section.length) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -530,7 +530,7 @@ export default class Page {
       },
     });
 
-    tl.from(".solution-related .content-item", {
+    tl.from(".solution-related .content-item, .solutions-list .content-item", {
       y: 100,
       opacity: 0,
       stagger: 0.15,
