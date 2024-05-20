@@ -1,5 +1,5 @@
-import Generator from 'yeoman-generator'
-import { kebabCase } from 'lodash'
+const Generator = require('yeoman-generator')
+const { kebabCase } = require('lodash')
 
 export default class extends Generator {
     prompting() {

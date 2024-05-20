@@ -74,11 +74,13 @@
         width: fn.toVw(565);
 
         @include mx.phone {
-            width: fn.toVw(235);
-            padding: fn.toVw(24) fn.toVw(24) fn.toVw(24) fn.toVw(23);
+            padding: fn.toVw(25) fn.toVw(27) fn.toVw(28);
 
-            bottom: fn.toVw(6);
-            right: fn.toVw(6);
+            bottom: fn.toVw(17);
+
+            right: unset;
+            width: auto;
+            margin: 0 fn.toVw(26);
         }
 
         &__content {
@@ -119,6 +121,7 @@
                 line-height: fn.toVw(38);
                 font-weight: 400;
                 margin: 0 0 fn.toVw(16) 0;
+                padding-bottom: fn.toVw(23);
             }
         }
 
@@ -133,6 +136,10 @@
                 margin: 0 fn.toVw(28) 0 0;
                 font-weight: 400;
                 color: clr.$brown-65;
+
+                @include mx.phone {
+                    margin: 0;
+                }
             }
 
             .content-list {
