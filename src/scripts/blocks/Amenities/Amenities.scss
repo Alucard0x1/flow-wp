@@ -1,5 +1,6 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/colors' as clr;
+@use '../../../styles/mixins' as mx;
 
 .amenities {
     .container {
@@ -9,14 +10,28 @@
         border-radius: fn.toVw(16);
         padding: fn.toVw(29) fn.toVw(32);
 
+        @include mx.phone {
+            flex-direction: column;
+            padding: fn.toVw(6);
+            margin: fn.toVw(6);
+            border-radius: fn.toVw(10);
+        }
+
         .image-wrapper {
-            flex: 0 0 50%;
-            width: 50%;
+            flex: 0 0 45%;
+            width: 45%;
 
             border-radius: fn.toVw(18);
             height: fn.toVw(762);
 
             overflow: hidden;
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                height: fn.toVw(434);
+                border-radius: fn.toVw(10);
+            }
 
             .background-image {
                 width: 100%;
@@ -28,10 +43,14 @@
 
         .content-wrapper {
             padding-left: fn.toVw(104);
-            padding-right: fn.toVw(109 - 20);
+            padding-right: fn.toVw(113 - 32);
             display: flex;
             width: 100%;
             flex-direction: column;
+
+            @include mx.phone {
+                padding: fn.toVw(18);
+            }
 
             h2 {
                 font-size: fn.toVw(64);
@@ -39,6 +58,12 @@
                 line-height: fn.toVw(62);
                 max-width: fn.toVw(420);
                 color: clr.$white;
+
+                @include mx.phone {
+                    font-size: fn.toVw(38);
+                    line-height: fn.toVw(40);
+                    letter-spacing: -0.38px;
+                }
             }
 
             a {
@@ -51,25 +76,92 @@
             .contents {
                 flex-grow: 1;
                 border-bottom: 1px solid clr.$white;
+
+                @include mx.phone {
+                    border-bottom: none;
+                }
             }
 
             .content-list {
                 display: flex;
                 flex-wrap: wrap;
+                margin-left: fn.toVw(-49);
+
+                @include mx.phone {
+                    background-color: clr.$purple-10;
+                    margin-left: 0;
+                    flex-direction: column;
+                    border-radius: fn.toVw(8);
+                }
 
                 .content-item {
-                    flex: 0 0 50%;
-                    width: 50%;
+                    flex: 0 0 calc(50% - fn.toVw(46));
+                    width: calc(50% - fn.toVw(46));
 
                     margin-bottom: fn.toVw(27);
+                    margin-left: fn.toVw(46);
+
+                    @include mx.phone {
+                        flex: unset;
+                        width: 100%;
+                        margin-left: 0;
+                        margin-bottom: 0;
+                        padding: fn.toVw(28) fn.toVw(14);
+                    }
+
+                    .content-title {
+                        @include mx.phone {
+                            padding-left: fn.toVw(34);
+                            position: relative;
+
+                            &:before {
+                                position: absolute;
+                                left: fn.toVw(14);
+                                top: 50%;
+                                transform: translateY(-50%);
+
+                                content: '';
+                                display: inline-block;
+                                width: fn.toVw(6);
+                                height: fn.toVw(6);
+                                background-color: clr.$white;
+                                border-radius: 50%;
+                            }
+                        }
+
+                        a {
+                            font-size: fn.toVw(16);
+                            font-weight: 400;
+                            color: clr.$white;
+                            opacity: 1;
+                        }
+                    }
+
+                    p {
+                        font-size: fn.toVw(15);
+                        line-height: fn.toVw(23);
+                        color: clr.$white;
+                    }
+
+                    .content-description {
+                        display: none;
+
+                        @include mx.phone {
+                            padding: 0 fn.toVw(14);
+                            display: block;
+                            opacity: 0.6;
+                        }
+
+                        p {
+                            color: clr.$white;
+                        }
+                    }
                 }
             }
 
             .content-description {
-                padding: fn.toVw(24) 0 fn.toVw(53);
-
-                p {
-                    color: clr.$white;
+                @include mx.phone {
+                    display: none;
                 }
             }
         }

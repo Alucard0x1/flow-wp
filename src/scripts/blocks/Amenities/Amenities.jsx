@@ -28,26 +28,41 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                         <div className="content-list">
                             {attributes.items.map((item, index) => (
                                 <div class="content-item">
-                                    <Text tagName="a" href="#" value={item.title}
-                                        onChange={(title) => {
+                                    <div className="content-title">
+                                        <Text tagName="a" href="#" value={item.title}
+                                            onChange={(title) => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy[index] = {
+                                                    ...itemsCopy[index],
+                                                    title
+                                                }
+
+                                                setAttributes({ items: itemsCopy })
+                                            }}
+                                        />
+                                        {isSelected &&
+                                            <Button isDestructive isSmall
+                                                onClick={() => {
+                                                    setAttributes({ items: attributes.items.filter((_, i) => i !== index) })
+                                                }}
+                                            >
+                                                <Icon icon="minus" />
+                                            </Button>
+                                        }
+                                    </div>
+
+                                    <Text tagName="p" className="content-description"
+                                        value={item.description}
+                                        onChange={(description) => {
                                             const itemsCopy = [...attributes.items]
                                             itemsCopy[index] = {
                                                 ...itemsCopy[index],
-                                                title
+                                                description
                                             }
 
                                             setAttributes({ items: itemsCopy })
                                         }}
                                     />
-                                    {isSelected &&
-                                        <Button isDestructive isSmall
-                                            onClick={() => {
-                                                setAttributes({ items: attributes.items.filter((_, i) => i !== index) })
-                                            }}
-                                        >
-                                            <Icon icon="minus" />
-                                        </Button>
-                                    }
                                 </div>
                             ))}
                         </div>
