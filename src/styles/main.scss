@@ -86,11 +86,22 @@ a {
         display: flex;
         padding: 0 fn.toVw(40 - 14) fn.toVw(136);
 
+        @include mx.phone {
+            flex-direction: column;
+            padding: 0 fn.toVw(20);
+        }
+
         .content-item {
             flex: 0 0 (math.div(1, 3) * 100%);
             width: math.div(1, 3) * 100%;
 
             padding: 0 fn.toVw(14);
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                padding: 0;
+            }
 
             .image-wrapper {
                 img {
@@ -103,6 +114,10 @@ a {
                 font-size: fn.toVw(24);
                 color: clr.$brown-10;
                 font-weight: 400;
+
+                @include mx.phone {
+                    margin: fn.toVw(25) 0 fn.toVw(18);
+                }
             }
 
             p {
@@ -117,6 +132,12 @@ a {
 
             a {
                 color: clr.$brown-37;
+
+                &.btn {
+                    @include mx.phone {
+                        display: none;
+                    }
+                }
             }
         }
     }

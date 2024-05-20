@@ -5,56 +5,29 @@
 
 	<section class="solution-related">
 		<div class="container">
-			<div class="content-item">
-				<div class="image-wrapper">
-					<img src="https://picsum.photos/300/300" alt="">
+			{% for post in relatedPosts %}
+				<div class="content-item">
+					<div class="image-wrapper">
+						<a href="{{post.link}}">
+							<img src="{{ post.thumbnail }}" alt="">
+						</a>
+					</div>
+
+					<a href="#">
+						<h3>
+							{{post.title}}
+						</h3>
+					</a>
+
+					<p>
+						{{post.excerpt}}
+					</p>
+
+					<a href="{{post.link}}" class="btn btn-rounded">
+						Book a Tour
+					</a>
 				</div>
-
-				<h3>
-					Private Suites
-				</h3>
-
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipiscing elit
-				</p>
-
-				<a href="#" class="btn btn-rounded">
-					Book a Tour</a>
-			</div>
-
-			<div class="content-item">
-				<div class="image-wrapper">
-					<img src="https://picsum.photos/300/300" alt="">
-				</div>
-
-				<h3>
-					Private Suites
-				</h3>
-
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipiscing elit
-				</p>
-
-				<a href="#" class="btn btn-rounded">
-					Book a Tour</a>
-			</div>
-
-			<div class="content-item">
-				<div class="image-wrapper">
-					<img src="https://picsum.photos/300/300" alt="">
-				</div>
-
-				<h3>
-					Private Suites
-				</h3>
-
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipiscing elit
-				</p>
-
-				<a href="#" class="btn btn-rounded">
-					Book a Tour</a>
-			</div>
+			{% endfor %}
 		</div>
 	</section>
 {% endblock %}
