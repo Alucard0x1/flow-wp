@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use 'fonts';
 @use 'functions' as fn;
+@use 'mixins' as mx;
 @use 'colors' as clr;
 @use 'root';
 @use 'typography';
@@ -128,11 +129,23 @@ a {
         display: flex;
         margin: 0 fn.toVw(40 - 10);
 
+        @include mx.phone {
+            flex-direction: column;
+            margin: 0 fn.toVw(12);
+        }
+
         .content-item {
             flex: 0 0 math.div(1, 4) * 100%;
             width: math.div(1, 4) * 100%;
 
             padding: 0 fn.toVw(10);
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                padding: 0;
+                margin-bottom: fn.toVw(66);
+            }
 
             .image-wrapper {
                 img {
@@ -141,12 +154,39 @@ a {
                     object-fit: cover;
                     object-position: center;
                     border-radius: fn.toVw(12);
+
+                    @include mx.phone {
+                        height: fn.toVw(603);
+                    }
                 }
             }
 
             .content-wrapper {
+                @include mx.phone {
+                    padding: 0 fn.toVw(18);
+                }
+
                 .title {
                     color: clr.$brown-10;
+
+                    h3 {
+                        @include mx.phone {
+                            font-size: fn.toVw(24);
+                            margin: fn.toVw(35) 0 fn.toVw(14);
+                        }
+                    }
+                }
+
+                p {
+                    @include mx.phone {
+                        margin: 0;
+                    }
+                }
+
+                .btn {
+                    @include mx.phone {
+                        display: none;
+                    }
                 }
             }
         }

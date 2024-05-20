@@ -96,9 +96,11 @@ const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
                         />
                     }
 
-                    <div className={"description-inner" + (attributes.showFloatingDesc ? ' show ' : ' ') + (attributes.floatingDescDir)}>
-                        <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
-                    </div>
+                    {attributes.showFloatingDesc &&
+                        <div className={"description-inner" + (attributes.showFloatingDesc ? ' show ' : ' ') + (attributes.floatingDescDir)}>
+                            <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+                        </div>
+                    }
                 </div>
             </div>
         </section>

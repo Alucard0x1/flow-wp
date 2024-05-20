@@ -15,6 +15,10 @@
             h2 {
                 max-width: fn.toVw(773);
                 margin: 0 auto;
+
+                @include mx.phone {
+                    max-width: unset;
+                }
             }
         }
     }
