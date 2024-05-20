@@ -1,0 +1,77 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+
+.amenities {
+    .container {
+        display: flex;
+        margin: fn.toVw(20);
+        background-color: clr.$purple;
+        border-radius: fn.toVw(16);
+        padding: fn.toVw(29) fn.toVw(32);
+
+        .image-wrapper {
+            flex: 0 0 50%;
+            width: 50%;
+
+            border-radius: fn.toVw(18);
+            height: fn.toVw(762);
+
+            overflow: hidden;
+
+            .background-image {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        .content-wrapper {
+            padding-left: fn.toVw(104);
+            padding-right: fn.toVw(109);
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+
+            h2 {
+                font-size: fn.toVw(64);
+                letter-spacing: -0.64px;
+                line-height: fn.toVw(62);
+                max-width: fn.toVw(420);
+                color: clr.$white;
+            }
+
+            a {
+                color: clr.$white;
+                opacity: .4;
+                font-size: fn.toVw(20);
+                font-weight: 400;
+            }
+
+            .contents {
+                flex-grow: 1;
+                border-bottom: 1px solid clr.$white;
+            }
+
+            .content-list {
+                display: flex;
+                flex-wrap: wrap;
+
+                .content-item {
+                    flex: 0 0 50%;
+                    width: 50%;
+
+                    margin-bottom: fn.toVw(27);
+                }
+            }
+
+            .content-description {
+                padding-top: fn.toVw(24);
+
+                p {
+                    color: clr.$white;
+                }
+            }
+        }
+    }
+}
