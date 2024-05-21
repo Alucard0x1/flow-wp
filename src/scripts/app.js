@@ -198,6 +198,11 @@ window.addEventListener('load', function () {
     mmp.mapTypes.set('flow', styledMap);
     mmp.setMapTypeId('flow')
 
+    if (window.innerWidth <= 500) {
+      mmp.setZoom(14)
+      mmp.setCenter(new google.maps.LatLng(-6.2171296, 106.8210419))
+    }
+
     const iconImage = document.createElement("img");
     iconImage.src = '/wp-content/themes/flow-wp/assets/images/marker.svg';
 
