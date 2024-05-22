@@ -129,6 +129,10 @@
                             }
                         }
 
+                        &.active {
+                            pointer-events: none;
+                        }
+
                         &::before {
                             position: absolute;
                             left: 0;

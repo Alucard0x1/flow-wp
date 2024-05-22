@@ -37,6 +37,8 @@ export default class MotionInit {
     MotionPage.sideimage();
     MotionPage.highlight();
     MotionPage.solutionrelated();
+    MotionPage.solutionlist();
+    MotionPage.solutionstack();
 
     new Googlemap();
   }

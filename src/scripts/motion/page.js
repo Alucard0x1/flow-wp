@@ -401,7 +401,9 @@ export default class Page {
 
         if (!items.length) return;
 
-        const desc = document.querySelector(".amenities .content-description-main");
+        const desc = document.querySelector(
+          ".amenities .content-description-main"
+        );
 
         items.forEach((el, index) => {
           const title = el.querySelector(".content-title");
@@ -413,7 +415,6 @@ export default class Page {
           }
 
           title.addEventListener("click", () => {
-
             title.classList.add("active");
             desc.textContent = itemDesc.textContent;
 
@@ -421,13 +422,15 @@ export default class Page {
               desc,
               {
                 opacity: 0,
-                maskImage: 'linear-gradient(170deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%)'
+                maskImage:
+                  "linear-gradient(170deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%)",
               },
               {
                 opacity: 1,
-                maskImage: 'linear-gradient(170deg, rgb(0, 0, 0) 100%, rgba(255, 255, 255, 0) 180%)',
+                maskImage:
+                  "linear-gradient(170deg, rgb(0, 0, 0) 100%, rgba(255, 255, 255, 0) 180%)",
                 duration: 3.0,
-                ease: "power4.out"
+                ease: "power4.out",
               }
             );
 
@@ -619,20 +622,74 @@ export default class Page {
 
   solutionrelated() {
     const section = document.querySelector(".solution-related");
-    const section2 = document.querySelector(".solutions-list");
 
-    if (!section && !section2) return;
+    if (!section) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: section || section2,
+        trigger: section,
       },
     });
 
-    tl.from(".solution-related .content-item, .solutions-list .content-item", {
+    tl.from(".solution-related .content-item", {
       y: 100,
       opacity: 0,
       stagger: 0.15,
+    });
+  }
+
+  solutionlist() {
+    if (ScrollTrigger.isTouch) return;
+
+    const section = document.querySelector(".solutions-list");
+
+    if (!section) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+      },
+    });
+
+    tl.from(".solutions-list .content-item", {
+      y: 100,
+      opacity: 0,
+      stagger: 0.15,
+    });
+  }
+
+  solutionstack() {
+    if (!ScrollTrigger.isTouch) return;
+
+    const section = document.querySelector(".solutions-list");
+
+    if (!section) return;
+
+    const items = [...document.querySelectorAll('.solutions-list .content-item')];
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        pin: true,
+        scrub: true,
+        start: "top top",
+        end: `+=${items.length}00%`,
+      },
+    });
+
+    gsap.utils.toArray(".solutions-list .content-item").forEach((el, index) => {
+      tl.to(
+        el,
+        {
+          y: 0,
+        },
+        index === 0 ? null : "-=50%"
+      );
+
+      if (index === items.length - 1) return;
+      tl.to(el, {
+        scale: 0.8,
+      });
     });
   }
 
