@@ -110,30 +110,55 @@
                     }
 
                     .content-title {
-                        @include mx.phone {
-                            padding-left: fn.toVw(34);
-                            position: relative;
+                        position: relative;
+                        opacity: 0.4;
+                        transition: opacity 0.3s ease, padding 0.3s ease;
+                        cursor: pointer;
 
-                            &:before {
-                                position: absolute;
-                                left: fn.toVw(14);
-                                top: 50%;
-                                transform: translateY(-50%);
+                        &:hover, &:focus, &.active {
+                            opacity: 1;
+                            padding-left: fn.toVw(16);
 
-                                content: '';
-                                display: inline-block;
-                                width: fn.toVw(6);
-                                height: fn.toVw(6);
-                                background-color: clr.$white;
-                                border-radius: 50%;
+                            &::before {
+                                transform: translateY(-50%) scale(1);
                             }
                         }
 
-                        a {
+                        &::before {
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%) scale(0);
+                            transform-origin: center;
+
+                            content: '';
+                            display: inline-block;
+                            width: fn.toVw(6);
+                            height: fn.toVw(6);
+                            background-color: clr.$white;
+                            border-radius: 50%;
+
+                            will-change: transform;
+                            transition: transform 0.3s ease;
+
+                            @include mx.phone {
+                                width: fn.toVw(4);
+                                height: fn.toVw(4);
+                                left: fn.toVw(14);
+                                transform: translateY(-50%) scale(1);
+                            }
+                        }
+
+                        @include mx.phone {
+                            opacity: 1;
+                            padding-left: fn.toVw(34);
+                            pointer-events: none;
+                        }
+
+                        p {
                             font-size: fn.toVw(16);
                             font-weight: 400;
                             color: clr.$white;
-                            opacity: 1;
                         }
                     }
 
@@ -160,6 +185,8 @@
             }
 
             .content-description {
+                color: clr.$white;
+
                 @include mx.phone {
                     display: none;
                 }
