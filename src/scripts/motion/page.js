@@ -621,11 +621,11 @@ export default class Page {
     const section = document.querySelector(".solution-related");
     const section2 = document.querySelector(".solutions-list");
 
-    if (!section || !section2) return;
+    if (!section && !section2) return;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: section,
+        trigger: section || section2,
       },
     });
 
