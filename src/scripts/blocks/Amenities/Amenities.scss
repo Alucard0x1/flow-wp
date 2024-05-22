@@ -3,6 +3,8 @@
 @use '../../../styles/mixins' as mx;
 
 .amenities {
+    overflow: hidden;
+
     .container {
         display: flex;
         margin: fn.toVw(20);
@@ -15,6 +17,9 @@
             padding: fn.toVw(6);
             margin: fn.toVw(6);
             border-radius: fn.toVw(10);
+
+            overflow: hidden;
+            height: calc(100vh - (fn.toVw(6) * 2));
         }
 
         .image-wrapper {
@@ -27,7 +32,7 @@
             overflow: hidden;
 
             @include mx.phone {
-                flex: unset;
+                flex: none;
                 width: 100%;
                 height: fn.toVw(434);
                 border-radius: fn.toVw(10);
@@ -189,6 +194,18 @@
 
                 @include mx.phone {
                     display: none;
+                }
+            }
+
+            .content-description-main {
+                margin: fn.toVw(24) 0;
+                mask-position: center;
+                mask-clip: no-clip;
+                mask-position: center;
+                mask-size: cover;
+
+                p {
+                    margin: 0;
                 }
             }
         }

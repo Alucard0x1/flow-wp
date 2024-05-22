@@ -68,7 +68,7 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                         </div>
                     </div>
 
-                    <div className="content-description">
+                    <div className="content-description content-description-main">
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
                     </div>
                 </div>
