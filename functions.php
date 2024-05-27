@@ -79,7 +79,7 @@ function register_custom_post_type()
         'menu_icon' => 'dashicons-groups',
         'public' => true,
         'show_in_rest' => true,
-        'supports' => ['title', 'editor', 'thumbnail'],
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
         'has_archive' => false
     ]);
 }
