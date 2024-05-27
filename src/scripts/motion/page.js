@@ -678,13 +678,13 @@ export default class Page {
         {
           y: 0,
         },
-        index === 0 ? null : "-=50%"
+        // index === 0 ? null : "-=50%"
       );
 
-      if (index === items.length - 1) return;
-      tl.to(el, {
-        scale: 0.8,
-      });
+      // if (index === items.length - 1) return;
+      // tl.to(el, {
+      //   scale: 0.8,
+      // });
     });
   }
 
