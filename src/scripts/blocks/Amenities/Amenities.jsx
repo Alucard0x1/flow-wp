@@ -29,7 +29,7 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                             {attributes.items.map((item, index) => (
                                 <div class="content-item">
                                     <div className="content-title">
-                                        <Text tagName="a" href="#" value={item.title}
+                                        <Text tagName="p" value={item.title}
                                             onChange={(title) => {
                                                 const itemsCopy = [...attributes.items]
                                                 itemsCopy[index] = {
@@ -68,7 +68,7 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                         </div>
                     </div>
 
-                    <div className="content-description">
+                    <div className="content-description content-description-main">
                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
                     </div>
                 </div>

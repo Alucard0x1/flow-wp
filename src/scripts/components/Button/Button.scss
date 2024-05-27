@@ -1,6 +1,7 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
+@use '../../../styles/motion' as mtn;
 
 .btn {
     display: inline-block;
@@ -77,9 +78,21 @@
         font-weight: 400;
         font-size: fn.toVw(14);
 
+        transition: background 0.6s mtn.$transition-ease, color 0.6s mtn.$transition-ease;
+
+        &:not(.light):hover {
+            background: clr.$brown-39 !important;
+            color: clr.$brown-25 !important;
+        }
+
         &.light {
             background: clr.$brown-39;
             color: clr.$brown-25;
+
+            &:hover {
+                background: clr.$brown-15;
+                color: clr.$brown-37;
+            }
         }
 
 

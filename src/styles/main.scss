@@ -6,7 +6,7 @@
 @use 'root';
 @use 'typography';
 @use 'footer';
-@use 'motion';
+@use 'motionmarkup';
 @use 'nav';
 
 *,
@@ -145,6 +145,13 @@ a {
 
 .solutions-list {
     margin: fn.toVw(79) 0;
+    
+    @include mx.phone {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
 
     .container {
         display: flex;
@@ -165,7 +172,14 @@ a {
                 flex: unset;
                 width: 100%;
                 padding: 0;
-                margin-bottom: fn.toVw(66);
+                max-height: 100vh;
+                position: absolute;
+                inset: 0;
+                background-color: clr.$brown-35;
+
+                &:not(:first-child) {
+                    transform: translateY(120%);
+                }
             }
 
             .image-wrapper {
@@ -177,7 +191,7 @@ a {
                     border-radius: fn.toVw(12);
 
                     @include mx.phone {
-                        height: fn.toVw(603);
+                        height: 70vh;
                     }
                 }
             }

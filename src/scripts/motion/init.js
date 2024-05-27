@@ -32,11 +32,14 @@ export default class MotionInit {
     MotionPage.heroprepare();
     MotionPage.heroscroll();
     MotionPage.map();
-    MotionPage.amnities();
+    // MotionPage.amnities();
+    MotionPage.amnities2();
     MotionPage.philosophy();
     MotionPage.sideimage();
     MotionPage.highlight();
     MotionPage.solutionrelated();
+    MotionPage.solutionlist();
+    MotionPage.solutionstack();
 
     new Googlemap();
     new Nav();
