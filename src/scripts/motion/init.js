@@ -14,6 +14,7 @@ export default class MotionInit {
     Default();
 
     new Smoothscroll();
+    new Nav();
 
     new Resize();
   }
@@ -42,7 +43,6 @@ export default class MotionInit {
     MotionPage.solutionstack();
 
     new Googlemap();
-    new Nav();
   }
 
   reinit() {
