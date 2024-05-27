@@ -27,7 +27,7 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                     <div className="contents">
                         <div className="content-list">
                             {attributes.items.map((item, index) => (
-                                <div class="content-item">
+                                <div class={"content-item" + ((index + 1) % 2 == 0 ? ' even' : '')}>
                                     <div className="content-title">
                                         <Text tagName="p" value={item.title}
                                             onChange={(title) => {

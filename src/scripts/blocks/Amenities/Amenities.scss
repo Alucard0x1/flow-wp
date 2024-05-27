@@ -108,7 +108,8 @@
             .content-list {
                 display: flex;
                 flex-wrap: wrap;
-                margin-left: fn.toVw(-49);
+                // margin-left: fn.toVw(-49);
+                justify-content: space-between;
 
                 @include mx.phone {
                     background-color: clr.$purple-10;
@@ -118,11 +119,19 @@
                 }
 
                 .content-item {
-                    flex: 0 0 calc(50% - fn.toVw(34));
-                    width: calc(50% - fn.toVw(46));
+                    // flex: 0 0 calc(50% - fn.toVw(49));
+                    // width: calc(50% - fn.toVw(49));
 
                     margin-bottom: fn.toVw(27);
-                    margin-left: fn.toVw(34);
+                    // margin-left: fn.toVw(49);
+
+                    flex: 0 0 fn.toVw(270 + 16);
+                    width: fn.toVw(270 + 16);
+
+                    &.even {
+                        flex: 0 0 fn.toVw(195 + 16);
+                        width: fn.toVw(195 + 16);
+                    }
 
                     @include mx.phone {
                         flex: unset;
