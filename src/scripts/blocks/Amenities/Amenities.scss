@@ -3,6 +3,22 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+#editor {
+    .amenities {
+        .container {
+            .content-wrapper {
+                .content-list {
+                    .content-item {
+                        .content-description {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 .amenities {
     overflow: hidden;
@@ -122,7 +138,9 @@
                         transition: opacity 0.6s mtn.$transition-ease, padding 0.6s mtn.$transition-ease;
                         cursor: pointer;
 
-                        &:hover, &:focus, &.active {
+                        &:hover,
+                        &:focus,
+                        &.active {
                             opacity: 1;
                             padding-left: fn.toVw(16);
 
@@ -170,6 +188,7 @@
                             font-size: fn.toVw(16);
                             font-weight: 400;
                             color: clr.$white;
+                            margin: 0;
                         }
                     }
 

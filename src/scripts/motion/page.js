@@ -405,8 +405,6 @@ export default class Page {
           const title = el.querySelector(".content-title");
           const itemDesc = el.querySelector(".content-description");
 
-          if (title || itemDesc == null) return
-
           if (index === 0) {
             title.classList.add("active");
             desc.textContent = itemDesc.textContent;
