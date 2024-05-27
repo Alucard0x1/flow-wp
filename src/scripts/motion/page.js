@@ -160,18 +160,14 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -409,6 +405,8 @@ export default class Page {
           const title = el.querySelector(".content-title");
           const itemDesc = el.querySelector(".content-description");
 
+          if (title || itemDesc == null) return
+
           if (index === 0) {
             title.classList.add("active");
             desc.textContent = itemDesc.textContent;
@@ -498,9 +496,8 @@ export default class Page {
         trigger: ".scroll-slider",
         start: () =>
           ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
-        end: `+=${
-          ScrollTrigger.isTouch ? slides.length / 2 : slides.length
-        }00%`,
+        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length
+          }00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
