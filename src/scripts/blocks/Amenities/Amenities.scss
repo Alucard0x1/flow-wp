@@ -118,11 +118,11 @@
                 }
 
                 .content-item {
-                    flex: 0 0 calc(50% - fn.toVw(46));
+                    flex: 0 0 calc(50% - fn.toVw(34));
                     width: calc(50% - fn.toVw(46));
 
                     margin-bottom: fn.toVw(27);
-                    margin-left: fn.toVw(46);
+                    margin-left: fn.toVw(34);
 
                     @include mx.phone {
                         flex: unset;
@@ -185,7 +185,7 @@
                         }
 
                         p {
-                            font-size: fn.toVw(16);
+                            font-size: fn.toVw(20);
                             font-weight: 400;
                             color: clr.$white;
                             margin: 0;
