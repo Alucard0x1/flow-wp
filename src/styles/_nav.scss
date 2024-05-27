@@ -1,6 +1,7 @@
 @use '../styles/functions' as fn;
 @use '../styles/mixins' as mx;
 @use '../styles/colors' as clr;
+@use '../styles/motion' as mtn;
 
 .nav {
     position: fixed;
@@ -79,24 +80,85 @@
         display: flex;
 
         .nav-toggle {
-            a {
+
+            .hamburger {
                 height: fn.toVw(64);
                 width: fn.toVw(64);
                 background-color: clr.$brown-50;
 
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: fn.toVw(5);
                 border-radius: fn.toVw(10);
                 margin-right: fn.toVw(9);
+                cursor: pointer;
+
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background-color: clr.$brown-15;
+                    color: clr.$white;
+
+                    .line {
+                        background-color: clr.$white;
+                    }
+                }
+
+                &.active {
+                    .line {
+                        &:nth-child(1) {
+                            transform-origin: left;
+                            transform: scaleX(0);
+                        }
+    
+                        &:nth-child(3) {
+                            transform-origin: right;
+                            transform: scaleX(0);
+                        }
+                    }
+                }
+            }
+
+            .line {
+                width: fn.toVw(16);
+                height: 1px;
+                background-color: clr.$brown-10;
+                transition: transform 0.6s mtn.$transition-ease, background-color 0.3s ease;
+
+                &:nth-child(1) {
+                    transform-origin: right;
+                }
+
+                &:nth-child(3) {
+                    transform-origin: left;
+                }
             }
         }
 
         .contact-wrapper {
             display: flex;
             align-items: center;
+            padding: fn.toVw(20) fn.toVw(26);
             border-radius: fn.toVw(10);
+            color: clr.$brown-10;
             background-color: clr.$brown-50;
+
+            font-size: fn.toVw(12);
+            font-weight: 400;
+
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            @include mx.phone {
+                border-radius: fn.toVw(8);
+                padding: fn.toVw(18) fn.toVw(10);
+            }
+
+            &:hover {
+                background-color: clr.$brown-15;
+                color: clr.$white;
+            }
 
             .phone {
                 padding-right: fn.toVw(18);
@@ -132,27 +194,6 @@
                             text-decoration: underline;
                         }
                     }
-                }
-            }
-
-            .book-btn {
-                display: block;
-                padding: fn.toVw(20) fn.toVw(26);
-                border-radius: fn.toVw(10);
-                color: clr.$brown-10;
-
-                font-size: fn.toVw(12);
-                font-weight: 400;
-
-                transition: background-color 0.3s ease;
-
-                @include mx.phone {
-                    border-radius: fn.toVw(8);
-                    padding: fn.toVw(18) fn.toVw(10);
-                }
-
-                &:hover {
-                    background-color: #e1d6c2;
                 }
             }
         }

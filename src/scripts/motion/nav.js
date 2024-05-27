@@ -1,7 +1,7 @@
 import gsap from "gsap";
 class Nav {
   constructor() {
-    this.toggle = document.querySelector(".nav-toggle a");
+    this.toggle = document.querySelector(".nav-toggle .hamburger");
     this.popup = document.querySelector(".nav-popup");
     this.popupBg = this.popup.querySelector(".container-bg");
     this.popupContent = [
@@ -22,6 +22,7 @@ class Nav {
       e.preventDefault();
 
       this.popup.classList.toggle("active");
+      this.toggle.classList.toggle("active");
 
       if (this.popup.classList.contains("active")) {
         gsap.to(this.popupBg, {
