@@ -79,15 +79,17 @@
         display: flex;
 
         .nav-toggle {
-            height: fn.toVw(64);
-            width: fn.toVw(64);
-            background-color: clr.$brown-50;
+            a {
+                height: fn.toVw(64);
+                width: fn.toVw(64);
+                background-color: clr.$brown-50;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: fn.toVw(10);
-            margin-right: fn.toVw(9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: fn.toVw(10);
+                margin-right: fn.toVw(9);
+            }
         }
 
         .contact-wrapper {
