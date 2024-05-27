@@ -76,6 +76,20 @@
     }
 
     &-right {
+        display: flex;
+
+        .nav-toggle {
+            height: fn.toVw(64);
+            width: fn.toVw(64);
+            background-color: clr.$brown-50;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: fn.toVw(10);
+            margin-right: fn.toVw(9);
+        }
+
         .contact-wrapper {
             display: flex;
             align-items: center;
@@ -137,6 +151,134 @@
 
                 &:hover {
                     background-color: #e1d6c2;
+                }
+            }
+        }
+    }
+}
+
+
+.nav-popup {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(#2E251F, 0.6);
+        z-index: 10;
+    }
+
+    .container {
+        display: flex;
+
+        position: absolute;
+        top: fn.toVw(104);
+        left: fn.toVw(20);
+        right: fn.toVw(20);
+        z-index: 11;
+        background-color: #FAF5EA;
+        border-radius: fn.toVw(16);
+        padding: fn.toVw(55) fn.toVw(38) fn.toVw(41) fn.toVw(48);
+
+
+        .image-wrapper {
+            img {
+                width: fn.toVw(441);
+                height: fn.toVw(267);
+                border-radius: fn.toVw(16);
+                object-fit: cover;
+            }
+        }
+
+        .content-wrapper {
+            padding-left: fn.toVw(143);
+            flex: 1;
+
+            .nav-popup-menu {
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+                margin-bottom: fn.toVw(130);
+
+                .menu-left {
+                    &-link {
+                        font-size: fn.toVw(44);
+                        line-height: fn.toVw(40);
+                        letter-spacing: -0.44px;
+                        margin-bottom: fn.toVw(18);
+
+                        &.active {
+                            a {
+                                opacity: 1;
+                                padding-left: fn.toVw(30);
+                                position: relative;
+
+                                &:before {
+                                    display: inline-block;
+                                    content: '';
+                                    width: fn.toVw(16);
+                                    height: fn.toVw(16);
+                                    background-color: rgba(#575349, .9);
+                                    border-radius: 50%;
+
+                                    position: absolute;
+                                    left: 0;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                }
+                            }
+                        }
+
+                        a {
+                            color: #5D524A;
+                            opacity: .5;
+                        }
+                    }
+                }
+
+                .menu-right {
+                    align-self: flex-end;
+
+                    &-link {
+                        a {
+                            color: #5D524A;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+
+            .nav-popup-footer {
+                border-top: 1px solid rgba(#5D524A, 0.2);
+                padding-top: fn.toVw(17);
+                display: flex;
+                justify-content: space-between;
+
+                a {
+                    color: #5D524A;
+                }
+
+                .menu-social {
+                    margin: 0 fn.toVw(-20);
+
+                    a {
+                        margin: 0 fn.toVw(20);
+                    }
+                }
+
+                .menu-terms {
+                    margin: 0 fn.toVw(-40);
+
+                    a {
+                        margin: 0 fn.toVw(40);
+                    }
                 }
             }
         }

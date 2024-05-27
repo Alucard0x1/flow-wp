@@ -4,11 +4,12 @@ import Page from "./page";
 import Resize from "./resize";
 import MotionText from "./text";
 import Googlemap from "./googlemap";
+import Nav from "./nav";
 
 export const MotionPage = new Page();
 export default class MotionInit {
   // TODO: temp solution for afterPreloader2 footer
-  
+
   first() {
     Default();
 
@@ -38,6 +39,7 @@ export default class MotionInit {
     MotionPage.solutionrelated();
 
     new Googlemap();
+    new Nav();
   }
 
   reinit() {
