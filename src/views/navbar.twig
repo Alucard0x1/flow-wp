@@ -31,46 +31,32 @@
 			<p>Workspace Solution</p>
 			<div class="nav-popup-menu">
 				<div class="menu-left">
-					<div class="menu-left-link active">
-						<a href="#">Private Suites</a>
-					</div>
-
-					<div class="menu-left-link">
-						<a href="#">Flexible Desk</a>
-					</div>
-
-					<div class="menu-left-link">
-						<a href="#">Meeting Rooms</a>
-					</div>
-
-					<div class="menu-left-link">
-						<a href="#">Event Spaces</a>
-					</div>
+					{% for menu in popup.items %}
+						<div class="menu-left-link">
+							<a href="{{menu.link}}">{{menu.title}}</a>
+						</div>
+					{% endfor %}
 				</div>
 
 				<div class="menu-right">
-					<div class="menu-right-link">
-						<a href="#">Contact Us</a>
-					</div>
-
-					<div class="menu-right-link">
-						<a href="#">Be a Member</a>
-					</div>
+					{% for menu in popupRight.items %}
+						<div class="menu-right-link">
+							<a href="{{menu.link}}">{{menu.title}}</a>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 			<div class="nav-popup-footer">
 				<div class="menu-social">
-					<a href="#">Instagram</a>
-
-					<a href="#">Facebook</a>
-
-					<a href="#">LinkedIn</a>
+					{% for menu in popupSocial.items %}
+						<a href="{{menu.link}}">{{menu.title}}</a>
+					{% endfor %}
 				</div>
 
 				<div class="menu-terms">
-					<a href="#">Privacy Policy</a>
-
-					<a href="#">Terms & Conditions</a>
+					{% for menu in popupTerms.items %}
+						<a href="{{menu.link}}">{{menu.title}}</a>
+					{% endfor %}
 				</div>
 			</div>
 		</div>

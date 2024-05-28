@@ -19,6 +19,10 @@ function add_to_context($context)
     $context['footerMenu'] = Timber\Timber::get_menu('footer-menu');
     $context['footerSocial'] = Timber\Timber::get_menu('footer-social');
     $context['footerEnd'] = Timber\Timber::get_menu('footer-end');
+    $context['popup'] = Timber\Timber::get_menu('popup');
+    $context['popupRight'] = Timber\Timber::get_menu('popup-right');
+    $context['popupSocial'] = Timber\Timber::get_menu('popup-social');
+    $context['popupTerms'] = Timber\Timber::get_menu('popup-terms');
 
     return $context;
 }
@@ -28,7 +32,11 @@ function after_setup_theme()
     register_nav_menus([
         'footer-menu' => 'Footer Menu',
         'footer-social' => 'Footer Social',
-        'footer-end' => 'Footer End'
+        'footer-end' => 'Footer End',
+        'popup' => 'Popup',
+        'popup-right' => 'Popup Right',
+        'popup-social' => 'Popup Social',
+        'popup-terms' => 'Popup Terms'
     ]);
 }
 
