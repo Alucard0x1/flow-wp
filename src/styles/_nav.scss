@@ -259,6 +259,15 @@
         .image-wrapper {
             opacity: 0;
 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            p {
+                font-size: fn.toVw(15);
+                font-weight: 400;
+            }
+
             img {
                 width: fn.toVw(441);
                 height: fn.toVw(267);
@@ -272,6 +281,14 @@
             flex: 1;
 
             opacity: 0;
+
+            >p {
+                margin-top: 0;
+                margin-bottom: fn.toVw(44);
+
+                font-size: fn.toVw(15);
+                font-weight: 400;
+            }
 
             .nav-popup-menu {
                 display: flex;
@@ -291,7 +308,10 @@
                         font-size: fn.toVw(44);
                         line-height: fn.toVw(40);
                         letter-spacing: -0.44px;
-                        margin-bottom: fn.toVw(18);
+
+                        &:not(:last-child) {
+                            margin-bottom: fn.toVw(18);
+                        }
 
                         @include mx.phone {
                             font-size: fn.toVw(32);
@@ -345,9 +365,16 @@
                     }
 
                     &-link {
+                        &:not(:last-child) {
+                            margin-bottom: fn.toVw(16);
+                        }
+
                         a {
+                            font-size: fn.toVw(30);
+                            line-height: fn.toVw(28);
                             color: #5D524A;
                             font-weight: 400;
+
                         }
                     }
                 }
