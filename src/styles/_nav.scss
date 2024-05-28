@@ -259,6 +259,14 @@
         }
     }
 
+    .hoverlink {
+        transition: opacity 0.4s mtn.$transition-ease;
+
+        &:hover {
+            opacity: 0.5 !important;
+        }
+    }
+
     .backdrop {
         position: absolute;
         top: 0;
@@ -268,7 +276,7 @@
         background-color: rgba(#2E251F, 0.6);
         z-index: 10;
         opacity: 0;
-        transition: 0.6s ease;
+        transition: opacity 0.6s ease;
     }
 
     .container {
@@ -346,6 +354,12 @@
 
                 font-size: fn.toVw(15);
                 font-weight: 400;
+
+                @include mx.phone {
+                    font-size: calc(100svh*15/844);
+                    // margin-bottom: fn.toVw(44);
+                    margin-bottom: calc(100svh*44/844);
+                }
             }
 
             .nav-popup-menu {
@@ -364,49 +378,76 @@
                 }
 
                 .menu-left {
+                    position: relative;
+
                     @include mx.phone {
-                        margin-bottom: fn.toVw(144);
+                        // margin-bottom: fn.toVw(144);
+                        margin-bottom: calc(100svh*80/844);
+                    }
+
+                    .bullet {
+                        width: fn.toVw(12.7);
+                        height: fn.toVw(12.7);
+                        background-color: clr.$brown-10;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 2;
+                        transform: scale(0);
+
+                        @include mx.phone {
+                            display: none;
+                        }
+                    }
+
+                    &:has(.active) {
+                        .bullet {
+                            opacity: 0.8;
+
+                            @include mx.phone {
+                                opacity: 1;
+                            }
+                        }
+
+                        .menu-left-link {
+                            
+                            a {
+                                &:hover {
+                                    opacity: 0.8;
+
+                                    @include mx.phone {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     &-link {
-                        font-size: fn.toVw(44);
-                        line-height: fn.toVw(40);
-                        letter-spacing: -0.44px;
-
-                        &:not(:last-child) {
-                            margin-bottom: fn.toVw(18);
-                        }
-
-                        @include mx.phone {
-                            font-size: fn.toVw(32);
-                            line-height: 1;
-                            letter-spacing: -0.32px;
-                            margin-bottom: fn.toVw(10);
-                        }
 
                         &.active {
+
                             a {
+                                pointer-events: none;
                                 opacity: 1;
-                                padding-left: fn.toVw(30);
-                                position: relative;
+                                padding-left: calc(fn.toVw(17) + fn.toVw(12.7));
 
                                 @include mx.phone {
                                     padding-left: 0;
                                 }
 
-                                &:before {
-                                    display: inline-block;
+                                &::before {
                                     content: '';
-                                    width: fn.toVw(16);
-                                    height: fn.toVw(16);
-                                    background-color: rgba(#575349, .9);
+                                    width: fn.toVw(12.7);
+                                    height: fn.toVw(12.7);
+                                    background-color: clr.$brown-10;
                                     border-radius: 50%;
-
                                     position: absolute;
-                                    left: 0;
                                     top: 50%;
+                                    left: 0;
                                     transform: translateY(-50%);
-
+                                
                                     @include mx.phone {
                                         display: none;
                                     }
@@ -415,8 +456,35 @@
                         }
 
                         a {
+                            position: relative;
+                            display: block;
                             color: #5D524A;
                             opacity: .5;
+                            font-size: fn.toVw(44);
+                            line-height: fn.toVw(40);
+                            letter-spacing: -0.44px;
+                            will-change: opacity, padding-left;
+                            transition: opacity 0.4s mtn.$transition-ease, padding-left 0.4s mtn.$transition-ease;
+
+                            padding: fn.toVw(18) 0;
+                            margin: fn.toVw(-18) 0;
+
+                            @include mx.phone {
+                                font-size: calc(100svh*32/844);
+                                line-height: 1;
+                                letter-spacing: -0.32px;
+                                padding: fn.toVw(10) 0;
+                                margin: fn.toVw(-10) 0;
+
+                                &:hover {
+                                    padding-left: 0 !important;
+                                }
+                            }
+
+                            &:hover, &.active {
+                                opacity: 1;
+                                padding-left: calc(fn.toVw(17) + fn.toVw(12.7));
+                            }
                         }
                     }
                 }
@@ -431,6 +499,10 @@
                     &-link {
                         &:not(:last-child) {
                             margin-bottom: fn.toVw(16);
+
+                            @include mx.phone {
+                                margin-bottom: calc(100svh*8/844);
+                            }
                         }
 
                         a {
@@ -439,15 +511,38 @@
                             color: #5D524A;
                             font-weight: 400;
 
+                            @extend .hoverlink;
+
+                            @include mx.phone {
+                                line-height: 1;
+                                font-size: calc(100svh*28/844);
+                            }
                         }
                     }
                 }
             }
 
+            .border {
+                margin: fn.toVw(17) 0;
+
+                @include mx.phone {
+                    // margin-top: fn.toVw(38);
+                    // margin-bottom: fn.toVw(31);
+                    margin-top: calc(100svh*38/844);
+                    margin-bottom: calc(100svh*31/844);
+                }
+            }
+
             .nav-popup-footer {
-                padding-top: fn.toVw(17);
                 display: flex;
                 justify-content: space-between;
+
+                @include mx.phone {
+                    font-size: calc(100svh*14/844);
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                    gap: fn.toVw(70)
+                }
 
                 a {
                     color: #5D524A;
@@ -456,17 +551,41 @@
 
                 .menu-social {
                     margin: 0 fn.toVw(-20);
+                    
+                    @include mx.phone {
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                    }
 
                     a {
                         margin: 0 fn.toVw(20);
+
+                        @include mx.phone {
+                            margin: 0;
+                        }
+
+                        @extend .hoverlink;
                     }
                 }
 
                 .menu-terms {
                     margin: 0 fn.toVw(-40);
 
+                    @include mx.phone {
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
                     a {
                         margin: 0 fn.toVw(40);
+
+                        @extend .hoverlink;
+
+                        @include mx.phone {
+                            margin: 0;
+                        }
                     }
                 }
             }

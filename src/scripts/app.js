@@ -10,7 +10,7 @@ import Smoothscroll, { smoothScroll } from "./motion/smoothscroll";
 
 import CleanScrolltrigger from "./utils/cleanscrolltrigger";
 
-var aLazyLoad = new LazyLoad({});
+export let aLazyLoad;
 
 export let taxi = null;
 
@@ -23,6 +23,8 @@ class RendererDefault extends Renderer {
     if (process.env.NODE_ENV === "development") {
       console.log("initialLoad");
     }
+
+    aLazyLoad = new LazyLoad();
 
     motion.first();
     motion.enter();
@@ -43,6 +45,9 @@ class RendererDefault extends Renderer {
     }
 
     // new Smoothscroll();
+    if (aLazyLoad) {
+      aLazyLoad.update();
+    }
 
     smoothScroll.start();
 

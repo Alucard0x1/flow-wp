@@ -33,6 +33,7 @@ export default class MotionInit {
   }
 
   enter() {
+    Navbar.bullet();
     MotionPage.heroprepare();
     MotionPage.heroscroll();
     MotionPage.map();

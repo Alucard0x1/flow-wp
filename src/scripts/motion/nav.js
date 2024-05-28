@@ -1,19 +1,25 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoothScroll } from "./smoothscroll";
+gsap.registerPlugin(ScrollTrigger);
+
 class Nav {
   constructor() {
     this.toggle = document.querySelector(".nav-toggle .hamburger");
     this.popup = document.querySelector(".nav-popup");
     this.popupBg = this.popup.querySelector(".container-bg");
     this.backdrop = this.popup.querySelector(".backdrop");
+
+    this.menuLinkWrapper = this.popup.querySelector(".menu-left");
+    this.menuLink = this.popup.querySelectorAll(".menu-left-link");
+
     this.popupContentWrapper = [
       this.popup.querySelector(".image-wrapper"),
       this.popup.querySelector(".content-wrapper"),
-      this.popup.querySelectorAll(".menu-left .menu-left-link"),
     ];
     this.popupContentMenuLeft = [
       this.popup.querySelector(".content-wrapper p"),
-      this.popup.querySelectorAll(".menu-left .menu-left-link"),
+      this.menuLink,
     ];
     this.popupContentMenuRight = [
       this.popup.querySelectorAll(".menu-right .menu-right-link"),
@@ -28,6 +34,8 @@ class Nav {
       this.popup.querySelector(".image-wrapper p"),
       this.popup.querySelector(".image-wrapper img"),
     ];
+
+    this.bulletLink = this.popup.querySelector(".bullet");
   }
 
   init() {
@@ -38,7 +46,6 @@ class Nav {
     smoothScroll.stop();
     this.popup.classList.add("active");
     this.toggle.classList.add("active");
-    
 
     gsap.to(this.popupBg, {
       scale: 1,
@@ -78,6 +85,33 @@ class Nav {
     this.backdrop.addEventListener("click", (e) => {
       this.close();
     });
+
+    if (ScrollTrigger.isTouch) return;
+    if (this.menuLink.length) {
+      this.menuLink.forEach((el) => {
+        const getTop = el.offsetTop + el.offsetHeight / 2;
+        const bulletHeight = this.bulletLink.offsetHeight / 2;
+
+        el.addEventListener("mouseenter", (e) => {
+          gsap.to(this.bulletLink, {
+            scale: 1,
+            y: () => getTop - bulletHeight,
+            ease: "expo.out",
+            duration: 0.6,
+            overwrite: true
+          });
+        });
+      });
+
+      this.menuLinkWrapper.addEventListener("mouseleave", (e) => {
+        gsap.to(this.bulletLink, {
+          scale: 0,
+          ease: "expo.out",
+          duration: 0.4,
+          overwrite: true
+        });
+      });
+    }
   }
 
   content(show = false, delay = 0) {
@@ -178,6 +212,34 @@ class Nav {
         overwrite: true,
       });
     }
+  }
+
+  normalizeUrl(url) {
+    if (url.endsWith("/") && url.length > 1) {
+      url = url.substring(0, url.length - 1);
+    }
+    return url.toLowerCase();
+  }
+
+  bullet() {
+    this.menuLink.forEach((el) => {
+      const texthref = this.normalizeUrl(el.querySelector('a').href);
+      const currentUrl = this.normalizeUrl(window.location.href);
+
+      if (texthref === currentUrl) {
+        el.classList.add("active");
+
+        if (ScrollTrigger.isTouch) return;
+        const getTop = el.offsetTop + el.offsetHeight / 2;
+        const bulletHeight = this.bulletLink.offsetHeight / 2;
+
+        gsap.set(this.bulletLink, {
+          y: () => getTop - bulletHeight,
+        });
+      } else {
+        el.classList.remove("active");
+      }
+    });
   }
 }
 
