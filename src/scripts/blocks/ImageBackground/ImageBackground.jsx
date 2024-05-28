@@ -98,11 +98,15 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                                 )}
                             />
                         }
-                        <div className="background-image"
-                            style={{
-                                backgroundImage: `url(${item.background ? item.background.url : 'https://picsum.photos/1920/1080'})`
-                            }}
-                        ></div>
+                        {item.background && item.background.type == 'video' ?
+                            <video src={item.background.url} autoPlay playsInline loop muted />
+                            :
+                            <div className="background-image"
+                                style={{
+                                    backgroundImage: `url(${item.background ? item.background.url : 'https://picsum.photos/1920/1080'})`
+                                }}
+                            ></div>
+                        }
 
                         <div className={`content-wrapper ${attributes.direction}`}>
                             <div className="content-wrapper__content">
