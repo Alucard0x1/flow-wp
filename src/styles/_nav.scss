@@ -111,7 +111,6 @@
         display: flex;
 
         .nav-toggle {
-
             .hamburger {
                 height: fn.toVw(64);
                 width: fn.toVw(64);
@@ -127,6 +126,10 @@
                 cursor: pointer;
 
                 transition: background-color 0.3s ease, color 0.3s ease;
+
+                @include mx.phone {
+                    margin-right: 0;
+                }
 
                 &:hover {
                     background-color: clr.$brown-15;
@@ -169,6 +172,14 @@
         }
 
         .contact-wrapper {
+            @include mx.phone {
+                position: fixed;
+                bottom: fn.toVw(11);
+                left: fn.toVw(7);
+                right: fn.toVw(7);
+                justify-content: center;
+            }
+
             display: flex;
             align-items: center;
             padding: fn.toVw(20) fn.toVw(26);
@@ -179,7 +190,8 @@
             font-size: fn.toVw(12);
             font-weight: 400;
 
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease,
+            color 0.3s ease;
 
             @include mx.phone {
                 border-radius: fn.toVw(8);
