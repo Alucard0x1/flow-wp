@@ -1,14 +1,14 @@
 import { Core as Taxi, Renderer } from "@unseenco/taxi";
 import { TransitionDefault } from "./motion/transition";
-import Loading from './motion/preloader';
+import Loading from "./motion/preloader";
 
 import LazyLoad from "vanilla-lazyload";
 
 import MotionInit from "./motion/init";
 
-import Smoothscroll, { smoothScroll } from './motion/smoothscroll';
+import Smoothscroll, { smoothScroll } from "./motion/smoothscroll";
 
-import CleanScrolltrigger from './utils/cleanscrolltrigger';
+import CleanScrolltrigger from "./utils/cleanscrolltrigger";
 
 var aLazyLoad = new LazyLoad({});
 
@@ -27,11 +27,14 @@ class RendererDefault extends Renderer {
     motion.first();
     motion.enter();
 
-    Preloader.First(() => {
-      motion.afterPreloader();
-    }, () => {
-      motion.afterPreloader2();
-    });
+    Preloader.First(
+      () => {
+        motion.afterPreloader();
+      },
+      () => {
+        motion.afterPreloader2();
+      }
+    );
   }
 
   onEnter() {
@@ -39,9 +42,8 @@ class RendererDefault extends Renderer {
       console.log("onEnter");
     }
 
-    new Smoothscroll();
+    // new Smoothscroll();
 
-    document.documentElement.classList.add("active");
     smoothScroll.start();
 
     Preloader.Enter(() => {
@@ -59,15 +61,15 @@ class RendererDefault extends Renderer {
     if (process.env.NODE_ENV === "development") {
       console.log("onLeave");
     }
-
-    smoothScroll.stop();
-    smoothScroll.destroy();
   }
 
   onLeaveCompleted() {
     if (process.env.NODE_ENV === "development") {
       console.log("onLeaveCompleted");
     }
+
+    smoothScroll.stop();
+    // smoothScroll.destroy();
 
     CleanScrolltrigger(true);
 

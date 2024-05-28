@@ -1,6 +1,7 @@
 @use '../styles/functions' as fn;
 @use '../styles/mixins' as mx;
 @use '../styles/colors' as clr;
+@use '../styles/motion' as mtn;
 
 .nav {
     position: fixed;
@@ -79,24 +80,85 @@
         display: flex;
 
         .nav-toggle {
-            a {
+
+            .hamburger {
                 height: fn.toVw(64);
                 width: fn.toVw(64);
                 background-color: clr.$brown-50;
 
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: fn.toVw(5);
                 border-radius: fn.toVw(10);
                 margin-right: fn.toVw(9);
+                cursor: pointer;
+
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background-color: clr.$brown-15;
+                    color: clr.$white;
+
+                    .line {
+                        background-color: clr.$white;
+                    }
+                }
+
+                &.active {
+                    .line {
+                        &:nth-child(1) {
+                            transform-origin: left;
+                            transform: scaleX(0);
+                        }
+
+                        &:nth-child(3) {
+                            transform-origin: right;
+                            transform: scaleX(0);
+                        }
+                    }
+                }
+            }
+
+            .line {
+                width: fn.toVw(16);
+                height: 1px;
+                background-color: clr.$brown-10;
+                transition: transform 0.6s mtn.$transition-ease, background-color 0.3s ease;
+
+                &:nth-child(1) {
+                    transform-origin: right;
+                }
+
+                &:nth-child(3) {
+                    transform-origin: left;
+                }
             }
         }
 
         .contact-wrapper {
             display: flex;
             align-items: center;
+            padding: fn.toVw(20) fn.toVw(26);
             border-radius: fn.toVw(10);
+            color: clr.$brown-10;
             background-color: clr.$brown-50;
+
+            font-size: fn.toVw(12);
+            font-weight: 400;
+
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            @include mx.phone {
+                border-radius: fn.toVw(8);
+                padding: fn.toVw(18) fn.toVw(10);
+            }
+
+            &:hover {
+                background-color: clr.$brown-15;
+                color: clr.$white;
+            }
 
             .phone {
                 padding-right: fn.toVw(18);
@@ -134,37 +196,24 @@
                     }
                 }
             }
-
-            .book-btn {
-                display: block;
-                padding: fn.toVw(20) fn.toVw(26);
-                border-radius: fn.toVw(10);
-                color: clr.$brown-10;
-
-                font-size: fn.toVw(12);
-                font-weight: 400;
-
-                transition: background-color 0.3s ease;
-
-                @include mx.phone {
-                    border-radius: fn.toVw(8);
-                    padding: fn.toVw(18) fn.toVw(10);
-                }
-
-                &:hover {
-                    background-color: #e1d6c2;
-                }
-            }
         }
     }
 }
 
 
 .nav-popup {
-    display: none;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    z-index: 10;
 
-    &.show {
-        display: block;
+    &.active {
+        pointer-events: auto;
+
+        .backdrop {
+            opacity: 1;
+        }
     }
 
     .backdrop {
@@ -175,6 +224,8 @@
         bottom: 0;
         background-color: rgba(#2E251F, 0.6);
         z-index: 10;
+        opacity: 0;
+        transition: 0.6s ease;
     }
 
     .container {
@@ -185,19 +236,28 @@
         left: fn.toVw(20);
         right: fn.toVw(20);
         z-index: 11;
-        background-color: #FAF5EA;
-        border-radius: fn.toVw(16);
         padding: fn.toVw(55) fn.toVw(38) fn.toVw(41) fn.toVw(48);
 
-        @include mx.phone {
-            padding: fn.toVw(53) fn.toVw(20);
+        .container-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background-color: #FAF5EA;
+            border-radius: fn.toVw(16);
+
+            will-change: transform;
+            transform-origin: 90% 0%;
+            transform: scale(0);
+
+            @include mx.phone {
+                transform-origin: 50% 0%;
+            }
         }
 
-
         .image-wrapper {
-            @include mx.phone {
-                display: none;
-            }
+            opacity: 0;
 
             img {
                 width: fn.toVw(441);
@@ -211,9 +271,7 @@
             padding-left: fn.toVw(143);
             flex: 1;
 
-            @include mx.phone {
-                padding-left: 0;
-            }
+            opacity: 0;
 
             .nav-popup-menu {
                 display: flex;
