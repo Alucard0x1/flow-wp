@@ -189,8 +189,16 @@
         border-radius: fn.toVw(16);
         padding: fn.toVw(55) fn.toVw(38) fn.toVw(41) fn.toVw(48);
 
+        @include mx.phone {
+            padding: fn.toVw(53) fn.toVw(20);
+        }
+
 
         .image-wrapper {
+            @include mx.phone {
+                display: none;
+            }
+
             img {
                 width: fn.toVw(441);
                 height: fn.toVw(267);
@@ -203,11 +211,22 @@
             padding-left: fn.toVw(143);
             flex: 1;
 
+            @include mx.phone {
+                padding-left: 0;
+            }
+
             .nav-popup-menu {
                 display: flex;
                 justify-content: space-between;
                 width: 80%;
                 margin-bottom: fn.toVw(130);
+
+                @include mx.phone {
+                    width: unset;
+
+                    flex-direction: column;
+                    justify-content: unset;
+                }
 
                 .menu-left {
                     &-link {
@@ -216,11 +235,22 @@
                         letter-spacing: -0.44px;
                         margin-bottom: fn.toVw(18);
 
+                        @include mx.phone {
+                            font-size: fn.toVw(32);
+                            line-height: 1;
+                            letter-spacing: -0.32px;
+                            margin-bottom: fn.toVw(10);
+                        }
+
                         &.active {
                             a {
                                 opacity: 1;
                                 padding-left: fn.toVw(30);
                                 position: relative;
+
+                                @include mx.phone {
+                                    padding-left: 0;
+                                }
 
                                 &:before {
                                     display: inline-block;
@@ -234,6 +264,10 @@
                                     left: 0;
                                     top: 50%;
                                     transform: translateY(-50%);
+
+                                    @include mx.phone {
+                                        display: none;
+                                    }
                                 }
                             }
                         }
@@ -247,6 +281,10 @@
 
                 .menu-right {
                     align-self: flex-end;
+
+                    @include mx.phone {
+                        align-self: unset;
+                    }
 
                     &-link {
                         a {
