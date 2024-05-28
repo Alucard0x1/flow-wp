@@ -156,6 +156,8 @@ a {
         position: relative;
         overflow: hidden;
         margin-bottom: 0;
+
+        margin: fn.toVw(93) 0 fn.toVw(66);
     }
 
     .container {

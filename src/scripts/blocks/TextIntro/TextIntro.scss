@@ -3,6 +3,16 @@
 @use '../../../styles/colors' as clr;
 
 .text-intro {
+    &.before-solutions-list {
+        .container {
+            padding: fn.toVw(134) 0 0;
+
+            @include mx.phone {
+                padding: fn.toVw(95) 0 0;
+            }
+        }
+    }
+
     .container {
         padding: fn.toVw(200) 0;
         text-align: center;

@@ -2,13 +2,13 @@ import './TextIntro.scss'
 import useRichText from '../../hooks/useRichText'
 
 const { InspectorControls } = wp.blockEditor
-const { PanelBody, PanelRow, Dropdown, Button, ColorPicker, ColorIndicator } = wp.components
+const { PanelBody, PanelRow, Dropdown, Button, ColorPicker, ColorIndicator, SelectControl } = wp.components
 
 const TextIntro = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className="text-intro"
+        <section className={"text-intro " + attributes.margin}
             style={{
                 backgroundColor: attributes.backgroundColor
             }}
@@ -16,6 +16,19 @@ const TextIntro = ({ attributes, setAttributes, isSelected }) => {
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
+                        <SelectControl
+                            label="Margin"
+                            value={attributes.margin}
+                            onChange={(margin) => setAttributes({ margin })}
+                            options={[
+                                {
+                                    label: 'Default', value: ''
+                                },
+                                {
+                                    label: 'Before Solutions list', value: 'before-solutions-list'
+                                }
+                            ]}
+                        />
                         <Dropdown
                             renderContent={() => (
                                 <ColorPicker onChange={(backgroundColor) => setAttributes({ backgroundColor })} />
