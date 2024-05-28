@@ -229,6 +229,8 @@ a {
                     color: clr.$brown-10;
 
                     h3 {
+                        font-weight: 400;
+
                         @include mx.phone {
                             font-size: fn.toVw(24);
                             margin: fn.toVw(35) 0 fn.toVw(14);
