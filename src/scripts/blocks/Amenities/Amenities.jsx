@@ -1,6 +1,7 @@
 import './Amenities.scss'
 import useRichText from '../../hooks/useRichText'
 
+const { MediaUpload } = wp.blockEditor
 const { Button, Icon } = wp.components
 
 const Amenities = ({ attributes, setAttributes, isSelected }) => {
@@ -9,8 +10,24 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
         <section className="amenities">
             <div className="container">
                 <div className="image-wrapper">
-                    <div className="background-image"
-                        style={{ backgroundImage: `url('https://picsum.photos/300/300')` }}></div>
+                    {isSelected &&
+                        <MediaUpload
+                            onSelect={(media) => setAttributes({ media })}
+                            render={({ open }) => (
+                                <div className="image-picker">
+                                    <Button isPrimary isSmall onClick={open}>
+                                        <Icon icon="format-image" />
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    }
+                    {attributes.media.type == 'video' ?
+                        <video src={attributes.media.url} autoPlay playsInline muted loop />
+                        :
+                        <div className="background-image"
+                            style={{ backgroundImage: `url(${attributes.media == null ? 'https://picsum.photos/300/300' : attributes.media.url})` }}></div>
+                    }
                 </div>
 
                 <div className="content-wrapper">
