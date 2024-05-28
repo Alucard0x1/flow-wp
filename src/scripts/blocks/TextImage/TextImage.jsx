@@ -79,12 +79,10 @@ const TextImage = ({ attributes, setAttributes, isSelected, edit }) => {
                 <div className="frame-wrapper">
                     {attributes.image != null && attributes.image.type == 'video' ?
                         <>
-                            <video data-src={attributes.image.url} autoPlay loop playsInline muted class="desktop lazy"
-                                src={edit ? attributes.image.url : null}
+                            <video src={attributes.image.url} autoPlay loop playsInline muted class="desktop lazy"
                             />
                             {attributes.imagePortrait != null &&
-                                <video data-src={attributes.imagePortrait.url} autoPlay loop playsInline muted class="portrait lazy"
-                                    src={edit ? attributes.imagePortrait.url : null}
+                                <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted class="portrait lazy"
                                 />
                             }
                         </>
