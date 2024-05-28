@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { smoothScroll } from "./smoothscroll";
 class Nav {
   constructor() {
     this.toggle = document.querySelector(".nav-toggle .hamburger");
@@ -25,6 +26,8 @@ class Nav {
       this.toggle.classList.toggle("active");
 
       if (this.popup.classList.contains("active")) {
+        smoothScroll.stop();
+
         gsap.to(this.popupBg, {
           scale: 1,
           ease: "expo.out",
@@ -34,6 +37,8 @@ class Nav {
 
         this.content(true, 0.4);
       } else {
+        smoothScroll.start();
+
         gsap.to(this.popupBg, {
           scale: 0,
           duration: 0.4,
