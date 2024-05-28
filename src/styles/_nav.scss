@@ -301,10 +301,6 @@
             will-change: transform;
             transform-origin: 90% 0%;
             transform: scale(0);
-
-            @include mx.phone {
-                transform-origin: 50% 0%;
-            }
         }
 
         .image-wrapper {
@@ -328,6 +324,7 @@
                 height: fn.toVw(267);
                 border-radius: fn.toVw(16);
                 object-fit: cover;
+                transform-origin: top right;
             }
         }
 
@@ -446,13 +443,13 @@
             }
 
             .nav-popup-footer {
-                border-top: 1px solid rgba(#5D524A, 0.2);
                 padding-top: fn.toVw(17);
                 display: flex;
                 justify-content: space-between;
 
                 a {
                     color: #5D524A;
+                    display: inline-block;
                 }
 
                 .menu-social {

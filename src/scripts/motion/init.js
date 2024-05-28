@@ -7,14 +7,17 @@ import Googlemap from "./googlemap";
 import Nav from "./nav";
 
 export const MotionPage = new Page();
+export const Navbar = new Nav();
+
 export default class MotionInit {
   // TODO: temp solution for afterPreloader2 footer
 
   first() {
     Default();
 
+    Navbar.init();
+    
     new Smoothscroll();
-    new Nav();
 
     new Resize();
   }

@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { Transition } from "@unseenco/taxi";
 import configAnimation from "./config";
+import { Navbar } from "./init";
 
 const delay = (n) => {
   n = n || 2000;
@@ -19,6 +20,8 @@ const transitionLeave = () => {
 };
 
 const globalLeave = async (animation = true) => {
+  Navbar.close();
+  
   if (animation) {
     return new Promise((resolve) => {
       const tlEnd = gsap.timeline({
