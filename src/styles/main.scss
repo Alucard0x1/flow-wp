@@ -104,12 +104,21 @@ a {
                 flex: unset;
                 width: 100%;
                 padding: 0;
+                display: block;
             }
 
             .image-wrapper {
                 img {
+                    height: fn.toVw(313);
                     width: 100%;
                     border-radius: fn.toVw(16);
+                    object-fit: cover;
+                    object-position: center;
+
+                    @include mx.phone {
+                      height: fn.toVw(211);
+                      border-radius: fn.toVw(12);
+                    }
                 }
             }
 
@@ -123,6 +132,23 @@ a {
                 }
             }
 
+                .pill {
+                    font-size: fn.toVw(14);
+                    font-weight: 400;
+                    padding: fn.toVw(8) fn.toVw(20);
+                    border-radius: fn.toVw(25);
+                    background-color: #E4DBCB;
+                    color: #575349;
+
+                    float: right;
+
+                    display: none;
+
+                    @include mx.phone {
+                        display: block;
+                    }
+                }
+
             p {
                 opacity: 0.7;
                 font-size: fn.toVw(15);
@@ -133,6 +159,11 @@ a {
                 margin-bottom: fn.toVw(30);
 
                 flex-grow: 1;
+
+                @include mx.phone {
+                  margin-top: 0;
+                  margin-bottom: fn.toVw(48);
+                }
             }
 
             a {

@@ -26,6 +26,9 @@ const TextIntro = ({ attributes, setAttributes, isSelected }) => {
                                 },
                                 {
                                     label: 'Before Solutions list', value: 'before-solutions-list'
+                                },
+                                {
+                                    label: 'Before related solutions', value: 'before-related-solutions'
                                 }
                             ]}
                         />

@@ -20,13 +20,17 @@
             @include mx.phone {
                 flex: unset;
                 width: 100%;
-                margin-bottom: fn.toVw(72);
+                margin-bottom: fn.toVw(52);
             }
 
             .media-wrapper {
                 overflow: hidden;
                 border-radius: fn.toVw(18);
                 height: 100%;
+
+                @include mx.phone {
+                  border-radius: fn.toVw(7);
+                }
             }
 
             img {
@@ -81,6 +85,7 @@
                     font-size: fn.toVw(38);
                     font-weight: 400;
                     letter-spacing: -0.76px;
+                    line-height: fn.toVw(48);
                     opacity: 0.9;
 
                     margin: 0;
@@ -89,7 +94,10 @@
 
                     @include mx.phone {
                         padding: fn.toVw(10) 0;
+                        margin-bottom: fn.toVw(10);
                         font-size: fn.toVw(28);
+                        line-height: fn.toVw(36);
+                        letter-spacing: -0.56px;
                     }
                 }
 
@@ -97,6 +105,7 @@
                     margin-right: fn.toVw(32);
                     opacity: 0.6;
                     font-weight: 400;
+                    margin: 0;
                 }
             }
         }
