@@ -17,7 +17,7 @@
     padding: fn.toVw(20) fn.toVw(22) 0;
 
     @include mx.phone {
-        padding: fn.toVw(16) fn.toVw(22) 0 fn.toVw(22);
+        padding: fn.toVw(16) fn.toVw(12) 0 fn.toVw(12);
     }
 
     &.scroll {
@@ -281,6 +281,14 @@
         z-index: 11;
         padding: fn.toVw(55) fn.toVw(38) fn.toVw(41) fn.toVw(48);
 
+        @include mx.phone {
+            padding: fn.toVw(53) fn.toVw(20);
+
+            left: fn.toVw(12);
+            right: fn.toVw(12);
+            top: fn.toVw(79 + 12);
+        }
+
         .container-bg {
             position: absolute;
             inset: 0;
@@ -306,6 +314,10 @@
             flex-direction: column;
             justify-content: flex-end;
 
+            @include mx.phone {
+                display: none;
+            }
+
             p {
                 font-size: fn.toVw(15);
                 font-weight: 400;
@@ -324,6 +336,10 @@
             flex: 1;
 
             opacity: 0;
+
+            @include mx.phone {
+                padding-left: 0;
+            }
 
             >p {
                 margin-top: 0;
@@ -344,9 +360,15 @@
 
                     flex-direction: column;
                     justify-content: unset;
+
+                    margin-bottom: 0;
                 }
 
                 .menu-left {
+                    @include mx.phone {
+                        margin-bottom: fn.toVw(144);
+                    }
+
                     &-link {
                         font-size: fn.toVw(44);
                         line-height: fn.toVw(40);
