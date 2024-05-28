@@ -173,6 +173,9 @@ a {
             flex: 0 0 math.div(1, 4) * 100%;
             width: math.div(1, 4) * 100%;
 
+            border-radius: fn.toVw(12);
+            overflow: hidden;
+
             padding: 0 fn.toVw(10);
 
             @include mx.phone {
@@ -190,12 +193,16 @@ a {
             }
 
             .image-wrapper {
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+
                 img {
                     height: fn.toVw(430);
                     width: 100%;
                     object-fit: cover;
                     object-position: center;
-                    border-radius: fn.toVw(12);
+                    border-bottom-left-radius: fn.toVw(12);
+                    border-bottom-right-radius: fn.toVw(12);
 
                     @include mx.phone {
                         height: 70vh;
@@ -243,6 +250,11 @@ a {
 
                     @include mx.phone {
                         margin: 0;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                                line-clamp: 2; 
+                        -webkit-box-orient: vertical;
                     }
                 }
 

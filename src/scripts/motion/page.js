@@ -160,14 +160,18 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${ScrollTrigger.isTouch ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${
+          ScrollTrigger.isTouch ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -494,8 +498,9 @@ export default class Page {
         trigger: ".scroll-slider",
         start: () =>
           ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
-        end: `+=${ScrollTrigger.isTouch ? slides.length / 2 : slides.length
-          }00%`,
+        end: `+=${
+          ScrollTrigger.isTouch ? slides.length / 2 : slides.length
+        }00%`,
         scrub: true,
         pin: ".scroll-slider .slide-wrapper",
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
@@ -660,7 +665,9 @@ export default class Page {
 
     if (!section) return;
 
-    const items = [...document.querySelectorAll('.solutions-list .content-item')];
+    const items = [
+      ...document.querySelectorAll(".solutions-list .content-item"),
+    ];
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -679,6 +686,13 @@ export default class Page {
           y: 0,
         },
         // index === 0 ? null : "-=50%"
+      );
+      tl.to(
+        el,
+        {
+          borderRadius: 0,
+        },
+        index === 0 ? 0 : "<50%"
       );
 
       // if (index === items.length - 1) return;
