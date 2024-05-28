@@ -1,0 +1,118 @@
+import './DoubleDesc.scss'
+import useRichText from '../../hooks/useRichText'
+
+const { MediaUpload } = wp.blockEditor
+const { Button, Icon } = wp.components
+
+const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
+    const Text = useRichText(isSelected)
+    return (
+        <section className="double-desc">
+            <div className="container">
+                <div className="content-start">
+                    <Text tagName="p" value={attributes.contentStart}
+                        onChange={(contentStart) => setAttributes({ contentStart })}
+                    />
+                </div>
+
+                <div className="images-wrapper">
+                    {isSelected &&
+                        <Button isPrimary isSmall onClick={() => setAttributes({ mediaSlider: [...attributes.mediaSlider, { media: null, desc: 'Description' }] })}>
+                            <Icon icon="plus" />
+                        </Button>
+                    }
+                    <div className="slider">
+                        {attributes.mediaSlider.map((image, index) => (
+                            <div className={"image" + (isSelected || index == 0 ? ' active' : '')}>
+                                {isSelected &&
+                                    <MediaUpload
+                                        onSelect={(media) => {
+                                            const mediaSliderCopy = [...attributes.mediaSlider]
+                                            mediaSliderCopy[index] = {
+                                                ...mediaSliderCopy[index], media
+                                            }
+
+                                            setAttributes({ mediaSlider: mediaSliderCopy })
+                                        }}
+                                        render={({ open }) => (
+                                            <div className="image-picker">
+                                                <Button isPrimary isSmall onClick={open}>
+                                                    <Icon icon="format-image" />
+                                                </Button>
+
+                                                <Button isDestructive isPrimary isSmall
+                                                    onClick={() => {
+                                                        const mediaSliderCopy = [...attributes.mediaSlider]
+                                                        mediaSliderCopy.splice(index, 1)
+                                                        setAttributes({ mediaSlider: mediaSliderCopy })
+                                                    }}
+                                                >
+                                                    <Icon icon="trash" />
+                                                </Button>
+                                            </div>
+                                        )}
+                                    />
+                                }
+
+                                {image.media && image.media.type == 'video' ?
+                                    <video src={image.media.url} autoPlay loop muted playsInline />
+                                    :
+                                    <img src={image.media == null ? 'https://picsum.photos/300/300' : image.media.url} alt="" />
+                                }
+
+                                <div className="slide-content">
+                                    <Text tagName="p" value={image.desc} onChange={(desc) => {
+                                        const mediaSliderCopy = [...attributes.mediaSlider]
+                                        mediaSliderCopy[index] = {
+                                            ...mediaSliderCopy[index], desc
+                                        }
+                                        setAttributes({ mediaSlider: mediaSliderCopy })
+                                    }} />
+
+                                    <div className="slide-progress">
+                                        {Array.from({ length: index + 1 }, (_, i) => (
+                                            <span className="line active"></span>
+                                        ))}
+
+                                        {Array.from({ length: attributes.mediaSlider.length - (index + 1) }, (_, i) => (
+                                            <span className="line"></span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="image-end">
+                        {isSelected &&
+                            <MediaUpload
+                                onSelect={(media) => setAttributes({ mediaRight: media })}
+                                render={({ open }) => (
+                                    <div className="image-picker">
+                                        <Button isPrimary onClick={open}>
+                                            <Icon icon="format-image" />
+                                        </Button>
+                                    </div>
+                                )}
+                            />
+                        }
+
+                        {attributes.mediaRight && attributes.mediaRight.type == 'video' ?
+                            <video src={attributes.mediaRight.url} autoPlay loop muted playsInline />
+                            :
+                            <img src={attributes.mediaRight == null ? 'https://picsum.photos/300/300' : attributes.mediaRight.url} />
+                        }
+                    </div>
+                </div>
+
+                <div className="content-end">
+                    <Text tagName="p" value={attributes.contentEnd}
+                        onChange={(contentEnd) => setAttributes({ contentEnd })}
+                    />
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default DoubleDesc

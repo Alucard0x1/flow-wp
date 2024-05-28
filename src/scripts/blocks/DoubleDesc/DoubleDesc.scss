@@ -1,0 +1,120 @@
+@use '../../../styles/functions' as fn;
+
+.double-desc {
+    margin: fn.toVw(197) 0 fn.toVw(179);
+
+    .container {
+        margin: 0 fn.toVw(50);
+
+        .content-start {
+            margin-left: fn.toVw(572);
+
+            p {
+                margin: 0 0 fn.toVw(102);
+                font-size: fn.toVw(36);
+                line-height: fn.toVw(46);
+                font-weight: 300;
+
+                max-width: fn.toVw(738);
+            }
+        }
+
+        .content-end {
+            margin: fn.toVw(116) 0 0 fn.toVw(269);
+
+            p {
+                margin: 0;
+                font-size: fn.toVw(36);
+                line-height: fn.toVw(46);
+                font-weight: 300;
+
+                max-width: fn.toVw(773);
+            }
+        }
+
+        .images-wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            .slider {
+                .image {
+                    position: relative;
+                    display: none;
+
+                    &.active {
+                        display: block;
+                    }
+
+                    &-picker {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    img,
+                    video {
+                        width: fn.toVw(522);
+                        height: fn.toVw(350);
+                        object-fit: cover;
+                        object-position: center;
+                        border-radius: fn.toVw(14);
+                    }
+
+                    .slide-content {
+                        border-radius: 8px;
+                        background: rgba(34, 29, 25, 0.64);
+
+                        backdrop-filter: blur(27.149999618530273px);
+
+                        position: absolute;
+                        left: fn.toVw(22);
+                        bottom: fn.toVw(18);
+
+                        padding: fn.toVw(33) fn.toVw(20) fn.toVw(21);
+
+                        width: fn.toVw(238);
+
+                        color: #F9F3E6;
+
+                        .slide-progress {
+                            display: flex;
+                            margin: 0 fn.toVw(-4);
+
+                            .line {
+                                height: 1px;
+                                background-color: #F9F3E6;
+                                margin: 0 fn.toVw(4);
+                                flex: 1;
+
+                                opacity: 0.2;
+
+                                &.active {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .image-end {
+                position: relative;
+
+                .image-picker {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                img,
+                video {
+                    width: fn.toVw(840);
+                    height: fn.toVw(493);
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: fn.toVw(14);
+                }
+            }
+        }
+    }
+}
