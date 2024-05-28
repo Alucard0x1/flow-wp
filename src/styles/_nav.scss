@@ -25,6 +25,7 @@
             &-logo {
                 width: fn.toVw(64);
                 height: fn.toVw(64);
+                position: relative;
 
                 @include mx.phone {
                     width: fn.toVw(56);
@@ -42,12 +43,42 @@
 
     &-logo {
         border-radius: fn.toVw(12);
-        background: clr.$brown-50;
+        // background: clr.$brown-50;
         padding: fn.toVw(20) fn.toVw(20) fn.toVw(18);
         width: fn.toVw(116);
         transition: all .25s ease-out;
         position: relative;
         height: fn.toVw(64);
+
+        &:before {
+            content: '';
+            display: block;
+            background-color: #4E86C5;
+            height: 50%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            border-top-left-radius: fn.toVw(12);
+            border-top-right-radius: fn.toVw(12);
+
+            z-index: -1;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            background-color: #C3CDD3;
+            height: 50%;
+            top: 50%;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            border-bottom-left-radius: fn.toVw(12);
+            border-bottom-right-radius: fn.toVw(12);
+
+            z-index: -1;
+        }
 
         @include mx.phone {
             padding: fn.toVw(18) fn.toVw(19) fn.toVw(19);
