@@ -21,7 +21,7 @@
 
 <div class="nav-popup">
 	<div class="backdrop"></div>
-	<div class="container">
+	<div class="container" data-lenis-prevent>
 		<div class="container-bg"></div>
 		<div class="image-wrapper">
 			<p>Lorem ipsum dolor sit amet</p>
@@ -31,6 +31,7 @@
 			<p>Workspace Solution</p>
 			<div class="nav-popup-menu">
 				<div class="menu-left">
+					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
 							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}">{{menu.title}}</a>
