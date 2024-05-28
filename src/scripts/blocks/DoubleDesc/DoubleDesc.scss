@@ -167,6 +167,7 @@
 
                     @include mx.phone {
                         width: 100%;
+                        border-radius: fn.toVw(7);
                     }
                 }
             }
