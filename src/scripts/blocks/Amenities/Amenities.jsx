@@ -22,7 +22,7 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                             )}
                         />
                     }
-                    {attributes.media.type == 'video' ?
+                    {attributes.media && attributes.media.type == 'video' ?
                         <video src={attributes.media.url} autoPlay playsInline muted loop />
                         :
                         <div className="background-image"
