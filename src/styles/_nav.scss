@@ -282,11 +282,12 @@
         padding: fn.toVw(55) fn.toVw(38) fn.toVw(41) fn.toVw(48);
 
         @include mx.phone {
-            padding: fn.toVw(53) fn.toVw(20);
+            padding: 0;
 
             left: fn.toVw(12);
             right: fn.toVw(12);
             top: fn.toVw(79 + 12);
+            bottom: fn.toVw(72);;
         }
 
         .container-bg {
@@ -335,7 +336,8 @@
             opacity: 0;
 
             @include mx.phone {
-                padding-left: 0;
+                padding: fn.toVw(53) fn.toVw(20);
+                overflow-y: auto;
             }
 
             >p {
