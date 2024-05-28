@@ -105,7 +105,9 @@
                     margin-right: fn.toVw(32);
                     opacity: 0.6;
                     font-weight: 400;
-                    margin: 0;
+                    @include mx.phone {
+                        margin: 0;
+                    }
                 }
             }
         }
