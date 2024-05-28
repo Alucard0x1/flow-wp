@@ -14,6 +14,10 @@
 .map-intro {
     padding: fn.toVw(156) 0 fn.toVw(212) 0;
 
+    &.no-content {
+        padding-bottom: 0;
+    }
+
     @include mx.phone {
         padding: fn.toVw(32) 0 0 0;
     }
