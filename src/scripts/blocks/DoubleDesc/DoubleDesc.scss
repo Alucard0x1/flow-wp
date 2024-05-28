@@ -1,13 +1,27 @@
 @use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
 
 .double-desc {
     margin: fn.toVw(197) 0 fn.toVw(179);
 
+    @include mx.phone {
+        margin: fn.toVw(64) 0;
+    }
+
     .container {
         margin: 0 fn.toVw(50);
 
+        @include mx.phone {
+            margin: 0 fn.toVw(31);
+        }
+
         .content-start {
             margin-left: fn.toVw(572);
+
+            @include mx.phone {
+                margin-left: 0;
+                margin-right: fn.toVw(27);
+            }
 
             p {
                 margin: 0 0 fn.toVw(102);
@@ -16,11 +30,23 @@
                 font-weight: 300;
 
                 max-width: fn.toVw(738);
+
+                @include mx.phone {
+                    max-width: unset;
+
+                    font-size: fn.toVw(22);
+                    line-height: fn.toVw(28);
+                    margin: 0;
+                }
             }
         }
 
         .content-end {
             margin: fn.toVw(116) 0 0 fn.toVw(269);
+
+            @include mx.phone {
+                margin: 0 fn.toVw(9) 0;
+            }
 
             p {
                 margin: 0;
@@ -29,12 +55,24 @@
                 font-weight: 300;
 
                 max-width: fn.toVw(773);
+
+                @include mx.phone {
+                    max-width: unset;
+
+                    font-size: fn.toVw(22);
+                    line-height: fn.toVw(28);
+                }
             }
         }
 
         .images-wrapper {
             display: flex;
             justify-content: space-between;
+
+            @include mx.phone {
+                flex-direction: column;
+                margin: fn.toVw(34) 0;
+            }
 
             .slider {
                 .image {
@@ -58,6 +96,11 @@
                         object-fit: cover;
                         object-position: center;
                         border-radius: fn.toVw(14);
+
+                        @include mx.phone {
+                            width: 100%;
+                            border-radius: fn.toVw(7);
+                        }
                     }
 
                     .slide-content {
@@ -75,6 +118,14 @@
                         width: fn.toVw(238);
 
                         color: #F9F3E6;
+
+                        @include mx.phone {
+                            border-radius: fn.toVw(7);
+
+                            width: unset;
+
+                            right: fn.toVw(22);
+                        }
 
                         .slide-progress {
                             display: flex;
@@ -113,6 +164,10 @@
                     object-fit: cover;
                     object-position: center;
                     border-radius: fn.toVw(14);
+
+                    @include mx.phone {
+                        width: 100%;
+                    }
                 }
             }
         }
