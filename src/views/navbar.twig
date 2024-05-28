@@ -33,7 +33,7 @@
 				<div class="menu-left">
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>
