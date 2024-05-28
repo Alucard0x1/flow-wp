@@ -23,12 +23,12 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                         />
                     }
                     <div className="media-wrapper">
-                    <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
+                        <img src={attributes.image != null ? attributes.image.url : "https://picsum.photos/300/300"} alt="" />
                     </div>
                 </div>
 
                 <div className="content-wrapper">
-                    {attributes.items.map((item, key) => (
+                    {attributes.items.map((item, key) => (item.title != '' || isSelected) && (
                         <div className="content-item">
                             <p className="num">{(key + 1).toString().padStart(2, '0')}.</p>
                             <Text tagName="p" className="content-title"
