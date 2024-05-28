@@ -208,6 +208,23 @@ a {
                     padding: 0 fn.toVw(18);
                 }
 
+                .pill {
+                    font-size: fn.toVw(14);
+                    font-weight: 400;
+                    padding: fn.toVw(8) fn.toVw(20);
+                    border-radius: fn.toVw(25);
+                    background-color: #E4DBCB;
+                    color: #575349;
+
+                    float: right;
+
+                    display: none;
+
+                    @include mx.phone {
+                        display: block;
+                    }
+                }
+
                 .title {
                     color: clr.$brown-10;
 
