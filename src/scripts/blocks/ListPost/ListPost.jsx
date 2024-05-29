@@ -1,4 +1,9 @@
-import { pickBy, isUndefined, get, filter, remove, map } from 'lodash'
+import pickBy from 'lodash/pickBy'
+import isUndefined from 'lodash/isUndefined'
+import get from 'lodash/get'
+import filter from 'lodash/filter'
+import remove from 'lodash/remove'
+import map from 'lodash/map'
 import PropTypes from "prop-types"
 
 const { useState, useEffect, RawHTML } = wp.element

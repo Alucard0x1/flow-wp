@@ -1,6 +1,6 @@
 import blocks from "./blocks/**/*.jsx";
 import scripts from "./blocks/**/*.script.js";
-import { kebabCase } from "lodash";
+import kebabCase from "lodash/kebabCase.js";
 
 const { registerBlockType } = wp.blocks;
 
