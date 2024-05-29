@@ -92,9 +92,6 @@ class Nav {
       let zIndexImage = 0;
       let menuIndex = 0;
 
-
-      const isAnimating = [];
-
       this.menuLink.forEach((el, index) => {
         const getTop = el.offsetTop + el.offsetHeight / 2;
         const bulletHeight = this.bulletLink.offsetHeight / 2;
@@ -115,33 +112,28 @@ class Nav {
             overwrite: true,
           });
 
-          if (isAnimating[index]) return; // Skip if animation is currently active
+          // gsap.killTweensOf(this.popupContentImage.children);
           if (menuIndex === index) return;
           zIndexImage++;
           menuIndex = index;
-          isAnimating[index] = true;
-
 
           gsap.set(this.popupContentImage.children[index], {
             zIndex: zIndexImage,
           });
 
-          gsap.fromTo(
-            this.popupContentImage.children[index],
-            {
-              scale: 0,
-            },
-            {
-              scale: 1,
-              ease: "power4.out",
-              duration: 1.0,
-              willChange: "transform",
-              overwrite: true,
-              onComplete: () => {
-                isAnimating[index] = false;
-              }
-            }
-          );
+          // gsap.fromTo(
+          //   this.popupContentImage.children[index],
+          //   {
+          //     scale: 0,
+          //   },
+          //   {
+          //     scale: 1,
+          //     ease: "power4.out",
+          //     duration: 1.0,
+          //     willChange: "transform",
+          //     overwrite: true,
+          //   }
+          // );
         });
       });
 
