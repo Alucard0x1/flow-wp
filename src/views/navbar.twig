@@ -25,8 +25,8 @@
 		<div class="container-bg"></div>
 		<div class="image-wrapper">
 			<p>Lorem ipsum dolor sit amet</p>
-			<div class="image">
-				{# <img src="https://picsum.photos/300/300" alt="Placeholder"> #}
+			<div
+				class="image">{# <img src="https://picsum.photos/300/300" alt="Placeholder"> #}
 			</div>
 		</div>
 		<div class="content-wrapper" data-lenis-prevent>
@@ -36,7 +36,7 @@
 					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>
