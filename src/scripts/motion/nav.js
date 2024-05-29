@@ -111,9 +111,6 @@ class Nav {
     if (ScrollTrigger.isTouch) return;
     if (this.menuLink.length) {
       this.menuLink.forEach((el, index) => {
-        const getTop = el.offsetTop + el.offsetHeight / 2;
-        const bulletHeight = this.bulletLink.offsetHeight / 2;
-
         const link = el.querySelector("a");
         const dataimage = link.dataset.image;
         const img = document.createElement("img");
@@ -122,6 +119,10 @@ class Nav {
         this.popupContentImage.appendChild(img);
 
         el.addEventListener("mouseenter", (e) => {
+          const getTop = el.offsetTop + el.offsetHeight / 2;
+          const bulletHeight = this.bulletLink.offsetHeight / 2;
+  
+          
           gsap.to(this.bulletLink, {
             scale: 1,
             y: () => getTop - bulletHeight,
