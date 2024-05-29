@@ -330,12 +330,28 @@
                 font-weight: 400;
             }
 
-            img {
+            .image {
                 width: fn.toVw(441);
                 height: fn.toVw(267);
                 border-radius: fn.toVw(16);
-                object-fit: cover;
                 transform-origin: top right;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    position: absolute;
+                    inset: 0;
+                    border-radius: fn.toVw(16);
+                    backface-visibility: hidden;
+                    transform-style: preserve-3d;
+
+
+                    // &:first-child {
+                    //     display: block;
+                    // }
+                }
             }
         }
 

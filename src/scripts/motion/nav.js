@@ -30,9 +30,10 @@ class Nav {
     this.popupContentBorder = this.popup.querySelector(
       ".content-wrapper .border"
     );
-    this.popupContentImage = [
+    this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
+    this.popupContentImages = [
       this.popup.querySelector(".image-wrapper p"),
-      this.popup.querySelector(".image-wrapper img"),
+      this.popupContentImage,
     ];
 
     this.bulletLink = this.popup.querySelector(".bullet");
@@ -88,9 +89,22 @@ class Nav {
 
     if (ScrollTrigger.isTouch) return;
     if (this.menuLink.length) {
-      this.menuLink.forEach((el) => {
+      let zIndexImage = 0;
+      let menuIndex = 0;
+
+
+      const isAnimating = [];
+
+      this.menuLink.forEach((el, index) => {
         const getTop = el.offsetTop + el.offsetHeight / 2;
         const bulletHeight = this.bulletLink.offsetHeight / 2;
+
+        const link = el.querySelector("a");
+        const dataimage = link.dataset.image;
+        const img = document.createElement("img");
+        img.src = dataimage;
+        img.alt = link.textContent;
+        this.popupContentImage.appendChild(img);
 
         el.addEventListener("mouseenter", (e) => {
           gsap.to(this.bulletLink, {
@@ -98,17 +112,47 @@ class Nav {
             y: () => getTop - bulletHeight,
             ease: "expo.out",
             duration: 0.6,
-            overwrite: true
+            overwrite: true,
           });
+
+          if (isAnimating[index]) return; // Skip if animation is currently active
+          if (menuIndex === index) return;
+          zIndexImage++;
+          menuIndex = index;
+          isAnimating[index] = true;
+
+
+          gsap.set(this.popupContentImage.children[index], {
+            zIndex: zIndexImage,
+          });
+
+          gsap.fromTo(
+            this.popupContentImage.children[index],
+            {
+              scale: 0,
+            },
+            {
+              scale: 1,
+              ease: "power4.out",
+              duration: 1.0,
+              willChange: "transform",
+              overwrite: true,
+              onComplete: () => {
+                isAnimating[index] = false;
+              }
+            }
+          );
         });
       });
 
       this.menuLinkWrapper.addEventListener("mouseleave", (e) => {
+        // zIndexImage = 0;
+
         gsap.to(this.bulletLink, {
           scale: 0,
           ease: "expo.out",
           duration: 0.4,
-          overwrite: true
+          overwrite: true,
         });
       });
     }
@@ -168,7 +212,7 @@ class Nav {
       );
 
       gsap.fromTo(
-        this.popupContentImage,
+        this.popupContentImages,
         {
           opacity: gsap.utils.wrap([0, 1]),
           y: gsap.utils.wrap([40, null]),
@@ -204,7 +248,7 @@ class Nav {
         willChange: "transform",
       });
 
-      gsap.to(this.popupContentImage, {
+      gsap.to(this.popupContentImages, {
         y: gsap.utils.wrap([-40, null]),
         scale: gsap.utils.wrap([1, 0]),
         duration: 0.8,
@@ -223,7 +267,7 @@ class Nav {
 
   bullet() {
     this.menuLink.forEach((el) => {
-      const texthref = this.normalizeUrl(el.querySelector('a').href);
+      const texthref = this.normalizeUrl(el.querySelector("a").href);
       const currentUrl = this.normalizeUrl(window.location.href);
 
       if (texthref === currentUrl) {
