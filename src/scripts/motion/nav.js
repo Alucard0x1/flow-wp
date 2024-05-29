@@ -17,6 +17,7 @@ class Nav {
       this.popup.querySelector(".image-wrapper"),
       this.popup.querySelector(".content-wrapper"),
     ];
+
     this.popupContentMenuLeft = [
       this.popup.querySelector(".content-wrapper p"),
       this.menuLink,
@@ -30,13 +31,18 @@ class Nav {
     this.popupContentBorder = this.popup.querySelector(
       ".content-wrapper .border"
     );
+    this.popupContentImageDesc = this.popup.querySelector(".image-wrapper p");
     this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
     this.popupContentImages = [
-      this.popup.querySelector(".image-wrapper p"),
+      this.popupContentImageDesc,
       this.popupContentImage,
     ];
 
     this.bulletLink = this.popup.querySelector(".bullet");
+
+    this.zIndexImage = 0;
+    this.menuIndex = null;
+    this.popupImageDescText = this.popupContentImageDesc.textContent;
   }
 
   init() {
@@ -87,18 +93,24 @@ class Nav {
       this.close();
     });
 
+    const defaultState = () => {
+      this.menuIndex = null;
+      this.zIndexImage = 0;
+
+      this.popupContentImageDesc.textContent = this.popupImageDescText;
+
+      gsap.set(this.popupContentImage.children[0], {
+        zIndex: 1,
+      });
+
+      gsap.set(this.popupContentImage.children, {
+        zIndex: 0,
+      });
+    };
+
     if (ScrollTrigger.isTouch) return;
     if (this.menuLink.length) {
-      let zIndexImage = 0;
-      let menuIndex = 0;
-
-
-      const isAnimating = [];
-
       this.menuLink.forEach((el, index) => {
-        const getTop = el.offsetTop + el.offsetHeight / 2;
-        const bulletHeight = this.bulletLink.offsetHeight / 2;
-
         const link = el.querySelector("a");
         const dataimage = link.dataset.image;
         const img = document.createElement("img");
@@ -107,6 +119,10 @@ class Nav {
         this.popupContentImage.appendChild(img);
 
         el.addEventListener("mouseenter", (e) => {
+          const getTop = el.offsetTop + el.offsetHeight / 2;
+          const bulletHeight = this.bulletLink.offsetHeight / 2;
+  
+          
           gsap.to(this.bulletLink, {
             scale: 1,
             y: () => getTop - bulletHeight,
@@ -115,38 +131,35 @@ class Nav {
             overwrite: true,
           });
 
-          if (isAnimating[index]) return; // Skip if animation is currently active
-          if (menuIndex === index) return;
-          zIndexImage++;
-          menuIndex = index;
-          isAnimating[index] = true;
-
+          // gsap.killTweensOf(this.popupContentImage.children);
+          if (this.menuIndex === index) return;
+          this.zIndexImage++;
+          this.menuIndex = index;
 
           gsap.set(this.popupContentImage.children[index], {
-            zIndex: zIndexImage,
+            zIndex: this.zIndexImage,
           });
 
-          gsap.fromTo(
-            this.popupContentImage.children[index],
-            {
-              scale: 0,
-            },
-            {
-              scale: 1,
-              ease: "power4.out",
-              duration: 1.0,
-              willChange: "transform",
-              overwrite: true,
-              onComplete: () => {
-                isAnimating[index] = false;
-              }
-            }
-          );
+          this.popupContentImageDesc.textContent = link.dataset.desc;
+
+          // gsap.fromTo(
+          //   this.popupContentImage.children[index],
+          //   {
+          //     scale: 0,
+          //   },
+          //   {
+          //     scale: 1,
+          //     ease: "power4.out",
+          //     duration: 1.0,
+          //     willChange: "transform",
+          //     overwrite: true,
+          //   }
+          // );
         });
       });
 
       this.menuLinkWrapper.addEventListener("mouseleave", (e) => {
-        // zIndexImage = 0;
+        defaultState();
 
         gsap.to(this.bulletLink, {
           scale: 0,
