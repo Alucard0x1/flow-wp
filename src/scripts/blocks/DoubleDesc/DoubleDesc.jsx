@@ -1,13 +1,23 @@
 import './DoubleDesc.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, InspectorControls } = wp.blockEditor
+const { Button, Icon, ToggleControl, PanelBody } = wp.components
 
 const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
     return (
-        <section className="double-desc">
+        <section className={"double-desc" + (attributes.hideSlider ? ' hide-slider' : '')}>
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="Hide slider on phone" checked={attributes.hideSlider}
+                            onChange={(hideSlider) => setAttributes({ hideSlider })}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="container">
                 <div className="content-start">
                     <Text tagName="p" value={attributes.contentStart}

@@ -297,7 +297,8 @@
             left: fn.toVw(12);
             right: fn.toVw(12);
             top: fn.toVw(79 + 12);
-            bottom: fn.toVw(72);;
+            bottom: fn.toVw(72);
+            ;
         }
 
         .container-bg {
@@ -383,13 +384,9 @@
 
             .nav-popup-menu {
                 display: flex;
-                justify-content: space-between;
-                width: 80%;
                 margin-bottom: fn.toVw(130);
 
                 @include mx.phone {
-                    width: unset;
-
                     flex-direction: column;
                     justify-content: unset;
 
@@ -398,8 +395,10 @@
 
                 .menu-left {
                     position: relative;
+                    margin-right: fn.toVw(190);
 
                     @include mx.phone {
+                        margin-right: 0;
                         // margin-bottom: fn.toVw(144);
                         margin-bottom: calc(100svh*80/844);
                     }
@@ -430,7 +429,7 @@
                         }
 
                         .menu-left-link {
-                            
+
                             a {
                                 &:hover {
                                     opacity: 0.8;
@@ -466,7 +465,7 @@
                                     top: 50%;
                                     left: 0;
                                     transform: translateY(-50%);
-                                
+
                                     @include mx.phone {
                                         display: none;
                                     }
@@ -500,7 +499,8 @@
                                 }
                             }
 
-                            &:hover, &.active {
+                            &:hover,
+                            &.active {
                                 opacity: 1;
                                 padding-left: calc(fn.toVw(17) + fn.toVw(12.7));
                             }
@@ -554,7 +554,6 @@
 
             .nav-popup-footer {
                 display: flex;
-                justify-content: space-between;
 
                 @include mx.phone {
                     font-size: calc(100svh*14/844);
@@ -569,8 +568,8 @@
                 }
 
                 .menu-social {
-                    margin: 0 fn.toVw(-20);
-                    
+                    margin: 0 fn.toVw(190-20) 0 fn.toVw(-20);
+
                     @include mx.phone {
                         margin: 0;
                         display: flex;

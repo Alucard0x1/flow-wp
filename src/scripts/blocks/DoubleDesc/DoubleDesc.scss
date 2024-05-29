@@ -8,6 +8,18 @@
         margin: fn.toVw(64) 0;
     }
 
+    &.hide-slider {
+        .container {
+            .images-wrapper {
+                .slider {
+                    @include mx.phone {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
     .container {
         margin: 0 fn.toVw(50);
 
