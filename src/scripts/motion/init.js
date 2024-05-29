@@ -5,6 +5,7 @@ import Resize from "./resize";
 import MotionText from "./text";
 import Googlemap from "./googlemap";
 import Nav from "./nav";
+import Video from "./video";
 
 export const MotionPage = new Page();
 export const Navbar = new Nav();
@@ -47,6 +48,7 @@ export default class MotionInit {
     MotionPage.solutionstack();
 
     new Googlemap();
+    new Video();
   }
 
   reinit() {
