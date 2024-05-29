@@ -291,6 +291,8 @@
 
         @include mx.phone {
             padding: 0;
+            min-height: fit-content;
+            max-height: -webkit-fill-available;
 
             left: fn.toVw(12);
             right: fn.toVw(12);
@@ -344,7 +346,8 @@
             opacity: 0;
 
             @include mx.phone {
-                padding: fn.toVw(53) fn.toVw(20);
+                width: 100%;
+                padding: calc(100svh*53/844) fn.toVw(20);
                 overflow-y: auto;
             }
 

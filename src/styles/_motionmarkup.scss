@@ -1,3 +1,5 @@
+@use 'mixins' as mx;
+
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -10,9 +12,9 @@ html.lenis, html.lenis body {
   overscroll-behavior: contain;
 }
 
-// .lenis.lenis-stopped {
-//   overflow: hidden;
-// }
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
