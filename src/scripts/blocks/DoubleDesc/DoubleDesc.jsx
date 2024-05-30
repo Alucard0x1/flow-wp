@@ -70,29 +70,31 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                                     <img src={image.media == null ? 'https://picsum.photos/300/300' : image.media.url} alt="" />
                                 }
 
-                                <div className="slide-content">
-                                    <Text tagName="p" value={image.desc} onChange={(desc) => {
-                                        const mediaSliderCopy = [...attributes.mediaSlider]
-                                        mediaSliderCopy[index] = {
-                                            ...mediaSliderCopy[index], desc
-                                        }
-                                        setAttributes({ mediaSlider: mediaSliderCopy })
-                                    }} />
+                                {attributes.hideSlider &&
+                                    <div className="slide-content">
+                                        <Text tagName="p" value={image.desc} onChange={(desc) => {
+                                            const mediaSliderCopy = [...attributes.mediaSlider]
+                                            mediaSliderCopy[index] = {
+                                                ...mediaSliderCopy[index], desc
+                                            }
+                                            setAttributes({ mediaSlider: mediaSliderCopy })
+                                        }} />
 
-                                    <div className="slide-progress">
-                                        {Array.from({ length: index + 1 }, (_, i) => (
-                                            <span className="line active">
-                                                <div className="clickable"></div>
-                                            </span>
-                                        ))}
+                                        <div className="slide-progress">
+                                            {Array.from({ length: index + 1 }, (_, i) => (
+                                                <span className="line active">
+                                                    <div className="clickable"></div>
+                                                </span>
+                                            ))}
 
-                                        {Array.from({ length: attributes.mediaSlider.length - (index + 1) }, (_, i) => (
-                                            <span className="line">
-                                                <div className="clickable"></div>
-                                            </span>
-                                        ))}
+                                            {Array.from({ length: attributes.mediaSlider.length - (index + 1) }, (_, i) => (
+                                                <span className="line">
+                                                    <div className="clickable"></div>
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </div>
                         ))}
                     </div>
