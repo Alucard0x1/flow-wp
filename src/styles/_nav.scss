@@ -422,7 +422,7 @@
 
                     &:has(.active) {
                         .bullet {
-                            opacity: 0.8;
+                            opacity: 0.5;
 
                             @include mx.phone {
                                 opacity: 1;
@@ -432,8 +432,10 @@
                         .menu-left-link {
 
                             a {
+                                opacity: 0.2;
+
                                 &:hover {
-                                    opacity: 0.8;
+                                    opacity: 0.5;
 
                                     @include mx.phone {
                                         opacity: 1;
@@ -443,13 +445,17 @@
                         }
                     }
 
+                    &:hover a {
+                        opacity: 0.5;
+                    }
+
                     &-link {
 
                         &.active {
 
                             a {
                                 pointer-events: none;
-                                opacity: 1;
+                                opacity: 1 !important;
                                 transform: translateX(calc(fn.toVw(17) + fn.toVw(12.7)));
 
                                 @include mx.phone {
@@ -478,7 +484,7 @@
                             position: relative;
                             display: block;
                             color: #5D524A;
-                            opacity: .5;
+                            opacity: 1;
                             font-size: fn.toVw(44);
                             line-height: fn.toVw(40);
                             letter-spacing: -0.44px;
@@ -500,8 +506,7 @@
                                 }
                             }
 
-                            &:hover,
-                            &.active {
+                            &:hover {
                                 opacity: 1;
                                 transform: translateX(calc(fn.toVw(17) + fn.toVw(12.7)));
                             }

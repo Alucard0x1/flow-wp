@@ -384,10 +384,10 @@ export default class Page {
       tl.to(
         ".amenities .image-wrapper",
         {
-          opacity: 0,
-          yPercent: -80,
-          height: "50%",
-          duration: 0.4,
+          // opacity: 0,
+          yPercent: -120,
+          // height: "50%",
+          duration: 0.9,
         },
         0
       );
@@ -675,30 +675,94 @@ export default class Page {
         pin: true,
         scrub: true,
         start: "top top",
-        end: `+=${items.length}00%`,
+        end: `+=${items.length - 1}00%`,
       },
     });
 
     gsap.utils.toArray(".solutions-list .content-item").forEach((el, index) => {
-      tl.to(
-        el,
-        {
-          y: 0,
+      if (index === 0) return;
+      const tlTween = gsap.timeline({
+        defaults: {
+          duration: 1.2,
+          ease: "power4.out",
         },
-        // index === 0 ? null : "-=50%"
-      );
-      tl.to(
-        el,
-        {
-          borderRadius: 0,
+        scrollTrigger: {
+          trigger: el,
+          start: `${index === 1 ? 0 : index * 50}%`,
+          end: "+=100%",
+          onEnter: () => tlTween.play(),
+          onLeaveBack: () => tlTween.reverse(),
         },
-        index === 0 ? 0 : "<50%"
-      );
+      });
 
-      // if (index === items.length - 1) return;
-      // tl.to(el, {
-      //   scale: 0.8,
-      // });
+      tlTween.to(el, {
+        y: 0,
+      });
+    });
+  }
+
+  sliderfade() {
+    const section = document.querySelector(".double-desc");
+
+    if (!section) return;
+
+    const slider = section.querySelector(".slider");
+    const items = [...section.querySelectorAll(".slider .image")];
+    const contentFirst = items[0].querySelector(".slide-content");
+
+    contentFirst.classList.add("active");
+    slider.appendChild(contentFirst);
+    const progressLines = [
+      ...section.querySelectorAll(".slide-content.active .line"),
+    ];
+
+    let contentText = [];
+
+    contentText.push(contentFirst.querySelector("p").textContent);
+
+    items.forEach((el) => {
+      const slideContent = el.querySelector(".slide-content");
+      if (slideContent) {
+        const text = slideContent.querySelector("p").textContent;
+
+        contentText.push(text);
+
+        // gsap.set(slideContent, {
+        //   display: "none",
+        // });
+
+        slideContent.remove();
+      }
+    });
+
+    let currentIndex = 0;
+    // let intervalId = null;
+
+    const nextSlide = (progress, index) => {
+      currentIndex = index;
+
+      const text = contentFirst.querySelector("p");
+
+      text.textContent = contentText[index];
+
+      items.forEach((item, itemindex) => {
+        if (progressLines[itemindex].classList.contains("active")) {
+          progressLines[itemindex].classList.remove("active");
+        }
+
+        if (items[itemindex].classList.contains("active")) {
+          items[itemindex].classList.remove("active");
+        }
+      });
+
+      items[currentIndex].classList.add("active");
+      progressLines[currentIndex].classList.add("active");
+    };
+
+    progressLines.forEach((el, index) => {
+      el.addEventListener("click", () => {
+        nextSlide(el, index);
+      });
     });
   }
 
