@@ -675,30 +675,30 @@ export default class Page {
         pin: true,
         scrub: true,
         start: "top top",
-        end: `+=${items.length}00%`,
+        end: `+=${items.length - 1}00%`,
       },
     });
 
     gsap.utils.toArray(".solutions-list .content-item").forEach((el, index) => {
-      tl.to(
-        el,
-        {
-          y: 0,
+      if (index === 0) return;
+      const tlTween = gsap.timeline({
+        defaults: {
+          duration: 1.2,
+          ease: "power4.out",
         },
-        // index === 0 ? null : "-=50%"
-      );
-      tl.to(
-        el,
-        {
-          borderRadius: 0,
+        scrollTrigger: {
+          trigger: el,
+          start: `${index === 1 ? 0 : index * 50}%`,
+          end: "+=100%",
+          markers: true,
+          onEnter: () => tlTween.play(),
+          onLeaveBack: () => tlTween.reverse(),
         },
-        index === 0 ? 0 : "<50%"
-      );
+      });
 
-      // if (index === items.length - 1) return;
-      // tl.to(el, {
-      //   scale: 0.8,
-      // });
+      tlTween.to(el, {
+        y: 0,
+      });
     });
   }
 
