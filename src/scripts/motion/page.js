@@ -384,10 +384,10 @@ export default class Page {
       tl.to(
         ".amenities .image-wrapper",
         {
-          opacity: 0,
-          yPercent: -80,
-          height: "50%",
-          duration: 0.4,
+          // opacity: 0,
+          yPercent: -120,
+          // height: "50%",
+          duration: 0.9,
         },
         0
       );
