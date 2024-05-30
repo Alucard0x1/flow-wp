@@ -1,6 +1,20 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/mixins' as mx;
 
+#editor {
+    .double-desc {
+        .container {
+            .images-wrapper {
+                .slider {
+                    .image {
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .double-desc {
     margin: fn.toVw(197) 0 fn.toVw(179);
 
@@ -87,12 +101,83 @@
             }
 
             .slider {
+                position: relative;
+                height: fit-content;
+
+                .slide-content {
+                    border-radius: 8px;
+                    background: rgba(34, 29, 25, 0.64);
+
+                    backdrop-filter: blur(27.149999618530273px);
+
+                    position: absolute;
+                    left: fn.toVw(22);
+                    bottom: fn.toVw(18);
+
+                    padding: fn.toVw(33) fn.toVw(20) fn.toVw(21);
+
+                    width: fn.toVw(238);
+
+                    color: #F9F3E6;
+
+                    @include mx.phone {
+                        border-radius: fn.toVw(7);
+
+                        width: unset;
+
+                        right: fn.toVw(22);
+                    }
+
+                    .slide-progress {
+                        display: flex;
+                        margin: 0 fn.toVw(-4);
+
+                        .line {
+                            height: 1px;
+                            background-color: #F9F3E6;
+                            margin: 0 fn.toVw(4);
+                            flex: 1;
+                            cursor: pointer;
+                            position: relative;
+
+                            opacity: 0.2;
+
+                            &.active {
+                                opacity: 1;
+                                // pointer-events: none;
+                            }
+
+                            .clickable {
+                                cursor: pointer;
+                                padding: 35% 0;
+                                margin: -35% 0;
+                                position: absolute;
+                                inset: 0;
+                            }
+                        }
+                    }
+                }
+
                 .image {
                     position: relative;
-                    display: none;
+                    visibility: hidden;
+                    width: fn.toVw(522);
+                    height: fn.toVw(350);
+                    border-radius: fn.toVw(14);
+                    overflow: hidden;
+
+                    &:not(:first-child) {
+                        position: absolute;
+                        inset: 0;
+                    }
+
+                    @include mx.phone {
+                        width: 100%;
+                        border-radius: fn.toVw(7);
+                    }
 
                     &.active {
-                        display: block;
+                        visibility: visible;
                     }
 
                     &-picker {
@@ -103,59 +188,10 @@
 
                     img,
                     video {
-                        width: fn.toVw(522);
-                        height: fn.toVw(350);
+                        width: 100%;
+                        height: 100%;
                         object-fit: cover;
                         object-position: center;
-                        border-radius: fn.toVw(14);
-
-                        @include mx.phone {
-                            width: 100%;
-                            border-radius: fn.toVw(7);
-                        }
-                    }
-
-                    .slide-content {
-                        border-radius: 8px;
-                        background: rgba(34, 29, 25, 0.64);
-
-                        backdrop-filter: blur(27.149999618530273px);
-
-                        position: absolute;
-                        left: fn.toVw(22);
-                        bottom: fn.toVw(18);
-
-                        padding: fn.toVw(33) fn.toVw(20) fn.toVw(21);
-
-                        width: fn.toVw(238);
-
-                        color: #F9F3E6;
-
-                        @include mx.phone {
-                            border-radius: fn.toVw(7);
-
-                            width: unset;
-
-                            right: fn.toVw(22);
-                        }
-
-                        .slide-progress {
-                            display: flex;
-                            margin: 0 fn.toVw(-4);
-
-                            .line {
-                                height: 1px;
-                                background-color: #F9F3E6;
-                                margin: 0 fn.toVw(4);
-                                flex: 1;
-
-                                opacity: 0.2;
-
-                                &.active {
-                                    opacity: 1;
-                                }
-                            }
-                        }
                     }
                 }
             }

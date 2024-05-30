@@ -46,6 +46,7 @@ export default class MotionInit {
     MotionPage.solutionrelated();
     MotionPage.solutionlist();
     MotionPage.solutionstack();
+    MotionPage.sliderfade();
 
     new Googlemap();
     new Video();

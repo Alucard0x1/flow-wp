@@ -85,7 +85,9 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                                         ))}
 
                                         {Array.from({ length: attributes.mediaSlider.length - (index + 1) }, (_, i) => (
-                                            <span className="line"></span>
+                                            <span className="line">
+                                                <div className="clickable"></div>
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
