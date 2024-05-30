@@ -70,7 +70,7 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                                     <img src={image.media == null ? 'https://picsum.photos/300/300' : image.media.url} alt="" />
                                 }
 
-                                {attributes.hideSlider &&
+                                {!attributes.hideSlider &&
                                     <div className="slide-content">
                                         <Text tagName="p" value={image.desc} onChange={(desc) => {
                                             const mediaSliderCopy = [...attributes.mediaSlider]
