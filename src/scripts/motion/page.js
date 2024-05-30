@@ -690,7 +690,6 @@ export default class Page {
           trigger: el,
           start: `${index === 1 ? 0 : index * 50}%`,
           end: "+=100%",
-          markers: true,
           onEnter: () => tlTween.play(),
           onLeaveBack: () => tlTween.reverse(),
         },
