@@ -298,54 +298,54 @@ export default class Page {
     });
   }
 
-  // amnities() {
-  //   const section = document.querySelector(".list-image");
+  scrollslider() {
+    const section = document.querySelector(".image-background");
 
-  //   if (!section) return;
-  //   if (ScrollTrigger.isTouch) return;
+    if (!section) return;
+    if (ScrollTrigger.isTouch) return;
 
-  //   const tl = gsap.timeline({
-  //     defaults: {
-  //       ease: "none",
-  //     },
-  //     scrollTrigger: {
-  //       trigger: ".list-image",
-  //       start: "center center",
-  //       end: "+=100%",
-  //       endTrigger: ".list-image .list-wrapper-content",
-  //       pin: true,
-  //       scrub: true,
-  //       invalidateOnRefresh: true,
-  //     },
-  //   });
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+      scrollTrigger: {
+        trigger: ".list-image",
+        start: "center center",
+        end: "+=100%",
+        endTrigger: ".list-image .list-wrapper-content",
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
 
-  //   tl.to(
-  //     ".list-image .list-wrapper-content",
-  //     {
-  //       y: () => {
-  //         const textTitle = document.querySelector(
-  //           ".list-image .content-inner h2"
-  //         ).offsetHeight;
-  //         const textDescription = document.querySelector(
-  //           ".list-image .content-inner p"
-  //         ).offsetHeight;
-  //         const listContentHeight = document.querySelector(
-  //           ".list-image .list-wrapper-content"
-  //         ).offsetHeight;
-  //         const triggerHeight =
-  //           document.querySelector(".list-image").offsetHeight;
-  //         const maxScroll =
-  //           listContentHeight +
-  //           (textDescription
-  //             ? textTitle * 2 + textDescription * 2
-  //             : textTitle * 2.8) -
-  //           triggerHeight;
-  //         return -maxScroll;
-  //       },
-  //     },
-  //     0
-  //   );
-  // }
+    tl.to(
+      ".list-image .list-wrapper-content",
+      {
+        y: () => {
+          const textTitle = document.querySelector(
+            ".list-image .content-inner h2"
+          ).offsetHeight;
+          const textDescription = document.querySelector(
+            ".list-image .content-inner p"
+          ).offsetHeight;
+          const listContentHeight = document.querySelector(
+            ".list-image .list-wrapper-content"
+          ).offsetHeight;
+          const triggerHeight =
+            document.querySelector(".list-image").offsetHeight;
+          const maxScroll =
+            listContentHeight +
+            (textDescription
+              ? textTitle * 2 + textDescription * 2
+              : textTitle * 2.8) -
+            triggerHeight;
+          return -maxScroll;
+        },
+      },
+      0
+    );
+  }
 
   amnities2() {
     const section = document.querySelector(".amenities");
@@ -708,6 +708,8 @@ export default class Page {
 
     const slider = section.querySelector(".slider");
     const items = [...section.querySelectorAll(".slider .image")];
+
+    if (items.length <= 1) return;
     const contentFirst = items[0].querySelector(".slide-content");
 
     contentFirst.classList.add("active");
