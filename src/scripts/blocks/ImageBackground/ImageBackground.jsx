@@ -8,11 +8,7 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '') + (isSelected ? ' is-selected' : '')}
-            style={{
-                backgroundColor: attributes.bgColor
-            }}
-        >
+        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '') + (isSelected ? ' is-selected' : '')}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>

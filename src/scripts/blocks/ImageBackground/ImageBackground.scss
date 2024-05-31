@@ -3,8 +3,6 @@
 @use '../../../styles/colors' as clr;
 
 .image-background {
-    padding: fn.toVw(12) fn.toVw(10);
-
     &.mb-0 {
         margin-bottom: 0;
     }
