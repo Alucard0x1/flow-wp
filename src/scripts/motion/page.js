@@ -738,16 +738,32 @@ export default class Page {
     let currentIndex = 0;
     // let intervalId = null;
 
-    const nextSlide = (progress, index) => {
+    let clickInteraction = false;
+
+    const nextSlide = (index) => {
       currentIndex = index;
 
       const text = contentFirst.querySelector("p");
 
       text.textContent = contentText[index];
+      gsap.fromTo(text, {
+        opacity: 0,
+        y: 15,
+      }, {
+        opacity: 1,
+        y: 0,
+        ease: "power4.out"
+      })
 
       items.forEach((item, itemindex) => {
         if (progressLines[itemindex].classList.contains("active")) {
           progressLines[itemindex].classList.remove("active");
+
+          gsap.to(progressLines[itemindex], {
+            "--progress": 0,
+            "--origin": "right",
+            overwrite: true
+          });
         }
 
         if (items[itemindex].classList.contains("active")) {
@@ -756,14 +772,50 @@ export default class Page {
       });
 
       items[currentIndex].classList.add("active");
+
+      if (clickInteraction) {
+        gsap.to(progressLines[currentIndex], {
+          "--progress": 1,
+          "--origin": "left",
+        });
+      }
+
       progressLines[currentIndex].classList.add("active");
     };
 
     progressLines.forEach((el, index) => {
       el.addEventListener("click", () => {
-        nextSlide(el, index);
+        if (!clickInteraction) {
+          clickInteraction = true;
+
+          gsap.to(progressLines, {
+            "--progress": 0,
+            "--origin": "right",
+            overwrite: true
+          });
+        }
+
+        nextSlide(index);
       });
     });
+
+    const autoplay = (el, index) => {
+      if (clickInteraction) return;
+      gsap.to(el, {
+        "--progress": 1,
+        "--origin": "left",
+        duration: 3.5,
+        ease: "none",
+        onComplete: () => {
+          if (clickInteraction) return;
+          let nextIndex = (index + 1) % progressLines.length;
+          autoplay(progressLines[nextIndex], nextIndex);
+          nextSlide(nextIndex);
+        },
+      });
+    };
+
+    autoplay(progressLines[0], 0);
   }
 
   footer() {
