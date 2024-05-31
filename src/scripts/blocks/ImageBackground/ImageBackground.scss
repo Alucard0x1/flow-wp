@@ -47,14 +47,11 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            border-radius: fn.toVw(20);
 
             object-fit: cover;
             object-position: center;
 
-            @include mx.phone {
-                border-radius: fn.toVw(12);
-            }
+            @include mx.phone {}
         }
     }
 
