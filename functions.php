@@ -23,6 +23,7 @@ function add_to_context($context)
     $context['popupRight'] = Timber\Timber::get_menu('popup-right');
     $context['popupSocial'] = Timber\Timber::get_menu('popup-social');
     $context['popupTerms'] = Timber\Timber::get_menu('popup-terms');
+    $context['newsletter'] = Timber\Timber::get_menu('newsletter');
 
     return $context;
 }
@@ -36,7 +37,7 @@ function after_setup_theme()
         'popup' => 'Popup',
         'popup-right' => 'Popup Right',
         'popup-social' => 'Popup Social',
-        'popup-terms' => 'Popup Terms'
+        'popup-terms' => 'Popup Terms',
     ]);
 }
 

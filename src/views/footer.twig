@@ -30,15 +30,7 @@
 				</p>
 
 				<div class="form-group">
-					<div class="form-group-inline">
-						<input type="text" name="" id="" class="form-control" placeholder="email">
-						<a href="#">
-							<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewbox="0 0 33 33" fill="none">
-								<rect opacity="0.1" x="0.734375" y="32.1406" width="32" height="32" rx="4" transform="rotate(-90 0.734375 32.1406)" fill="white"/>
-								<path d="M15.0514 10.4838L20.0011 15.4335C20.3917 15.824 20.3917 16.4572 20.0011 16.8477L15.0514 21.7975" stroke="white"/>
-							</svg>
-						</a>
-					</div>
+					{{ function('do_shortcode', newsletter.items.0.title) }}
 				</div>
 			</div>
 		</div>

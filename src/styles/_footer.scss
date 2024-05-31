@@ -112,8 +112,12 @@
                 border-bottom: 1px solid rgba(clr.$white, 0.6);
 
                 &-inline {
-                    display: flex;
-                    align-items: center;
+
+                    p {
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                    }
 
                     input {
                         flex-grow: 1;
