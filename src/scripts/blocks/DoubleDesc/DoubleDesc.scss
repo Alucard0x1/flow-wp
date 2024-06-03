@@ -18,7 +18,7 @@
                 }
 
                 .slide-content {
-                    .slide-progress  {
+                    .slide-progress {
                         .line {
 
                             &.active {
@@ -190,15 +190,17 @@
                     from {
                         transform: scale(1.1);
                     }
+
                     to {
                         transform: scale(1);
                     }
                 }
-                
+
                 @keyframes scaleOutDown {
                     from {
                         transform: scale(1);
                     }
+
                     to {
                         transform: scale(1.1);
                     }
@@ -237,6 +239,8 @@
                         position: absolute;
                         top: 0;
                         left: 0;
+
+                        z-index: 1;
                     }
 
                     img,
