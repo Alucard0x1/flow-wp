@@ -14,6 +14,7 @@ export default class Page {
     this.heroImage = null;
     this.scaledImage = null;
   }
+
   heroprepare() {
     smoothScroll.scrollTo(0, {
       force: true,
@@ -115,37 +116,44 @@ export default class Page {
       ...document.querySelectorAll(".hero .hero-content .char"),
     ];
 
-    if (!tlHeroChar.length) return;
-    this.tlHero.fromTo(
-      ".hero .hero-content .char",
-      {
-        opacity: 1,
-      },
-      {
-        opacity: 0,
-        duration: 0.3,
-        immediateRender: false,
-        stagger: {
-          each: 0.01,
+    if (tlHeroChar.length) {
+      this.tlHero.fromTo(
+        tlHeroChar,
+        {
+          opacity: 1,
         },
-      },
-      0
-    );
+        {
+          opacity: 0,
+          duration: 0.3,
+          immediateRender: false,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0
+      );
+    };
 
-    this.tlHero.fromTo(
-      ".scaled-image h2 .char",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 0.3,
-        stagger: {
-          each: 0.01,
+    const tlScaledChar = [
+      ...document.querySelectorAll(".scaled-image h2 .char"),
+    ];
+
+    if (tlScaledChar.length) {
+      this.tlHero.fromTo(
+        tlScaledChar,
+        {
+          opacity: 0,
         },
-      },
-      0.5
-    );
+        {
+          opacity: 1,
+          duration: 0.3,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0.5
+      );
+    };
   }
 
   heroscroll() {
