@@ -137,6 +137,10 @@
                         &:focus {
                             outline: none;
                         }
+
+                        @include mx.phone {
+                            width: 100%;
+                        }
                     }
                 }
             }
