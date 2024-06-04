@@ -701,7 +701,7 @@ export default class Page {
         pin: true,
         scrub: true,
         start: "top top",
-        end: `+=${items.length - 1}00%`,
+        end: `+=${items.length * 100}%`,
       },
     });
 
@@ -714,7 +714,7 @@ export default class Page {
         },
         scrollTrigger: {
           trigger: el,
-          start: `${index === 1 ? 0 : index * 50}%`,
+          start: `${(index - 1) * 100}%`,
           end: "+=100%",
           onEnter: () => tlTween.play(),
           onLeaveBack: () => tlTween.reverse(),
