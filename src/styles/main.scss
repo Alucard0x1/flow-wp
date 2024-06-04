@@ -139,10 +139,10 @@ a {
             .pill {
                 font-size: fn.toVw(14);
                 font-weight: 400;
-                padding: fn.toVw(8) fn.toVw(20);
+                padding: fn.toVw(6) fn.toVw(20);
                 border-radius: fn.toVw(25);
-                background-color: #E4DBCB;
-                color: #575349;
+                background-color: clr.$brown-15;
+                color: clr.$brown-30;
 
                 float: right;
 
@@ -254,10 +254,10 @@ a {
                 .pill {
                     font-size: fn.toVw(14);
                     font-weight: 400;
-                    padding: fn.toVw(8) fn.toVw(20);
+                    padding: fn.toVw(6) fn.toVw(20);
                     border-radius: fn.toVw(25);
-                    background-color: #E4DBCB;
-                    color: #575349;
+                    background-color: clr.$brown-15;
+                    color: clr.$brown-30;
 
                     float: right;
 
@@ -276,7 +276,7 @@ a {
 
                         @include mx.phone {
                             font-size: fn.toVw(24);
-                            margin: fn.toVw(35) 0 fn.toVw(14);
+                            margin: fn.toVw(30) 0 fn.toVw(14);
                         }
                     }
                 }
