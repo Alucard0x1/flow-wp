@@ -14,6 +14,7 @@ export default class Page {
     this.heroImage = null;
     this.scaledImage = null;
   }
+
   heroprepare() {
     smoothScroll.scrollTo(0, {
       force: true,
@@ -115,37 +116,44 @@ export default class Page {
       ...document.querySelectorAll(".hero .hero-content .char"),
     ];
 
-    if (!tlHeroChar.length) return;
-    this.tlHero.fromTo(
-      ".hero .hero-content .char",
-      {
-        opacity: 1,
-      },
-      {
-        opacity: 0,
-        duration: 0.3,
-        immediateRender: false,
-        stagger: {
-          each: 0.01,
+    if (tlHeroChar.length) {
+      this.tlHero.fromTo(
+        tlHeroChar,
+        {
+          opacity: 1,
         },
-      },
-      0
-    );
+        {
+          opacity: 0,
+          duration: 0.3,
+          immediateRender: false,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0
+      );
+    };
 
-    this.tlHero.fromTo(
-      ".scaled-image h2 .char",
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 0.3,
-        stagger: {
-          each: 0.01,
+    const tlScaledChar = [
+      ...document.querySelectorAll(".scaled-image h2 .char"),
+    ];
+
+    if (tlScaledChar.length) {
+      this.tlHero.fromTo(
+        tlScaledChar,
+        {
+          opacity: 0,
         },
-      },
-      0.5
-    );
+        {
+          opacity: 1,
+          duration: 0.3,
+          stagger: {
+            each: 0.01,
+          },
+        },
+        0.5
+      );
+    };
   }
 
   heroscroll() {
@@ -474,19 +482,44 @@ export default class Page {
   }
 
   sliderscroll() {
-    const section = document.querySelector(".scroll-slider");
+    const section = document.querySelector(".image-background");
 
     if (!section) return;
+    console.log('sliderscroll');
+    const wrapper = section.querySelector(".slide-wrapper");
 
     const slides = section.querySelectorAll(
-      ".slide-wrapper .media-item-wrapper"
+      ".slide-wrapper .image-wrapper"
     );
-    const slidesText = section.querySelectorAll(".slide-wrapper .text-content");
-    const buttons = section.querySelectorAll(
-      ".slide-wrapper .slider-action .btn"
-    );
-    const numberActive = section.querySelector(".content-wrapper .num-active");
 
+    const slidesText = wrapper.querySelectorAll(".content-wrapper__content");
+
+    const master = document.createElement("div");
+    master.classList.add("master");
+    master.classList.add("is-active");
+    wrapper.appendChild(master)
+
+    const content = slides[0].querySelector(".content-wrapper");
+    master.appendChild(content);
+
+    slides.forEach((el, index) => {
+      if (el.classList.contains("is-active")) {
+        el.classList.remove("is-active");
+      }
+      
+      const media = el.querySelector("img") || el.querySelector("video");
+      media.classList.add("media");
+      media.style.zIndex = slides.length - 1 - index;
+      master.appendChild(media);
+
+      if (index === 0) return;
+      const contentItem = el.querySelector(".content-wrapper__content");
+      content.appendChild(contentItem);
+    });
+
+    // const buttons = section.querySelectorAll(
+    //   ".slide-wrapper .slider-action .btn"
+    // );
     const header = document.querySelector(".nav");
 
     const tl = gsap.timeline({
@@ -495,31 +528,28 @@ export default class Page {
         duration: 1,
       },
       scrollTrigger: {
-        trigger: ".scroll-slider",
+        trigger: section,
         start: () =>
-          ScrollTrigger.isTouch ? `top top+=${header.offsetHeight}` : "top top",
+          "top top",
         end: `+=${
           ScrollTrigger.isTouch ? slides.length / 2 : slides.length
         }00%`,
         scrub: true,
-        pin: ".scroll-slider .slide-wrapper",
+        pin: ".image-background .slide-wrapper",
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
       },
     });
+    
 
     gsap.utils
-      .toArray(".slide-wrapper .media-item-wrapper")
+      .toArray('.image-background .master .media')
       .forEach((slide, index) => {
-        const media = slide.querySelector(".media-item");
-        const charCurrent = ScrollTrigger.isTouch
-          ? slidesText[index]
-          : slidesText[index].querySelectorAll(".char");
+        const media = slide;
+        const charCurrent = slidesText[index].querySelectorAll(".char");
 
         if (index === slides.length - 1) return;
-        const mediaNext = slides[index + 1].querySelector(".media-item");
-        const charNext = ScrollTrigger.isTouch
-          ? slidesText[index + 1]
-          : slidesText[index + 1].querySelectorAll(".char");
+        // const mediaNext = slides[index + 1].querySelector(".media-item");
+        const charNext = slidesText[index + 1].querySelectorAll(".char");
 
         tl.to(charCurrent, {
           opacity: 0,
@@ -528,18 +558,14 @@ export default class Page {
             each: 0.001,
             from: "end",
           },
-          onStart: () => {
-            buttons[index].classList.remove("active");
-            buttons[index + 1].classList.add("active");
-          },
-          onComplete: () => {
-            numberActive.textContent = index + 2;
-          },
-          onReverseComplete: () => {
-            numberActive.textContent = index + 1;
-            buttons[index].classList.add("active");
-            buttons[index + 1].classList.remove("active");
-          },
+          // onStart: () => {
+          //   buttons[index].classList.remove("active");
+          //   buttons[index + 1].classList.add("active");
+          // },
+          // onReverseComplete: () => {
+          //   buttons[index].classList.add("active");
+          //   buttons[index + 1].classList.remove("active");
+          // },
         });
 
         tl.to(

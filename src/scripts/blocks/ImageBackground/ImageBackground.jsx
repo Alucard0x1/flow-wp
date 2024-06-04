@@ -118,13 +118,13 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                                     const itemsCopy = [...attributes.items]
                                     itemsCopy[index] = { ...itemsCopy[index], title: title }
                                     setAttributes({ items: itemsCopy })
-                                }} />
+                                }}  data-split-text />
                                 <div className="content-description">
                                     <Text tagName="p" value={item.description} onChange={(description) => {
                                         const itemsCopy = [...attributes.items]
                                         itemsCopy[index] = { ...itemsCopy[index], description: description }
                                         setAttributes({ items: itemsCopy })
-                                    }} />
+                                    }} data-split-text />
 
                                     {isSelected &&
                                         <div>
