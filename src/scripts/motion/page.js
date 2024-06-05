@@ -125,7 +125,7 @@ export default class Page {
         {
           opacity: 0,
           duration: 0.3,
-          immediateRender: false,
+          // immediateRender: false,
           stagger: {
             each: 0.01,
           },
