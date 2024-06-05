@@ -122,10 +122,6 @@
                 position: relative;
                 height: fit-content;
 
-                @include mx.phone {
-                    display: none;
-                }
-
                 .slide-content {
                     border-radius: 8px;
                     background: rgba(34, 29, 25, 0.64);
