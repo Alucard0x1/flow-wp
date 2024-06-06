@@ -12,15 +12,30 @@ const blockData = {
             default: [
                 {
                     title: 'Title',
-                    description: 'Description'
+                    description: 'Description',
+                    link: {
+                        title: 'Book Now',
+                        url: '#'
+                    },
+                    showButton: false
                 },
                 {
                     title: 'Title',
-                    description: 'Description'
+                    description: 'Description',
+                    link: {
+                        title: 'Book Now',
+                        url: '#'
+                    },
+                    showButton: false
                 },
                 {
                     title: 'Title',
-                    description: 'Description'
+                    description: 'Description',
+                    link: {
+                        title: 'Book Now',
+                        url: '#'
+                    },
+                    showButton: false
                 }
             ]
         }

@@ -1,13 +1,30 @@
 import './ThreeHighlights.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, URLInputButton, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, ToggleControl } = wp.components
 
 const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
     return (
         <section className="three-highlights">
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        {attributes.items.map((item, key) => (
+                            <ToggleControl
+                                label={item.title}
+                                checked={item.showButton}
+                                onChange={(showButton) => {
+                                    const itemsCopy = [...attributes.items]
+                                    itemsCopy[key] = { ...itemsCopy[key], showButton }
+                                    setAttributes({ items: itemsCopy })
+                                }}
+                            />
+                        ))}
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="container">
                 <div className="image-wrapper">
                     {isSelected &&
@@ -39,6 +56,32 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                                 value={item.description}
                                 onChange={(description) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, description } : item) })}
                             />
+
+                            {item.showButton &&
+                                <>
+                                    <Text tagName="a" className="btn btn-rounded" href={item.link.url} target="_blank" rel="noopener noreferrer"
+                                        value={item.link.title}
+                                        onChange={(title) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, link: { ...item.link, title } } : item) })}
+                                    />
+
+                                    {isSelected &&
+                                        <URLInputButton url={item.link.url}
+                                            onChange={(url, post) => {
+                                                const itemsCopy = [...attributes.items]
+                                                itemsCopy[key] = {
+                                                    ...itemsCopy[key],
+                                                    link: {
+                                                        url,
+                                                        title: (post && post.title) || itemsCopy[key].title
+                                                    }
+                                                }
+
+                                                setAttributes({ items: itemsCopy })
+                                            }}
+                                        />
+                                    }
+                                </>
+                            }
                         </div>
                     ))}
                 </div>
