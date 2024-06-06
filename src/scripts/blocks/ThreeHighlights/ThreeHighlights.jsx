@@ -57,7 +57,7 @@ const ThreeHighlights = ({ attributes, setAttributes, isSelected }) => {
                                 onChange={(description) => setAttributes({ items: attributes.items.map((item, index) => index === key ? { ...item, description } : item) })}
                             />
 
-                            {item.showButton &&
+                            {item.link && item.showButton &&
                                 <>
                                     <Text tagName="a" className="btn btn-rounded" href={item.link.url} target="_blank" rel="noopener noreferrer"
                                         value={item.link.title}
