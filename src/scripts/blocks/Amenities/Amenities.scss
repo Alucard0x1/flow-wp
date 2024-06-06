@@ -135,8 +135,8 @@
                     margin-bottom: fn.toVw(27);
                     // margin-left: fn.toVw(49);
 
-                    flex: 0 0 fn.toVw(270 + 16);
-                    width: fn.toVw(270 + 16);
+                    flex: 0 0 fn.toVw(270 + 16 + 9);
+                    width: fn.toVw(270 + 16 + 9);
 
                     &.even {
                         flex: 0 0 fn.toVw(195 + 16);
