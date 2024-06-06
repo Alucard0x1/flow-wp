@@ -22,18 +22,24 @@
 
 .amenities {
     overflow: hidden;
+    margin: fn.toVw(20) 0;
+    width: 100%;
+
+    @include mx.phone {
+        margin: fn.toVw(6) 0;
+    }
 
     .container {
         display: flex;
-        margin: fn.toVw(20);
         background-color: clr.$purple;
         border-radius: fn.toVw(16);
         padding: fn.toVw(29) fn.toVw(32);
+        margin: 0 fn.toVw(20);
 
         @include mx.phone {
+            margin: 0 fn.toVw(6);
             flex-direction: column;
             padding: fn.toVw(6);
-            margin: fn.toVw(6);
             border-radius: fn.toVw(10);
 
             overflow: hidden;
