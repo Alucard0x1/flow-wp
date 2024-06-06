@@ -78,6 +78,8 @@
 
                 @include mx.phone {
                     padding: 0 fn.toVw(18);
+
+                    display: block;
                 }
 
                 .pill {
