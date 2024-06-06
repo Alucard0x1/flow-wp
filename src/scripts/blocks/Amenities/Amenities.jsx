@@ -31,7 +31,8 @@ const Amenities = ({ attributes, setAttributes, isSelected }) => {
                 </div>
 
                 <div className="content-wrapper">
-                    <h2>Amenities and Services</h2>
+                    <Text tagName="h2" value={attributes.title}
+                        onChange={(title) => setAttributes({ title })} />
 
                     {isSelected &&
                         <div>
