@@ -3,6 +3,10 @@ const blockData = {
     icon: 'format-image',
     category: 'common',
     attributes: {
+        hideLeft: {
+            type: 'boolean',
+            default: false
+        },
         hideSlider: {
             type: 'boolean',
             default: false

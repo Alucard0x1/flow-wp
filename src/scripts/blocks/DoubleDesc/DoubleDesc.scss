@@ -39,6 +39,21 @@
         margin: fn.toVw(64) 0;
     }
 
+    &.hide-left {
+        .container .images-wrapper .slider {
+            display: none;
+        }
+
+        .container .images-wrapper .image-end {
+            width: 100%;
+            flex: 1;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
     &.hide-slider {
         .container {
             .images-wrapper {
