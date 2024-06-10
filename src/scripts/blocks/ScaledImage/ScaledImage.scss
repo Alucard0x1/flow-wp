@@ -45,7 +45,7 @@
             @include mx.phone {
                 border-radius: fn.toVw(10);
             }
-            
+
 
             &.active {
                 visibility: visible;
@@ -57,18 +57,18 @@
                 height: 100%;
                 top: 0;
                 left: 0;
-    
+
                 object-fit: cover;
                 object-position: center;
 
                 &.portrait {
                     display: none;
-    
+
                     @include mx.phone {
                         display: block;
                     }
                 }
-    
+
                 &.desktop {
                     @include mx.phone {
                         display: none;
@@ -79,7 +79,7 @@
             @include mx.phone {
                 width: fn.toVw(282);
                 height: fn.toVw(282);
-                
+
                 top: 40%;
 
                 // position: relative;
@@ -92,7 +92,7 @@
 
     &-content {
         width: fn.toVw(572);
-        margin: calc(fn.toVw(91) + fn.toVw(356)) auto 0;
+        margin: calc(fn.toVw(91 + 356 + 96)) auto 0;
 
         display: flex;
 
@@ -126,9 +126,13 @@
                 margin-bottom: fn.toVw(20);
                 opacity: 0.9;
 
-                font-size: fn.toVw(13);
-                line-height: fn.toVw(20);
                 font-weight: 400;
+                font-size: fn.toVw(18);
+                line-height: 1.4;
+
+                @include mx.phone {
+                    font-size: fn.toVw(13);
+                }
             }
         }
 
