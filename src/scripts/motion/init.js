@@ -25,6 +25,7 @@ export default class MotionInit {
 
   afterPreloader() {
     MotionPage.hero();
+    MotionPage.heroflip();
     new MotionText();
     MotionPage.sliderscroll();
   }

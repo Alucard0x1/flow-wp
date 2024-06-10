@@ -2,17 +2,69 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Flip from "gsap/Flip";
 import { smoothScroll } from "./smoothscroll";
+import { debounce } from "../utils/debounce";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 export default class Page {
   constructor() {
-    this.state = null;
-
     this.tlHero = null;
 
     this.heroImage = null;
     this.scaledImage = null;
+  }
+
+  heroflip() {
+    let flipCtx;
+
+    this.heroImage = document.querySelector(".hero .image-wrapper");
+    this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
+
+    if (!this.scaledImage || !this.heroImage) return;
+
+    this.heroImage.classList.add("active");
+    this.scaledImage.classList.add("active");
+
+    const anim = () => {
+      flipCtx && flipCtx.revert();
+      // this.scaledImage.style.cssText = "";
+      // this.heroImage.style.cssText = "";
+
+      this.scaledImage.innerHTML = this.heroImage.innerHTML;
+
+      flipCtx = gsap.context(() => {
+        const state = Flip.getState([this.heroImage, this.scaledImage]);
+
+        const flip = Flip.from(state, {
+          duration: 1,
+          ease: "none",
+        });
+
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "clamp(top top)",
+          end: "+=50%",
+          endTrigger: ".scaled-image",
+          scrub: true,
+          refreshPriority: 1,
+          animation: flip,
+        });
+      });
+    };
+
+    anim();
+
+    window.addEventListener("resize", debounce(anim, 500));
+
+    // TODO: temp solution responsive flip
+    window.addEventListener("resize", () => {
+      if (!this.scaledImage || !this.heroImage) return;
+      
+      smoothScroll.scrollTo(0, {
+        force: true,
+        immediate: true,
+      });
+    });
   }
 
   heroprepare() {
@@ -23,28 +75,18 @@ export default class Page {
 
     this.heroImage = document.querySelector(".hero .image-wrapper");
     this.scaledImage = document.querySelector(".scaled-image .image-wrapper");
-
     if (!this.scaledImage || !this.heroImage) return;
-
-    this.scaledImage.innerHTML = this.heroImage.innerHTML;
-
-    this.state = Flip.getState(
-      ".hero .image-wrapper, .scaled-image .image-wrapper"
-    );
-
-    this.heroImage.classList.toggle("active");
-    this.scaledImage.classList.toggle("active");
 
     gsap.to(".scaled-image", {
       opacity: 1,
       scrollTrigger: {
         trigger: ".scaled-image",
         start: "clamp(top top)",
-        end: "+=100%",
+        end: "+=150%",
         endTrigger: ".map-intro",
         pin: true,
         scrub: true,
-        // invaludateOnRefresh: true,
+        invaludateOnRefresh: true,
         refreshPriority: 1,
       },
     });
@@ -132,7 +174,7 @@ export default class Page {
         },
         0
       );
-    };
+    }
 
     const tlScaledChar = [
       ...document.querySelectorAll(".scaled-image h2 .char"),
@@ -153,7 +195,7 @@ export default class Page {
         },
         0.5
       );
-    };
+    }
   }
 
   heroscroll() {
@@ -184,13 +226,13 @@ export default class Page {
       }
     );
 
-    this.tlHero.add(
-      Flip.from(this.state, {
-        duration: 1,
-        ease: "none",
-      }),
-      0
-    );
+    // this.tlHero.add(
+    //   Flip.from(this.state, {
+    //     duration: 1,
+    //     ease: "none",
+    //   }),
+    //   0
+    // );
 
     this.tlHero.fromTo(
       ".scaled-image .image-wrapper video",
@@ -487,16 +529,14 @@ export default class Page {
     if (!section) return;
     const wrapper = section.querySelector(".slide-wrapper");
 
-    const slides = section.querySelectorAll(
-      ".slide-wrapper .image-wrapper"
-    );
+    const slides = section.querySelectorAll(".slide-wrapper .image-wrapper");
 
     const slidesText = wrapper.querySelectorAll(".content-wrapper__content");
 
     const master = document.createElement("div");
     master.classList.add("master");
     master.classList.add("is-active");
-    wrapper.appendChild(master)
+    wrapper.appendChild(master);
 
     const content = slides[0].querySelector(".content-wrapper");
     master.appendChild(content);
@@ -505,7 +545,7 @@ export default class Page {
       if (el.classList.contains("is-active")) {
         el.classList.remove("is-active");
       }
-      
+
       const media = el.querySelector("img") || el.querySelector("video");
       media.classList.add("media");
       media.style.zIndex = slides.length - 1 - index;
@@ -528,8 +568,7 @@ export default class Page {
       },
       scrollTrigger: {
         trigger: section,
-        start: () =>
-          "top top",
+        start: () => "top top",
         end: `+=${
           ScrollTrigger.isTouch ? slides.length / 2 : slides.length
         }00%`,
@@ -538,10 +577,9 @@ export default class Page {
         invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
       },
     });
-    
 
     gsap.utils
-      .toArray('.image-background .master .media')
+      .toArray(".image-background .master .media")
       .forEach((slide, index) => {
         const media = slide;
         const charCurrent = slidesText[index].querySelectorAll(".char");
@@ -773,14 +811,18 @@ export default class Page {
       const text = contentFirst.querySelector("p");
 
       text.textContent = contentText[index];
-      gsap.fromTo(text, {
-        opacity: 0,
-        y: 15,
-      }, {
-        opacity: 1,
-        y: 0,
-        ease: "power4.out"
-      })
+      gsap.fromTo(
+        text,
+        {
+          opacity: 0,
+          y: 15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power4.out",
+        }
+      );
 
       items.forEach((item, itemindex) => {
         if (progressLines[itemindex].classList.contains("active")) {
@@ -789,7 +831,7 @@ export default class Page {
           gsap.to(progressLines[itemindex], {
             "--progress": 0,
             "--origin": "right",
-            overwrite: true
+            overwrite: true,
           });
         }
 
@@ -818,7 +860,7 @@ export default class Page {
           gsap.to(progressLines, {
             "--progress": 0,
             "--origin": "right",
-            overwrite: true
+            overwrite: true,
           });
         }
 
