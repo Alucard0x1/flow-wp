@@ -485,7 +485,6 @@ export default class Page {
     const section = document.querySelector(".image-background");
 
     if (!section) return;
-    console.log('sliderscroll');
     const wrapper = section.querySelector(".slide-wrapper");
 
     const slides = section.querySelectorAll(

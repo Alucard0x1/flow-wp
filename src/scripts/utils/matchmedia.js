@@ -48,7 +48,7 @@ export default class Matchmedia {
             if (mediaQuery.matches) {
               preloadHide(br);
 
-              if (process.env.NODE_ENV === 'development') return;
+              // if (process.env.NODE_ENV === 'development') return;
               window.location.reload();
             }
           });
@@ -56,19 +56,11 @@ export default class Matchmedia {
 
         // check desktop mode
         if (isDesktop) {
-          if (process.env.NODE_ENV === 'development') {
-            console.log('desktop mode');
-          }
-
           reloadBrowser(context.queries.isMobile);
         }
 
         // check mobile mode
         if (isMobile) {
-          if (process.env.NODE_ENV === 'development') {
-            console.log('mobile mode');
-          }
-
           reloadBrowser(context.queries.isDesktop);
         }
 

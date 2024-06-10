@@ -30,7 +30,7 @@ export default class Resize {
   }
 
   Windowresize() {
-    if (process.env.NODE_ENV === "development") return;
+    // if (process.env.NODE_ENV === "development") return;
 
     const sizeMediaQuery = 500;
 
