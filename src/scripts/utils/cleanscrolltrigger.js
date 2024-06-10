@@ -12,7 +12,7 @@ export default function CleanScrolltrigger(refresh = false) {
     if (!refresh) return;
     ScrollTrigger.refresh();
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') return;
-    console.log(error);
+    // if (process.env.NODE_ENV === 'development') return;
+    // console.log(error);
   }
 }

@@ -20,10 +20,6 @@ const motion = new MotionInit();
 
 class RendererDefault extends Renderer {
   initialLoad() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("initialLoad");
-    }
-
     aLazyLoad = new LazyLoad();
 
     motion.first();
@@ -40,10 +36,6 @@ class RendererDefault extends Renderer {
   }
 
   onEnter() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("onEnter");
-    }
-
     // new Smoothscroll();
     if (aLazyLoad) {
       aLazyLoad.update();
@@ -56,23 +48,7 @@ class RendererDefault extends Renderer {
     });
   }
 
-  onEnterCompleted() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("onEnterCompleted");
-    }
-  }
-
-  onLeave() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("onLeave");
-    }
-  }
-
   onLeaveCompleted() {
-    if (process.env.NODE_ENV === "development") {
-      console.log("onLeaveCompleted");
-    }
-
     smoothScroll.stop();
     // smoothScroll.destroy();
 
