@@ -96,3 +96,14 @@ function register_custom_post_type()
 add_action('enqueue_block_editor_assets', 'enqueue_blocks');
 add_action('wp_enqueue_scripts', 'enqueue_assets', 100);
 add_action('init', 'register_custom_post_type');
+
+function wpcf7_before_send_mail_function($contact_form, $abort, $submission)
+{
+    $properties = $contact_form->get_properties();
+    $properties['messages']['mail_sent_ok'] = 'You have been successfully subscribed!';
+    $contact_form->set_properties($properties);
+
+    return $contact_form;
+}
+
+add_filter('wpcf7_before_send_mail', 'wpcf7_before_send_mail_function', 10, 3);
