@@ -83,6 +83,14 @@ export default class App {
         !(element.id === "assetjs-js") ||
         element.dataset.taxiReload !== undefined,
     });
+
+    window.addEventListener('load', () => {
+      if (window.location.hash.match(/wpcf/)) {
+        setTimeout(() => {
+          document.querySelector(window.location.hash).scrollIntoView()
+        }, 1000)
+      }
+    })
   }
 }
 
