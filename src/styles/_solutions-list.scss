@@ -56,6 +56,10 @@
                 transform-style: preserve-3d;
                 backface-visibility: hidden;
 
+                @include mx.phone {
+                    margin-bottom: fn.toVw(30);
+                }
+
                 img {
                     height: fn.toVw(430);
                     width: 100%;
@@ -107,7 +111,7 @@
 
                         @include mx.phone {
                             font-size: fn.toVw(24);
-                            margin: fn.toVw(30) 0 fn.toVw(14);
+                            margin: 0 0 fn.toVw(14);
                         }
                     }
                 }
