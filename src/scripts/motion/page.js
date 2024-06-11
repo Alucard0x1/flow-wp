@@ -54,6 +54,7 @@ export default class Page {
 
     anim();
 
+    if (ScrollTrigger.isTouch) return;
     window.addEventListener("resize", debounce(anim, 500));
 
     // TODO: temp solution responsive flip
