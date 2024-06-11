@@ -40,7 +40,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%) scale(1.05);
-            will-change: transform;
+            will-change: transform, width, height;
 
             @include mx.phone {
                 border-radius: fn.toVw(10);

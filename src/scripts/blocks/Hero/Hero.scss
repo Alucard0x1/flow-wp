@@ -50,6 +50,7 @@
         position: relative;
         overflow: hidden;
         visibility: visible;
+        will-change: transform, width, height;
 
         &.active {
             visibility: hidden;
