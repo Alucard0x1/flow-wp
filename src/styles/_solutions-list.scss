@@ -46,6 +46,7 @@
                 position: absolute;
                 inset: 0;
                 background-color: clr.$brown-35;
+                will-change: transform;
 
                 &:not(:first-child) {
                     transform: translateY(120%);
@@ -68,7 +69,7 @@
                     border-radius: fn.toVw(12);
 
                     @include mx.phone {
-                        height: 65dvh;
+                        height: 65vh;
                     }
                 }
             }
