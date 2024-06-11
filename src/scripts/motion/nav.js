@@ -5,6 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 class Nav {
   constructor() {
+    this.nav = document.querySelector(".nav");
     this.toggle = document.querySelector(".nav-toggle .hamburger");
     this.popup = document.querySelector(".nav-popup");
     this.popupBg = this.popup.querySelector(".container-bg");
@@ -83,18 +84,34 @@ class Nav {
   defaultState() {
     this.zIndexImage = this.menuIndex || 0;
 
-    this.popupContentImageDesc.textContent = this.menuItemActive ? this.menuLink[this.menuIndexInit].querySelector('a').dataset.desc : this.popupImageDescText; 
+    this.popupContentImageDesc.textContent = this.menuItemActive
+      ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
+      : this.popupImageDescText;
 
     gsap.set(this.popupContentImage.children, {
       zIndex: 0,
     });
 
-    gsap.set(this.popupContentImage.children[this.menuItemActive ? this.menuIndexInit + 1 : 0], {
-      zIndex: 1,
-    });
+    gsap.set(
+      this.popupContentImage.children[
+        this.menuItemActive ? this.menuIndexInit + 1 : 0
+      ],
+      {
+        zIndex: 1,
+      }
+    );
   }
 
   event() {
+    this.nav.addEventListener("click", (e) => {
+      e.target.addEventListener("click", (e2) => {
+        if (!e2.target.closest(".nav-logo, .nav-right")) {
+          if (!this.popup.classList.contains("active")) return;
+          this.close();
+        }
+      });
+    });
+
     this.toggle.addEventListener("click", (e) => {
       e.preventDefault();
 
