@@ -40,7 +40,7 @@ const ScaledImage = ({ attributes, setAttributes, isSelected }) => {
 
                 <div className="scaled-image-content">
                     <div class="category-wrapper">
-                        {isSelected || attributes.category != "" ? <Text tagName="p" className="text-category" value={attributes.category} onChange={(category) => setAttributes({ category })} /> : <></>}
+                        {isSelected || attributes.category != "" && <Text tagName="p" className="text-category" value={attributes.category} onChange={(category) => setAttributes({ category })} />}
                     </div>
 
                     <div class="description-wrapper">
