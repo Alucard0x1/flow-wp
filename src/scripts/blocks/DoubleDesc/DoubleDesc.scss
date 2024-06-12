@@ -54,6 +54,18 @@
         }
     }
 
+    &.ex-height {
+        .container .images-wrapper .image-end {
+            img {
+                height: 80vh;
+
+                @include mx.phone {
+                    height: 25vh;
+                }
+            }
+        }
+    }
+
     &.hide-slider {
         .container {
             .images-wrapper {

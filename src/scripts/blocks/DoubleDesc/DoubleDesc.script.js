@@ -3,6 +3,10 @@ const blockData = {
     icon: 'format-image',
     category: 'common',
     attributes: {
+        exHeight: {
+            type: 'boolean',
+            default: false
+        },
         hideLeft: {
             type: 'boolean',
             default: false
