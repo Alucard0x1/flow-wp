@@ -284,7 +284,7 @@
                 img,
                 video {
                     width: fn.toVw(840);
-                    height: 80vh;
+                    height: fn.toVw(493);
                     object-fit: cover;
                     object-position: center;
                     border-radius: fn.toVw(14);
@@ -292,7 +292,6 @@
                     @include mx.phone {
                         width: 100%;
                         border-radius: fn.toVw(7);
-                        height: 25vh;
                     }
                 }
             }
