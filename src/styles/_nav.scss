@@ -341,6 +341,7 @@
                 border-radius: fn.toVw(16);
                 transform-origin: top right;
                 overflow: hidden;
+                transform-style: preserve-3d;
 
                 img {
                     width: 100%;
