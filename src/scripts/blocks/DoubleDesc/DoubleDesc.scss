@@ -2,6 +2,14 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+.double-desc.special-margin .container .content-end {
+    margin-left: fn.toVw(557);
+
+    @include mx.phone {
+        margin-left: unset;
+    }
+}
+
 #editor {
     .double-desc {
         .container {

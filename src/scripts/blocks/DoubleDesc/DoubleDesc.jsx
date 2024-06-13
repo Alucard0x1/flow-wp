@@ -7,7 +7,7 @@ const { Button, Icon, ToggleControl, PanelBody } = wp.components
 const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
     return (
-        <section className={"double-desc" + (attributes.hideSlider ? ' hide-slider' : '') + (attributes.hideLeft ? ' hide-left' : '') + (attributes.exHeight ? ' ex-height' : '')}>
+        <section className={"double-desc" + (attributes.hideSlider ? ' hide-slider' : '') + (attributes.hideLeft ? ' hide-left' : '') + (attributes.exHeight ? ' ex-height' : '') + (attributes.sMargin ? ' special-margin' : '')}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
@@ -23,6 +23,12 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                             label="Extra height"
                             checked={attributes.exHeight}
                             onChange={(exHeight) => setAttributes({ exHeight })}
+                        />
+
+                        <ToggleControl
+                            label="Special margin"
+                            checked={attributes.sMargin}
+                            onChange={(sMargin) => setAttributes({ sMargin })}
                         />
                     </PanelBody>
                 </InspectorControls>

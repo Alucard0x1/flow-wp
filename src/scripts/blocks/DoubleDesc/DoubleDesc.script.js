@@ -3,6 +3,10 @@ const blockData = {
     icon: 'format-image',
     category: 'common',
     attributes: {
+        sMargin: {
+            type: 'boolean',
+            default: false
+        },
         exHeight: {
             type: 'boolean',
             default: false
