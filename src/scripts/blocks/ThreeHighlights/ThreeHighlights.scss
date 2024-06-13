@@ -29,7 +29,7 @@
                 height: 100%;
 
                 @include mx.phone {
-                  border-radius: fn.toVw(7);
+                    border-radius: fn.toVw(7);
                 }
             }
 
@@ -102,9 +102,9 @@
                 }
 
                 .content-desc {
-                    margin-right: fn.toVw(32);
                     opacity: 0.6;
                     font-weight: 400;
+
                     @include mx.phone {
                         margin: 0;
                     }
