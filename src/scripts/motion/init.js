@@ -43,6 +43,7 @@ export default class MotionInit {
     MotionPage.amnities2();
     MotionPage.philosophy();
     MotionPage.sideimage();
+    MotionPage.doubledesc();
     MotionPage.highlight();
     MotionPage.solutionrelated();
     MotionPage.solutionlist();

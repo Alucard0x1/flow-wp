@@ -46,7 +46,7 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                             <Icon icon="plus" />
                         </Button>
                     }
-                    <div className="slider">
+                    <div className={"slider" + (!attributes.hideSlider ? " slider-active" : '')}>
                         {attributes.mediaSlider.map((image, index) => (
                             <div className={"image" + (isSelected || index == 0 ? ' active' : '')}>
                                 {isSelected &&
@@ -78,12 +78,14 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                                         )}
                                     />
                                 }
-
-                                {image.media && image.media.type == 'video' ?
-                                    <video src={image.media.url} autoPlay loop muted playsInline />
-                                    :
-                                    <img src={image.media == null ? 'https://picsum.photos/300/300' : image.media.url} alt="" />
-                                }
+                                
+                                <div className="image-wrapper">
+                                    {image.media && image.media.type == 'video' ?
+                                        <video src={image.media.url} autoPlay loop muted playsInline />
+                                        :
+                                        <img src={image.media == null ? 'https://picsum.photos/300/300' : image.media.url} alt="" />
+                                    }
+                                </div>
 
                                 {!attributes.hideSlider &&
                                     <div className="slide-content">
@@ -127,12 +129,14 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                                 )}
                             />
                         }
-
-                        {attributes.mediaRight && attributes.mediaRight.type == 'video' ?
-                            <video src={attributes.mediaRight.url} autoPlay loop muted playsInline />
-                            :
-                            <img src={attributes.mediaRight == null ? 'https://picsum.photos/300/300' : attributes.mediaRight.url} />
-                        }
+                        
+                        <div className="image-wrapper">
+                            {attributes.mediaRight && attributes.mediaRight.type == 'video' ?
+                                <video src={attributes.mediaRight.url} autoPlay loop muted playsInline />
+                                :
+                                <img src={attributes.mediaRight == null ? 'https://picsum.photos/300/300' : attributes.mediaRight.url} />
+                            }
+                        </div>
                     </div>
                 </div>
 

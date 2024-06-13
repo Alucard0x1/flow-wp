@@ -60,7 +60,7 @@ export default class Page {
     // TODO: temp solution responsive flip
     window.addEventListener("resize", () => {
       if (!this.scaledImage || !this.heroImage) return;
-      
+
       smoothScroll.scrollTo(0, {
         force: true,
         immediate: true,
@@ -644,6 +644,36 @@ export default class Page {
     tl.to(section, {
       opacity: 1,
       duration: 0.2,
+    });
+  }
+
+  doubledesc() {
+    const section = document.querySelector(".double-desc");
+
+    if (!section) return;
+
+    gsap.utils.toArray(".double-desc .image-wrapper").forEach((el) => {
+      const img = el.querySelector("img")
+      const video = el.querySelector("video")
+
+      const tlImage = gsap.timeline({
+        defaults: {
+          ease: "none",
+        },
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+
+      tlImage.from(
+        [img, video],
+        {
+          scale: 1.2,
+        }
+      );
     });
   }
 
