@@ -342,6 +342,7 @@
                 transform-origin: top right;
                 overflow: hidden;
                 transform-style: preserve-3d;
+                backface-visibility: hidden;
 
                 img {
                     width: 100%;
