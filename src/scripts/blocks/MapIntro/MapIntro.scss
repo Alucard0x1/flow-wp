@@ -59,6 +59,7 @@
                     left: fn.toVw(28);
                     right: fn.toVw(28);
                     width: auto;
+                    padding: fn.toVw(20);
                 }
 
                 h2 {
@@ -73,8 +74,9 @@
                     border-bottom: 1px solid clr.$brown-30;
 
                     @include mx.phone {
-                        font-size: fn.toVw(32);
+                        font-size: fn.toVw(25);
                         padding-right: fn.toVw(50);
+                        padding-bottom: fn.toVw(16);
                     }
                 }
 
