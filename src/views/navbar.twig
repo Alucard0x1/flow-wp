@@ -36,7 +36,7 @@
 					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="Description {{ loop.index }}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>

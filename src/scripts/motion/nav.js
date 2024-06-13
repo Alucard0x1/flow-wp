@@ -159,6 +159,14 @@ class Nav {
 
           this.popupContentImageDesc.textContent = link.dataset.desc;
 
+          gsap.fromTo(this.popupContentImageDesc, {
+            opacity: 0,
+          }, {
+            opacity: 1,
+            duration: 0.8,
+            overwrite: true,
+          });
+
           // gsap.fromTo(
           //   this.popupContentImage.children[index],
           //   {
@@ -242,19 +250,32 @@ class Nav {
       );
 
       gsap.fromTo(
-        this.popupContentImages,
+        this.popupContentImageDesc,
         {
-          opacity: gsap.utils.wrap([0, 1]),
-          y: gsap.utils.wrap([40, null]),
-          scale: gsap.utils.wrap([1, 0]),
+          opacity: 0,
+          y: 40,
         },
         {
           opacity: 1,
-          y: gsap.utils.wrap([0, null]),
-          scale: gsap.utils.wrap([1, 1]),
-          delay: gsap.utils.wrap([delay, delay - 0.2]),
+          y: 0,
+          delay: delay,
           duration: 0.8,
           willChange: "transform",
+          overwrite: true,
+        }
+      );
+      
+      gsap.fromTo(
+        this.popupContentImage,
+        {
+          clipPath: "inset(100% 100% 0% 0% round calc(16 / var(--vw) * var(--scaler) * var(--multiplier)))",
+        },
+        {
+          clipPath: "inset(0% 0% 0% 0% round calc(16 / var(--vw) * var(--scaler) * var(--multiplier)))",
+          delay: delay - 0.2,
+          ease: "expo.out",
+          duration: 1.0,
+          willChange: "clip-path",
           overwrite: true,
         }
       );
@@ -278,9 +299,8 @@ class Nav {
         willChange: "transform",
       });
 
-      gsap.to(this.popupContentImages, {
-        y: gsap.utils.wrap([-40, null]),
-        scale: gsap.utils.wrap([1, 0]),
+      gsap.to(this.popupContentImageDesc, {
+        y: -40,
         duration: 0.8,
         willChange: "transform",
         overwrite: true,
