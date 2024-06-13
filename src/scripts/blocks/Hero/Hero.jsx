@@ -1,14 +1,35 @@
 import useRichText from '../../hooks/useRichText'
 import './Hero.scss'
 
-const { MediaUpload, MediaUploadCheck } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, MediaUploadCheck, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, ToggleControl } = wp.components
 
 const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className="hero">
+        <section className={"hero" + (attributes.still ? ' still' : '') + (attributes.shrink ? ' shrink' : '')}>
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="Still"
+                            checked={attributes.still}
+                            onChange={(still) => setAttributes({ still })}
+                        />
+                        <ToggleControl
+                            label="Shrink height"
+                            checked={attributes.shrink}
+                            onChange={(shrink) => setAttributes({ shrink })}
+                        />
+                        <ToggleControl
+                            label="Show description"
+                            checked={attributes.showDesc}
+                            onChange={(showDesc) => setAttributes({ showDesc })}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="image-wrapper" data-flip-id="hero">
                 {isSelected &&
                     <MediaUploadCheck>
@@ -39,12 +60,10 @@ const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
                 }
                 {attributes.image != null && attributes.image.type == 'video' ?
                     <>
-                        <video data-src={attributes.image.url} autoPlay loop playsInline muted className="desktop lazy"
-                            src={edit ? attributes.image.url : null}
+                        <video src={attributes.image.url} autoPlay loop playsInline muted className="desktop"
                         />
                         {attributes.imagePortrait != null &&
-                            <video data-src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait lazy"
-                                src={edit ? attributes.imagePortrait.url : null}
+                            <video src={attributes.imagePortrait.url} autoPlay loop playsInline muted className="portrait"
                             />
                         }
                     </>
@@ -63,6 +82,12 @@ const Hero = ({ setAttributes, attributes, isSelected, edit }) => {
                         onChange={(title) => setAttributes({ title })}
                         data-split-text
                     />
+
+                    {attributes.showDesc &&
+                        <Text tagName="p" value={attributes.description}
+                            onChange={(description) => setAttributes({ description })}
+                        />
+                    }
                 </div>
             </div>
         </section>

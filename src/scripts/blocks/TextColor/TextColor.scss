@@ -14,6 +14,19 @@
     background-color: clr.$purple;
     color: clr.$white;
 
+    &.vp {
+        height: unset;
+        padding: fn.toVw(228) 0;
+
+        @include mx.phone {
+            padding: fn.toVw(73) 0 fn.toVw(65);
+        }
+
+        h2 {
+            text-align: center;
+        }
+    }
+
     h2 {
         text-align: left;
 

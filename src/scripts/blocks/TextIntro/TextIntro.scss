@@ -3,6 +3,26 @@
 @use '../../../styles/colors' as clr;
 
 .text-intro {
+    &.before-solutions-list {
+        .container {
+            padding: fn.toVw(134) 0 0;
+
+            @include mx.phone {
+                padding: fn.toVw(95) 0 0;
+            }
+        }
+    }
+
+    &.before-related-solutions {
+        .container {
+            padding: fn.toVw(165) 0 fn.toVw(111);
+
+            @include mx.phone {
+                padding: fn.toVw(91) 0 fn.toVw(58);
+            }
+        }
+    }
+
     .container {
         padding: fn.toVw(200) 0;
         text-align: center;
@@ -27,6 +47,9 @@
             margin: 0 auto;
             color: clr.$brown-10;
             max-width: fn.toVw(450);
+            font-size: fn.toVw(16);
+            line-height: fn.toVw(24);
+            font-weight: 400;
 
             @include mx.phone {
                 max-width: unset;

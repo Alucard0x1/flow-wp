@@ -1,0 +1,115 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
+@use '../../../styles/colors' as clr;
+
+.three-highlights {
+    .container {
+        display: flex;
+        padding: 0 fn.toVw(118) fn.toVw(47) fn.toVw(42);
+        background-color: clr.$brown-65;
+
+        @include mx.phone {
+            flex-direction: column;
+            padding: 0 fn.toVw(20);
+        }
+
+        .image-wrapper {
+            flex: 0 0 61%;
+            width: 61%;
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                margin-bottom: fn.toVw(52);
+            }
+
+            .media-wrapper {
+                overflow: hidden;
+                border-radius: fn.toVw(18);
+                height: 100%;
+
+                @include mx.phone {
+                    border-radius: fn.toVw(7);
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        .content-wrapper {
+            flex: 0 0 39%;
+            width: 39%;
+            padding: fn.toVw(96) 0 fn.toVw(96) fn.toVw(118);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @include mx.phone {
+                flex: unset;
+                width: 100%;
+                padding: 0;
+            }
+
+            .content-item {
+                width: 100%;
+
+                &:not(:last-child) {
+                    margin-bottom: fn.toVw(68);
+
+                    @include mx.phone {
+                        margin-bottom: fn.toVw(33);
+                    }
+                }
+
+                &:last-child {
+                    @include mx.phone {
+                        margin-bottom: fn.toVw(52);
+                    }
+                }
+
+                .num {
+                    opacity: 0.6;
+
+                    @include mx.phone {
+                        margin: 0;
+                    }
+                }
+
+                .content-title {
+                    font-size: fn.toVw(38);
+                    font-weight: 400;
+                    letter-spacing: -0.76px;
+                    line-height: fn.toVw(48);
+                    opacity: 0.9;
+
+                    margin: 0;
+                    padding: fn.toVw(8) 0 fn.toVw(18);
+                    border-bottom: 1px solid clr.$brown-20;
+
+                    @include mx.phone {
+                        padding: fn.toVw(10) 0;
+                        margin-bottom: fn.toVw(10);
+                        font-size: fn.toVw(28);
+                        line-height: fn.toVw(36);
+                        letter-spacing: -0.56px;
+                    }
+                }
+
+                .content-desc {
+                    opacity: 0.6;
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}

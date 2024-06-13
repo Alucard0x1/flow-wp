@@ -8,11 +8,7 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '') + (isSelected ? ' is-selected' : '')}
-            style={{
-                backgroundColor: attributes.bgColor
-            }}
-        >
+        <section className={"image-background" + (!attributes.bottomSpacing ? ' mb-0' : '') + (isSelected ? ' is-selected' : '')}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
@@ -98,11 +94,15 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                                 )}
                             />
                         }
-                        <div className="background-image"
-                            style={{
-                                backgroundImage: `url(${item.background ? item.background.url : 'https://picsum.photos/1920/1080'})`
-                            }}
-                        ></div>
+                        {item.background && item.background.type == 'video' ?
+                            <video src={item.background.url} autoPlay playsInline loop muted />
+                            :
+                            <div className="background-image"
+                                style={{
+                                    backgroundImage: `url(${item.background ? item.background.url : 'https://picsum.photos/1920/1080'})`
+                                }}
+                            ></div>
+                        }
 
                         <div className={`content-wrapper ${attributes.direction}`}>
                             <div className="content-wrapper__content">
@@ -118,13 +118,13 @@ const ImageBackground = ({ attributes, setAttributes, isSelected }) => {
                                     const itemsCopy = [...attributes.items]
                                     itemsCopy[index] = { ...itemsCopy[index], title: title }
                                     setAttributes({ items: itemsCopy })
-                                }} />
+                                }}  data-split-text />
                                 <div className="content-description">
                                     <Text tagName="p" value={item.description} onChange={(description) => {
                                         const itemsCopy = [...attributes.items]
                                         itemsCopy[index] = { ...itemsCopy[index], description: description }
                                         setAttributes({ items: itemsCopy })
-                                    }} />
+                                    }} data-split-text />
 
                                     {isSelected &&
                                         <div>

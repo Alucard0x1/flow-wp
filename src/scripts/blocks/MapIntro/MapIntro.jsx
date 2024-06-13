@@ -1,14 +1,40 @@
 import './MapIntro.scss'
 import useRichText from '../../hooks/useRichText'
 
-const { MediaUpload, URLInputButton } = wp.blockEditor
-const { Button, Icon } = wp.components
+const { MediaUpload, URLInputButton, InspectorControls } = wp.blockEditor
+const { Button, Icon, PanelBody, ToggleControl, Dropdown, ColorPicker, PanelRow, ColorIndicator } = wp.components
 
 const MapIntro = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
 
     return (
-        <section className="map-intro">
+        <section className={"map-intro" + (attributes.noContent ? ' no-content' : '')}
+            style={{ backgroundColor: attributes.backgroundColor }}>
+            {isSelected &&
+                <InspectorControls>
+                    <PanelBody>
+                        <ToggleControl
+                            label="No content"
+                            checked={attributes.noContent}
+                            onChange={(noContent) => setAttributes({ noContent })}
+                        />
+
+                        <Dropdown
+                            renderContent={() => (
+                                <ColorPicker onChange={(backgroundColor) => setAttributes({ backgroundColor })} />
+                            )}
+                            renderToggle={({ isOpen, onToggle }) => (
+                                <PanelRow>
+                                    <ColorIndicator colorValue={attributes.backgroundColor} />
+                                    <Button isPrimary text="Background color"
+                                        onClick={onToggle}
+                                    />
+                                </PanelRow>
+                            )}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+            }
             <div className="container">
                 <div className="image-wrapper">
                     <div id="map"></div>
@@ -56,13 +82,15 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                     </div>
                 </div>
 
-                <div className="content-wrapper">
-                    <Text tagName="p" value={attributes.category} className="text-category"
-                        onChange={(category) => setAttributes({ category })}
-                    />
+                {!attributes.noContent &&
+                    <div className="content-wrapper">
+                        <Text tagName="p" value={attributes.category} className="text-category"
+                            onChange={(category) => setAttributes({ category })}
+                        />
 
-                    <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
-                </div>
+                        <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })} data-split-text data-motion-text />
+                    </div>
+                }
             </div>
         </section>
     )

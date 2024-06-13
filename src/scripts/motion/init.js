@@ -1,32 +1,61 @@
+import Default from "./default";
 import Smoothscroll from "./smoothscroll";
-import MotionText from "./text";
 import Page from "./page";
-import Loading from "./preloader";
 import Resize from "./resize";
+import MotionText from "./text";
+import Googlemap from "./googlemap";
+import Nav from "./nav";
+import Video from "./video";
 
-export const Preloader = new Loading();
 export const MotionPage = new Page();
-export default class MotionInit {
-  constructor() {
-    this.init();
-  }
+export const Navbar = new Nav();
 
-  init() {
+export default class MotionInit {
+  // TODO: temp solution for afterPreloader2 footer
+
+  first() {
+    Default();
+
+    Navbar.init();
+    
     new Smoothscroll();
 
-    Preloader.First(() => {
-      MotionPage.hero();
-      new MotionText();
-      MotionPage.sliderscroll();
-    });
+    new Resize();
+  }
 
+  afterPreloader() {
+    MotionPage.hero();
+    MotionPage.heroflip();
+    new MotionText();
+    MotionPage.sliderscroll();
+  }
+
+  afterPreloader2() {
+    MotionPage.footer();
+  }
+
+  enter() {
+    Navbar.bullet();
     MotionPage.heroprepare();
     MotionPage.heroscroll();
     MotionPage.map();
-    MotionPage.amnities();
+    // MotionPage.amnities();
+    MotionPage.amnities2();
     MotionPage.philosophy();
-    MotionPage.footer();
+    MotionPage.sideimage();
+    MotionPage.doubledesc();
+    MotionPage.highlight();
+    MotionPage.solutionrelated();
+    MotionPage.solutionlist();
+    MotionPage.solutionstack();
+    MotionPage.sliderfade();
 
-    new Resize();
+    new Googlemap();
+    new Video();
+  }
+
+  reinit() {
+    this.enter();
+    this.afterPreloader();
   }
 }

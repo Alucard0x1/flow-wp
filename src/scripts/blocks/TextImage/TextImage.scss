@@ -8,6 +8,28 @@
     background-color: clr.$brown-15;
     color: clr.$white-5;
 
+    &.wide {
+        .container .content-wrapper {
+            margin-left: 0;
+
+            @include mx.phone {
+                margin-left: unset;
+                margin-right: unset;
+                width: fn.toVw(307);
+                margin: 0 auto;
+            }
+
+            h2 {
+                max-width: fn.toVw(773);
+                margin: 0 auto;
+
+                @include mx.phone {
+                    max-width: unset;
+                }
+            }
+        }
+    }
+
     @include mx.phone {
         padding: fn.toVw(88) 0 0 0;
     }
@@ -112,7 +134,7 @@
         position: relative;
         overflow: hidden;
         will-change: transform;
-        transform: scale(1.2) translateY(-20%);
+        transform: scale(1.2);
     }
 
     .image-wrapper {
@@ -167,38 +189,44 @@
 
     .description-inner {
         position: absolute;
-        width: fn.toVw(546);
+        width: fn.toVw(565);
         bottom: fn.toVw(50);
         right: fn.toVw(50);
+
+        &.left {
+            left: fn.toVw(50);
+            right: unset;
+
+            @include mx.phone {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
 
         border-radius: fn.toVw(12);
         background: rgba(34, 29, 25, 0.64);
 
         backdrop-filter: blur(27.149999618530273px);
 
-        padding: fn.toVw(80) fn.toVw(78);
+        padding: fn.toVw(43) fn.toVw(56);
 
         display: block;
-        transform: translateY(130%);
         will-change: transform;
-
-        display: none;
 
         @include mx.phone {
             margin-top: fn.toVw(13);
             margin-left: fn.toVw(28);
 
-            bottom: fn.toVw(10);
+            bottom: fn.toVw(17);
             left: fn.toVw(10);
             right: fn.toVw(10);
             margin: 0;
-            width: auto;
+            width: fn.toVw(321);
 
             padding: fn.toVw(20);
         }
 
         p {
-            max-width: fn.toVw(390);
             font-weight: 400;
         }
     }

@@ -96,8 +96,6 @@
         }
 
         .newsletter {
-            display: none;
-
             p {
                 font-size: fn.toVw(20);
                 line-height: fn.toVw(27);
@@ -114,8 +112,12 @@
                 border-bottom: 1px solid rgba(clr.$white, 0.6);
 
                 &-inline {
-                    display: flex;
-                    align-items: center;
+
+                    p {
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+                    }
 
                     input {
                         flex-grow: 1;
@@ -135,6 +137,10 @@
                         &:focus {
                             outline: none;
                         }
+
+                        @include mx.phone {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -144,7 +150,7 @@
     &-end {
         margin-top: fn.toVw(50);
         padding-top: fn.toVw(50);
-        border-top: 1px solid clr.$white;
+        // border-top: 1px solid clr.$white;
 
         flex: 0 0 100%;
         width: 100%;

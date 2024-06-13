@@ -1,0 +1,35 @@
+@use 'mixins' as mx;
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+.line {
+
+  .char {
+    will-change: opacity;
+  }
+}
+
+.border {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(#5D524A, 0.2);
+  position: relative;
+}

@@ -11,20 +11,23 @@ export default class MotionText {
   }
 
   init() {
+    if (!this.el.length) return;
     this.el.forEach((el) => {
       const char = el.querySelectorAll(".char");
       const motionShort = el.hasAttribute('data-motion-text-short');
+
+      if (!char.length) return;
 
       gsap.from(char, {
         opacity: 0,
         ease: "none",
         stagger: {
-          each: motionShort ? 0.002 : 0.03,
+          each: motionShort ? 0.005 : 0.03,
         },
         scrollTrigger: {
           trigger: el,
           scrub: true,
-          start: "top bottom-=20%",
+          start: "top bottom",
           end: "bottom center",
         }
       });

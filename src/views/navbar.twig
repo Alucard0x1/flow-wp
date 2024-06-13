@@ -1,13 +1,68 @@
 <div class="nav">
-	<div class="nav-logo">
-		<a href="/" class="nav-link">
+	<a class="nav-logo" href="/">
+		<div class="nav-link">
 			<img src="{{ site.theme.link }}/assets/images/logo-dark.svg" alt="" class="logo-default">
-		</a>
-	</div>
+		</div>
+	</a>
 
 	<div class="nav-right">
-		<div class="contact-wrapper">
-			<a href="https://calendly.com/flow_/booking" target="_blank" class="book-btn" rel="nofollow noopener">Book a Tour</a>
+		<div class="nav-toggle">
+			<div class="hamburger">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+		</div>
+		<a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
+			Book a Tour
+		</a>
+	</div>
+</div>
+
+<div class="nav-popup">
+	<div class="backdrop"></div>
+	<div class="container">
+		<div class="container-bg"></div>
+		<div class="image-wrapper">
+			<p>Discover solutions to optimize how you and your team work</p>
+			<div class="image">
+				<img src="{{site.theme.link}}/assets/images/nav-default.png">
+			</div>
+		</div>
+		<div class="content-wrapper" data-lenis-prevent>
+			<p>Workspace Solutions</p>
+			<div class="nav-popup-menu">
+				<div class="menu-left">
+					<div class="bullet"></div>
+					{% for menu in popup.items %}
+						<div class="menu-left-link">
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}">{{menu.title}}</a>
+						</div>
+					{% endfor %}
+				</div>
+
+				<div class="menu-right">
+					{% for menu in popupRight.items %}
+						<div class="menu-right-link">
+							<a href="{{menu.link}}">{{menu.title}}</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="border"></div>
+			<div class="nav-popup-footer">
+				<div class="menu-social">
+					{% for menu in popupSocial.items %}
+						<a href="{{menu.link}}">{{menu.title}}</a>
+					{% endfor %}
+				</div>
+
+				<div class="menu-terms">
+					{% for menu in popupTerms.items %}
+						<a href="{{menu.link}}">{{menu.title}}</a>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

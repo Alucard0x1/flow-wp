@@ -1,0 +1,37 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+	{{post.content}}
+
+	<section class="solution-related">
+		<div class="container">
+			{% for post in relatedPosts %}
+				<div class="content-item">
+					<div class="image-wrapper">
+						<a href="{{post.link}}">
+							<img src="{{ post.thumbnail }}" alt="">
+						</a>
+					</div>
+
+					<a href="{{ post.link }}" class="pill">Learn More</a>
+
+					<a href="#">
+						<h3>
+							{{post.title}}
+						</h3>
+					</a>
+
+					<p>
+						{{post.excerpt}}
+					</p>
+
+					<div>
+						<a href="{{post.link}}" class="btn btn-rounded">
+							Learn More
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

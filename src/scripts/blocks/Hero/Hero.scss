@@ -10,6 +10,10 @@
             h1 {
                 opacity: 1;
             }
+
+            p {
+                opacity: 1;
+            }
         }
     }
 }
@@ -22,12 +26,31 @@
     inset: 0;
     z-index: 2;
 
+    &.still {
+        position: relative;
+    }
+
+    &.shrink {
+        height: 60vh;
+
+        .hero-content {
+            left: fn.toVw(143);
+            bottom: fn.toVw(85);
+
+            @include mx.phone {
+                left: fn.toVw(28);
+                bottom: fn.toVw(40);
+            }
+        }
+    }
+
     .image-wrapper {
         width: 100%;
         height: 100%;
         position: relative;
         overflow: hidden;
         visibility: visible;
+        will-change: transform, width, height;
 
         &.active {
             visibility: hidden;
@@ -90,6 +113,11 @@
             @include mx.phone {
                 line-height: fn.toVw(44);
             }
+        }
+
+        p {
+            font-size: fn.toVw(15);
+            opacity: 0;
         }
 
         @include mx.phone {

@@ -1,0 +1,273 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/colors' as clr;
+@use '../../../styles/mixins' as mx;
+@use '../../../styles/motion' as mtn;
+
+#editor {
+    .amenities {
+        .container {
+            .content-wrapper {
+                .content-list {
+                    .content-item {
+                        .content-description {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.amenities {
+    overflow: hidden;
+
+    .container {
+        display: flex;
+        margin: fn.toVw(20);
+        background-color: clr.$purple;
+        border-radius: fn.toVw(16);
+        padding: fn.toVw(29) fn.toVw(32);
+
+        @include mx.phone {
+            flex-direction: column;
+            padding: fn.toVw(6);
+            margin: fn.toVw(6);
+            border-radius: fn.toVw(10);
+
+            overflow: hidden;
+            height: calc(100vh - (fn.toVw(6) * 2));
+        }
+
+        .image-wrapper {
+            flex: 0 0 45%;
+            width: 45%;
+
+            border-radius: fn.toVw(18);
+            height: fn.toVw(762);
+
+            overflow: hidden;
+
+            @include mx.phone {
+                flex: none;
+                width: 100%;
+                height: fn.toVw(434);
+                border-radius: fn.toVw(10);
+            }
+
+            .background-image,
+            video {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        .content-wrapper {
+            padding-left: fn.toVw(104);
+            padding-right: fn.toVw(113 - 32);
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+
+            @include mx.phone {
+                padding: fn.toVw(18);
+            }
+
+            h2 {
+                font-size: fn.toVw(64);
+                letter-spacing: -0.64px;
+                line-height: fn.toVw(62);
+                max-width: fn.toVw(420);
+                color: clr.$white;
+
+                @include mx.phone {
+                    font-size: fn.toVw(38);
+                    line-height: fn.toVw(40);
+                    letter-spacing: -0.38px;
+                }
+            }
+
+            a {
+                color: clr.$white;
+                opacity: .4;
+                font-size: fn.toVw(20);
+                font-weight: 400;
+            }
+
+            .contents {
+                flex-grow: 1;
+                border-bottom: 1px solid clr.$white;
+
+                @include mx.phone {
+                    border-bottom: none;
+                }
+            }
+
+            .content-list {
+                display: flex;
+                flex-wrap: wrap;
+                // margin-left: fn.toVw(-49);
+                justify-content: space-between;
+
+                @include mx.phone {
+                    background-color: clr.$purple-10;
+                    margin-left: 0;
+                    flex-direction: column;
+                    border-radius: fn.toVw(8);
+                }
+
+                .content-item {
+                    // flex: 0 0 calc(50% - fn.toVw(49));
+                    // width: calc(50% - fn.toVw(49));
+
+                    margin-bottom: fn.toVw(27);
+                    // margin-left: fn.toVw(49);
+
+                    flex: 0 0 fn.toVw(270 + 16 + 9);
+                    width: fn.toVw(270 + 16 + 9);
+
+                    &.even {
+                        flex: 0 0 fn.toVw(195 + 16);
+                        width: fn.toVw(195 + 16);
+
+                        @include mx.phone {
+                            flex: unset;
+                            width: 100%;
+                        }
+                    }
+
+                    @include mx.phone {
+                        flex: unset;
+                        width: 100%;
+                        margin-left: 0;
+                        margin-bottom: 0;
+                        padding: fn.toVw(28) fn.toVw(14);
+                        position: relative;
+
+                        &:before {
+                            position: absolute;
+                            content: '';
+                            display: block;
+                            height: 1px;
+                            bottom: 0;
+                            left: fn.toVw(23);
+                            right: fn.toVw(23);
+                            background-color: rgba(#ECE6DA, .2);
+                        }
+                    }
+
+                    .content-title {
+                        position: relative;
+                        opacity: 0.4;
+                        transition: opacity 0.6s mtn.$transition-ease, padding 0.6s mtn.$transition-ease;
+                        cursor: pointer;
+
+                        &:hover,
+                        &:focus,
+                        &.active {
+                            opacity: 1;
+                            padding-left: fn.toVw(16);
+
+                            &::before {
+                                transform: translateY(-50%) scale(1);
+                            }
+                        }
+
+                        &.active {
+                            pointer-events: none;
+                        }
+
+                        &::before {
+                            position: absolute;
+                            left: 0;
+                            top: 50%;
+                            transform: translateY(-50%) scale(0);
+                            transform-origin: center;
+
+                            content: '';
+                            display: inline-block;
+                            width: fn.toVw(6);
+                            height: fn.toVw(6);
+                            background-color: clr.$white;
+                            border-radius: 50%;
+
+                            will-change: transform;
+                            transition: transform 0.6s mtn.$transition-ease;
+
+                            @include mx.phone {
+                                width: fn.toVw(4);
+                                height: fn.toVw(4);
+                                left: fn.toVw(14);
+                                transform: translateY(-50%) scale(1);
+                            }
+                        }
+
+                        @include mx.phone {
+                            opacity: 1;
+                            padding-left: fn.toVw(34);
+                            pointer-events: none;
+                        }
+
+                        p {
+                            font-size: fn.toVw(20);
+                            font-weight: 400;
+                            color: clr.$white;
+                            margin: 0;
+
+                            @include mx.phone {
+                                font-size: fn.toVw(16);
+                            }
+                        }
+                    }
+
+                    p {
+                        font-size: fn.toVw(15);
+                        line-height: fn.toVw(23);
+                        color: clr.$white;
+                    }
+
+                    .content-description {
+                        display: none;
+
+                        @include mx.phone {
+                            padding: 0 fn.toVw(14);
+                            display: block;
+                            opacity: 0.6;
+                            margin-bottom: 0;
+                        }
+
+                        p {
+                            color: clr.$white;
+                        }
+                    }
+                }
+            }
+
+            .content-description {
+                color: clr.$white;
+
+                @include mx.phone {
+                    display: none;
+                }
+            }
+
+            .content-description-main {
+                margin: fn.toVw(24) 0;
+                mask-position: center;
+                mask-clip: no-clip;
+                mask-position: center;
+                mask-size: cover;
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

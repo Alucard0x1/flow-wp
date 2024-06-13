@@ -2,15 +2,20 @@ import './TextColor.scss'
 import useRichText from '../../hooks/useRichText'
 
 const { InspectorControls } = wp.blockEditor
-const { PanelBody, PanelRow, Dropdown, Button, ColorPicker, ColorIndicator } = wp.components
+const { PanelBody, PanelRow, ToggleControl, Dropdown, Button, ColorPicker, ColorIndicator } = wp.components
 
 const TextColor = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
     return (
-        <section className="text-color" style={{ backgroundColor: attributes.backgroundColor }}>
+        <section className={"text-color" + (attributes.vp ? ' vp' : '')} style={{ backgroundColor: attributes.backgroundColor }}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
+                        <ToggleControl
+                            label="Use v-padding instead of height"
+                            checked={attributes.vp}
+                            onChange={(vp) => setAttributes({ vp })}
+                        />
                         <Dropdown
                             renderContent={() => (
                                 <ColorPicker onChange={(backgroundColor) => setAttributes({ backgroundColor })} />
@@ -46,6 +51,7 @@ const TextColor = ({ attributes, setAttributes, isSelected }) => {
             <div className="content-wrapper">
                 <Text tagName="h2" value={attributes.title} onChange={(title) => setAttributes({ title })}
                     style={{ color: attributes.textColor }}
+                    data-split-text data-motion-text
                 />
             </div>
         </section>

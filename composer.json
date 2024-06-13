@@ -1,4 +1,9 @@
 {
+    "autoload": {
+        "psr-4": {
+            "Fleava\\": "src/"
+        }
+    },
     "require": {
         "timber/timber": "^2.0"
     },
