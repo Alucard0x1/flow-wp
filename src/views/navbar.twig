@@ -25,7 +25,7 @@
 	<div class="container">
 		<div class="container-bg"></div>
 		<div class="image-wrapper">
-			<p>Discover solutions to optimize how you and your team work</p>
+			<p>{{ 'Discover solutions to optimize how you and your team work'|pll_e }}</p>
 			<div class="image">
 				<img src="{{site.theme.link}}/assets/images/nav-default.png">
 			</div>
@@ -40,7 +40,7 @@
 					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}" data-lang="{{menu.master_object.id|localize_post|json_encode|url_encode}}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>
