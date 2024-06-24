@@ -245,11 +245,8 @@
 
         .lang-item {
             display: block;
-            padding: fn.toVw(20) fn.toVw(26);
-            border-radius: fn.toVw(10);
 
             color: clr.$brown-10;
-            background-color: clr.$brown-50;
             text-transform: uppercase;
             margin-left: fn.toVw(8);
 
@@ -258,8 +255,18 @@
             }
 
             a {
+                background-color: clr.$brown-50;
+                border-radius: fn.toVw(10);
+                display: block;
+                padding: fn.toVw(20) fn.toVw(26);
                 color: clr.$brown-10;
                 font-size: fn.toVw(14);
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background-color: #5D524A;
+                    color: #FFFFFF;
+                }
             }
         }
     }

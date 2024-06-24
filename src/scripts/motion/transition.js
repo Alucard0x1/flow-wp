@@ -21,7 +21,7 @@ const transitionLeave = () => {
 
 const globalLeave = async (animation = true) => {
   Navbar.close();
-  
+
   if (animation) {
     return new Promise((resolve) => {
       const tlEnd = gsap.timeline({
@@ -74,6 +74,44 @@ export class TransitionDefault extends Transition {
     await globalEnter();
 
     await delay(200);
+
+    const langItem = document.querySelector('.lang-item').firstElementChild;
+    const el = document.querySelector('#pll')
+    const pll = el.dataset.lang
+    const curLang = el.dataset.activeLang
+    const navHeading = el.dataset.navHeading
+    const navCta = el.dataset.navCta
+    const imgHeading = el.dataset.imgHeading
+    const popupRight = JSON.parse(decodeURIComponent(el.dataset.popupRight))
+    const newsletterHeading = el.dataset.newsletterHeading
+
+    let languages = JSON.parse(decodeURIComponent(pll))
+    languages = Object.values(languages)
+
+    langItem.textContent = languages[0].slug
+    langItem.href = languages[0].url
+
+    document.querySelector('.content-wrapper > p').textContent = navHeading
+    document.querySelector('.contact-wrapper').textContent = navCta
+    document.querySelector('.image-wrapper > p').textContent = imgHeading
+    document.querySelector('.newsletter > p').textContent = newsletterHeading
+
+    document.querySelectorAll('.menu-left-link').forEach((el) => {
+      const a = el.firstElementChild
+      const post = JSON.parse(decodeURIComponent(a.dataset.lang))[curLang]
+      a.textContent = post.title
+      a.setAttribute('data-desc', post.excerpt)
+      a.href = post.link
+    })
+
+    document.querySelectorAll('.menu-right-link').forEach((el, index) => {
+      const a = el.firstElementChild
+      console.log(popupRight)
+
+      const post = popupRight.items[index]
+      a.textContent = post.post_title
+      a.href = post.url
+    })
 
     done();
   }
