@@ -242,6 +242,26 @@
                 }
             }
         }
+
+        .lang-item {
+            display: block;
+            padding: fn.toVw(20) fn.toVw(26);
+            border-radius: fn.toVw(10);
+
+            color: clr.$brown-10;
+            background-color: clr.$brown-50;
+            text-transform: uppercase;
+            margin-left: fn.toVw(8);
+
+            @include mx.phone {
+                display: none;
+            }
+
+            a {
+                color: clr.$brown-10;
+                font-size: fn.toVw(14);
+            }
+        }
     }
 }
 
@@ -372,6 +392,30 @@
                 width: 100%;
                 padding: calc(100svh*53/844) fn.toVw(20);
                 overflow-y: auto;
+            }
+
+            .lang-picker-phone {
+                display: none;
+
+                @include mx.phone {
+                    display: block;
+
+                    li {
+                        display: block;
+
+                        a {
+                            z-index: 1;
+                            position: absolute;
+                            top: 6.2796208531svh;
+                            right: fn.toVw(20);
+
+                            display: block;
+                            text-transform: uppercase;
+                            font-size: fn.toVw(13);
+                            color: clr.$brown-10;
+                        }
+                    }
+                }
             }
 
             >p {

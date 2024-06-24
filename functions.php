@@ -73,8 +73,22 @@ function enqueue_assets()
     );
 }
 
+add_filter('timber/twig/filters', function ($filters) {
+    // Add your own filter.
+    $filters['pll_e'] = [
+        'callable' => 'pll_e',
+    ];
+
+    return $filters;
+});
+
 function register_custom_post_type()
 {
+    pll_register_string('Workspace Solutions', 'Workspace Solutions');
+    pll_register_string('Subscribe for the latest Flow updates.', 'Subscribe for the latest Flow updates.');
+    pll_register_string('Learn More', 'Learn More');
+    pll_register_string('Book a Tour', 'Book a Tour');
+
     add_theme_support('post-thumbnails');
 
     register_post_type('solutions', [

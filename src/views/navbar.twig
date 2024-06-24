@@ -14,8 +14,9 @@
 			</div>
 		</div>
 		<a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
-			Book a Tour
+			{{ 'Book a Tour'|pll_e }}
 		</a>
+		{{function('pll_the_languages', {'hide_current': 1, 'echo': false, 'display_names_as': 'slug'})}}
 	</div>
 </div>
 
@@ -30,7 +31,10 @@
 			</div>
 		</div>
 		<div class="content-wrapper" data-lenis-prevent>
-			<p>Workspace Solutions</p>
+			<div class="lang-picker-phone">
+				{{function('pll_the_languages', {'hide_current': 1, 'echo': false, 'display_names_as': 'slug'})}}
+			</div>
+			<p>{{ 'Workspace Solutions'|pll_e }}</p>
 			<div class="nav-popup-menu">
 				<div class="menu-left">
 					<div class="bullet"></div>

@@ -9,7 +9,9 @@
 				</div>
 
 				<div class="content-wrapper">
-					<a href="{{ post.link }}" class="pill">Learn More</a>
+					<a href="{{ post.link }}" class="pill">
+						{{ 'Learn More'|pll_e }}
+					</a>
 					<a class="title" href="{{ post.link }}">
 						<h3>{{post.title}}</h3>
 					</a>
@@ -18,7 +20,8 @@
 					</p>
 
 					<a href="{{ post.link }}" class="btn btn-rounded light">
-						Learn More</a>
+						{{ 'Learn More'|pll_e }}
+					</a>
 				</div>
 			</div>
 		{% endfor %}
