@@ -13,6 +13,16 @@
     }
 }
 
+.\%e3\%82\%a4\%e3\%83\%99\%e3\%83\%b3\%e3\%83\%88\%e3\%82\%b9\%e3\%83\%9a\%e3\%83\%bc\%e3\%82\%b9 {
+    p {
+        max-width: fn.toVw(316);
+
+        @include mx.phone {
+            max-width: unset;
+        }
+    }
+}
+
 .solution-related {
     background-color: clr.$brown-37;
 
