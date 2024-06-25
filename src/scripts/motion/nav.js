@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { smoothScroll } from "./smoothscroll";
+import { isMobileQuery } from "../utils/responsive";
 gsap.registerPlugin(ScrollTrigger);
 
 class Nav {
@@ -126,7 +127,7 @@ class Nav {
       this.close();
     });
 
-    if (ScrollTrigger.isTouch) return;
+    if (isMobileQuery()) return;
     if (this.menuLink.length) {
       this.menuLink.forEach((el, index) => {
         const link = el.querySelector("a");
@@ -326,7 +327,7 @@ class Nav {
       if (texthref === currentUrl) {
         el.classList.add("active");
 
-        if (ScrollTrigger.isTouch) return;
+        if (isMobileQuery()) return;
         const getTop = el.offsetTop + el.offsetHeight / 2;
         const bulletHeight = this.bulletLink.offsetHeight / 2;
 
