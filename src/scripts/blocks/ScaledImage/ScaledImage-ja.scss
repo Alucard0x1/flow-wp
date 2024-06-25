@@ -1,0 +1,10 @@
+@use '../../../styles/functions' as fn;
+
+:lang(ja) .scaled-image {
+    &-content {
+        .description-wrapper {
+            width: fn.toVw(588);
+            flex: 0 0 fn.toVw(588);
+        }
+    }
+}

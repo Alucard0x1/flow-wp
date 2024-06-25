@@ -91,6 +91,8 @@ export class TransitionDefault extends Transition {
     langItem.textContent = languages[0].slug
     langItem.href = languages[0].url
 
+    document.firstElementChild.setAttribute('lang', curLang)
+
     document.querySelector('.content-wrapper > p').textContent = navHeading
     document.querySelector('.contact-wrapper').textContent = navCta
     document.querySelector('.image-wrapper > p').textContent = imgHeading

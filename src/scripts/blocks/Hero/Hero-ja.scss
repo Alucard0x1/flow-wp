@@ -1,0 +1,20 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
+
+:lang(ja) {
+    .hero {
+        &-content {
+            h1 {
+                @include mx.phone {
+                    font-size: fn.toVw(30);
+                }
+            }
+
+            p {
+                @include mx.phone {
+                    font-size: fn.toVw(13);
+                }
+            }
+        }
+    }
+}
