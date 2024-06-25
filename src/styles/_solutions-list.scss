@@ -3,6 +3,26 @@
 @use 'mixins' as mx;
 @use 'colors' as clr;
 
+:lang(ja) {
+    .solutions-list {
+        .container {
+            .content-item {
+                .content-wrapper {
+                    p {
+                        font-size: fn.toVw(15);
+                        line-height: fn.toVw(23);
+
+                        @include mx.phone {
+                            font-size: fn.toVw(13);
+                            line-height: 1.5384615385;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .solutions-list {
     margin: fn.toVw(79) 0;
 
