@@ -273,6 +273,11 @@
 }
 
 :lang(ja) {
+
+    .nav-popup .container .image-wrapper p {
+        white-space: pre-line;
+    }
+
     .nav-popup .container .content-wrapper .nav-popup-menu {
         .menu-left {
             margin-right: fn.toVw(60);
