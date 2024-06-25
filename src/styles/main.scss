@@ -9,6 +9,7 @@
 @use 'motionmarkup';
 @use 'nav';
 @use 'solutions-list';
+@use 'solutions-related';
 
 *,
 *::after,
@@ -78,108 +79,4 @@ a {
     height: 100vh;
     z-index: 10;
     background-color: clr.$brown-35;
-}
-
-.solution-related {
-    background-color: clr.$brown-37;
-
-    .container {
-        display: flex;
-        padding: 0 fn.toVw(40 - 14) fn.toVw(136);
-
-        @include mx.phone {
-            flex-direction: column;
-            padding: 0 fn.toVw(20);
-        }
-
-        .content-item {
-            flex: 0 0 (math.div(1, 3) * 100%);
-            width: math.div(1, 3) * 100%;
-
-            display: flex;
-            flex-direction: column;
-
-            padding: 0 fn.toVw(14);
-
-            @include mx.phone {
-                flex: unset;
-                width: 100%;
-                padding: 0;
-                display: block;
-            }
-
-            .image-wrapper {
-                @include mx.phone {
-                    margin-bottom: fn.toVw(23);
-                }
-
-                img {
-                    height: fn.toVw(313);
-                    width: 100%;
-                    border-radius: fn.toVw(16);
-                    object-fit: cover;
-                    object-position: center;
-
-                    @include mx.phone {
-                        height: fn.toVw(211);
-                        border-radius: fn.toVw(12);
-                    }
-                }
-            }
-
-            h3 {
-                font-size: fn.toVw(24);
-                color: clr.$brown-10;
-                font-weight: 400;
-
-                @include mx.phone {
-                    margin: 0 0 fn.toVw(18);
-                }
-            }
-
-            .pill {
-                font-size: fn.toVw(14);
-                font-weight: 400;
-                padding: fn.toVw(6) fn.toVw(20);
-                border-radius: fn.toVw(25);
-                background-color: clr.$brown-15;
-                color: clr.$brown-30;
-
-                float: right;
-
-                display: none;
-
-                @include mx.phone {
-                    display: block;
-                }
-            }
-
-            p {
-                opacity: 0.7;
-                font-size: fn.toVw(15);
-                line-height: fn.toVw(23);
-                color: clr.$brown-10;
-                font-weight: 400;
-
-                margin-bottom: fn.toVw(30);
-
-                flex-grow: 1;
-
-                @include mx.phone {
-                    margin-top: 0;
-                    margin-bottom: fn.toVw(48);
-                }
-            }
-
-            a {
-                color: clr.$brown-37;
-
-                &.btn {
-                    @include mx.phone {
-                        display: none;
-                    }
-                }
-            }
-        }
-    }
 }

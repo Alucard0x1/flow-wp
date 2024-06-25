@@ -1,0 +1,9 @@
+@use '../../../styles/functions' as fn;
+
+:lang(ja) {
+    .text-image .container .content-wrapper h3 {
+        max-width: fn.toVw(971);
+        font-size: fn.toVw(40);
+        line-height: fn.toVw(52);
+    }
+}
