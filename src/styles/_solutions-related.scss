@@ -3,6 +3,16 @@
 @use 'mixins' as mx;
 @use 'colors' as clr;
 
+.\%e3\%83\%95\%e3\%83\%ac\%e3\%82\%ad\%e3\%82\%b7\%e3\%83\%96\%e3\%83\%ab\%e3\%83\%87\%e3\%82\%b9\%e3\%82\%af {
+    p {
+        max-width: fn.toVw(319);
+
+        @include mx.phone {
+            max-width: unset;
+        }
+    }
+}
+
 .solution-related {
     background-color: clr.$brown-37;
 
