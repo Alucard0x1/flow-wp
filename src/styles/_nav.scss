@@ -273,9 +273,12 @@
 }
 
 :lang(ja) {
-
     .nav-popup .container .image-wrapper p {
         white-space: pre-line;
+
+        &.small {
+            font-size: fn.toVw(14);
+        }
     }
 
     .nav-popup .container .content-wrapper .nav-popup-menu {
