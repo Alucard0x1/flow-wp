@@ -16,7 +16,7 @@
 						<h3>{{post.title}}</h3>
 					</a>
 					<p>
-						{{post.excerpt.read_more(false)}}
+						{{post.excerpt.read_more(false)|raw|nl2br}}
 					</p>
 
 					<a data-hover='none' href="{{ post.link }}" class="btn btn-rounded light">
