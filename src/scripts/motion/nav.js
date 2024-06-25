@@ -89,13 +89,15 @@ class Nav {
       ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
       : this.popupImageDescText;
 
+    this.popupContentImageDesc.classList.remove('small')
+
     gsap.set(this.popupContentImage.children, {
       zIndex: 0,
     });
 
     gsap.set(
       this.popupContentImage.children[
-        this.menuItemActive ? this.menuIndexInit + 1 : 0
+      this.menuItemActive ? this.menuIndexInit + 1 : 0
       ],
       {
         zIndex: 1,
@@ -159,6 +161,13 @@ class Nav {
           });
 
           this.popupContentImageDesc.textContent = link.dataset.desc;
+          console.log(link.classList)
+
+          if (link.classList.contains('menu-4')) {
+            this.popupContentImageDesc.classList.add('small')
+          } else {
+            this.popupContentImageDesc.classList.remove('small')
+          }
 
           gsap.fromTo(this.popupContentImageDesc, {
             opacity: 0,
@@ -265,7 +274,7 @@ class Nav {
           overwrite: true,
         }
       );
-      
+
       gsap.fromTo(
         this.popupContentImage,
         {
