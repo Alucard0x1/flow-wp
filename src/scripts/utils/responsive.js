@@ -36,3 +36,7 @@ export function ResponsiveAgent({ desktop, mobile }) {
     }
   } catch (error) {}
 }
+
+export function isMobileQuery() {
+  return window.matchMedia('(max-width: 499px)').matches;
+}
