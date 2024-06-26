@@ -80,3 +80,9 @@ a {
     z-index: 10;
     background-color: clr.$brown-35;
 }
+
+:lang(ja) {
+    body {
+        font-family: "Noto Sans JP";
+    }
+}
