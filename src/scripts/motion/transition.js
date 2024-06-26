@@ -83,6 +83,7 @@ export class TransitionDefault extends Transition {
     const navCta = el.dataset.navCta
     const imgHeading = el.dataset.imgHeading
     const popupRight = JSON.parse(decodeURIComponent(el.dataset.popupRight))
+    const footerMenu = JSON.parse(decodeURIComponent(el.dataset.footerMenu))
     const newsletterHeading = el.dataset.newsletterHeading
 
     let languages = JSON.parse(decodeURIComponent(pll))
@@ -101,16 +102,27 @@ export class TransitionDefault extends Transition {
     document.querySelectorAll('.menu-left-link').forEach((el) => {
       const a = el.firstElementChild
       const post = JSON.parse(decodeURIComponent(a.dataset.lang))[curLang]
-      a.textContent = post.title
-      a.setAttribute('data-desc', post.excerpt)
-      a.href = post.link
+
+      if (post != null) {
+        a.textContent = post.title
+        a.setAttribute('data-desc', post.excerpt)
+        a.href = post.link
+      }
     })
 
     document.querySelectorAll('.menu-right-link').forEach((el, index) => {
       const a = el.firstElementChild
-      console.log(popupRight)
 
       const post = popupRight.items[index]
+      a.textContent = post.post_title
+      a.href = post.url
+    })
+
+    document.querySelectorAll('.footer-left .menu-nav div').forEach((el, index) => {
+      const a = el.firstElementChild
+
+      const post = footerMenu.items[index]
+      console.log(post)
       a.textContent = post.post_title
       a.href = post.url
     })
