@@ -26,6 +26,7 @@ function add_to_context($context)
     $context['newsletter'] = Timber\Timber::get_menu('newsletter');
 
     $context['localizedPopupRight'] = Timber\Timber::get_menu('popup-right' . (pll_current_language() == 'en' ? '' : '-ja'));
+    $context['localizedFooterMenu'] = Timber\Timber::get_menu('footer-menu' . (pll_current_language() == 'en' ? '' : '-ja'));
 
     return $context;
 }
