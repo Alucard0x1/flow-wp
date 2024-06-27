@@ -271,3 +271,13 @@
         }
     }
 }
+
+:lang(ja) .amenities .container .content-wrapper .content-list .content-item.even {
+    flex: 0 0 fn.toVw(221 + 16);
+    width: fn.toVw(221 + 16);
+
+    @include mx.phone {
+        flex: unset;
+        width: 100%;
+    }
+}
