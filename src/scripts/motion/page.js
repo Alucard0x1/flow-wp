@@ -459,13 +459,13 @@ export default class Page {
 
           if (index === 0) {
             title.classList.add("active");
-            desc.textContent = itemDesc.textContent;
+            desc.innerHTML = itemDesc.innerHTML;
             desc.setAttribute('data-index', index)
           }
 
           title.addEventListener("click", () => {
             title.classList.add("active");
-            desc.textContent = itemDesc.textContent;
+            desc.innerHTML = itemDesc.innerHTML;
             desc.setAttribute('data-index', index)
 
             gsap.fromTo(
