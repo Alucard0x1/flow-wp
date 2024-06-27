@@ -212,18 +212,14 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -464,11 +460,13 @@ export default class Page {
           if (index === 0) {
             title.classList.add("active");
             desc.textContent = itemDesc.textContent;
+            desc.setAttribute('data-index', index)
           }
 
           title.addEventListener("click", () => {
             title.classList.add("active");
             desc.textContent = itemDesc.textContent;
+            desc.setAttribute('data-index', index)
 
             gsap.fromTo(
               desc,
@@ -571,9 +569,8 @@ export default class Page {
       scrollTrigger: {
         trigger: section,
         start: () => "top top",
-        end: `+=${
-          isMobileQuery() ? slides.length / 2 : slides.length
-        }00%`,
+        end: `+=${isMobileQuery() ? slides.length / 2 : slides.length
+          }00%`,
         scrub: true,
         pin: ".image-background .slide-wrapper",
         invalidateOnRefresh: isMobileQuery() ? false : true,
