@@ -22,7 +22,7 @@
 					</a>
 
 					<p>
-						{{post.excerpt|raw|nl2br}}
+						{{post.excerpt|raw|nl2br|replace({'人までの<br />': '人までの'})}}
 					</p>
 
 					<div>
