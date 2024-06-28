@@ -284,6 +284,10 @@
     .nav-popup .container .content-wrapper .nav-popup-menu {
         .menu-left {
             margin-right: fn.toVw(60);
+
+            @include mx.phone {
+                margin-right: 0;
+            }
         }
 
         @include mx.phone {
