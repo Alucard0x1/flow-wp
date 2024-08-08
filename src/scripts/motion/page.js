@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Flip from "gsap/Flip";
 import { smoothScroll } from "./smoothscroll";
 import { debounce } from "../utils/debounce";
+import { isMobileQuery } from "../utils/responsive";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -54,7 +55,7 @@ export default class Page {
 
     anim();
 
-    if (ScrollTrigger.isTouch) return;
+    if (isMobileQuery()) return;
     window.addEventListener("resize", debounce(anim, 500));
 
     // TODO: temp solution responsive flip
@@ -212,16 +213,16 @@ export default class Page {
       },
       {
         borderTopLeftRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
+          isMobileQuery() ? 10 : 20
         } / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderTopRightRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
+          isMobileQuery() ? 10 : 20
         } / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomLeftRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
+          isMobileQuery() ? 10 : 20
         } / var(--vw) * var(--scaler) * var(--multiplier))`,
         borderBottomRightRadius: `calc(${
-          ScrollTrigger.isTouch ? 10 : 20
+          isMobileQuery() ? 10 : 20
         } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
@@ -353,7 +354,7 @@ export default class Page {
     const section = document.querySelector(".image-background");
 
     if (!section) return;
-    if (ScrollTrigger.isTouch) return;
+    if (isMobileQuery()) return;
 
     const tl = gsap.timeline({
       defaults: {
@@ -403,7 +404,7 @@ export default class Page {
 
     if (!section) return;
 
-    if (ScrollTrigger.isTouch) {
+    if (isMobileQuery()) {
       const contentWrapper = document.querySelector(
         ".amenities .content-wrapper"
       );
@@ -571,11 +572,11 @@ export default class Page {
         trigger: section,
         start: () => "top top",
         end: `+=${
-          ScrollTrigger.isTouch ? slides.length / 2 : slides.length
+          isMobileQuery() ? slides.length / 2 : slides.length
         }00%`,
         scrub: true,
         pin: ".image-background .slide-wrapper",
-        invalidateOnRefresh: ScrollTrigger.isTouch ? false : true,
+        invalidateOnRefresh: isMobileQuery() ? false : true,
       },
     });
 
@@ -617,7 +618,7 @@ export default class Page {
               from: "end",
             },
           },
-          ScrollTrigger.isTouch ? "-=120%" : "-=100%"
+          isMobileQuery() ? "-=120%" : "-=100%"
         );
 
         tl.to(
@@ -626,7 +627,7 @@ export default class Page {
             clipPath: "inset(0% 0% 100% 0%)",
             // yPercent: -20,
           },
-          ScrollTrigger.isTouch ? "-=80%" : "-=100%"
+          isMobileQuery() ? "-=80%" : "-=100%"
         );
 
         // tl.fromTo(
@@ -733,7 +734,7 @@ export default class Page {
   }
 
   solutionlist() {
-    if (ScrollTrigger.isTouch) return;
+    if (isMobileQuery()) return;
 
     const section = document.querySelector(".solutions-list");
 
@@ -753,7 +754,7 @@ export default class Page {
   }
 
   solutionstack() {
-    if (!ScrollTrigger.isTouch) return;
+    if (!isMobileQuery()) return;
 
     const section = document.querySelector(".solutions-list");
 
@@ -923,7 +924,7 @@ export default class Page {
 
     if (!section) return;
 
-    if (ScrollTrigger.isTouch) return;
+    if (isMobileQuery()) return;
     if (ScrollTrigger.getById("once")) return;
 
     const tl = gsap.timeline({
