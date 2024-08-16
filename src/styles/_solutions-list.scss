@@ -35,7 +35,7 @@
 
         .content-item {
             // flex: 0 0 math.div(1, 4) * 100%;
-            width: fn.toVw(342);
+            width: fn.toVw(362);
 
             overflow: hidden;
 
@@ -62,9 +62,11 @@
             .image-wrapper {
                 transform-style: preserve-3d;
                 backface-visibility: hidden;
+                pointer-events: none;
 
                 @include mx.phone {
                     margin-bottom: fn.toVw(30);
+                    pointer-events: initial;
                 }
 
                 img {
@@ -112,8 +114,14 @@
 
                 .title {
                     color: clr.$brown-10;
+                    pointer-events: none;
 
+                    @include mx.phone {
+                        pointer-events: initial;
+                    }
+                    
                     h3 {
+                        
                         font-weight: 400;
 
                         @include mx.phone {

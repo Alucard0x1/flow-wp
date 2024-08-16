@@ -6,7 +6,6 @@ export default class Carousel {
     this.el = el;
     this.scroller =
       el.children?.[0] || this.el.querySelector("[data-carousel-scroller]");
-    console.log(this.scroller);
     this.progress = 0;
     this.disableCarousel = false;
     this.mousePosition = [];
@@ -51,7 +50,7 @@ export default class Carousel {
 
     const mousePos = getMousePos(e);
     const currentProgess = this.getCurrentProgress(mousePos);
-    console.log("move", mousePos, currentProgess);
+
     if (this.instance) this.instance.kill();
 
     this.instance = gsap.to(this.el, {

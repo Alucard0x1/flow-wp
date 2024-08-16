@@ -6,7 +6,6 @@ import { debounce } from "../utils/debounce";
 import { isMobileQuery } from "../utils/responsive";
 import Carousel from "./Carousel";
 
-
 gsap.registerPlugin(ScrollTrigger, Flip);
 
 export default class Page {
@@ -750,7 +749,10 @@ export default class Page {
     });
 
     //slider
-    new Carousel(section);
+    const carouselItems = section.querySelectorAll(".content-item");
+    if (carouselItems && carouselItems.length > 4) {
+      new Carousel(section);
+    }
   }
 
   solutionstack() {

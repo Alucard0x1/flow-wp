@@ -1,7 +1,7 @@
 <section class="solutions-list" data-carousel>
-	<div class="container" data-carousel-scroller>
+	<div class="container" data-hover='DRAG' data-carousel-scroller>
 		{% for post in posts %}
-			<div data-hover='DRAG' class="content-item">
+			<div class="content-item">
 				<div class="image-wrapper">
 					<a href="{{ post.link }}">
 						<img src="{{ post.thumbnail.src }}" alt="{{ post.title }}">
