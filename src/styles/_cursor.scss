@@ -1,0 +1,70 @@
+@use "functions" as fn;
+@use "mixins" as mx;
+
+.cursor {
+  position: fixed;
+  top: -6vw;
+  left: -3.8vw;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  height: fn.toVw(100);
+  width: fn.toVw(100);
+  font-size: fn.toVw(16);
+  letter-spacing: fn.toVw(0.6);
+
+  color: #d9d4c6;
+  font-weight: 400;
+
+  .inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #4a443d;
+      // -webkit-backdrop-filter: blur(20px) saturate(2);
+      // backdrop-filter: blur(20px) saturate(2);
+      opacity: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease,
+        background-color 0.2s ease, border-color 0.2s ease;
+      transform: scale(1.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cursor_text {
+        display: block;
+      }
+    }
+
+    .line {
+      position: absolute;
+      width: 0px;
+      height: 1px;
+      background: #fff;
+      right: 110%;
+      top: 50%;
+      transition: width 0.2s ease;
+      &.line_right {
+        left: 110%;
+        right: auto;
+      }
+    }
+  }
+
+  &.is-active {
+    .inner {
+      .circle {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  @include mx.phone {
+    display: none;
+  }
+}

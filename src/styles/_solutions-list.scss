@@ -3,6 +3,12 @@
 @use 'mixins' as mx;
 @use 'colors' as clr;
 
+#editor {
+    .solutions-list {
+        overflow-x: scroll;
+    }
+}
+
 .solutions-list {
     margin: fn.toVw(79) 0;
 
@@ -17,7 +23,7 @@
 
     .container {
         display: flex;
-        margin: 0 fn.toVw(40 - 10);
+        padding: 0 fn.toVw(40 - 10);
 
         @include mx.phone {
             flex-direction: column;
@@ -28,8 +34,8 @@
         }
 
         .content-item {
-            flex: 0 0 math.div(1, 4) * 100%;
-            width: math.div(1, 4) * 100%;
+            // flex: 0 0 math.div(1, 4) * 100%;
+            width: fn.toVw(342);
 
             overflow: hidden;
 

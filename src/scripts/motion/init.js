@@ -6,6 +6,7 @@ import MotionText from "./text";
 import Googlemap from "./googlemap";
 import Nav from "./nav";
 import Video from "./video";
+import Cursor from "./Cursor";
 
 export const MotionPage = new Page();
 export const Navbar = new Nav();
@@ -17,7 +18,7 @@ export default class MotionInit {
     Default();
 
     Navbar.init();
-    
+
     new Smoothscroll();
 
     new Resize();
@@ -52,6 +53,7 @@ export default class MotionInit {
 
     // new Googlemap();
     new Video();
+    new Cursor();
   }
 
   reinit() {

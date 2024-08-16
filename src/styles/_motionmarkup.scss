@@ -33,3 +33,18 @@ html.lenis, html.lenis body {
   background-color: rgba(#5D524A, 0.2);
   position: relative;
 }
+
+[data-carousel] {
+	--progress: 0;
+	--offset: 0;
+	width: 100%;
+	overflow: hidden;
+
+	[data-carousel-scroller] {
+		display: flex;
+		justify-content: flex-start;
+		width: fit-content;
+		transform: translateX(calc(1px * var(--offset) * var(--progress)));
+		will-change: transform;
+	}
+}

@@ -4,6 +4,8 @@ import Flip from "gsap/Flip";
 import { smoothScroll } from "./smoothscroll";
 import { debounce } from "../utils/debounce";
 import { isMobileQuery } from "../utils/responsive";
+import Carousel from "./Carousel";
+
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -571,9 +573,7 @@ export default class Page {
       scrollTrigger: {
         trigger: section,
         start: () => "top top",
-        end: `+=${
-          isMobileQuery() ? slides.length / 2 : slides.length
-        }00%`,
+        end: `+=${isMobileQuery() ? slides.length / 2 : slides.length}00%`,
         scrub: true,
         pin: ".image-background .slide-wrapper",
         invalidateOnRefresh: isMobileQuery() ? false : true,
@@ -654,8 +654,8 @@ export default class Page {
     if (!section) return;
 
     gsap.utils.toArray(".double-desc .image-wrapper").forEach((el) => {
-      const img = el.querySelector("img")
-      const video = el.querySelector("video")
+      const img = el.querySelector("img");
+      const video = el.querySelector("video");
 
       const tlImage = gsap.timeline({
         defaults: {
@@ -669,12 +669,9 @@ export default class Page {
         },
       });
 
-      tlImage.from(
-        [img, video],
-        {
-          scale: 1.2,
-        }
-      );
+      tlImage.from([img, video], {
+        scale: 1.2,
+      });
     });
   }
 
@@ -751,6 +748,9 @@ export default class Page {
       opacity: 0,
       stagger: 0.15,
     });
+
+    //slider
+    new Carousel(section);
   }
 
   solutionstack() {
