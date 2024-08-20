@@ -8,6 +8,7 @@
     overflow-x: scroll;
   }
 }
+
 :lang(ja) {
   .solutions-list {
     .container {
@@ -40,165 +41,132 @@
     margin-top: fn.toVw(93);
   }
 
-  :lang(ja) {
-    .solutions-list {
-      .container {
-        .content-item {
-          .content-wrapper {
-            p {
-              font-size: fn.toVw(15);
-              line-height: fn.toVw(23);
+  .container {
+    display: flex;
+    padding: 0 fn.toVw(40 - 10);
 
-              @include mx.phone {
-                font-size: fn.toVw(13);
-                line-height: 1.5384615385;
-              }
-            }
+    @include mx.phone {
+      flex-direction: column;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .content-item {
+      // flex: 0 0 math.div(1, 4) * 100%;
+      width: fn.toVw(362);
+
+      overflow: hidden;
+
+      padding: 0 fn.toVw(10);
+
+      display: flex;
+      flex-direction: column;
+
+      @include mx.phone {
+        padding: fn.toVw(12);
+        flex: unset;
+        width: 100%;
+        max-height: 100vh;
+        position: absolute;
+        inset: 0;
+        background-color: clr.$brown-35;
+        will-change: transform;
+
+        &:not(:first-child) {
+          transform: translateY(120%);
+        }
+      }
+
+      .image-wrapper {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        pointer-events: none;
+
+        @include mx.phone {
+          margin-bottom: fn.toVw(30);
+          pointer-events: initial;
+        }
+
+        img {
+          height: fn.toVw(430);
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: fn.toVw(12);
+
+          @include mx.phone {
+            height: 60vh;
           }
         }
       }
-    }
-  }
 
-  .solutions-list {
-    margin: fn.toVw(79) 0;
-
-    @include mx.phone {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 0;
-
-      margin-top: fn.toVw(93);
-    }
-
-    .container {
-      display: flex;
-      padding: 0 fn.toVw(40 - 10);
-
-      @include mx.phone {
-        flex-direction: column;
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        position: relative;
-      }
-
-      .content-item {
-        // flex: 0 0 math.div(1, 4) * 100%;
-        width: fn.toVw(362);
-
-        overflow: hidden;
-
-        padding: 0 fn.toVw(10);
+      .content-wrapper {
+        flex-grow: 1;
 
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
 
         @include mx.phone {
-          padding: fn.toVw(12);
-          flex: unset;
-          width: 100%;
-          max-height: 100vh;
-          position: absolute;
-          inset: 0;
-          background-color: clr.$brown-35;
-          will-change: transform;
+          padding: 0 fn.toVw(18);
 
-          &:not(:first-child) {
-            transform: translateY(120%);
+          display: block;
+        }
+
+        .pill {
+          font-size: fn.toVw(14);
+          font-weight: 400;
+          padding: fn.toVw(6) fn.toVw(20);
+          border-radius: fn.toVw(25);
+          background-color: clr.$brown-15;
+          color: clr.$brown-30;
+
+          float: right;
+
+          display: none;
+
+          @include mx.phone {
+            display: block;
           }
         }
 
-        .image-wrapper {
-          transform-style: preserve-3d;
-          backface-visibility: hidden;
+        .title {
+          color: clr.$brown-10;
           pointer-events: none;
 
           @include mx.phone {
-            margin-bottom: fn.toVw(30);
             pointer-events: initial;
           }
 
-          img {
-            height: fn.toVw(430);
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: fn.toVw(12);
+          h3 {
+            font-weight: 400;
 
             @include mx.phone {
-              height: 60vh;
+              font-size: fn.toVw(24);
+              margin: 0 0 fn.toVw(14);
             }
           }
         }
 
-        .content-wrapper {
+        p {
           flex-grow: 1;
-
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+          margin-right: fn.toVw(11);
 
           @include mx.phone {
-            padding: 0 fn.toVw(18);
-
-            display: block;
+            margin: 0;
+            overflow: hidden;
+            // display: -webkit-box;
+            // -webkit-line-clamp: 2;
+            // line-clamp: 2;
+            // -webkit-box-orient: vertical;
           }
+        }
 
-          .pill {
-            font-size: fn.toVw(14);
-            font-weight: 400;
-            padding: fn.toVw(6) fn.toVw(20);
-            border-radius: fn.toVw(25);
-            background-color: clr.$brown-15;
-            color: clr.$brown-30;
-
-            float: right;
-
+        .btn {
+          @include mx.phone {
             display: none;
-
-            @include mx.phone {
-              display: block;
-            }
-          }
-
-          .title {
-            color: clr.$brown-10;
-            pointer-events: none;
-
-            @include mx.phone {
-              pointer-events: initial;
-            }
-
-            h3 {
-              font-weight: 400;
-
-              @include mx.phone {
-                font-size: fn.toVw(24);
-                margin: 0 0 fn.toVw(14);
-              }
-            }
-          }
-
-          p {
-            flex-grow: 1;
-            margin-right: fn.toVw(11);
-
-            @include mx.phone {
-              margin: 0;
-              overflow: hidden;
-              // display: -webkit-box;
-              // -webkit-line-clamp: 2;
-              // line-clamp: 2;
-              // -webkit-box-orient: vertical;
-            }
-          }
-
-          .btn {
-            @include mx.phone {
-              display: none;
-            }
           }
         }
       }
