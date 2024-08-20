@@ -213,14 +213,18 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${isMobileQuery() ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${isMobileQuery() ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${isMobileQuery() ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${isMobileQuery() ? 10 : 20
-          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${
+          isMobileQuery() ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${
+          isMobileQuery() ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${
+          isMobileQuery() ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${
+          isMobileQuery() ? 10 : 20
+        } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -461,13 +465,13 @@ export default class Page {
           if (index === 0) {
             title.classList.add("active");
             desc.innerHTML = itemDesc.innerHTML;
-            desc.setAttribute('data-index', index)
+            desc.setAttribute("data-index", index);
           }
 
           title.addEventListener("click", () => {
             title.classList.add("active");
             desc.innerHTML = itemDesc.innerHTML;
-            desc.setAttribute('data-index', index)
+            desc.setAttribute("data-index", index);
 
             gsap.fromTo(
               desc,
