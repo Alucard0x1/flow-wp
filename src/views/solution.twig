@@ -3,8 +3,8 @@
 {% block content %}
 	{{post.content}}
 
-	<section class="solution-related">
-		<div class="container">
+	<section class="solution-related" data-carousel>
+		<div data-hover='DRAG' class="container" data-carousel-scroller>
 			{% for post in relatedPosts %}
 				<div class="content-item {{ post.slug }}">
 					<div class="image-wrapper">
@@ -15,17 +15,16 @@
 
 					<a href="{{ post.link }}" class="pill">{{ 'Learn More'|pll_e }}</a>
 
-					<a href="{{ post.link }}">
-						<h3>
-							{{post.title}}
-						</h3>
-					</a>
+					<h3>
+						{{post.title}}
+					</h3>
+
 
 					<p>
 						{{post.excerpt|raw|nl2br|replace({'人までの<br />': '人までの'})}}
 					</p>
 
-					<div>
+					<div data-hover='none'>
 						<a href="{{post.link}}" class="btn btn-rounded">
 							{{ 'Learn More'|pll_e }}
 						</a>

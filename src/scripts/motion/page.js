@@ -729,6 +729,14 @@ export default class Page {
       opacity: 0,
       stagger: 0.15,
     });
+
+    const container = section.querySelector(".container");
+    const carouselItems = section.querySelectorAll(".content-item");
+    if (carouselItems && carouselItems.length > 3) {
+      new Carousel(section);
+    } else {
+      container.dataset.hover = "none";
+    }
   }
 
   solutionlist() {
