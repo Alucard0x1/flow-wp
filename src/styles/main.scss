@@ -1,186 +1,195 @@
-@use 'sass:math';
-@use 'fonts';
-@use 'functions' as fn;
-@use 'mixins' as mx;
-@use 'colors' as clr;
-@use 'root';
-@use 'typography';
-@use 'footer';
-@use 'motionmarkup';
-@use 'nav';
-@use 'solutions-list';
-@use 'cursor';
+@use "sass:math";
+@use "fonts";
+@use "functions" as fn;
+@use "mixins" as mx;
+@use "colors" as clr;
+@use "root";
+@use "typography";
+@use "footer";
+@use "motionmarkup";
+@use "nav";
+@use "solutions-list";
+@use "cursor";
 
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    width: 100%;
-    overflow-x: hidden;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
 
-    background-color: clr.$brown-37;
+  background-color: clr.$brown-37;
 }
 
 .main {
-    position: relative;
-    z-index: 1;
-    background-color: clr.$brown-37;
+  position: relative;
+  z-index: 1;
+  background-color: clr.$brown-37;
 }
 
 .image-wrapper {
-    position: relative;
+  position: relative;
 
-    .image-picker {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+  .image-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 .text-category {
-    font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
-    opacity: 0.8;
+  font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
+  opacity: 0.8;
 
+  &:before,
+  &:after {
+    font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
+  }
 
-    &:before,
-    &:after {
-        font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
-    }
-
-    &:before {
-        content: '';
-        height: 1px;
-        background-color: clr.$brown-10;
-        width: fn.toVw(18);
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: fn.toVw(11);
-        margin-top: -2px;
-    }
+  &:before {
+    content: "";
+    height: 1px;
+    background-color: clr.$brown-10;
+    width: fn.toVw(18);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: fn.toVw(11);
+    margin-top: -2px;
+  }
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
 
-
 .preloader {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background-color: clr.$brown-35;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: clr.$brown-35;
 }
 
 .solution-related {
-    background-color: clr.$brown-37;
+  background-color: clr.$brown-37;
 
-    .container {
-        display: flex;
-        padding: 0 fn.toVw(40 - 14) fn.toVw(136);
+  .container {
+    display: flex;
+    padding: 0 fn.toVw(40 - 14) fn.toVw(136);
+
+    @include mx.phone {
+      flex-direction: column;
+      padding: 0 fn.toVw(20);
+      width: 100%;
+    }
+
+    .content-item {
+      // flex: 0 0 (math.div(1, 3) * 100%);
+      // width: math.div(1, 3) * 100%;
+      width: fn.toVw(458 + 28);
+
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+
+      padding: 0 fn.toVw(14);
+
+      @include mx.phone {
+        flex: unset;
+        width: 100%;
+        padding: 0;
+        display: block;
+      }
+
+      .image-wrapper {
+        @include mx.phone {
+          margin-bottom: fn.toVw(23);
+        }
+
+        a {
+          pointer-events: none;
+
+          @include mx.phone {
+            pointer-events: initial;
+          }
+        }
+
+        img {
+          height: fn.toVw(313);
+          width: 100%;
+          border-radius: fn.toVw(16);
+          object-fit: cover;
+          object-position: center;
+
+          @include mx.phone {
+            height: fn.toVw(211);
+            border-radius: fn.toVw(12);
+          }
+        }
+      }
+
+      h3 {
+        font-size: fn.toVw(24);
+        color: clr.$brown-10;
+        font-weight: 400;
 
         @include mx.phone {
-            flex-direction: column;
-            padding: 0 fn.toVw(20);
+          margin: 0 0 fn.toVw(18);
         }
+      }
 
-        .content-item {
-            flex: 0 0 (math.div(1, 3) * 100%);
-            width: math.div(1, 3) * 100%;
+      .pill {
+        font-size: fn.toVw(14);
+        font-weight: 400;
+        padding: fn.toVw(6) fn.toVw(20);
+        border-radius: fn.toVw(25);
+        background-color: clr.$brown-15;
+        color: clr.$brown-30;
 
-            display: flex;
-            flex-direction: column;
+        float: right;
 
-            padding: 0 fn.toVw(14);
+        display: none;
 
-            @include mx.phone {
-                flex: unset;
-                width: 100%;
-                padding: 0;
-                display: block;
-            }
-
-            .image-wrapper {
-                @include mx.phone {
-                    margin-bottom: fn.toVw(23);
-                }
-
-                img {
-                    height: fn.toVw(313);
-                    width: 100%;
-                    border-radius: fn.toVw(16);
-                    object-fit: cover;
-                    object-position: center;
-
-                    @include mx.phone {
-                        height: fn.toVw(211);
-                        border-radius: fn.toVw(12);
-                    }
-                }
-            }
-
-            h3 {
-                font-size: fn.toVw(24);
-                color: clr.$brown-10;
-                font-weight: 400;
-
-                @include mx.phone {
-                    margin: 0 0 fn.toVw(18);
-                }
-            }
-
-            .pill {
-                font-size: fn.toVw(14);
-                font-weight: 400;
-                padding: fn.toVw(6) fn.toVw(20);
-                border-radius: fn.toVw(25);
-                background-color: clr.$brown-15;
-                color: clr.$brown-30;
-
-                float: right;
-
-                display: none;
-
-                @include mx.phone {
-                    display: block;
-                }
-            }
-
-            p {
-                opacity: 0.7;
-                font-size: fn.toVw(15);
-                line-height: fn.toVw(23);
-                color: clr.$brown-10;
-                font-weight: 400;
-
-                margin-bottom: fn.toVw(30);
-
-                flex-grow: 1;
-
-                @include mx.phone {
-                    margin-top: 0;
-                    margin-bottom: fn.toVw(48);
-                }
-            }
-
-            a {
-                color: clr.$brown-37;
-
-                &.btn {
-                    @include mx.phone {
-                        display: none;
-                    }
-                }
-            }
+        @include mx.phone {
+          display: block;
         }
+      }
+
+      p {
+        opacity: 0.7;
+        font-size: fn.toVw(15);
+        line-height: fn.toVw(23);
+        color: clr.$brown-10;
+        font-weight: 400;
+
+        margin-bottom: fn.toVw(30);
+
+        flex-grow: 1;
+
+        @include mx.phone {
+          margin-top: 0;
+          margin-bottom: fn.toVw(48);
+        }
+      }
+
+      a {
+        color: clr.$brown-37;
+
+        &.btn {
+          @include mx.phone {
+            display: none;
+          }
+        }
+      }
     }
+  }
 }
