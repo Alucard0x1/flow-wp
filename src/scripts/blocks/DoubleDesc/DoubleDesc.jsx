@@ -30,6 +30,12 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                             checked={attributes.sMargin}
                             onChange={(sMargin) => setAttributes({ sMargin })}
                         />
+
+                        <ToggleControl
+                            label="Full Width Content End"
+                            checked={attributes.fullWidthContentEnd}
+                            onChange={(fullWidthContentEnd) => setAttributes({ fullWidthContentEnd })}
+                        />
                     </PanelBody>
                 </InspectorControls>
             }
@@ -140,7 +146,7 @@ const DoubleDesc = ({ attributes, setAttributes, isSelected }) => {
                     </div>
                 </div>
 
-                <div className="content-end">
+                <div className={"content-end " + (attributes.fullWidthContentEnd ? "full" : "")}>
                     <Text tagName="p" value={attributes.contentEnd}
                         onChange={(contentEnd) => setAttributes({ contentEnd })}
                     />

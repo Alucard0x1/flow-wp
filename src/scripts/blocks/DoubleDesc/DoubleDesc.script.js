@@ -19,6 +19,10 @@ const blockData = {
             type: 'boolean',
             default: false
         },
+        fullWidthContentEnd: {
+            type: 'boolean',
+            default: false
+        },
         contentStart: {
             type: 'string',
             default: 'Content'
