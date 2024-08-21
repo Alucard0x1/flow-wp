@@ -33,11 +33,13 @@
         @include mx.phone {
             flex-direction: column;
             padding: 0 fn.toVw(20);
+            width: 100%;
         }
 
         .content-item {
-            flex: 0 0 (math.div(1, 3) * 100%);
-            width: math.div(1, 3) * 100%;
+            // flex: 0 0 (math.div(1, 3) * 100%);
+            // width: math.div(1, 3) * 100%;
+            width: fn.toVw(458 + 28);
 
             display: flex;
             flex-direction: column;
