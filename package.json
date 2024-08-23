@@ -31,6 +31,7 @@
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "splitting": "^1.0.6",
+    "ua-parser-js": "^1.0.38",
     "vanilla-lazyload": "^19.1.3"
   }
 }

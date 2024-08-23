@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Flip from "gsap/Flip";
 import { smoothScroll } from "./smoothscroll";
 import { debounce } from "../utils/debounce";
-import { isMobileQuery } from "../utils/responsive";
+import { isMobileQuery, isTabletQuery } from "../utils/responsive";
 import Carousel from "./Carousel";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
@@ -56,7 +56,7 @@ export default class Page {
 
     anim();
 
-    if (isMobileQuery()) return;
+    if (isMobileQuery() || isTabletQuery()) return;
     window.addEventListener("resize", debounce(anim, 500));
 
     // TODO: temp solution responsive flip

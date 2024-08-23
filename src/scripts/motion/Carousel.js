@@ -61,7 +61,7 @@ export default class Carousel {
   }
 
   onMouseDown(e) {
-    // e.preventDefault();
+    e.preventDefault();
     this.isMouseDown = true;
     const mousePos = getMousePos(e);
 
@@ -111,12 +111,8 @@ export default class Carousel {
     this.scroller.addEventListener("mousedown", this.onMouseDown.bind(this));
     this.scroller.addEventListener("mouseup", this.onMouseUp.bind(this));
 
-    this.scroller.addEventListener("touchstart", this.onMouseDown.bind(this), {
-      passive: true,
-    });
-    this.scroller.addEventListener("touchmove", this.onMouseMove.bind(this), {
-      passive: true,
-    });
+    this.scroller.addEventListener("touchstart", this.onMouseDown.bind(this));
+    this.scroller.addEventListener("touchmove", this.onMouseMove.bind(this));
     this.scroller.addEventListener("touchend", this.onMouseUp.bind(this));
 
     window.removeEventListener("resize", this.onResize.bind(this));
