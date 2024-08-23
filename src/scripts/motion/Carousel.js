@@ -1,5 +1,28 @@
 import gsap from "gsap";
-import { getMousePos } from "../utils/index";
+const getMousePos = (e) => {
+  let mousePosition;
+  if (e.targetTouches) {
+    if (e.targetTouches[0]) {
+      mousePosition = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY,
+      };
+    } else if (e.changedTouches[0]) {
+      // handling touch end event
+      mousePosition = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY,
+      };
+    } else {
+      // fallback
+      mousePosition = { x: e.clientX, y: e.clientY };
+    }
+  } else {
+    mousePosition = { x: e.clientX, y: e.clientY };
+  }
+
+  return mousePosition;
+};
 
 export default class Carousel {
   constructor(el) {
@@ -38,7 +61,7 @@ export default class Carousel {
   }
 
   onMouseDown(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.isMouseDown = true;
     const mousePos = getMousePos(e);
 
@@ -73,6 +96,13 @@ export default class Carousel {
     this.scroller.removeEventListener("mousedown", this.onMouseDown.bind(this));
     this.scroller.removeEventListener("mouseup", this.onMouseUp.bind(this));
 
+    this.scroller.removeEventListener(
+      "touchstart",
+      this.onMouseDown.bind(this)
+    );
+    this.scroller.removeEventListener("touchmove", this.onMouseMove.bind(this));
+    this.scroller.removeEventListener("touchend", this.onMouseUp.bind(this));
+
     window.addEventListener("resize", this.onResize.bind(this));
   }
 
@@ -80,6 +110,14 @@ export default class Carousel {
     this.scroller.addEventListener("mousemove", this.onMouseMove.bind(this));
     this.scroller.addEventListener("mousedown", this.onMouseDown.bind(this));
     this.scroller.addEventListener("mouseup", this.onMouseUp.bind(this));
+
+    this.scroller.addEventListener("touchstart", this.onMouseDown.bind(this), {
+      passive: true,
+    });
+    this.scroller.addEventListener("touchmove", this.onMouseMove.bind(this), {
+      passive: true,
+    });
+    this.scroller.addEventListener("touchend", this.onMouseUp.bind(this));
 
     window.removeEventListener("resize", this.onResize.bind(this));
   }
