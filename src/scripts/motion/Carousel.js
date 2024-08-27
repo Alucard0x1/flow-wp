@@ -61,7 +61,7 @@ export default class Carousel {
   }
 
   onMouseDown(e) {
-    e.preventDefault();
+    // e.preventDefault();
     this.isMouseDown = true;
     const mousePos = getMousePos(e);
 
