@@ -15,14 +15,14 @@ const blockData = {
         type: "object",
         default: {
             title: "Inquiry Form",
-            url: "#",
+            url: "https://form.asana.com/?k=L_b-zJ6I-RiKEDAVbvbS6A&d=7388513620959",
         },
     },
     link_2: {
         type: "object",
         default: {
             title: "Book a Tour",
-            url: "#",
+            url: "https://calendly.com/flow_/booking",
         },
     },
   },
