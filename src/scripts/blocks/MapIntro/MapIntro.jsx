@@ -17,6 +17,11 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                 <InspectorControls>
                     <PanelBody>
                         <ToggleControl
+                            label="Right description"
+                            checked={attributes.rightDescription}
+                            onChange={(rightDescription) => setAttributes({ rightDescription })}
+                        />
+                        <ToggleControl
                             label="Hide logo"
                             checked={attributes.hideLogo}
                             onChange={(hideLogo) => setAttributes({ hideLogo })}
@@ -95,7 +100,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                         />
                     }
 
-                    <div className="description-wrapper right">
+                    <div className={`description-wrapper ${attributes.rightDescription ? "right" : ""}`}>
                         <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })} />
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
                         <Text
