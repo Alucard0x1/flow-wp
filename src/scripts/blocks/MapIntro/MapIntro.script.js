@@ -7,6 +7,10 @@ const blockData = {
             type: 'boolean',
             default: false
         },
+        rightDescription: {
+            type: 'boolean',
+            default: true
+        },
         noContent: {
             type: 'boolean',
             default: false
