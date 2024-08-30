@@ -79,7 +79,7 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                                     <>
                                          <a target="_blank" rel="nofollow noopener" href={attributes.link.url} className="logo-container">
                                             <div className="logo">
-                                                <img src={logo_white} alt="" className="logo" />
+                                                <img src={logo_white} alt=""/>
                                             </div>
                                         </a>
                                         <div className="dot"></div>
