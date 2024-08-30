@@ -13,11 +13,11 @@ const blockData = {
         },
         noContent: {
             type: 'boolean',
-            default: false
+            default: true
         },
         backgroundColor: {
             type: 'string',
-            default: 'transparent'
+            default: '#ebe6da'
         },
         title: {
             type: 'string',
