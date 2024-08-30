@@ -1,18 +1,26 @@
 import './MapIntro.scss'
 import useRichText from '../../hooks/useRichText'
+import map_desktop from '../../../../assets/images/map-desktop.png'
+import map_mobile from '../../../../assets/images/map-mobile.png'
+import logo_white from '../../../../assets/images/logo-white.svg'
 
 const { MediaUpload, URLInputButton, InspectorControls } = wp.blockEditor
 const { Button, Icon, PanelBody, ToggleControl, Dropdown, ColorPicker, PanelRow, ColorIndicator } = wp.components
 
 const MapIntro = ({ attributes, setAttributes, isSelected }) => {
     const Text = useRichText(isSelected)
-
+    
     return (
         <section className={"map-intro" + (attributes.noContent ? ' no-content' : '')}
             style={{ backgroundColor: attributes.backgroundColor }}>
             {isSelected &&
                 <InspectorControls>
                     <PanelBody>
+                        <ToggleControl
+                            label="Hide logo"
+                            checked={attributes.hideLogo}
+                            onChange={(hideLogo) => setAttributes({ hideLogo })}
+                        />
                         <ToggleControl
                             label="No content"
                             checked={attributes.noContent}
@@ -64,8 +72,20 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                             <video data-src={attributes.image.url} autoPlay loop playsInline muted className="lazy" />
                             :
                             <>
-                                <img src={attributes.image ? attributes.image.url : "https://picsum.photos/976/530"} alt="" className="desktop" />
-                                <img src={attributes.imagePortrait ? attributes.imagePortrait.url : "https://picsum.photos/976/530"} alt="" className="portrait" />
+                                <img src={attributes.image ? attributes.image.url : map_desktop} alt="" className="image desktop" />
+                                <img src={attributes.imagePortrait ? attributes.imagePortrait.url : map_mobile} alt="" className="image portrait" />
+                                {
+                                    !attributes.hideLogo && 
+                                    <>
+                                         <a target="_blank" rel="nofollow noopener" href={attributes.link.url} className="logo-container">
+                                            <div className="logo">
+                                                <img src={logo_white} alt="" className="logo" />
+                                            </div>
+                                        </a>
+                                        <div className="dot"></div>
+                                    </>
+                                }
+                               
                             </>
                         }
                     </a>
@@ -75,9 +95,37 @@ const MapIntro = ({ attributes, setAttributes, isSelected }) => {
                         />
                     }
 
-                    <div className="description-wrapper">
+                    <div className="description-wrapper right">
                         <Text tagName="h2" value={attributes.location} onChange={(location) => setAttributes({ location })} />
                         <Text tagName="p" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+                        <Text
+                            className="description-link"
+                            tagName="a"
+                            href={attributes.link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            value={attributes.link.title}
+                            onChange={(title) =>
+                                setAttributes({
+                                    link: {
+                                        title,
+                                    },
+                                })
+                            }
+                        />
+                        {isSelected && (
+                            <URLInputButton
+                                url={attributes.link.url}
+                                onChange={(url, post) => {
+                                setAttributes({
+                                    link: {
+                                    url,
+                                    title: post && post.title,
+                                    },
+                                });
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
 

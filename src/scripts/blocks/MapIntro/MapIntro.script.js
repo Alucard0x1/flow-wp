@@ -3,6 +3,10 @@ const blockData = {
     icon: "format-image",
     category: "common",
     attributes: {
+        hideLogo: {
+            type: 'boolean',
+            default: false
+        },
         noContent: {
             type: 'boolean',
             default: false
@@ -29,16 +33,23 @@ const blockData = {
         },
         location: {
             type: 'string',
-            default: 'Location'
+            default: 'Midplaza 1 Lobby'
         },
         description: {
             type: 'string',
-            default: 'Description'
+            default: 'Jl. Jenderal Sudirman No.Kav 10-11, Karet Tengsin, Jakarta.'
         },
         url: {
             type: 'string',
             default: null
-        }
+        },
+        link: {
+            type: "object",
+            default: {
+                title: "View on Google Maps",
+                url: "https://maps.app.goo.gl/eW524AugLRnepRt87",
+            },
+        },
     }
 }
 

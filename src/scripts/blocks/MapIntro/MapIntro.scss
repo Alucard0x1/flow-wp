@@ -1,6 +1,7 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/colors' as clr;
 @use '../../../styles/mixins' as mx;
+@use '../../../styles/motion' as mtn;
 
 #editor {
     .map-intro {
@@ -27,15 +28,15 @@
             margin: 0 auto;
             border-radius: fn.toVw(20);
 
-            width: fn.toVw(974);
-            height: fn.toVw(530);
+            width: fn.toVw(1013);
+            height: fn.toVw(552);
             position: relative;
 
             overflow: hidden;
 
             @include mx.phone {
                 width: auto;
-                height: fn.toVw(393);
+                height: fn.toVw(481);
                 margin: 0 fn.toVw(20);
                 border-radius: fn.toVw(12);
             }
@@ -54,12 +55,80 @@
 
                 width: fn.toVw(277);
 
+                &.right {
+                    left: unset;
+                    right: fn.toVw(16.07);
+                    bottom: fn.toVw(15.52);
+
+                    @include mx.phone {
+                        bottom: fn.toVw(24.77);
+                        right: fn.toVw(29);
+                        width: fn.toVw(277);
+                        padding: fn.toVw(20);
+                    }
+                }
+
                 @include mx.phone {
                     bottom: fn.toVw(20);
                     left: fn.toVw(28);
                     right: fn.toVw(28);
                     width: auto;
                     padding: fn.toVw(20);
+                }
+
+                .description-link {
+                    display: block;
+                    position: relative;
+                    color: clr.$brown-37;
+
+                    margin-top: fn.toVw(30.19);
+                    font-size: fn.toVw(13);
+                    line-height: fn.toVw(15.51);
+                    font-weight: 400;
+
+                    padding-right: fn.toVw(29.52);
+                    padding-bottom: fn.toVw(8);
+                    width: fit-content;
+
+                    @include mx.phone { 
+                        margin-top: fn.toVw(31.5);
+                    }
+
+                    &:hover {
+                        &::after { 
+                            transform: translate(fn.toVw(1.5), fn.toVw(-1.5));
+                        }
+                        
+                    }
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        width: 100%;
+                        height: fn.toVw(.5);
+                        background-color: clr.$brown-30;
+                        opacity: .5;
+                        transition: transform .6s mtn.$transition-ease;
+                        transform-origin: right;
+                    }
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: fn.toVw(3);
+                        right: 0;
+                        width: fn.toVw(9);
+                        height: fn.toVw(9);
+                        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOCA4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMC43Njg1NTUgNi44NDA0OUw2Ljg2ODgxIDAuNzQwMjM0TTYuODY4ODEgMC43NDAyMzRIMS4zNzg1OE02Ljg2ODgxIDAuNzQwMjM0VjYuMjMwNDciIHN0cm9rZT0iI0VDRTZEQSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=");
+                        background-size: 100%;
+                        opacity: .8;
+                        transition: transform .6s mtn.$transition-ease;
+                        
+                    }
                 }
 
                 h2 {
@@ -84,6 +153,7 @@
                     margin: 0;
                     font-size: fn.toVw(13);
                     line-height: fn.toVw(20);
+                    font-weight: 400;
                 }
             }
 
@@ -91,6 +161,100 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+            }
+
+            .dot {
+                position: absolute;
+                top: fn.toVw(272.7);
+                left: fn.toVw(533.99);
+                width: fn.toVw(12);
+                height: fn.toVw(12);
+                background-color: white;
+
+                border-radius: 50%;
+                border: fn.toVw(5) solid clr.$blue;
+
+                @include mx.phone {
+                    top: fn.toVw(214.72);
+                    left: fn.toVw(144.07);
+                    width: fn.toVw(11.42);
+                    height: fn.toVw(11.42);
+                }
+            }
+
+            .logo-container {
+                box-sizing: content-box;
+                position: absolute;
+                top: fn.toVw(235.98);
+                left: fn.toVw(493.95);
+                cursor: pointer;
+
+                &:hover {
+                    padding-bottom: fn.toVw(5);
+                    .logo {
+                        transform: translateY(fn.toVw(-5));
+                    }
+                }
+                
+                .logo {
+                    width: fn.toVw(92.71);
+                    height: fn.toVw(33.71);
+                    border-radius: fn.toVw(50.57);
+                    background-color: clr.$blue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: transform .6s mtn.$transition-ease;
+                   
+                    img {
+                        width: fn.toVw(52);
+                        height: auto;
+                    
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+
+               
+
+                @include mx.phone {
+                    top: fn.toVw(179.78);
+                    left: fn.toVw(105.97);
+                    width: fn.toVw(88.22);
+                    height: fn.toVw(32.08);
+                    border-radius: fn.toVw(48.12);
+                }
+
+               
+            }
+
+            .image {
+                width: 100%;
+                height: 100%;
+                border-radius: fn.toVw(20);
+
+                object-fit: cover;
+                object-position: center;
+
+                &.desktop {
+                    display: block;
+                }
+
+                &.portrait {
+                    display: none;
+                }
+
+                @include mx.phone {
+                    border-radius: fn.toVw(12);
+
+                    &.desktop {
+                        display: none;
+                    }
+
+                    &.portrait {
+                        display: block;
+                    }
+                }
             }
 
             #map {

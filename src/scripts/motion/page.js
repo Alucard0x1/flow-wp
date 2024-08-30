@@ -265,15 +265,43 @@ export default class Page {
     const section = document.querySelector(".map-intro");
 
     if (!section) return;
-    gsap.from(".map-intro .description-wrapper", {
-      yPercent: 130,
-      duration: 1.2,
-      ease: "power2.inOut",
-      scrollTrigger: {
-        trigger: ".map-intro .image-wrapper",
-        start: "center bottom",
-      },
-    });
+    const logo = section.querySelector(".logo-container");
+    const dot = section.querySelector(".dot");
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".map-intro .image-wrapper",
+          start: "center bottom",
+        },
+      })
+      .from(".map-intro .description-wrapper", {
+        yPercent: 130,
+        duration: 1.2,
+        ease: "power2.inOut",
+      });
+
+    if (dot && logo) {
+      tl.from(
+        dot,
+        {
+          opacity: 0,
+          duration: 1.25,
+          ease: "power4.inOut",
+          yPercent: -40,
+        },
+        "<+.4"
+      ).from(
+        logo,
+        {
+          yPercent: -20,
+          duration: 1.2,
+          ease: "power4.inOut",
+          opacity: 0,
+          clearProps: "all",
+        },
+        "<+.05"
+      );
+    }
   }
 
   philosophy() {
