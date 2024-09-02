@@ -24,6 +24,8 @@ function add_to_context($context)
     $context['popupSocial'] = Timber\Timber::get_menu('popup-social');
     $context['popupTerms'] = Timber\Timber::get_menu('popup-terms');
     $context['newsletter'] = Timber\Timber::get_menu('newsletter');
+    $context['mainNavigationButton'] = Timber\Timber::get_menu('main-navigation-button');
+    
 
     return $context;
 }
@@ -38,13 +40,15 @@ function after_setup_theme()
         'popup-right' => 'Popup Right',
         'popup-social' => 'Popup Social',
         'popup-terms' => 'Popup Terms',
+        'popup-right' => 'Popup Right',
+        'main-navigation-button' => 'Navigation Buttons',
     ]);
 }
 
 
 function enqueue_blocks()
 {
-    wp_enqueue_script('flow-sc-blocks', get_theme_file_uri('/dist/blocks.js'), ['wp-block-editor'], filemtime(get_theme_file_path('/dist/blocks.js')),);
+    wp_enqueue_script('flow-sc-blocks', get_theme_file_uri('/dist/blocks.js'), ['wp-block-editor'], filemtime(get_theme_file_path('/dist/blocks.js')), );
 
     wp_enqueue_style(
         'flow-st-blocks',
