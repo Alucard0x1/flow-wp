@@ -15,9 +15,7 @@
 		</div>
 
 		{% for menu in mainNavigationButton.items %}
-			{% if menu.object_id != post.id %}
-				<a class="contact-wrapper" href="{{menu.link}}">{{menu.title}}</a>
-			{% endif %}
+			<a class="contact-wrapper" href="{{menu.link}}">{{menu.title}}</a>
 		{% endfor %}
 		{# <a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
 					{{ 'Book a Tour'|pll_e }}
