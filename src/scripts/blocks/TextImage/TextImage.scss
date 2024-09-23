@@ -3,6 +3,31 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+@include mx.jp {
+    .text-image {
+        .container {
+            margin: 0 fn.toVw(69) 0 fn.toVw(144);
+
+            .content-wrapper {
+                margin-left: 0;
+
+                h2 {
+                    font-size: fn.toVw(64);
+                    max-width: unset;
+                }
+
+                h3 {
+                    margin-left: auto;
+                    max-width: fn.toVw(925);
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                    line-height: fn.toVw(60)
+                }
+            }
+        }
+    }
+}
+
 .text-image {
     padding: fn.toVw(170) 0 0;
     background-color: clr.$brown-15;
