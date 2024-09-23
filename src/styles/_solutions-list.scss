@@ -9,10 +9,27 @@
   }
 }
 
-:lang(ja) {
+:lang(jp) {
   .solutions-list {
     .container {
       .content-item {
+        &.u1c73a5faff4dae172811569de678a905 {
+          --font-size: 390;
+
+          flex: 0 0 fn.toVw(var(--font-size));
+          width: fn.toVw(var(--font-size));
+        }
+
+        &.u4865b1e9d6f981aa7f03acb3a0eea6e1 {
+          --font-size: 394;
+          flex: 0 0 fn.toVw(var(--font-size));
+          width: fn.toVw(var(--font-size));
+
+          p {
+            margin-right: 0;
+          }
+        }
+
         .content-wrapper {
           p {
             font-size: fn.toVw(15);

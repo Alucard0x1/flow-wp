@@ -88,6 +88,10 @@ add_filter('timber/twig/filters', function ($filters) {
         'callable' => 'pll_e',
     ];
 
+    $filters['md5'] = [
+        'callable' => 'md5'
+    ];
+
     $filters['localize_post'] = [
         'callable' => function ($post_id) {
             $posts = pll_get_post_translations($post_id);

@@ -141,3 +141,30 @@
         }
     }
 }
+
+@include mx.jp {
+    .scaled-image {
+        &-content {
+            padding-top: fn.toVw(79);
+            margin-left: fn.toVw(138);
+        }
+
+        .container {
+            .category-wrapper {
+                flex: 0 0 fn.toVw(143);
+                width: fn.toVw(143);
+            }
+
+            .description-wrapper {
+                padding-top: 1em;
+
+                flex: 0 0 fn.toVw(962);
+                width: fn.toVw(962);
+
+                .text-description {
+                    font-size: fn.toVw(19);
+                }
+            }
+        }
+    }
+}
