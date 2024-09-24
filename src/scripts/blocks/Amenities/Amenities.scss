@@ -3,6 +3,23 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+:lang(jp) {
+    .amenities {
+        .container {
+            .content-wrapper {
+                h2 {
+                    max-width: unset;
+                }
+
+                .content-description {
+                    font-size: fn.toVw(15);
+                    text-wrap: nowrap;
+                }
+            }
+        }
+    }
+}
+
 #editor {
     .amenities {
         .container {
@@ -272,7 +289,7 @@
     }
 }
 
-:lang(ja) .amenities .container .content-wrapper .content-list .content-item.even {
+:lang(jp) .amenities .container .content-wrapper .content-list .content-item.even {
     flex: 0 0 fn.toVw(221 + 16);
     width: fn.toVw(221 + 16);
 

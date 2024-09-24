@@ -204,3 +204,19 @@ a {
     }
   }
 }
+
+.desktop-only {
+  display: block;
+
+  @include mx.phone {
+    display: none;
+  }
+}
+
+.phone-only {
+  display: none;
+
+  @include mx.phone {
+    display: block;
+  }
+}
