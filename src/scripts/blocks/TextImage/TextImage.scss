@@ -23,6 +23,9 @@
                 h2 {
                     font-size: fn.toVw(64);
                     max-width: unset;
+                    border-bottom: 1px solid clr.$white;
+                    width: fit-content;
+                    padding-bottom: fn.toVw(16);
 
                     @include mx.phone {
                         font-size: fn.toVw(22);
