@@ -46,6 +46,12 @@ body {
   }
 }
 
+:lang(jp) {
+  .text-category {
+    font-family: "Zen Antique", serif;
+  }
+}
+
 .text-category {
   font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
   opacity: 0.8;
