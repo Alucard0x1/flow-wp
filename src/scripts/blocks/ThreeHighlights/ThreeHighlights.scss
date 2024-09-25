@@ -9,12 +9,21 @@
                 .content-item {
                     .content-title {
                         text-wrap: nowrap;
+
+                        @include mx.phone {
+                            font-size: fn.toVw(23);
+                        }
                     }
 
                     .content-desc {
                         width: fn.toVw(396);
                         font-size: fn.toVw(16);
                         font-weight: 400;
+
+                        @include mx.phone {
+                            font-size: fn.toVw(14);
+                            width: fn.toVw(335);
+                        }
                     }
                 }
             }
