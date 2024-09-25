@@ -2,6 +2,32 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+:lang(jp) {
+    .three-highlights.weop1 {
+        .content-item:nth-child(1) {
+            .content-desc {
+                width: fn.toVw(396);
+
+                @include mx.phone {
+                    width: 100%;
+
+                    font-size: fn.toVw(14);
+                }
+            }
+        }
+
+        .content-item:nth-child(2) {
+            .content-desc {
+                width: fn.toVw(488);
+
+                @include mx.phone {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
 .three-highlights {
     .container {
         display: flex;

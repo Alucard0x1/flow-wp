@@ -5,6 +5,16 @@
 
 @include mx.jp {
     .text-image {
+        &.gr5 {
+            .container {
+                .content-wrapper {
+                    h2 {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+
         .container {
             margin: 0 fn.toVw(69) 0 fn.toVw(144);
 
@@ -30,6 +40,7 @@
                     @include mx.phone {
                         font-size: fn.toVw(22);
                         text-align: center;
+                        margin: 0 auto;
                     }
                 }
 

@@ -18,12 +18,22 @@
 
           flex: 0 0 fn.toVw(var(--font-size));
           width: fn.toVw(var(--font-size));
+
+          @include mx.phone {
+            flex: 0 0 100%;
+            width: 100%;
+          }
         }
 
         &.u4865b1e9d6f981aa7f03acb3a0eea6e1 {
           --font-size: 394;
           flex: 0 0 fn.toVw(var(--font-size));
           width: fn.toVw(var(--font-size));
+
+          @include mx.phone {
+            flex: 0 0 100%;
+            width: 100%;
+          }
 
           p {
             margin-right: 0;

@@ -1,7 +1,7 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/mixins' as mx;
 
-:lang(ja) {
+:lang(jp) {
     .text-image .container .content-wrapper h3 {
         max-width: fn.toVw(971);
         font-size: fn.toVw(40);

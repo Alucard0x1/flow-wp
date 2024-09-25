@@ -1,7 +1,7 @@
 @use '../../../styles/functions' as fn;
 @use '../../../styles/mixins' as mx;
 
-:lang(ja) .scaled-image {
+:lang(jp) .scaled-image {
     &-content {
         .description-wrapper {
             width: fn.toVw(588);

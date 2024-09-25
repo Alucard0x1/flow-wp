@@ -2,6 +2,53 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+@include mx.jp {
+    .double-desc.dfhiu1 {
+        .container {
+            .content-start {
+                margin-left: fn.toVw(377 - 50);
+                margin-right: fn.toVw(-50);
+
+                @include mx.phone {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                p {
+                    max-width: unset;
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(15);
+                        text-align: center;
+                    }
+                }
+            }
+
+            .content-end {
+                margin-left: fn.toVw(36);
+
+                @include mx.phone {
+                    margin: 0 0 0 fn.toVw(-31);
+                }
+
+                p {
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                    max-width: unset;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(15);
+                        text-align: center;
+                        width: 100vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .double-desc.special-margin .container .content-end {
     margin-left: fn.toVw(557);
 
@@ -202,6 +249,7 @@
                     }
                 }
             }
+
             .slider {
                 position: relative;
                 height: fit-content;
@@ -335,7 +383,7 @@
                         border-radius: fn.toVw(7);
                     }
                 }
-                
+
                 img,
                 video {
                     width: 100%;

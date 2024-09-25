@@ -3,6 +3,26 @@
 @use 'mixins' as mx;
 @use 'colors' as clr;
 
+:lang(jp) {
+    .solution-related {
+        .container {
+            .content-item {
+                .pill {
+                    @include mx.phone {
+                        text-align: center;
+                        float: unset;
+
+                        position: absolute;
+                        bottom: fn.toVw(16);
+                        left: 0;
+                        width: fn.toVw(100);
+                    }
+                }
+            }
+        }
+    }
+}
+
 .\%e3\%83\%95\%e3\%83\%ac\%e3\%82\%ad\%e3\%82\%b7\%e3\%83\%96\%e3\%83\%ab\%e3\%83\%87\%e3\%82\%b9\%e3\%82\%af {
     p {
         max-width: fn.toVw(319);
@@ -129,7 +149,7 @@
     }
 }
 
-:lang(ja) {
+:lang(jp) {
     .solution-related .container .content-item {
         h3 {
             @include mx.phone {
