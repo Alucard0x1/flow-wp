@@ -3,6 +3,28 @@
 @use '../../../styles/motion' as mtn;
 
 @include mx.jp {
+    .double-desc.asd31 {
+        .container {
+            .content-start {
+                margin-left: 0;
+
+                p {
+                    max-width: fn.toVw(1024);
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                }
+            }
+
+            .content-end {
+                p {
+                    margin-left: auto;
+                    max-width: fn.toVw(955);
+                    font-size: fn.toVw(30);
+                }
+            }
+        }
+    }
+
     .double-desc.dfhiu1 {
         .container {
             .content-start {
