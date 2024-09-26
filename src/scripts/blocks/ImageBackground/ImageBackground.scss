@@ -4,10 +4,21 @@
 
 @include mx.jp {
     .image-background.wr4 {
-        .content-wrapper__content:last-child {
-            .content-description {
-                p {
-                    width: fn.toVw(502);
+        .content-wrapper {
+            @include mx.phone {
+                width: calc(100% - fn.toVw(5) * 2);
+                left: fn.toVw(5);
+            }
+
+            .content-wrapper__content:last-child {
+                .content-description {
+                    p {
+                        width: fn.toVw(502);
+
+                        @include mx.phone {
+                            width: fn.toVw(280);
+                        }
+                    }
                 }
             }
         }

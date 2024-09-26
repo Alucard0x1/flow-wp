@@ -213,18 +213,14 @@ export default class Page {
         borderRadius: "0px",
       },
       {
-        borderTopLeftRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderTopRightRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomLeftRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
-        borderBottomRightRadius: `calc(${
-          isMobileQuery() ? 10 : 20
-        } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopLeftRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderTopRightRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomLeftRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
+        borderBottomRightRadius: `calc(${isMobileQuery() ? 10 : 20
+          } / var(--vw) * var(--scaler) * var(--multiplier))`,
         overwrite: true,
       }
     );
@@ -380,52 +376,55 @@ export default class Page {
   }
 
   scrollslider() {
-    const section = document.querySelector(".image-background");
+    const sections = document.querySelectorAll(".image-background");
 
-    if (!section) return;
-    if (isMobileQuery()) return;
+    sections.forEach(section => {
 
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "none",
-      },
-      scrollTrigger: {
-        trigger: ".list-image",
-        start: "center center",
-        end: "+=100%",
-        endTrigger: ".list-image .list-wrapper-content",
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true,
-      },
-    });
+      if (!section) return;
+      if (isMobileQuery()) return;
 
-    tl.to(
-      ".list-image .list-wrapper-content",
-      {
-        y: () => {
-          const textTitle = document.querySelector(
-            ".list-image .content-inner h2"
-          ).offsetHeight;
-          const textDescription = document.querySelector(
-            ".list-image .content-inner p"
-          ).offsetHeight;
-          const listContentHeight = document.querySelector(
-            ".list-image .list-wrapper-content"
-          ).offsetHeight;
-          const triggerHeight =
-            document.querySelector(".list-image").offsetHeight;
-          const maxScroll =
-            listContentHeight +
-            (textDescription
-              ? textTitle * 2 + textDescription * 2
-              : textTitle * 2.8) -
-            triggerHeight;
-          return -maxScroll;
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "none",
         },
-      },
-      0
-    );
+        scrollTrigger: {
+          trigger: ".list-image",
+          start: "center center",
+          end: "+=100%",
+          endTrigger: ".list-image .list-wrapper-content",
+          pin: true,
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl.to(
+        ".list-image .list-wrapper-content",
+        {
+          y: () => {
+            const textTitle = document.querySelector(
+              ".list-image .content-inner h2"
+            ).offsetHeight;
+            const textDescription = document.querySelector(
+              ".list-image .content-inner p"
+            ).offsetHeight;
+            const listContentHeight = document.querySelector(
+              ".list-image .list-wrapper-content"
+            ).offsetHeight;
+            const triggerHeight =
+              document.querySelector(".list-image").offsetHeight;
+            const maxScroll =
+              listContentHeight +
+              (textDescription
+                ? textTitle * 2 + textDescription * 2
+                : textTitle * 2.8) -
+              triggerHeight;
+            return -maxScroll;
+          },
+        },
+        0
+      );
+    })
   }
 
   amnities2() {
@@ -557,124 +556,126 @@ export default class Page {
   }
 
   sliderscroll() {
-    const section = document.querySelector(".image-background");
+    const sections = document.querySelectorAll(".image-background");
 
-    if (!section) return;
-    const wrapper = section.querySelector(".slide-wrapper");
+    sections.forEach(section => {
+      if (!section) return;
+      const wrapper = section.querySelector(".slide-wrapper");
 
-    const slides = section.querySelectorAll(".slide-wrapper .image-wrapper");
+      const slides = section.querySelectorAll(".slide-wrapper .image-wrapper");
 
-    const slidesText = wrapper.querySelectorAll(".content-wrapper__content");
+      const slidesText = wrapper.querySelectorAll(".content-wrapper__content");
 
-    const master = document.createElement("div");
-    master.classList.add("master");
-    master.classList.add("is-active");
-    wrapper.appendChild(master);
+      const master = document.createElement("div");
+      master.classList.add("master");
+      master.classList.add("is-active");
+      wrapper.appendChild(master);
 
-    const content = slides[0].querySelector(".content-wrapper");
-    master.appendChild(content);
+      const content = slides[0].querySelector(".content-wrapper");
+      master.appendChild(content);
 
-    slides.forEach((el, index) => {
-      if (el.classList.contains("is-active")) {
-        el.classList.remove("is-active");
-      }
+      slides.forEach((el, index) => {
+        if (el.classList.contains("is-active")) {
+          el.classList.remove("is-active");
+        }
 
-      const media = el.querySelector("img") || el.querySelector("video");
-      media.classList.add("media");
-      media.style.zIndex = slides.length - 1 - index;
-      master.appendChild(media);
+        const media = el.querySelector("img") || el.querySelector("video");
+        media.classList.add("media");
+        media.style.zIndex = slides.length - 1 - index;
+        master.appendChild(media);
 
-      if (index === 0) return;
-      const contentItem = el.querySelector(".content-wrapper__content");
-      content.appendChild(contentItem);
-    });
+        if (index === 0) return;
+        const contentItem = el.querySelector(".content-wrapper__content");
+        content.appendChild(contentItem);
+      });
 
-    // const buttons = section.querySelectorAll(
-    //   ".slide-wrapper .slider-action .btn"
-    // );
-    const header = document.querySelector(".nav");
+      // const buttons = section.querySelectorAll(
+      //   ".slide-wrapper .slider-action .btn"
+      // );
+      const header = document.querySelector(".nav");
 
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "none",
-        duration: 1,
-      },
-      scrollTrigger: {
-        trigger: section,
-        start: () => "top top",
-        end: `+=${isMobileQuery() ? slides.length / 2 : slides.length}00%`,
-        scrub: true,
-        pin: ".image-background .slide-wrapper",
-        invalidateOnRefresh: isMobileQuery() ? false : true,
-      },
-    });
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "none",
+          duration: 1,
+        },
+        scrollTrigger: {
+          trigger: section,
+          start: () => "top top",
+          end: `+=${isMobileQuery() ? slides.length / 2 : slides.length}00%`,
+          scrub: true,
+          pin: section.querySelector(".slide-wrapper"),
+          invalidateOnRefresh: isMobileQuery() ? false : true,
+        },
+      });
 
-    gsap.utils
-      .toArray(".image-background .master .media")
-      .forEach((slide, index) => {
-        const media = slide;
-        const charCurrent = slidesText[index].querySelectorAll(".char");
+      gsap.utils
+        .toArray(section.querySelector(".master .media"))
+        .forEach((slide, index) => {
+          const media = slide;
+          const charCurrent = slidesText[index].querySelectorAll(".char");
 
-        if (index === slides.length - 1) return;
-        // const mediaNext = slides[index + 1].querySelector(".media-item");
-        const charNext = slidesText[index + 1].querySelectorAll(".char");
+          if (index === slides.length - 1) return;
+          // const mediaNext = slides[index + 1].querySelector(".media-item");
+          const charNext = slidesText[index + 1].querySelectorAll(".char");
 
-        tl.to(charCurrent, {
-          opacity: 0,
-          duration: 0.3,
-          stagger: {
-            each: 0.001,
-            from: "end",
-          },
-          // onStart: () => {
-          //   buttons[index].classList.remove("active");
-          //   buttons[index + 1].classList.add("active");
-          // },
-          // onReverseComplete: () => {
-          //   buttons[index].classList.add("active");
-          //   buttons[index + 1].classList.remove("active");
-          // },
-        });
-
-        tl.to(
-          charNext,
-          {
-            opacity: 1,
+          tl.to(charCurrent, {
+            opacity: 0,
             duration: 0.3,
-            delay: 0.5,
             stagger: {
               each: 0.001,
               from: "end",
             },
-          },
-          isMobileQuery() ? "-=120%" : "-=100%"
-        );
+            // onStart: () => {
+            //   buttons[index].classList.remove("active");
+            //   buttons[index + 1].classList.add("active");
+            // },
+            // onReverseComplete: () => {
+            //   buttons[index].classList.add("active");
+            //   buttons[index + 1].classList.remove("active");
+            // },
+          });
 
-        tl.to(
-          media,
-          {
-            clipPath: "inset(0% 0% 100% 0%)",
-            // yPercent: -20,
-          },
-          isMobileQuery() ? "-=80%" : "-=100%"
-        );
+          tl.to(
+            charNext,
+            {
+              opacity: 1,
+              duration: 0.3,
+              delay: 0.5,
+              stagger: {
+                each: 0.001,
+                from: "end",
+              },
+            },
+            isMobileQuery() ? "-=120%" : "-=100%"
+          );
 
-        // tl.fromTo(
-        //   mediaNext,
-        //   {
-        //     yPercent: 15,
-        //   },
-        //   {
-        //     yPercent: 0,
-        //   },
-        //   "-=100%"
-        // );
+          tl.to(
+            media,
+            {
+              clipPath: "inset(0% 0% 100% 0%)",
+              // yPercent: -20,
+            },
+            isMobileQuery() ? "-=80%" : "-=100%"
+          );
+
+          // tl.fromTo(
+          //   mediaNext,
+          //   {
+          //     yPercent: 15,
+          //   },
+          //   {
+          //     yPercent: 0,
+          //   },
+          //   "-=100%"
+          // );
+        });
+
+      tl.to(section, {
+        opacity: 1,
+        duration: 0.2,
       });
-
-    tl.to(section, {
-      opacity: 1,
-      duration: 0.2,
-    });
+    })
   }
 
   doubledesc() {

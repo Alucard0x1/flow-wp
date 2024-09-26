@@ -16,6 +16,17 @@
             .content-start {
                 margin-left: auto;
                 text-align: right;
+
+                @include mx.phone {
+                    margin: 0;
+                }
+
+                p {
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                    }
+                }
             }
 
             .content-end {
