@@ -13,12 +13,24 @@
                 p {
                     font-size: fn.toVw(30);
                     font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                    }
                 }
             }
 
             .content-end {
                 p {
                     max-width: unset;
+
+                    @include mx.phone {
+                        margin-left: fn.toVw(-31);
+                        width: 100vw;
+                        padding-left: fn.toVw(23);
+                        padding-right: fn.toVw(15);
+                    }
                 }
             }
         }
