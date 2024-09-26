@@ -2,6 +2,18 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+@include mx.jp {
+    .image-background.wr4 {
+        .content-wrapper__content:last-child {
+            .content-description {
+                p {
+                    width: fn.toVw(502);
+                }
+            }
+        }
+    }
+}
+
 .image-background {
     &.mb-0 {
         margin-bottom: 0;

@@ -3,6 +3,27 @@
 @use '../../../styles/motion' as mtn;
 
 @include mx.jp {
+    .double-desc.oie1 {
+        .container {
+
+            .content-start,
+            .content-end {
+                p {
+                    max-width: unset;
+                }
+            }
+
+            .content-start {
+                margin-left: auto;
+                text-align: right;
+            }
+
+            .content-end {
+                margin-left: 0;
+            }
+        }
+    }
+
     .double-desc.diou1 {
         .container {
 
