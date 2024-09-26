@@ -3,6 +3,27 @@
 @use '../../../styles/motion' as mtn;
 
 @include mx.jp {
+    .double-desc.diou1 {
+        .container {
+
+            .content-start,
+            .content-end {
+                margin-left: 0;
+
+                p {
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                }
+            }
+
+            .content-end {
+                p {
+                    max-width: unset;
+                }
+            }
+        }
+    }
+
     .double-desc.asd31 {
         .container {
             .content-start {

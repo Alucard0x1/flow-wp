@@ -57,6 +57,7 @@ body {
   opacity: 0.8;
 
   &:before,
+
   &:after {
     font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
   }
@@ -93,6 +94,7 @@ a {
 :lang(jp) {
   body {
     font-family: "Noto Sans JP";
+    font-weight: 400;
   }
 }
 

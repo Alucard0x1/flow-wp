@@ -3,6 +3,24 @@
 @use '../../../styles/colors' as clr;
 
 :lang(jp) {
+    .three-highlights.ip2 {
+        .container {
+            .content-wrapper {
+                .content-item:first-child {
+                    .content-desc {
+                        width: fn.toVw(396);
+                    }
+                }
+
+                .content-item:nth-child(2) {
+                    .content-desc {
+                        width: fn.toVw(488);
+                    }
+                }
+            }
+        }
+    }
+
     .three-highlights.e98u32ue {
         .container {
             .content-wrapper {

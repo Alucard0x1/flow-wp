@@ -5,6 +5,25 @@
 
 @include mx.jp {
     .text-image {
+        &.gr4 {
+            .container {
+                .content-wrapper {
+                    h2 {
+                        margin: 0 fn.toVw(26);
+                        text-align: left;
+                    }
+                }
+            }
+
+            .description-inner {
+                padding: fn.toVw(45) fn.toVw(30) fn.toVw(45) fn.toVw(56.48);
+
+                p {
+                    font-size: fn.toVw(16);
+                }
+            }
+        }
+
         &.gr5 {
             .container {
                 .content-wrapper {
