@@ -89,6 +89,10 @@
             }
 
             .content-end {
+                @include mx.phone {
+                    margin: 0;
+                }
+
                 p {
                     margin-left: auto;
                     max-width: fn.toVw(901);
@@ -98,9 +102,11 @@
                     @include mx.phone {
                         font-size: fn.toVw(13);
                         text-align: center;
-                        width: fn.toVw(298);
+                        width: 100vw;
                         margin: 0 auto;
                         line-height: fn.toVw(40);
+                        margin-left: fn.toVw(-31);
+
                     }
                 }
             }

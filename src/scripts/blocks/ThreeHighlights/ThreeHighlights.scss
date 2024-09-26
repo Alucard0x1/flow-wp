@@ -9,12 +9,21 @@
                 .content-item:first-child {
                     .content-desc {
                         width: fn.toVw(396);
+
+                        @include mx.phone {
+                            width: fn.toVw(335);
+                            font-size: fn.toVw(14);
+                        }
                     }
                 }
 
                 .content-item:last-child {
                     .content-desc {
                         width: fn.toVw(488);
+
+                        @include mx.phone {
+                            width: fn.toVw(349);
+                        }
                     }
                 }
             }
