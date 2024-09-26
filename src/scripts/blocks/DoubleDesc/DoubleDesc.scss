@@ -68,6 +68,45 @@
         }
     }
 
+    .double-desc.asd32 {
+        .container {
+            .content-start {
+                margin-left: 0;
+
+                p {
+                    max-width: fn.toVw(1024);
+                    font-size: fn.toVw(36);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        max-width: unset;
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: 100vw;
+                        margin-left: fn.toVw(-31);
+                    }
+                }
+            }
+
+            .content-end {
+                p {
+                    margin-left: auto;
+                    max-width: fn.toVw(901);
+                    font-size: fn.toVw(36);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: fn.toVw(298);
+                        margin: 0 auto;
+                        line-height: fn.toVw(40);
+                    }
+                }
+            }
+        }
+    }
+
     .double-desc.asd31 {
         .container {
             .content-start {
