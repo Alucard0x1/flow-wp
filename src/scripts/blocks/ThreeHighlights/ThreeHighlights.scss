@@ -87,6 +87,16 @@
         .container {
             .content-wrapper {
                 .content-item {
+                    &:last-child {
+                        .content-desc {
+                            width: fn.toVw(486);
+
+                            @include mx.phone {
+                                width: fn.toVw(344);
+                            }
+                        }
+                    }
+
                     .content-title {
                         text-wrap: nowrap;
 
