@@ -95,7 +95,11 @@ export class TransitionDefault extends Transition {
     document.firstElementChild.setAttribute('lang', curLang)
 
     document.querySelector('.content-wrapper > p').textContent = navHeading
-    document.querySelector('.contact-wrapper').textContent = navCta
+    const contactWrapper = document.querySelector('.contact-wrapper')
+
+    if (contactWrapper) {
+      contactWrapper.textContent = navCta
+    }
     document.querySelector('.image-wrapper > p').textContent = imgHeading
     document.querySelector('.newsletter > p').textContent = newsletterHeading
 
