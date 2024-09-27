@@ -18,6 +18,11 @@
                         width: fn.toVw(100);
                     }
                 }
+
+                a {
+                    min-width: fn.toVw(108);
+                    text-align: center;
+                }
             }
         }
     }
