@@ -25,7 +25,6 @@ function add_to_context($context)
     $context['popupTerms'] = Timber\Timber::get_menu('popup-terms');
     $context['newsletter'] = Timber\Timber::get_menu('newsletter');
     $context['mainNavigationButton'] = Timber\Timber::get_menu('main-navigation-button');
-    
 
     $context['localizedPopupRight'] = Timber\Timber::get_menu('popup-right' . (pll_current_language() == 'en' ? '' : '-ja'));
     $context['localizedFooterMenu'] = Timber\Timber::get_menu('footer-menu' . (pll_current_language() == 'en' ? '' : '-ja'));
@@ -141,9 +140,21 @@ function register_custom_post_type()
         'menu_icon' => 'dashicons-groups',
         'public' => true,
         'show_in_rest' => true,
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'has_archive' => false
     ]);
+
+    flow_register_meta();
+}
+
+function flow_register_meta()
+{
+    register_meta('post', 'alt_desc',
+        [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
 }
 
 add_action('enqueue_block_editor_assets', 'enqueue_blocks');
@@ -160,3 +171,4 @@ function wpcf7_before_send_mail_function($contact_form, $abort, $submission)
 }
 
 add_filter('wpcf7_before_send_mail', 'wpcf7_before_send_mail_function', 10, 3);
+

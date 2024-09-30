@@ -3,6 +3,18 @@
 @use '../styles/colors' as clr;
 @use '../styles/motion' as mtn;
 
+@include mx.jp {
+    .nav-popup {
+        .container {
+            .image-wrapper {
+                p {
+                    font-size: fn.toVw(14);
+                }
+            }
+        }
+    }
+}
+
 .nav {
     position: fixed;
     top: 0;
