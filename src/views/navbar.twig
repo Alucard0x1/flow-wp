@@ -15,7 +15,7 @@
 		</div>
 
 		{% for menu in mainNavigationButton.items %}
-			<a class="contact-wrapper" href="{{menu.link}}">{{menu.title}}</a>
+			<a class="contact-wrapper" href="{{'/contact-us'|pll_e}}">{{menu.title}}</a>
 		{% endfor %}
 		{# <a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
 					{{ 'Book a Tour'|pll_e }}

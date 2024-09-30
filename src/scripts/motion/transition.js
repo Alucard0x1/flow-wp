@@ -85,6 +85,7 @@ export class TransitionDefault extends Transition {
     const popupRight = JSON.parse(decodeURIComponent(el.dataset.popupRight))
     const footerMenu = JSON.parse(decodeURIComponent(el.dataset.footerMenu))
     const newsletterHeading = el.dataset.newsletterHeading
+    const navContact = el.dataset.navContact
 
     let languages = JSON.parse(decodeURIComponent(pll))
     languages = Object.values(languages)
@@ -99,6 +100,7 @@ export class TransitionDefault extends Transition {
 
     if (contactWrapper) {
       contactWrapper.textContent = navCta
+      contactWrapper.href = navContact
     }
     document.querySelector('.image-wrapper > p').textContent = imgHeading
     document.querySelector('.newsletter > p').textContent = newsletterHeading

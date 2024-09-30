@@ -92,6 +92,12 @@ add_filter('timber/twig/filters', function ($filters) {
         'callable' => 'md5'
     ];
 
+    $filters['json'] = [
+        'callable' => function ($data) {
+            return json_encode($data, JSON_PRETTY_PRINT);
+        }
+    ];
+
     $filters['localize_post'] = [
         'callable' => function ($post_id) {
             $posts = pll_get_post_translations($post_id);
@@ -120,6 +126,7 @@ function register_custom_post_type()
     pll_register_string('Learn More', 'Learn More');
     pll_register_string('Book a Tour', 'Book a Tour');
     pll_register_string('Discover solutions to optimize how you and your team work', 'Discover solutions to optimize how you and your team work');
+    pll_register_string('/contact-us', '/contact-us');
 
     add_theme_support('post-thumbnails');
 
