@@ -134,6 +134,14 @@
         }
 
         .content-item:nth-child(2) {
+            .content-title {
+                text-wrap: nowrap;
+
+                @include mx.phone {
+                    text-wrap: unset;
+                }
+            }
+
             .content-desc {
                 width: fn.toVw(488);
 

@@ -161,7 +161,6 @@ class Nav {
           });
 
           this.popupContentImageDesc.textContent = link.dataset.desc;
-          console.log(link.classList)
 
           if (link.classList.contains('menu-4')) {
             this.popupContentImageDesc.classList.add('small')
