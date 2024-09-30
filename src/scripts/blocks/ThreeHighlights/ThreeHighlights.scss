@@ -44,6 +44,14 @@
                 }
 
                 .content-item:last-child {
+                    .content-title {
+                        text-wrap: nowrap;
+
+                        @include mx.phone {
+                            text-wrap: unset;
+                        }
+                    }
+
                     .content-desc {
                         width: fn.toVw(488);
 
