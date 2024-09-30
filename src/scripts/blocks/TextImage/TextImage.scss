@@ -42,6 +42,8 @@
 
                         @include mx.phone {
                             font-size: fn.toVw(11.5);
+                            width: fn.toVw(295);
+                            margin: 0 auto;
                         }
                     }
                 }
