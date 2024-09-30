@@ -97,6 +97,9 @@ export class TransitionDefault extends Transition {
 
     document.querySelector('.content-wrapper > p').textContent = navHeading
     const contactWrapper = document.querySelector('.contact-wrapper')
+    const logo = document.querySelector('.nav-logo')
+
+    logo.href = curLang === 'en' ? '/' : `/${curLang}`
 
     if (contactWrapper) {
       contactWrapper.textContent = navCta
