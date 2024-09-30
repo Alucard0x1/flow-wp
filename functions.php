@@ -97,6 +97,32 @@ add_filter('timber/twig/filters', function ($filters) {
         }
     ];
 
+    $filters['add_alt'] = [
+        'callable' => function ($data) {
+            $jp = get_post_meta($data['jp']['id'], 'alt_desc');
+
+            if (isset($jp[0])) {
+                $jp = $jp[0];
+            } else {
+                $jp = '';
+            }
+
+            $data['jp']['alt_desc'] = $jp;
+
+            $en = get_post_meta($data['en']['id'], 'alt_desc');
+
+            if (isset($en[0])) {
+                $en = $en[0];
+            } else {
+                $en = '';
+            }
+
+            $data['en']['alt_desc'] = $en;
+
+            return $data;
+        }
+    ];
+
     $filters['localize_post'] = [
         'callable' => function ($post_id) {
             $posts = pll_get_post_translations($post_id);

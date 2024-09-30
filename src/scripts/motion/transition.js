@@ -111,7 +111,7 @@ export class TransitionDefault extends Transition {
 
       if (post != null) {
         a.textContent = post.title
-        a.setAttribute('data-desc', post.excerpt)
+        a.setAttribute('data-desc', post.alt_desc)
         a.href = post.link
       }
     })
