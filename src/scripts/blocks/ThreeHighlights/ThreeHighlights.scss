@@ -91,8 +91,9 @@
             .content-wrapper {
                 .content-item {
                     .content-title {
+                        text-wrap: nowrap;
+
                         @include mx.phone {
-                            text-wrap: nowrap;
                             font-size: fn.toVw(23);
                         }
                     }
