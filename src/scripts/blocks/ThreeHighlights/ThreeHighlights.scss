@@ -80,6 +80,14 @@
     .three-highlights.ip2 {
         .container {
             .content-wrapper {
+                .content-item {
+                    .content-title {
+                        @include mx.phone {
+                            text-wrap: nowrap;
+                            font-size: fn.toVw(23);
+                        }
+                    }
+                }
                 .content-item:first-child {
                     .content-desc {
                         width: fn.toVw(396);
