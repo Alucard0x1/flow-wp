@@ -48,6 +48,7 @@
             @include mx.phone {
               font-size: fn.toVw(13);
               line-height: 1.5384615385;
+              text-wrap: nowrap;
             }
           }
 
