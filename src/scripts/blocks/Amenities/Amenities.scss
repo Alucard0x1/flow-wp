@@ -19,6 +19,30 @@
                         text-wrap: wrap;
                     }
                 }
+
+                .content-list {
+                    .content-item {
+                        @include mx.phone {
+                            padding: fn.toVw(28) 0;
+                        }
+
+                        .content-title {
+                            p {
+                            @include mx.phone {
+                                font-size: fn.toVw(14);
+                                font-weight: 400;
+                            }
+                            }
+                        }
+
+                        p {
+                            @include mx.phone {
+                            font-size: fn.toVw(13);
+                            text-wrap: nowrap;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
