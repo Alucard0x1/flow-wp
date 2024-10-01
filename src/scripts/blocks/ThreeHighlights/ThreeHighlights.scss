@@ -159,7 +159,6 @@
                 text-wrap: nowrap;
 
                 @include mx.phone {
-                    text-wrap: unset;
                 }
             }
 
