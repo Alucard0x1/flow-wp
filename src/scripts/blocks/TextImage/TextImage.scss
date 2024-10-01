@@ -116,6 +116,12 @@
                         line-height: fn.toVw(30);
                         text-align: center;
                     }
+
+                    div {
+                        @include mx.phone {
+                            text-align: center;
+                        }
+                    }
                 }
             }
         }
