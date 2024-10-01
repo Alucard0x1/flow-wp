@@ -159,6 +159,7 @@
                 text-wrap: nowrap;
 
                 @include mx.phone {
+                    font-size: fn.toVw(23);
                 }
             }
 
