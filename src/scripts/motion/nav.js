@@ -85,6 +85,11 @@ class Nav {
   defaultState() {
     this.zIndexImage = this.menuIndex || 0;
 
+    const el = document.querySelector('#pll')
+    const imgHeading = el.dataset.imgHeading
+
+    this.popupImageDescText = imgHeading
+
     this.popupContentImageDesc.textContent = this.menuItemActive
       ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
       : this.popupImageDescText;
