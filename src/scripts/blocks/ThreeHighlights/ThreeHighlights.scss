@@ -85,7 +85,7 @@
                         width: fn.toVw(396);
 
                         @include mx.phone {
-                            width: fn.toVw(335);
+                            width: fn.toVw(345);
                             font-size: fn.toVw(14);
                         }
                     }
@@ -133,7 +133,7 @@
 
                         @include mx.phone {
                             font-size: fn.toVw(14);
-                            width: fn.toVw(335);
+                            width: fn.toVw(345);
                         }
                     }
                 }
@@ -147,7 +147,7 @@
                 width: fn.toVw(396);
 
                 @include mx.phone {
-                    width: 100%;
+                    width: fn.toVw(345);
 
                     font-size: fn.toVw(14);
                 }
