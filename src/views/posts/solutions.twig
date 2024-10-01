@@ -15,8 +15,12 @@
 					<a class="title" href="{{ post.link }}">
 						<h3>{{post.title}}</h3>
 					</a>
-					<p>
+					<p class="desktop-only">
 						{{post.excerpt.read_more(false)|raw|nl2br}}
+					</p>
+
+					<p class="phone-only">
+						{{post.meta.responsive_desc|nl2br}}
 					</p>
 
 					<a data-hover='none' href="{{ post.link }}" class="btn btn-rounded light">

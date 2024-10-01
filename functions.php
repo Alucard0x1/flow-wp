@@ -181,6 +181,13 @@ function flow_register_meta()
             'single' => true,
             'type' => 'string',
         ]);
+
+    register_meta('post', 'responsive_desc',
+    [
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string'
+    ]);
 }
 
 add_action('enqueue_block_editor_assets', 'enqueue_blocks');
