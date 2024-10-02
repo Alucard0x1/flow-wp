@@ -90,7 +90,7 @@ class Nav {
 
     this.popupImageDescText = imgHeading
 
-    this.popupContentImageDesc.textContent = this.menuItemActive
+    this.popupContentImageDesc.innerHTML = this.menuItemActive
       ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
       : this.popupImageDescText;
 
@@ -165,7 +165,7 @@ class Nav {
             zIndex: this.zIndexImage,
           });
 
-          this.popupContentImageDesc.textContent = link.dataset.desc;
+          this.popupContentImageDesc.innerHTML = link.dataset.desc;
 
           if (link.classList.contains('menu-4')) {
             this.popupContentImageDesc.classList.add('small')
