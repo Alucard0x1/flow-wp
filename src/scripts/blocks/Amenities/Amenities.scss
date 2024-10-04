@@ -27,18 +27,26 @@
                         }
 
                         .content-title {
-                            p {
-                            @include mx.phone {
-                                font-size: fn.toVw(14);
-                                font-weight: 400;
+                            &.active {
+                                p {
+                                    strong {
+                                        font-weight: 300;
+                                    }
+                                }
                             }
+
+                            p {
+                                @include mx.phone {
+                                    font-size: fn.toVw(14);
+                                    font-weight: 400;
+                                }
                             }
                         }
 
                         p {
                             @include mx.phone {
-                            font-size: fn.toVw(13);
-                            text-wrap: nowrap;
+                                font-size: fn.toVw(13);
+                                text-wrap: nowrap;
                             }
                         }
                     }
