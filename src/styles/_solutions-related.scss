@@ -4,6 +4,10 @@
 @use 'colors' as clr;
 
 :lang(jp) {
+    .solution-related .container .content-item p {
+        text-wrap: nowrap;
+    }
+
     .solution-related {
         .container {
             .content-item {
