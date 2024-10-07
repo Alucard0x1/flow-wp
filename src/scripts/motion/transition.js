@@ -85,6 +85,7 @@ export class TransitionDefault extends Transition {
     const popupRight = JSON.parse(decodeURIComponent(el.dataset.popupRight))
     const footerMenu = JSON.parse(decodeURIComponent(el.dataset.footerMenu))
     const newsletterHeading = el.dataset.newsletterHeading
+    const navContact = el.dataset.navContact
 
     let languages = JSON.parse(decodeURIComponent(pll))
     languages = Object.values(languages)
@@ -96,9 +97,13 @@ export class TransitionDefault extends Transition {
 
     document.querySelector('.content-wrapper > p').textContent = navHeading
     const contactWrapper = document.querySelector('.contact-wrapper')
+    const logo = document.querySelector('.nav-logo')
+
+    logo.href = curLang === 'en' ? '/' : `/${curLang}`
 
     if (contactWrapper) {
       contactWrapper.textContent = navCta
+      contactWrapper.href = navContact
     }
     document.querySelector('.image-wrapper > p').textContent = imgHeading
     document.querySelector('.newsletter > p').textContent = newsletterHeading
@@ -109,7 +114,7 @@ export class TransitionDefault extends Transition {
 
       if (post != null) {
         a.textContent = post.title
-        a.setAttribute('data-desc', post.excerpt)
+        a.setAttribute('data-desc', post.alt_desc)
         a.href = post.link
       }
     })

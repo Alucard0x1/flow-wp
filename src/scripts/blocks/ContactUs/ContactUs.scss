@@ -3,6 +3,20 @@
 @use "../../../styles/mixins" as mx;
 @use "../../../styles/motion" as mtn;
 
+@include mx.jp {
+  .contact-us {
+    .container {
+      .description-1, .description-2 {
+        @include mx.phone {
+          max-width: unset;
+          width: fn.toVw(289);
+          font-size: fn.toVw(16);
+        }
+      }
+    }
+  }
+}
+
 .contact-us {
   color: clr.$brown-10;
 

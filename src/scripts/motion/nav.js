@@ -85,7 +85,12 @@ class Nav {
   defaultState() {
     this.zIndexImage = this.menuIndex || 0;
 
-    this.popupContentImageDesc.textContent = this.menuItemActive
+    const el = document.querySelector('#pll')
+    const imgHeading = el.dataset.imgHeading
+
+    this.popupImageDescText = imgHeading
+
+    this.popupContentImageDesc.innerHTML = this.menuItemActive
       ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
       : this.popupImageDescText;
 
@@ -160,8 +165,7 @@ class Nav {
             zIndex: this.zIndexImage,
           });
 
-          this.popupContentImageDesc.textContent = link.dataset.desc;
-          console.log(link.classList)
+          this.popupContentImageDesc.innerHTML = link.dataset.desc;
 
           if (link.classList.contains('menu-4')) {
             this.popupContentImageDesc.classList.add('small')

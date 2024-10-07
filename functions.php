@@ -25,7 +25,6 @@ function add_to_context($context)
     $context['popupTerms'] = Timber\Timber::get_menu('popup-terms');
     $context['newsletter'] = Timber\Timber::get_menu('newsletter');
     $context['mainNavigationButton'] = Timber\Timber::get_menu('main-navigation-button');
-    
 
     $context['localizedPopupRight'] = Timber\Timber::get_menu('popup-right' . (pll_current_language() == 'en' ? '' : '-ja'));
     $context['localizedFooterMenu'] = Timber\Timber::get_menu('footer-menu' . (pll_current_language() == 'en' ? '' : '-ja'));
@@ -92,6 +91,38 @@ add_filter('timber/twig/filters', function ($filters) {
         'callable' => 'md5'
     ];
 
+    $filters['json'] = [
+        'callable' => function ($data) {
+            return json_encode($data, JSON_PRETTY_PRINT);
+        }
+    ];
+
+    $filters['add_alt'] = [
+        'callable' => function ($data) {
+            $jp = get_post_meta($data['jp']['id'], 'alt_desc');
+
+            if (isset($jp[0])) {
+                $jp = $jp[0];
+            } else {
+                $jp = '';
+            }
+
+            $data['jp']['alt_desc'] = $jp;
+
+            $en = get_post_meta($data['en']['id'], 'alt_desc');
+
+            if (isset($en[0])) {
+                $en = $en[0];
+            } else {
+                $en = '';
+            }
+
+            $data['en']['alt_desc'] = $en;
+
+            return $data;
+        }
+    ];
+
     $filters['localize_post'] = [
         'callable' => function ($post_id) {
             $posts = pll_get_post_translations($post_id);
@@ -120,6 +151,7 @@ function register_custom_post_type()
     pll_register_string('Learn More', 'Learn More');
     pll_register_string('Book a Tour', 'Book a Tour');
     pll_register_string('Discover solutions to optimize how you and your team work', 'Discover solutions to optimize how you and your team work');
+    pll_register_string('/contact-us', '/contact-us');
 
     add_theme_support('post-thumbnails');
 
@@ -134,8 +166,27 @@ function register_custom_post_type()
         'menu_icon' => 'dashicons-groups',
         'public' => true,
         'show_in_rest' => true,
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'has_archive' => false
+    ]);
+
+    flow_register_meta();
+}
+
+function flow_register_meta()
+{
+    register_meta('post', 'alt_desc',
+        [
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ]);
+
+    register_meta('post', 'responsive_desc',
+    [
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string'
     ]);
 }
 
@@ -153,3 +204,4 @@ function wpcf7_before_send_mail_function($contact_form, $abort, $submission)
 }
 
 add_filter('wpcf7_before_send_mail', 'wpcf7_before_send_mail_function', 10, 3);
+

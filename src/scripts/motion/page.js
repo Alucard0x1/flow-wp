@@ -428,106 +428,108 @@ export default class Page {
   }
 
   amnities2() {
-    const section = document.querySelector(".amenities");
+    const sections = document.querySelectorAll(".amenities");
 
-    if (!section) return;
+    sections.forEach(section => {
+      if (!section) return;
 
-    if (isMobileQuery()) {
-      const contentWrapper = document.querySelector(
-        ".amenities .content-wrapper"
-      );
-
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "none",
-        },
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: `+=${contentWrapper.offsetHeight}px`,
-          endTrigger: ".text-image",
-          pin: true,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      tl.to(
-        ".amenities .content-wrapper",
-        {
-          yPercent: -90,
-          duration: 4,
-        },
-        0
-      );
-
-      tl.to(
-        ".amenities .image-wrapper",
-        {
-          // opacity: 0,
-          yPercent: -120,
-          // height: "50%",
-          duration: 0.9,
-        },
-        0
-      );
-    } else {
-      const itemClick = () => {
-        const items = [
-          ...document.querySelectorAll(
-            ".amenities .content-list .content-item"
-          ),
-        ];
-
-        if (!items.length) return;
-
-        const desc = document.querySelector(
-          ".amenities .content-description-main"
+      if (isMobileQuery()) {
+        const contentWrapper = section.querySelector(
+          ".content-wrapper"
         );
 
-        items.forEach((el, index) => {
-          const title = el.querySelector(".content-title");
-          const itemDesc = el.querySelector(".content-description");
+        const tl = gsap.timeline({
+          defaults: {
+            ease: "none",
+          },
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: `+=${contentWrapper.offsetHeight}px`,
+            endTrigger: ".text-image",
+            pin: true,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        });
 
-          if (index === 0) {
-            title.classList.add("active");
-            desc.innerHTML = itemDesc.innerHTML;
-            desc.setAttribute("data-index", index);
-          }
+        tl.to(
+          section.querySelector(".content-wrapper"),
+          {
+            yPercent: -90,
+            duration: 4,
+          },
+          0
+        );
 
-          title.addEventListener("click", () => {
-            title.classList.add("active");
-            desc.innerHTML = itemDesc.innerHTML;
-            desc.setAttribute("data-index", index);
+        tl.to(
+          section.querySelector(".image-wrapper"),
+          {
+            // opacity: 0,
+            yPercent: -120,
+            // height: "50%",
+            duration: 0.9,
+          },
+          0
+        );
+      } else {
+        const itemClick = () => {
+          const items = [
+            ...section.querySelectorAll(
+              ".content-list .content-item"
+            ),
+          ];
 
-            gsap.fromTo(
-              desc,
-              {
-                opacity: 0,
-                maskImage:
-                  "linear-gradient(170deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%)",
-              },
-              {
-                opacity: 1,
-                maskImage:
-                  "linear-gradient(170deg, rgb(0, 0, 0) 100%, rgba(255, 255, 255, 0) 180%)",
-                duration: 3.0,
-                ease: "power4.out",
-              }
-            );
+          if (!items.length) return;
 
-            // make rest all inactive
-            items.forEach((item) => {
-              if (item !== el) {
-                item.querySelector(".content-title").classList.remove("active");
-              }
+          const desc = section.querySelector(
+            ".content-description-main"
+          );
+
+          items.forEach((el, index) => {
+            const title = el.querySelector(".content-title");
+            const itemDesc = el.querySelector(".content-description");
+
+            if (index === 0) {
+              title.classList.add("active");
+              desc.innerHTML = itemDesc.innerHTML;
+              desc.setAttribute("data-index", index);
+            }
+
+            title.addEventListener("click", () => {
+              title.classList.add("active");
+              desc.innerHTML = itemDesc.innerHTML;
+              desc.setAttribute("data-index", index);
+
+              gsap.fromTo(
+                desc,
+                {
+                  opacity: 0,
+                  maskImage:
+                    "linear-gradient(170deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%)",
+                },
+                {
+                  opacity: 1,
+                  maskImage:
+                    "linear-gradient(170deg, rgb(0, 0, 0) 100%, rgba(255, 255, 255, 0) 180%)",
+                  duration: 3.0,
+                  ease: "power4.out",
+                }
+              );
+
+              // make rest all inactive
+              items.forEach((item) => {
+                if (item !== el) {
+                  item.querySelector(".content-title").classList.remove("active");
+                }
+              });
             });
           });
-        });
-      };
+        };
 
-      itemClick();
-    }
+        itemClick();
+      }
+    })
   }
 
   sideimage() {
