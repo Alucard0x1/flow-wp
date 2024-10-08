@@ -686,12 +686,6 @@
                     a {
                         margin: 0 fn.toVw(20);
 
-                        &:first-child {
-                            @include mx.phone {
-                                font-size: 2.0587677725svh
-                            }
-                        }
-
                         @include mx.phone {
                             margin: 0;
                         }

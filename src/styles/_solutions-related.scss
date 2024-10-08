@@ -4,6 +4,14 @@
 @use 'colors' as clr;
 
 :lang(jp) {
+    .solution-related .container .content-item p {
+        text-wrap: nowrap;
+
+        @include mx.phone {
+            font-size: fn.toVw(14);
+        }
+    }
+
     .solution-related {
         .container {
             .content-item {
