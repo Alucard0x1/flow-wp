@@ -3,6 +3,12 @@
 @use '../../../styles/colors' as clr;
 
 :lang(jp) {
+    .three-highlights .container .content-wrapper .content-item:first-child .btn {
+        @include mx.phone {
+            margin-top: fn.toVw(16);
+        }
+    }
+
     .three-highlights.fio1 {
         .container {
             .content-wrapper {
