@@ -228,3 +228,11 @@ a {
     display: block;
   }
 }
+
+:lang(jp) .text-intro.opi1 .container p {
+  font-size: fn.toVw(16);
+
+  @include mx.phone {
+    font-size: fn.toVw(13);
+  }
+}
