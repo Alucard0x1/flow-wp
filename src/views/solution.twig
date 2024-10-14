@@ -6,14 +6,14 @@
 	<section class="solution-related" data-carousel>
 		<div data-hover='DRAG' class="container" data-carousel-scroller>
 			{% for post in relatedPosts %}
-				<div class="content-item">
+				<div class="content-item {{ post.slug }}">
 					<div class="image-wrapper">
 						<a href="{{post.link}}">
 							<img src="{{ post.thumbnail }}" alt="">
 						</a>
 					</div>
 
-					<a href="{{ post.link }}" class="pill">Learn More</a>
+					<a href="{{ post.link }}" class="pill">{{ 'Learn More'|pll_e }}</a>
 
 					<h3>
 						{{post.title}}
@@ -21,7 +21,7 @@
 
 
 					<p>
-						{{post.excerpt}}
+						{{post.excerpt|raw|nl2br|replace({'人までの<br />': '人までの'})}}
 					</p>
 
 					<div data-hover='none'>

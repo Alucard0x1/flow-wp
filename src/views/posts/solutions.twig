@@ -1,7 +1,7 @@
 <section class="solutions-list" data-carousel>
 	<div class="container" data-hover='DRAG' data-carousel-scroller>
 		{% for post in posts %}
-			<div class="content-item">
+			<div class="content-item solution-{{loop.index}} u{{ post.title|md5 }}">
 				<div class="image-wrapper">
 					<a href="{{ post.link }}">
 						<img src="{{ post.thumbnail.src }}" alt="{{ post.title }}">
@@ -15,8 +15,12 @@
 					<a class="title" href="{{ post.link }}">
 						<h3>{{post.title}}</h3>
 					</a>
-					<p>
+					<p class="desktop-only">
 						{{post.excerpt.read_more(false)|raw|nl2br}}
+					</p>
+
+					<p class="phone-only">
+						{{post.meta.responsive_desc|nl2br}}
 					</p>
 
 					<a data-hover='none' href="{{ post.link }}" class="btn btn-rounded light">

@@ -10,6 +10,7 @@
 @use "nav";
 @use "solutions-list";
 @use "cursor";
+@use "solutions-related";
 
 *,
 *::after,
@@ -45,11 +46,18 @@ body {
   }
 }
 
+:lang(jp) {
+  .text-category {
+    font-family: "Zen Antique", serif;
+  }
+}
+
 .text-category {
   font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
   opacity: 0.8;
 
   &:before,
+
   &:after {
     font-family: "Bodoni 72", Arial, Helvetica, sans-serif;
   }
@@ -81,6 +89,13 @@ a {
   height: 100vh;
   z-index: 10;
   background-color: clr.$brown-35;
+}
+
+:lang(jp) {
+  body {
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+  }
 }
 
 .solution-related {
@@ -195,5 +210,29 @@ a {
         }
       }
     }
+  }
+}
+
+.desktop-only {
+  display: block;
+
+  @include mx.phone {
+    display: none;
+  }
+}
+
+.phone-only {
+  display: none;
+
+  @include mx.phone {
+    display: block;
+  }
+}
+
+:lang(jp) .text-intro.opi1 .container p {
+  font-size: fn.toVw(16);
+
+  @include mx.phone {
+    font-size: fn.toVw(13);
   }
 }

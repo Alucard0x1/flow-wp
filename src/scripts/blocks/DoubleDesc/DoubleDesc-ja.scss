@@ -1,0 +1,15 @@
+@use '../../../styles/functions' as fn;
+
+:lang(jp) {
+    .double-desc {
+        .container {
+            .content-start p {
+                max-width: fn.toVw(826);
+            }
+
+            .content-end p {
+                max-width: fn.toVw(955);
+            }
+        }
+    }
+}

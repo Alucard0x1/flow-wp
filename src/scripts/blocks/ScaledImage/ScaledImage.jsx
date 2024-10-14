@@ -43,8 +43,12 @@ const ScaledImage = ({ attributes, setAttributes, isSelected }) => {
                         <Text tagName="p" className="text-category" value={attributes.category} onChange={(category) => setAttributes({ category })} />
                     </div>
 
-                    <div class="description-wrapper">
+                    <div class="description-wrapper desktop-only">
                         <Text tagName="p" className="text-description" value={attributes.description} onChange={(description) => setAttributes({ description })} />
+                    </div>
+
+                    <div class="description-wrapper phone-only">
+                        <Text tagName="p" className="text-description" value={attributes.descriptionM} onChange={(descriptionM) => setAttributes({ descriptionM })} />
                     </div>
                 </div>
             </div>

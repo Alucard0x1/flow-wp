@@ -21,7 +21,7 @@ const transitionLeave = () => {
 
 const globalLeave = async (animation = true) => {
   Navbar.close();
-  
+
   if (animation) {
     return new Promise((resolve) => {
       const tlEnd = gsap.timeline({
@@ -74,6 +74,67 @@ export class TransitionDefault extends Transition {
     await globalEnter();
 
     await delay(200);
+
+    const langItem = document.querySelector('.lang-item').firstElementChild;
+    const el = document.querySelector('#pll')
+    const pll = el.dataset.lang
+    const curLang = el.dataset.activeLang
+    const navHeading = el.dataset.navHeading
+    const navCta = el.dataset.navCta
+    const imgHeading = el.dataset.imgHeading
+    const popupRight = JSON.parse(decodeURIComponent(el.dataset.popupRight))
+    const footerMenu = JSON.parse(decodeURIComponent(el.dataset.footerMenu))
+    const newsletterHeading = el.dataset.newsletterHeading
+    const navContact = el.dataset.navContact
+
+    let languages = JSON.parse(decodeURIComponent(pll))
+    languages = Object.values(languages)
+
+    langItem.textContent = languages[0].slug
+    langItem.href = languages[0].url
+
+    document.firstElementChild.setAttribute('lang', curLang)
+
+    document.querySelector('.content-wrapper > p').textContent = navHeading
+    const contactWrapper = document.querySelector('.contact-wrapper')
+    const logo = document.querySelector('.nav-logo')
+
+    logo.href = curLang === 'en' ? '/' : `/${curLang}`
+
+    if (contactWrapper) {
+      contactWrapper.textContent = navCta
+      contactWrapper.href = navContact
+    }
+    document.querySelector('.image-wrapper > p').textContent = imgHeading
+    document.querySelector('.newsletter > p').textContent = newsletterHeading
+
+    document.querySelectorAll('.menu-left-link').forEach((el) => {
+      const a = el.firstElementChild
+      const post = JSON.parse(decodeURIComponent(a.dataset.lang))[curLang]
+
+      if (post != null) {
+        a.textContent = post.title
+        a.setAttribute('data-desc', post.alt_desc)
+        a.href = post.link
+      }
+    })
+
+    document.querySelectorAll('.menu-right-link').forEach((el, index) => {
+      const a = el.firstElementChild
+
+      const post = popupRight.items[index]
+      a.textContent = post.post_title
+      a.href = post.url
+    })
+
+    document.querySelectorAll('.footer-left .menu-nav div').forEach((el, index) => {
+      const a = el.firstElementChild
+
+      const post = footerMenu.items[index]
+      console.log(post)
+      a.textContent = post.post_title
+      a.href = post.url
+    })
 
     done();
   }

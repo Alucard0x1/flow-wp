@@ -1,0 +1,24 @@
+@use '../../../styles/functions' as fn;
+@use '../../../styles/mixins' as mx;
+
+:lang(jp) .scaled-image {
+    &-content {
+        .description-wrapper {
+            width: fn.toVw(588);
+            flex: 0 0 fn.toVw(588);
+
+            .text-description {
+                font-size: fn.toVw(16);
+
+                @include mx.phone {
+                    font-size: fn.toVw(13);
+                }
+            }
+
+            @include mx.phone {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    }
+}

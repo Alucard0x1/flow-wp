@@ -2,6 +2,202 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+:lang(jp) {
+    .three-highlights .container .content-wrapper .content-item:first-child .btn {
+        @include mx.phone {
+            margin-top: fn.toVw(16);
+        }
+    }
+
+    .three-highlights.fio1 {
+        .container {
+            .content-wrapper {
+                .content-item:first-child {
+                    .content-title {
+                        @include mx.phone {
+                            font-size: fn.toVw(23);
+                        }
+                    }
+
+                    .content-desc {
+                        width: fn.toVw(396);
+
+                        @include mx.phone {
+                            width: fn.toVw(335);
+                            font-size: fn.toVw(14);
+                        }
+                    }
+                }
+
+                .content-item:last-child {
+                    .content-title {
+                        @include mx.phone {
+                            text-wrap: nowrap;
+                            font-size: fn.toVw(23);
+                        }
+                    }
+
+                    .content-desc {
+                        width: fn.toVw(488);
+
+                        @include mx.phone {
+                            width: fn.toVw(349);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .three-highlights.iro1 {
+        .container {
+            .content-wrapper {
+                .content-item {
+                    .content-title {
+                        @include mx.phone {
+                            text-wrap: nowrap;
+                            font-size: fn.toVw(23);
+                        }
+                    }
+                }
+
+                .content-item:first-child {
+                    .content-desc {
+                        width: fn.toVw(396);
+
+                        @include mx.phone {
+                            width: fn.toVw(335);
+                        }
+                    }
+                }
+
+                .content-item:last-child {
+                    .content-title {
+                        text-wrap: nowrap;
+
+                        @include mx.phone {
+                            text-wrap: unset;
+                        }
+                    }
+
+                    .content-desc {
+                        width: fn.toVw(488);
+
+                        @include mx.phone {
+                            width: fn.toVw(349);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .three-highlights.ip2 {
+        .container {
+            .content-wrapper {
+                .content-item {
+                    .content-title {
+                        text-wrap: nowrap;
+
+                        @include mx.phone {
+                            font-size: fn.toVw(23);
+                        }
+                    }
+                }
+                .content-item:first-child {
+                    .content-desc {
+                        width: fn.toVw(396);
+
+                        @include mx.phone {
+                            width: fn.toVw(345);
+                            font-size: fn.toVw(14);
+                        }
+                    }
+                }
+
+                .content-item:nth-child(2) {
+                    .content-desc {
+                        width: fn.toVw(488);
+
+                        @include mx.phone {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .three-highlights.e98u32ue {
+        .container {
+            .content-wrapper {
+                .content-item {
+                    &:last-child {
+                        .content-desc {
+                            width: fn.toVw(486);
+
+                            @include mx.phone {
+                                width: fn.toVw(344);
+                            }
+                        }
+                    }
+
+                    .content-title {
+                        text-wrap: nowrap;
+
+                        @include mx.phone {
+                            font-size: fn.toVw(23);
+                        }
+                    }
+
+                    .content-desc {
+                        width: fn.toVw(396);
+                        font-size: fn.toVw(16);
+                        font-weight: 400;
+
+                        @include mx.phone {
+                            font-size: fn.toVw(14);
+                            width: fn.toVw(345);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .three-highlights.weop1 {
+        .content-item:nth-child(1) {
+            .content-desc {
+                width: fn.toVw(396);
+
+                @include mx.phone {
+                    width: fn.toVw(345);
+
+                    font-size: fn.toVw(14);
+                }
+            }
+        }
+
+        .content-item:nth-child(2) {
+            .content-title {
+                text-wrap: nowrap;
+
+                @include mx.phone {
+                    font-size: fn.toVw(23);
+                }
+            }
+
+            .content-desc {
+                width: fn.toVw(488);
+
+                @include mx.phone {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
 .three-highlights {
     .container {
         display: flex;

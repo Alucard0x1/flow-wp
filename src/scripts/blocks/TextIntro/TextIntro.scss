@@ -2,6 +2,28 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+:lang(jp) {
+    .text-intro.opi1 {
+        .container {
+            h2 {
+                max-width: unset;
+                font-size: fn.toVw(45);
+                font-weight: 400;
+
+                @include mx.phone {
+                    font-size: fn.toVw(20);
+                }
+            }
+
+            p {
+                max-width: unset;
+                font-size: fn.toVw(13);
+                font-weight: 400;
+            }
+        }
+    }
+}
+
 .text-intro {
     &.before-solutions-list {
         .container {

@@ -3,6 +3,22 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+@include mx.jp {
+    .map-intro {
+        .container {
+            .image-wrapper {
+                .description-wrapper {
+                    h2 {
+                        @include mx.phone {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 #editor {
     .map-intro {
         .block-editor-url-input__button {

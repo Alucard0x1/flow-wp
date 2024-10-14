@@ -19,6 +19,10 @@ const blockData = {
             type: 'string',
             default: 'Description'
         },
+        descriptionM: {
+            type: 'string',
+            default: 'Description M'
+        },
         link: {
             type: 'object',
             default: {

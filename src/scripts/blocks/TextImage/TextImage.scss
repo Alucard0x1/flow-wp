@@ -3,6 +3,131 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/colors' as clr;
 
+@include mx.jp {
+    .text-image {
+        &.gr4 {
+            .container {
+                .content-wrapper {
+                    h2 {
+                        margin: 0 fn.toVw(26);
+                        text-align: left;
+                    }
+                }
+            }
+
+            .description-inner {
+                padding: fn.toVw(45) fn.toVw(30) fn.toVw(45) fn.toVw(56.48);
+
+                @include mx.phone {
+                    padding: fn.toVw(42) fn.toVw(13);
+                }
+
+                p {
+                    font-size: fn.toVw(16);
+
+                    @include mx.phone {
+                        text-align: center;
+                        font-size: fn.toVw(13);
+                    }
+                }
+            }
+        }
+
+        &.gr5 {
+            &.left1 {
+                .description-inner.left {
+                    p {
+                        text-align: left;
+                        font-size: fn.toVw(16);
+
+                        @include mx.phone {
+                            font-size: fn.toVw(11.5);
+                            width: fn.toVw(295);
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+
+            .container {
+                .content-wrapper {
+                    h2 {
+                        margin: 0 fn.toVw(26);
+                        text-align: left;
+                    }
+                }
+            }
+
+            .description-inner.left {
+                @include mx.phone {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                p {
+                    @include mx.phone {
+                        font-size: fn.toVw(11.5);
+                        font-weight: 400;
+                        line-height: fn.toVw(20);
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .container {
+            margin: 0 fn.toVw(69) 0 fn.toVw(144);
+
+            @include mx.phone {
+                margin: 0 fn.toVw(39) 0 fn.toVw(45);
+                margin: 0;
+            }
+
+            .content-wrapper {
+                margin-left: 0;
+
+                @include mx.phone {
+                    margin: 0;
+                }
+
+                h2 {
+                    font-size: fn.toVw(64);
+                    max-width: unset;
+                    border-bottom: 1px solid clr.$white;
+                    width: fit-content;
+                    padding-bottom: fn.toVw(16);
+
+                    @include mx.phone {
+                        font-size: fn.toVw(22);
+                        text-align: center;
+                        margin: 0 auto;
+                    }
+                }
+
+                h3 {
+                    margin-left: auto;
+                    max-width: fn.toVw(925);
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                    line-height: fn.toVw(60);
+
+                    @include mx.phone {
+                        font-size: fn.toVw(12);
+                        line-height: fn.toVw(30);
+                        text-align: center;
+                    }
+
+                    div {
+                        @include mx.phone {
+                            text-align: center !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .text-image {
     padding: fn.toVw(170) 0 0;
     background-color: clr.$brown-15;

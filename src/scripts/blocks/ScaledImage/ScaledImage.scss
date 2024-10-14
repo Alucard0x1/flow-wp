@@ -141,3 +141,81 @@
         }
     }
 }
+
+@include mx.jp {
+    .scaled-image {
+        &-content {
+            padding-top: fn.toVw(79);
+            margin-left: fn.toVw(138);
+
+            @include mx.phone {
+                padding-top: 0;
+                margin: fn.toVw(543) auto 0;
+            }
+        }
+
+        .container {
+            h2 {
+                @include mx.phone {
+                    font-size: fn.toVw(26);
+                }
+            }
+
+            .category-wrapper {
+                flex: 0 0 fn.toVw(143);
+                width: fn.toVw(143);
+
+                @include mx.phone {
+                    flex: 1;
+                    width: 100%;
+                }
+
+                .text-category {
+                    @include mx.phone {
+                        font-size: fn.toVw(14);
+                        font-weight: 400;
+                        line-height: fn.toVw(24);
+                        text-transform: capitalize;
+                        text-align: center;
+                        position: relative;
+                        width: fit-content;
+                        margin: 0 auto;
+
+                        &:before {
+                            position: absolute;
+                            bottom: fn.toVw(-8);
+                            left: 50%;
+
+                            transform: translateX(-50%);
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+
+            .description-wrapper {
+                padding-top: 1em;
+
+                flex: 0 0 fn.toVw(962);
+                width: fn.toVw(962);
+
+                @include mx.phone {
+                    flex: 1;
+                    width: 100vw;
+                    margin-left: fn.toVw(-47);
+                }
+
+                .text-description {
+                    font-size: fn.toVw(19);
+
+                    @include mx.phone {
+                        font-size: fn.toVw(12);
+                        line-height: fn.toVw(20);
+                        font-weight: 400;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

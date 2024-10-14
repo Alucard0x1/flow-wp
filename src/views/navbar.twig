@@ -15,7 +15,7 @@
 		</div>
 
 		{% for menu in mainNavigationButton.items %}
-			<a class="contact-wrapper" href="{{menu.link}}">{{menu.title}}</a>
+			<a class="contact-wrapper" href="{{'/contact-us'|pll_e}}">{{menu.title}}</a>
 		{% endfor %}
 		{# <a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
 					{{ 'Book a Tour'|pll_e }}
@@ -29,7 +29,7 @@
 	<div class="container">
 		<div class="container-bg"></div>
 		<div class="image-wrapper">
-			<p>Discover solutions to optimize how you and your team work</p>
+			<p>{{ 'Discover solutions to optimize how you and your team work'|pll_e }}</p>
 			<div class="image">
 				<img src="{{site.theme.link}}/assets/images/nav-default.png">
 			</div>
@@ -44,7 +44,7 @@
 					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.excerpt.read_more(false)}}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.meta.alt_desc}}" data-lang="{{menu.master_object.id|localize_post|add_alt|json_encode|url_encode}}" class="menu-{{ loop.index }}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>

@@ -18,6 +18,16 @@
     }
 }
 
+@include mx.jp {
+    .hero.basic {
+        .hero-content {
+            h1 {
+                font-family: 'Bodoni 72', Arial, Helvetica, sans-serif;
+            }
+        }
+    }
+}
+
 .hero {
     height: 100vh;
     width: 100%;

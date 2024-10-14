@@ -2,6 +2,203 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+@include mx.jp {
+    .double-desc.oie1 {
+        .container {
+
+            .content-start,
+            .content-end {
+                p {
+                    max-width: unset;
+                    font-weight: 400;
+                }
+            }
+
+            .content-start {
+                margin-left: auto;
+                text-align: right;
+
+                @include mx.phone {
+                    margin: 0;
+                }
+
+                p {
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                    }
+                }
+            }
+
+            .content-end {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .double-desc.diou1 {
+        .container {
+
+            .content-start,
+            .content-end {
+                margin-left: 0;
+
+                p {
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                    }
+                }
+            }
+
+            .content-end {
+                p {
+                    max-width: unset;
+
+                    @include mx.phone {
+                        margin-left: fn.toVw(-31);
+                        width: 100vw;
+                        padding-left: fn.toVw(23);
+                        padding-right: fn.toVw(15);
+                    }
+                }
+            }
+        }
+    }
+
+    .double-desc.asd32 {
+        .container {
+            .content-start {
+                margin-left: 0;
+
+                p {
+                    max-width: fn.toVw(1024);
+                    font-size: fn.toVw(36);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        max-width: unset;
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: 100vw;
+                        margin-left: fn.toVw(-31);
+                    }
+                }
+            }
+
+            .content-end {
+                @include mx.phone {
+                    margin: 0;
+                }
+
+                p {
+                    margin-left: auto;
+                    max-width: fn.toVw(901);
+                    font-size: fn.toVw(36);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: 100vw;
+                        margin: 0 auto;
+                        line-height: fn.toVw(40);
+                        margin-left: fn.toVw(-31);
+
+                    }
+                }
+            }
+        }
+    }
+
+    .double-desc.asd31 {
+        .container {
+            .content-start {
+                margin-left: 0;
+
+                p {
+                    max-width: fn.toVw(1024);
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        max-width: unset;
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: 100vw;
+                        margin-left: fn.toVw(-31);
+                    }
+                }
+            }
+
+            .content-end {
+                p {
+                    margin-left: auto;
+                    max-width: fn.toVw(955);
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(13);
+                        text-align: center;
+                        width: fn.toVw(298);
+                        margin: 0 auto;
+                        line-height: fn.toVw(40);
+                    }
+                }
+            }
+        }
+    }
+
+    .double-desc.dfhiu1 {
+        .container {
+            .content-start {
+                margin-left: fn.toVw(377 - 50);
+                margin-right: fn.toVw(-50);
+
+                @include mx.phone {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+
+                p {
+                    max-width: unset;
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(15);
+                        text-align: center;
+                    }
+                }
+            }
+
+            .content-end {
+                margin-left: fn.toVw(36);
+
+                @include mx.phone {
+                    margin: 0 0 0 fn.toVw(-31);
+                }
+
+                p {
+                    font-size: fn.toVw(30);
+                    font-weight: 400;
+                    max-width: unset;
+
+                    @include mx.phone {
+                        font-size: fn.toVw(15);
+                        text-align: center;
+                        width: 100vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .double-desc.special-margin .container .content-end {
     margin-left: fn.toVw(557);
 
@@ -202,6 +399,7 @@
                     }
                 }
             }
+
             .slider {
                 position: relative;
                 height: fit-content;
@@ -335,7 +533,7 @@
                         border-radius: fn.toVw(7);
                     }
                 }
-                
+
                 img,
                 video {
                     width: 100%;

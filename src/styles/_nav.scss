@@ -3,6 +3,18 @@
 @use '../styles/colors' as clr;
 @use '../styles/motion' as mtn;
 
+@include mx.jp {
+    .nav-popup {
+        .container {
+            .image-wrapper {
+                p {
+                    font-size: fn.toVw(14);
+                }
+            }
+        }
+    }
+}
+
 .nav {
     position: fixed;
     top: 0;
@@ -245,11 +257,8 @@
 
         .lang-item {
             display: block;
-            padding: fn.toVw(20) fn.toVw(26);
-            border-radius: fn.toVw(10);
 
             color: clr.$brown-10;
-            background-color: clr.$brown-50;
             text-transform: uppercase;
             margin-left: fn.toVw(8);
 
@@ -258,13 +267,54 @@
             }
 
             a {
+                background-color: clr.$brown-50;
+                border-radius: fn.toVw(10);
+                display: block;
+                padding: fn.toVw(20) fn.toVw(26);
                 color: clr.$brown-10;
                 font-size: fn.toVw(14);
+                transition: background-color 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background-color: #5D524A;
+                    color: #FFFFFF;
+                }
             }
         }
     }
 }
 
+:lang(jp) {
+    .nav-popup .container .image-wrapper p {
+        white-space: pre-line;
+
+        &.small {
+            font-size: fn.toVw(14);
+        }
+    }
+
+    .nav-popup .container .content-wrapper .nav-popup-menu {
+        .menu-left {
+            margin-right: fn.toVw(60);
+
+            @include mx.phone {
+                margin-right: 0;
+            }
+        }
+
+        @include mx.phone {
+
+            .menu-left-link a {
+                font-size: 3.1341199711svh;
+            }
+
+            .menu-right-link a {
+                font-size: 2.8341199711svh;
+            }
+        }
+
+    }
+}
 
 .nav-popup {
     pointer-events: none;
@@ -635,12 +685,6 @@
 
                     a {
                         margin: 0 fn.toVw(20);
-
-                        &:first-child {
-                            @include mx.phone {
-                                font-size: 2.0587677725svh
-                            }
-                        }
 
                         @include mx.phone {
                             margin: 0;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{function('pll_current_language')}}">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,10 +36,11 @@ f.parentNode.insertBefore(j, f);
 		{% include 'cursor.twig' %}
 		<main class="main" data-taxi>
 			<div data-taxi-view> {% block content %}{% endblock %}
-				</div>
-			</main>
-			{{ function('wp_footer') }}
+				<div id="pll" data-lang="{{ function('pll_the_languages', { 'raw': true, 'hide_current': 1 })|json_encode|url_encode }}" data-active-lang="{{function('pll_current_language')}}" data-nav-heading="{{'Workspace Solutions'|pll_e}}" data-nav-cta="{{ 'Book a Tour'|pll_e }}" data-img-heading="{{'Discover solutions to optimize how you and your team work'|pll_e}}" data-popup-right="{{ localizedPopupRight|json_encode|url_encode }}" data-footer-menu="{{ localizedFooterMenu|json_encode|url_encode }}" data-newsletter-heading="{{'Subscribe for the latest Flow updates.'|pll_e}}" data-nav-contact="{{'/contact-us'|pll_e}}"></div>
+			</div>
+		</main>
+		{{ function('wp_footer') }}
 
-			{% include 'footer.twig' %}
-		</body>
-	</html>
+		{% include 'footer.twig' %}
+	</body>
+</html>

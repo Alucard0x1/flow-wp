@@ -3,6 +3,59 @@
 @use '../../../styles/mixins' as mx;
 @use '../../../styles/motion' as mtn;
 
+:lang(jp) {
+    .amenities {
+        .container {
+            .content-wrapper {
+                h2 {
+                    max-width: unset;
+                }
+
+                .content-description {
+                    font-size: fn.toVw(15);
+                    text-wrap: nowrap;
+
+                    @include mx.phone {
+                        text-wrap: wrap;
+                    }
+                }
+
+                .content-list {
+                    .content-item {
+                        @include mx.phone {
+                            padding: fn.toVw(28) 0;
+                        }
+
+                        .content-title {
+                            &.active {
+                                p {
+                                    strong {
+                                        font-weight: 300;
+                                    }
+                                }
+                            }
+
+                            p {
+                                @include mx.phone {
+                                    font-size: fn.toVw(14);
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+
+                        p {
+                            @include mx.phone {
+                                font-size: fn.toVw(13);
+                                text-wrap: nowrap;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 #editor {
     .amenities {
         .container {
@@ -269,5 +322,15 @@
                 }
             }
         }
+    }
+}
+
+:lang(jp) .amenities .container .content-wrapper .content-list .content-item.even {
+    flex: 0 0 fn.toVw(221 + 16);
+    width: fn.toVw(221 + 16);
+
+    @include mx.phone {
+        flex: unset;
+        width: 100%;
     }
 }
