@@ -6,6 +6,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 class Nav {
   constructor() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.initialize());
+    } else {
+      this.initialize();
+    }
+  }
+
+  initialize() {
     this.nav = document.querySelector(".nav");
     if (!this.nav) return;
 
@@ -24,22 +33,30 @@ class Nav {
       this.popup.querySelector(".content-wrapper"),
     ];
 
+    // Safely get elements and handle null cases
+    const contentWrapperP = this.popup.querySelector(".content-wrapper p");
     this.popupContentMenuLeft = [
-      this.popup.querySelector(".content-wrapper p"),
+      contentWrapperP,
       this.menuLink,
     ];
-    this.popupContentMenuRight = [
-      this.popup.querySelectorAll(".menu-right .menu-right-link"),
-    ];
-    this.popupContentMenuFooter = [
-      this.popup.querySelectorAll(".nav-popup-footer a"),
-    ];
+
+    const menuRightLinks = this.popup.querySelectorAll(".menu-right .menu-right-link");
+    this.popupContentMenuRight = menuRightLinks ? [menuRightLinks] : [];
+
+    const footerLinks = this.popup.querySelectorAll(".nav-popup-footer a");
+    this.popupContentMenuFooter = footerLinks ? [footerLinks] : [];
+
     this.popupContentBorder = this.popup.querySelector(
       ".content-wrapper .border"
     );
     this.popupContentImageDesc = this.popup.querySelector(".image-wrapper p");
     this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
-    if (!this.popupContentImageDesc || !this.popupContentImage) return;
+    
+    // Early return if required elements are missing
+    if (!this.popupContentImageDesc || !this.popupContentImage) {
+      console.warn('Required elements not found in the navigation');
+      return;
+    }
 
     this.popupContentImages = [
       this.popupContentImageDesc,
@@ -53,6 +70,9 @@ class Nav {
     this.zIndexImage = 0;
     this.menuIndex = null;
     this.popupImageDescText = this.popupContentImageDesc.textContent;
+
+    // Initialize events after all elements are set
+    this.init();
   }
 
   init() {
