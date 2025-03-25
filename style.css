@@ -107,3 +107,262 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
+/* Add this to your existing CSS */
+.elementor-full-width {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.elementor-full-width .site-main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Ensure Elementor sections can go full width */
+body.elementor-page #page {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body.elementor-page #content {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure Elementor sections stretch properly */
+.elementor-section-wrap {
+    width: 100%;
+}
+
+/* Single Post Styles */
+.single-post #primary {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.single-post .site-main {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.single-post .elementor-section-wrap {
+    width: 100%;
+}
+
+.single-post .elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.single-post .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.single-post .entry-header {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.single-post .entry-title {
+    margin: 0 0 0.5em;
+    font-size: 2.5em;
+    line-height: 1.2;
+}
+
+.single-post .entry-meta {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 2em;
+}
+
+.single-post .entry-meta time {
+    margin-right: 1em;
+}
+
+.single-post .entry-content {
+    line-height: 1.8;
+    margin-bottom: 2em;
+}
+
+.single-post .entry-content p {
+    margin-bottom: 1.5em;
+}
+
+.single-post .entry-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Comments Area */
+.comments-area {
+    margin-top: 3em;
+    padding-top: 2em;
+    border-top: 1px solid #eee;
+}
+
+/* Ensure content width on different screen sizes */
+@media (max-width: 1240px) {
+    .single-post .elementor-section.elementor-section-boxed > .elementor-container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .single-post .container {
+        padding: 20px;
+    }
+    
+    .single-post .entry-title {
+        font-size: 2em;
+    }
+}
+
+/* Custom Pagination Styles */
+.jet-smart-filters-pagination {
+    margin-top: 30px;
+}
+
+/* Items info text styling */
+.jet-filters-pagination__items-info {
+    display: block !important;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+/* Pagination container */
+.jet-filters-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background-color: #F6F2EE;
+    padding: 15px;
+}
+
+/* Individual page numbers */
+.jet-filters-pagination__item {
+    margin: 0 !important;
+}
+
+/* Common styles for all links */
+.jet-filters-pagination__link,
+.jet-filters-pagination__dots {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #333 !important;
+    background: transparent !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+/* Active page */
+.jet-filters-pagination__current .jet-filters-pagination__link {
+    background-color: #4A4A4A !important;
+    color: #fff !important;
+    border-radius: 4px;
+}
+
+/* Prev/Next buttons */
+.jet-filters-pagination__prev,
+.jet-filters-pagination__next {
+    font-size: 14px;
+}
+
+.jet-filters-pagination__prev .jet-filters-pagination__link,
+.jet-filters-pagination__next .jet-filters-pagination__link {
+    color: #333 !important;
+}
+
+/* Show prev/next text */
+.jet-filters-pagination__prev-text,
+.jet-filters-pagination__next-text {
+    display: inline-block;
+}
+
+/* Dots */
+.jet-filters-pagination__dots {
+    color: #333;
+}
+
+/* Hover state */
+.jet-filters-pagination__link:hover:not(.jet-filters-pagination__current .jet-filters-pagination__link) {
+    color: #666 !important;
+}
+
+/* Optional: Add responsive styles */
+@media (max-width: 767px) {
+    .jet-filters-pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .jet-filters-pagination__items-info {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Language Switcher */
+.lang-switcher {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.lang-switcher .lang-item {
+    text-transform: uppercase;
+    color: #5D524A;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.lang-switcher .lang-item:hover {
+    color: #000;
+}
+
+.lang-picker-phone .lang-switcher {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .nav-right .lang-switcher {
+        display: none;
+    }
+}
+
+/* Language Switcher Styles */
+.nav-right .lang-item.contact-wrapper {
+    margin-left: 10px;
+}
+
+.nav-right .contact-wrapper.lang-item:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Mobile Language Switcher */
+.lang-picker-phone .lang-item.contact-wrapper {
+    display: inline-block;
+    margin: 5px;
+}
