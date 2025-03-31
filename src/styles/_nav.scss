@@ -392,7 +392,7 @@
 
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: flex-start;
             margin: fn.toVw(30) 0;
 
             @include mx.phone {

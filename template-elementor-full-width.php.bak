@@ -1,0 +1,41 @@
+<?php
+/**
+ * Template Name: Elementor Full Width
+ * 
+ * This template is for full-width Elementor pages and posts
+ * It includes header and footer while allowing full-width content
+ */
+
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+
+get_header();
+
+?>
+
+<div id="primary" class="content-area elementor-full-width">
+	<main id="main" class="site-main">
+		<?php
+		if (class_exists('\ElementorPro\Modules\ThemeBuilder\Module')) {
+			$documents_manager = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager()->get_documents_for_location('single');
+			if (!empty($documents_manager)) {
+				\ElementorPro\Modules\ThemeBuilder\Module::instance()->get_locations_manager()->do_location('single');
+			} else {
+				while (have_posts()) :
+					the_post();
+					the_content();
+				endwhile;
+			}
+		} else {
+			while (have_posts()) :
+				the_post();
+				the_content();
+			endwhile;
+		}
+		?>
+	</main>
+</div>
+
+<?php
+get_footer(); 

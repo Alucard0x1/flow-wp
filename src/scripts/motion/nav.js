@@ -7,8 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 class Nav {
   constructor() {
     this.nav = document.querySelector(".nav");
+    if (!this.nav) return;
+
     this.toggle = document.querySelector(".nav-toggle .hamburger");
     this.popup = document.querySelector(".nav-popup");
+    if (!this.popup) return;
+
     this.popupBg = this.popup.querySelector(".container-bg");
     this.backdrop = this.popup.querySelector(".backdrop");
 
@@ -35,6 +39,8 @@ class Nav {
     );
     this.popupContentImageDesc = this.popup.querySelector(".image-wrapper p");
     this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
+    if (!this.popupContentImageDesc || !this.popupContentImage) return;
+
     this.popupContentImages = [
       this.popupContentImageDesc,
       this.popupContentImage,
@@ -83,22 +89,34 @@ class Nav {
   }
 
   defaultState() {
+    if (!this.popup || !this.popupContentImageDesc || !this.popupContentImage) return;
+
     this.zIndexImage = this.menuIndex || 0;
 
-    const el = document.querySelector('#pll')
-    const imgHeading = el.dataset.imgHeading
+    const el = document.querySelector('#pll');
+    if (!el) return;
 
-    this.popupImageDescText = imgHeading
+    const imgHeading = el.dataset.imgHeading;
+    if (!imgHeading) return;
 
-    this.popupContentImageDesc.innerHTML = this.menuItemActive
-      ? this.menuLink[this.menuIndexInit].querySelector("a").dataset.desc
-      : this.popupImageDescText;
+    this.popupImageDescText = imgHeading;
 
-    this.popupContentImageDesc.classList.remove('small')
+    if (this.menuItemActive && this.menuLink[this.menuIndexInit]) {
+      const link = this.menuLink[this.menuIndexInit].querySelector("a");
+      if (link && link.dataset.desc) {
+        this.popupContentImageDesc.innerHTML = link.dataset.desc;
+      }
+    } else {
+      this.popupContentImageDesc.innerHTML = this.popupImageDescText;
+    }
 
-    gsap.set(this.popupContentImage.children, {
-      zIndex: 0,
-    });
+    this.popupContentImageDesc.classList.remove('small');
+
+    if (this.popupContentImage.children.length) {
+      gsap.set(this.popupContentImage.children, {
+        zIndex: 0,
+      });
+    }
 
     gsap.set(
       this.popupContentImage.children[

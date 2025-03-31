@@ -1,3 +1,10 @@
+{# Debug output #}
+{% if pll_debug %}
+	<div style="display: none;" id="pll-debug">
+		<pre>{{ pll_debug|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+	</div>
+{% endif %}
+
 <div class="nav">
 	<a class="nav-logo" href="/">
 		<div class="nav-link">
@@ -20,7 +27,21 @@
 		{# <a href="https://calendly.com/flow_/booking" target="_blank" class="contact-wrapper" rel="nofollow noopener">
 					{{ 'Book a Tour'|pll_e }}
 				</a> #}
-		{{function('pll_the_languages', {'hide_current': 1, 'echo': false, 'display_names_as': 'slug'})}}
+		{% if function('function_exists', 'pll_the_languages') %}
+			{% set languages = function('pll_the_languages', {
+				'hide_current': 1,
+				'echo': 0,
+				'display_names_as': 'slug',
+				'raw': 1
+			}) %}
+			{% if languages is not empty %}
+				{% for lang in languages %}
+					<a href="{{ lang.url }}" class="contact-wrapper lang-item" lang="{{ lang.locale }}">
+						{{ lang.slug|upper }}
+					</a>
+				{% endfor %}
+			{% endif %}
+		{% endif %}
 	</div>
 </div>
 
@@ -36,7 +57,18 @@
 		</div>
 		<div class="content-wrapper" data-lenis-prevent>
 			<div class="lang-picker-phone">
-				{{function('pll_the_languages', {'hide_current': 1, 'echo': false, 'display_names_as': 'slug'})}}
+				{% if function('function_exists', 'pll_the_languages') %}
+					{% set languages = function('pll_the_languages', {'hide_current': 1, 'echo': false, 'display_names_as': 'slug'}) %}
+					{% if languages is iterable %}
+						<div class="lang-switcher">
+							{% for lang in languages %}
+								<a href="{{ lang.url }}" class="lang-item {{ lang.classes|join(' ') }}" lang="{{ lang.locale }}">
+									{{ lang.slug }}
+								</a>
+							{% endfor %}
+						</div>
+					{% endif %}
+				{% endif %}
 			</div>
 			<p>{{ 'Workspace Solutions'|pll_e }}</p>
 			<div class="nav-popup-menu">
@@ -44,7 +76,14 @@
 					<div class="bullet"></div>
 					{% for menu in popup.items %}
 						<div class="menu-left-link">
-							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.meta.alt_desc}}" data-lang="{{menu.master_object.id|localize_post|add_alt|json_encode|url_encode}}" class="menu-{{ loop.index }}">{{menu.title}}</a>
+							<a href="{{menu.link}}" data-image="{{menu.master_object.thumbnail.src}}" data-desc="{{menu.master_object.meta.alt_desc}}" 
+							{% if function('function_exists', 'pll_get_post_translations') and menu.master_object.id is defined %}
+								{% set localized_data = menu.master_object.id|localize_post|add_alt %}
+								{% if localized_data is not empty %}
+									data-lang="{{localized_data|json_encode|url_encode}}" 
+								{% endif %}
+							{% endif %}
+							class="menu-{{ loop.index }}">{{menu.title}}</a>
 						</div>
 					{% endfor %}
 				</div>
