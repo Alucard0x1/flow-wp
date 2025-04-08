@@ -1333,25 +1333,6 @@ var aLazyLoad;
 var taxi = null;
 var Preloader = new _motion_preloader__WEBPACK_IMPORTED_MODULE_2__["default"]();
 var motion = new _motion_init__WEBPACK_IMPORTED_MODULE_3__["default"]();
-
-// Add Elementor initialization check
-var elementorInitialized = false;
-var waitForElementor = function waitForElementor(callback) {
-  var maxAttempts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
-  var attempts = 0;
-  var check = function check() {
-    attempts++;
-    if (window.elementorFrontend && window.elementorFrontend.init) {
-      elementorInitialized = true;
-      callback();
-    } else if (attempts < maxAttempts) {
-      setTimeout(check, 500);
-    } else {
-      console.warn('Elementor initialization timeout');
-    }
-  };
-  check();
-};
 var RendererDefault = /*#__PURE__*/function (_Renderer) {
   _inherits(RendererDefault, _Renderer);
   function RendererDefault() {
@@ -1361,14 +1342,7 @@ var RendererDefault = /*#__PURE__*/function (_Renderer) {
   _createClass(RendererDefault, [{
     key: "initialLoad",
     value: function initialLoad() {
-      // Initialize LazyLoad only if not already initialized
-      if (!aLazyLoad) {
-        aLazyLoad = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_6___default())({
-          callback_error: function callback_error(img) {
-            img.setAttribute('src', img.getAttribute('data-src') || '');
-          }
-        });
-      }
+      aLazyLoad = new (vanilla_lazyload__WEBPACK_IMPORTED_MODULE_6___default())();
       motion.first();
       motion.enter();
       Preloader.First(function () {
@@ -1376,38 +1350,28 @@ var RendererDefault = /*#__PURE__*/function (_Renderer) {
       }, function () {
         motion.afterPreloader2();
       });
-
-      // Wait for Elementor on initial load
-      if (window.elementorFrontend) {
-        waitForElementor(function () {
-          window.elementorFrontend.init();
-        });
-      }
     }
   }, {
     key: "onEnter",
     value: function onEnter() {
+      // new Smoothscroll();
       if (aLazyLoad) {
         aLazyLoad.update();
       }
       _motion_smoothscroll__WEBPACK_IMPORTED_MODULE_4__.smoothScroll.start();
       Preloader.Enter(function () {
         motion.reinit();
-        // Reinitialize Elementor on page transitions
-        if (window.elementorFrontend && !elementorInitialized) {
-          waitForElementor(function () {
-            window.elementorFrontend.init();
-          });
-        }
       });
     }
   }, {
     key: "onLeaveCompleted",
     value: function onLeaveCompleted() {
       _motion_smoothscroll__WEBPACK_IMPORTED_MODULE_4__.smoothScroll.stop();
+      // smoothScroll.destroy();
+
       (0,_utils_cleanscrolltrigger__WEBPACK_IMPORTED_MODULE_5__["default"])(true);
 
-      // Reset scroll position
+      // Scroll to top
       window.scrollTo({
         top: 0,
         left: 0,
@@ -1430,24 +1394,15 @@ var App = /*#__PURE__*/_createClass(function App() {
     transitions: {
       "default": _motion_transition__WEBPACK_IMPORTED_MODULE_1__.TransitionDefault
     },
-    links: "a:not([target]):not([href^=\\#]):not([data-taxi-ignore]):not([data-elementor-open-lightbox]), a.ab-item",
+    links: "a:not([target]):not([href^=\\#]):not([data-taxi-ignore]), a.ab-item",
     reloadJsFilter: function reloadJsFilter(element) {
-      // Don't reload Elementor scripts
-      if (element.id && element.id.includes('elementor')) {
-        return false;
-      }
-      return element.id === "assetjs-js" || element.dataset.taxiReload !== undefined;
+      return !(element.id === "assetjs-js") || element.dataset.taxiReload !== undefined;
     }
   });
-
-  // Handle hash navigation
   window.addEventListener('load', function () {
-    if (window.location.hash) {
+    if (window.location.hash.match(/wpcf/)) {
       setTimeout(function () {
-        var element = document.querySelector(window.location.hash);
-        if (element) {
-          element.scrollIntoView();
-        }
+        document.querySelector(window.location.hash).scrollIntoView();
       }, 1000);
     }
   });
@@ -2146,59 +2101,33 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 gsap__WEBPACK_IMPORTED_MODULE_2__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__.ScrollTrigger);
 var Nav = /*#__PURE__*/function () {
   function Nav() {
-    var _this = this;
     _classCallCheck(this, Nav);
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function () {
-        return _this.initialize();
-      });
-    } else {
-      this.initialize();
-    }
+    this.nav = document.querySelector(".nav");
+    if (!this.nav) return;
+    this.toggle = document.querySelector(".nav-toggle .hamburger");
+    this.popup = document.querySelector(".nav-popup");
+    if (!this.popup) return;
+    this.popupBg = this.popup.querySelector(".container-bg");
+    this.backdrop = this.popup.querySelector(".backdrop");
+    this.menuLinkWrapper = this.popup.querySelector(".menu-left");
+    this.menuLink = this.popup.querySelectorAll(".menu-left-link");
+    this.popupContentWrapper = [this.popup.querySelector(".image-wrapper"), this.popup.querySelector(".content-wrapper")];
+    this.popupContentMenuLeft = [this.popup.querySelector(".content-wrapper p"), this.menuLink];
+    this.popupContentMenuRight = [this.popup.querySelectorAll(".menu-right .menu-right-link")];
+    this.popupContentMenuFooter = [this.popup.querySelectorAll(".nav-popup-footer a")];
+    this.popupContentBorder = this.popup.querySelector(".content-wrapper .border");
+    this.popupContentImageDesc = this.popup.querySelector(".image-wrapper p");
+    this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
+    if (!this.popupContentImageDesc || !this.popupContentImage) return;
+    this.popupContentImages = [this.popupContentImageDesc, this.popupContentImage];
+    this.bulletLink = this.popup.querySelector(".bullet");
+    this.menuIndexInit = 0;
+    this.menuItemActive = false;
+    this.zIndexImage = 0;
+    this.menuIndex = null;
+    this.popupImageDescText = this.popupContentImageDesc.textContent;
   }
   _createClass(Nav, [{
-    key: "initialize",
-    value: function initialize() {
-      this.nav = document.querySelector(".nav");
-      if (!this.nav) return;
-      this.toggle = document.querySelector(".nav-toggle .hamburger");
-      this.popup = document.querySelector(".nav-popup");
-      if (!this.popup) return;
-      this.popupBg = this.popup.querySelector(".container-bg");
-      this.backdrop = this.popup.querySelector(".backdrop");
-      this.menuLinkWrapper = this.popup.querySelector(".menu-left");
-      this.menuLink = this.popup.querySelectorAll(".menu-left-link");
-      this.popupContentWrapper = [this.popup.querySelector(".image-wrapper"), this.popup.querySelector(".content-wrapper")];
-
-      // Safely get elements and handle null cases
-      var contentWrapperP = this.popup.querySelector(".content-wrapper p");
-      this.popupContentMenuLeft = [contentWrapperP, this.menuLink];
-      var menuRightLinks = this.popup.querySelectorAll(".menu-right .menu-right-link");
-      this.popupContentMenuRight = menuRightLinks ? [menuRightLinks] : [];
-      var footerLinks = this.popup.querySelectorAll(".nav-popup-footer a");
-      this.popupContentMenuFooter = footerLinks ? [footerLinks] : [];
-      this.popupContentBorder = this.popup.querySelector(".content-wrapper .border");
-      this.popupContentImageDesc = this.popup.querySelector(".image-wrapper p");
-      this.popupContentImage = this.popup.querySelector(".image-wrapper .image");
-
-      // Early return if required elements are missing
-      if (!this.popupContentImageDesc || !this.popupContentImage) {
-        console.warn('Required elements not found in the navigation');
-        return;
-      }
-      this.popupContentImages = [this.popupContentImageDesc, this.popupContentImage];
-      this.bulletLink = this.popup.querySelector(".bullet");
-      this.menuIndexInit = 0;
-      this.menuItemActive = false;
-      this.zIndexImage = 0;
-      this.menuIndex = null;
-      this.popupImageDescText = this.popupContentImageDesc.textContent;
-
-      // Initialize events after all elements are set
-      this.init();
-    }
-  }, {
     key: "init",
     value: function init() {
       this.event();
@@ -2261,25 +2190,25 @@ var Nav = /*#__PURE__*/function () {
   }, {
     key: "event",
     value: function event() {
-      var _this2 = this;
+      var _this = this;
       this.nav.addEventListener("click", function (e) {
         e.target.addEventListener("click", function (e2) {
           if (!e2.target.closest(".nav-logo, .nav-right")) {
-            if (!_this2.popup.classList.contains("active")) return;
-            _this2.close();
+            if (!_this.popup.classList.contains("active")) return;
+            _this.close();
           }
         });
       });
       this.toggle.addEventListener("click", function (e) {
         e.preventDefault();
-        if (_this2.popup.classList.contains("active")) {
-          _this2.close();
+        if (_this.popup.classList.contains("active")) {
+          _this.close();
         } else {
-          _this2.show();
+          _this.show();
         }
       });
       this.backdrop.addEventListener("click", function (e) {
-        _this2.close();
+        _this.close();
       });
       if ((0,_utils_responsive__WEBPACK_IMPORTED_MODULE_1__.isMobileQuery)()) return;
       if (this.menuLink.length) {
@@ -2289,11 +2218,11 @@ var Nav = /*#__PURE__*/function () {
           var img = document.createElement("img");
           img.src = dataimage;
           img.alt = link.textContent;
-          _this2.popupContentImage.appendChild(img);
+          _this.popupContentImage.appendChild(img);
           el.addEventListener("mouseenter", function (e) {
             var getTop = el.offsetTop + el.offsetHeight / 2;
-            var bulletHeight = _this2.bulletLink.offsetHeight / 2;
-            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].to(_this2.bulletLink, {
+            var bulletHeight = _this.bulletLink.offsetHeight / 2;
+            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].to(_this.bulletLink, {
               scale: 1,
               y: function y() {
                 return getTop - bulletHeight;
@@ -2305,18 +2234,18 @@ var Nav = /*#__PURE__*/function () {
 
             // gsap.killTweensOf(this.popupContentImage.children);
             // if (this.menuIndex === index) return;
-            _this2.zIndexImage++;
-            _this2.menuIndex = index;
-            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(_this2.popupContentImage.children[index + 1], {
-              zIndex: _this2.zIndexImage
+            _this.zIndexImage++;
+            _this.menuIndex = index;
+            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(_this.popupContentImage.children[index + 1], {
+              zIndex: _this.zIndexImage
             });
-            _this2.popupContentImageDesc.innerHTML = link.dataset.desc;
+            _this.popupContentImageDesc.innerHTML = link.dataset.desc;
             if (link.classList.contains('menu-4')) {
-              _this2.popupContentImageDesc.classList.add('small');
+              _this.popupContentImageDesc.classList.add('small');
             } else {
-              _this2.popupContentImageDesc.classList.remove('small');
+              _this.popupContentImageDesc.classList.remove('small');
             }
-            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].fromTo(_this2.popupContentImageDesc, {
+            gsap__WEBPACK_IMPORTED_MODULE_2__["default"].fromTo(_this.popupContentImageDesc, {
               opacity: 0
             }, {
               opacity: 1,
@@ -2340,8 +2269,8 @@ var Nav = /*#__PURE__*/function () {
           });
         });
         this.menuLinkWrapper.addEventListener("mouseleave", function (e) {
-          _this2.defaultState();
-          gsap__WEBPACK_IMPORTED_MODULE_2__["default"].to(_this2.bulletLink, {
+          _this.defaultState();
+          gsap__WEBPACK_IMPORTED_MODULE_2__["default"].to(_this.bulletLink, {
             scale: 0,
             ease: "expo.out",
             duration: 0.4,
@@ -2451,25 +2380,25 @@ var Nav = /*#__PURE__*/function () {
   }, {
     key: "bullet",
     value: function bullet() {
-      var _this3 = this;
+      var _this2 = this;
       this.menuItemActive = false;
       this.menuIndexInit = 0;
       this.menuLink.forEach(function (el, index) {
-        var texthref = _this3.normalizeUrl(el.querySelector("a").href);
-        var currentUrl = _this3.normalizeUrl(window.location.href);
+        var texthref = _this2.normalizeUrl(el.querySelector("a").href);
+        var currentUrl = _this2.normalizeUrl(window.location.href);
         if (texthref === currentUrl) {
           el.classList.add("active");
           if ((0,_utils_responsive__WEBPACK_IMPORTED_MODULE_1__.isMobileQuery)()) return;
           var getTop = el.offsetTop + el.offsetHeight / 2;
-          var bulletHeight = _this3.bulletLink.offsetHeight / 2;
-          gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(_this3.bulletLink, {
+          var bulletHeight = _this2.bulletLink.offsetHeight / 2;
+          gsap__WEBPACK_IMPORTED_MODULE_2__["default"].set(_this2.bulletLink, {
             y: function y() {
               return getTop - bulletHeight;
             }
           });
-          _this3.menuIndex = index;
-          _this3.menuIndexInit = index;
-          _this3.menuItemActive = true;
+          _this2.menuIndex = index;
+          _this2.menuIndexInit = index;
+          _this2.menuItemActive = true;
         } else {
           el.classList.remove("active");
         }
